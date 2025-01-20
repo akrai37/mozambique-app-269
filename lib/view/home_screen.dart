@@ -29,6 +29,75 @@ class _HomeScreenState extends State<HomeScreen> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'DIFF EDUCATION',
+                    style: TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFE84C3D),
+                    ),
+                  ),
+                  Expanded( // ensures the TextField takes up the remaining space
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Search',
+                        hintStyle: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF95A5A5),
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Color(0xFF95A5A5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      shape: WidgetStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
+                          side: const BorderSide(
+                            color: Color(0xFF2D3E50),
+                          ),
+                        ),
+                      ),
+                    ),
+                    child: const Text(
+                      'Practice',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF2D3E50),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
+                children: [
+                  const Text(
+                    'Olá!',
+                    style: TextStyle(
+                      fontSize: 33,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2D3E50),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Wrap( // replaces Row so that the children wrap to the next line if they don't fit
               direction: Axis.horizontal,
               spacing: 10,

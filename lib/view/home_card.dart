@@ -17,8 +17,8 @@ class HomeCard extends StatelessWidget {
       width: 100,
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 1),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(5),
+          color: const Color(0xFFECF0F1),
         ),
         child: Column(
           children: [
