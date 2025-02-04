@@ -23,8 +23,8 @@ class MsgSample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
-      width: 500,
+      height: 225,
+      width: 657.5,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
@@ -32,12 +32,9 @@ class MsgSample extends StatelessWidget {
         ),
         child: Column(
           children: [
-            // Image(
-            //   image: AssetImage('assets/images/temp.png'),
-            //   width: 100,
-            //   height: 100,
-            // ),
+            SizedBox(height: 40),
             Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.centerLeft,
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -83,7 +80,10 @@ class MsgSample extends StatelessWidget {
                 ),
               ),
             ),
+            
+            SizedBox(height: 15),
             Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.centerRight,
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -129,6 +129,7 @@ class MsgSample extends StatelessWidget {
                 ),
               ),
             ),
+            SizedBox(height: 25),
           ],
         ),
       ),
