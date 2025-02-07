@@ -144,21 +144,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 100,
                           height: 100, // Change icon color if needed
                         ),
-                        SizedBox(width: 340),
+                        SizedBox(width: 250),
                         SvgPicture.string(
                           person1Svg,
                           colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
                           width: 100,
                           height: 100, // Change icon color if needed
                         ),
-                        SizedBox(width: 175),
+                        SizedBox(width: 200),
                         SvgPicture.string(
                           person1Svg,
                           colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
                           width: 100,
                           height: 100, // Change icon color if needed
                         ),
-                        SizedBox(width: 340),
+                        SizedBox(width: 250),
                         SvgPicture.string(
                           person1Svg,
                           colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),

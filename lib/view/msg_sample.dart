@@ -24,7 +24,7 @@ class MsgSample extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 225,
-      width: 657.5,
+      width: 550,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
