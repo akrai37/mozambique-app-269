@@ -13,8 +13,8 @@ class HomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
-      width: 200,
+      height: 300,
+      width: 300,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
@@ -30,14 +30,14 @@ class HomeCard extends StatelessWidget {
             Text(
               icon,
               style: TextStyle(
-                fontSize: 100,
+                fontSize: 150,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               title,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ),
