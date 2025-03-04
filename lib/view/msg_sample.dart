@@ -24,7 +24,7 @@ class MsgSample extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 225,
-      width: 550,
+      width: MediaQuery.of(context).size.width / 2 - 15,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
@@ -52,31 +52,33 @@ class MsgSample extends StatelessWidget {
                     bottomRight: Radius.circular(8),
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                        greeting,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xFFECF0F1),
+                child: FittedBox(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                          greeting,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFFECF0F1),
+                          ),
+                        ),
+                      SizedBox(width: 10), // Spacing between text and icon
+                      Container(
+                        padding: EdgeInsets.all(5), // Space around the icon
+                        decoration: BoxDecoration(
+                          color: Colors.white, // White circular background
+                          shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.string(
+                          volumeUpSvg,
+                          colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
                         ),
                       ),
-                    SizedBox(width: 10), // Spacing between text and icon
-                    Container(
-                      padding: EdgeInsets.all(5), // Space around the icon
-                      decoration: BoxDecoration(
-                        color: Colors.white, // White circular background
-                        shape: BoxShape.circle,
-                      ),
-                      child: SvgPicture.string(
-                        volumeUpSvg,
-                        colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -101,31 +103,33 @@ class MsgSample extends StatelessWidget {
                     bottomRight: Radius.circular(0),
                   ),
                 ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                        response,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xFF2D3E50),
+                child: FittedBox(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                          response,
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF2D3E50),
+                          ),
+                        ),
+                      SizedBox(width: 5), // Spacing between text and icon
+                      Container(
+                        padding: EdgeInsets.all(5), // Space around the icon
+                        decoration: BoxDecoration(
+                          color: Colors.white, // White circular background
+                          shape: BoxShape.circle,
+                        ),
+                        child: SvgPicture.string(
+                          volumeUpSvg,
+                          colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
                         ),
                       ),
-                    SizedBox(width: 10), // Spacing between text and icon
-                    Container(
-                      padding: EdgeInsets.all(5), // Space around the icon
-                      decoration: BoxDecoration(
-                        color: Colors.white, // White circular background
-                        shape: BoxShape.circle,
-                      ),
-                      child: SvgPicture.string(
-                        volumeUpSvg,
-                        colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

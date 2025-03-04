@@ -118,53 +118,83 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        const Text(
-                          '😁 ',
-                          style: TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF2D3E50),
-                          ),
+                        Image(
+                          image: AssetImage('assets/images/bigSmile.png'),
+                          width: 100,
+                          height: 100,
                         ),
-                        const Text(
-                          '   🙂',
-                          style: TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF2D3E50),
-                          ),
+                        // const Text(
+                        //   '😁 ',
+                        //   style: TextStyle(
+                        //     fontSize: 100,
+                        //     fontWeight: FontWeight.bold,
+                        //     color: Color(0xFF2D3E50),
+                        //   ),
+                        // ),
+                        Image(
+                          image: AssetImage('assets/images/smile.png'),
+                          width: 100,
+                          height: 100,
                         ),
+                        // const Text(
+                        //   '   🙂',
+                        //   style: TextStyle(
+                        //     fontSize: 100,
+                        //     fontWeight: FontWeight.bold,
+                        //     color: Color(0xFF2D3E50),
+                        //   ),
+                        // ),
                       ]
                     ),
                     Row(
                       children: [
-                        SvgPicture.string(
-                          person1Svg,
-                          colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
+                        Image(
+                          image: AssetImage('assets/images/NavyPerson.png'),
                           width: 100,
-                          height: 100, // Change icon color if needed
+                          height: 100,
                         ),
-                        SizedBox(width: 250),
-                        SvgPicture.string(
-                          person1Svg,
-                          colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
+                        // SvgPicture.string(
+                        //   person1Svg,
+                        //   colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
+                        //   width: 100,
+                        //   height: 100, // Change icon color if needed
+                        // ),
+                        SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
+                        Image(
+                          image: AssetImage('assets/images/GrayPerson.png'),
                           width: 100,
-                          height: 100, // Change icon color if needed
+                          height: 100,
                         ),
-                        SizedBox(width: 200),
-                        SvgPicture.string(
-                          person1Svg,
-                          colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
+                        // SvgPicture.string(
+                        //   person1Svg,
+                        //   colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
+                        //   width: 100,
+                        //   height: 100, // Change icon color if needed
+                        // ),
+                        SizedBox(width: MediaQuery.of(context).size.width / 10 - 15),
+                        Image(
+                          image: AssetImage('assets/images/NavyPerson.png'),
                           width: 100,
-                          height: 100, // Change icon color if needed
+                          height: 100,
                         ),
-                        SizedBox(width: 250),
-                        SvgPicture.string(
-                          person1Svg,
-                          colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
+                        // SvgPicture.string(
+                        //   person1Svg,
+                        //   colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
+                        //   width: 100,
+                        //   height: 100, // Change icon color if needed
+                        // ),
+                        SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
+                        Image(
+                          image: AssetImage('assets/images/GrayPerson.png'),
                           width: 100,
-                          height: 100, // Change icon color if needed
+                          height: 100,
                         ),
+                        // SvgPicture.string(
+                        //   person1Svg,
+                        //   colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
+                        //   width: 100,
+                        //   height: 100, // Change icon color if needed
+                        // ),
                         SizedBox(height: 15),
                       ]
                     ),
