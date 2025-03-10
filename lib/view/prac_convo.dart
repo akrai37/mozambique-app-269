@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mozambique_app/view/prac_msg.dart';
+import 'package:mozambique_app/view/msg_Sample.dart';
 
 
 //may need to change depending on how routing works
@@ -107,144 +107,33 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                     ),
-                Column(
+                Row(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/bigSmile.png'),
-                          width: 100,
-                          height: 100,
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical, // Enables vertical scrolling
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            /// First Column (List of Messages)
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
+                                  SizedBox(height: 50),
+                                  MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
+                                  SizedBox(height: 50),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                        // const Text(
-                        //   '😁 ',
-                        //   style: TextStyle(
-                        //     fontSize: 100,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Color(0xFF2D3E50),
-                        //   ),
-                        // ),
-                        Image(
-                          image: AssetImage('assets/images/smile.png'),
-                          width: 100,
-                          height: 100,
-                        ),
-                        // const Text(
-                        //   '   🙂',
-                        //   style: TextStyle(
-                        //     fontSize: 100,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Color(0xFF2D3E50),
-                        //   ),
-                        // ),
-                      ]
+                      ),
                     ),
-                    Row(
-                      children: [
-                        Image(
-                          image: AssetImage('assets/images/NavyPerson.png'),
-                          width: 100,
-                          height: 100,
-                        ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
-                        SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
-                        Image(
-                          image: AssetImage('assets/images/GrayPerson.png'),
-                          width: 100,
-                          height: 100,
-                        ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
-                        SizedBox(width: MediaQuery.of(context).size.width / 10 - 15),
-                        Image(
-                          image: AssetImage('assets/images/NavyPerson.png'),
-                          width: 100,
-                          height: 100,
-                        ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
-                        SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
-                        Image(
-                          image: AssetImage('assets/images/GrayPerson.png'),
-                          width: 100,
-                          height: 100,
-                        ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
-                        SizedBox(height: 15),
-                      ]
-                    ),
-                  ]
-                )
+                  ],
+                ),
               ],
-            ),
-          ),
-
-          Expanded(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical, // Enables vertical scrolling
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  /// First Column (List of Messages)
-                  Expanded(
-                    child: Column(
-                      children: [
-                        MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Boa tarde.', response: 'Boa tarde! Como vai seu dia?'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Boa noite.', response: 'Boa noite! Como foi seu dia?'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'E ai?', response: 'Só estou aqui passando tempo!'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Como vai?', response: 'Estou ótimo!'),
-                        SizedBox(height: 50),
-                      ],
-                    ),
-                  ),
-                  /// Second Column (List of Messages)
-                  Expanded(
-                    child: Column(
-                      children: [
-                        MsgSample(greeting: 'Olá.', response: 'Olá.'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Bom dia.', response: 'Bom dia.'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Boa tarde.', response: 'Boa tarde.'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Boa noite.', response: 'Boa noite.'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'E ai?', response: 'Tudo beleza.'),
-                        SizedBox(height: 50),
-                        MsgSample(greeting: 'Como vai?', response: 'Estou bem.'),
-                        SizedBox(height: 50),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
             ),
           ),
         ],
