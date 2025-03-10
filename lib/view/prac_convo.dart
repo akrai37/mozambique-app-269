@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mozambique_app/view/msg_Sample.dart';
+import 'package:mozambique_app/view/msg_sample.dart';
 
 
 //may need to change depending on how routing works
