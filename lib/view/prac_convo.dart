@@ -159,8 +159,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(height: MediaQuery.of(context).size.height / 6 - 15),
                           Image(
                             image: AssetImage('assets/images/shop-temp.png'),
-                            width: 500,
-                            height: 500,
+                            width: MediaQuery.of(context).size.width / 2.5 - 15,
+                            height: MediaQuery.of(context).size.width / 2.5 - 15,
                           ),
                         ],
                       ),
