@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       margin: EdgeInsets.symmetric(vertical: 0),
                       alignment: Alignment.topLeft,
                       child: const Text(
-                          'Saudações',
+                          'Pedidos',
                           style: TextStyle(
                             fontSize: 100,
                             fontWeight: FontWeight.bold,
@@ -121,15 +121,20 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: [
                                   MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
-                                  SizedBox(height: 50),
                                   MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
-                                  SizedBox(height: 50),
                                 ],
                               ),
                             ),
                           ],
                         ),
                       ),
+                    ),
+                    Expanded(
+                      child: Image(
+                          image: AssetImage('assets/images/shop-temp.png'),
+                          width: 500,
+                          height: 500,
+                        ),
                     ),
                   ],
                 ),

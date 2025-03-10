@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mozambique_app/view/home_screen.dart';
+import 'package:mozambique_app/view/prac_convo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
