@@ -90,53 +90,82 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
 
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
-            child: Column(
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left
               children: [
-                //PAGE TITLE
-                Container(
-                      margin: EdgeInsets.symmetric(vertical: 0),
-                      alignment: Alignment.topLeft,
-                      child: const Text(
-                          'Pedidos',
-                          style: TextStyle(
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF2D3E50),
-                          ),
-                        ),
-                    ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical, // Enables vertical scrolling
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                SizedBox(width: MediaQuery.of(context).size.width / 15 - 15), // Adds left spacing
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start, // Aligns content to the top
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft, // Ensures "Pedidos" stays at the top-left
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start, // Aligns everything to the left
                           children: [
-                            /// First Column (List of Messages)
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 0),
+                              child: const Text(
+                                'Pedidos',
+                                style: TextStyle(
+                                  fontSize: 100,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFF2D3E50),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(width: MediaQuery.of(context).size.width / 35 - 15),
+                                Image(
+                                  image: AssetImage('assets/images/NavyPerson.png'),
+                                  width: 75,
+                                  height: 75,
+                                ),
+                                SizedBox(width: MediaQuery.of(context).size.width / 3 - 15),
+                                Image(
+                                  image: AssetImage('assets/images/GrayPerson.png'),
+                                  width: 75,
+                                  height: 75,
+                                ),
+                              ],
+                            ),
                             Expanded(
-                              child: Column(
+                              child: Row(
                                 children: [
-                                  MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
-                                  MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
+                                  SingleChildScrollView(
+                                    scrollDirection: Axis.vertical, // Enables vertical scrolling
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
+                                      children: [
+                                        /// First Column (List of Messages)
+                                        MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
+                                        MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
+                                        MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
+                                        MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Image(
-                          image: AssetImage('assets/images/shop-temp.png'),
-                          width: 500,
-                          height: 500,
-                        ),
-                    ),
-                  ],
+                      SizedBox(width: MediaQuery.of(context).size.width / 20 - 15),
+                      Column(
+                        children: [
+                          SizedBox(height: MediaQuery.of(context).size.height / 6 - 15),
+                          Image(
+                            image: AssetImage('assets/images/shop-temp.png'),
+                            width: 500,
+                            height: 500,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
