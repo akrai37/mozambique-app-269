@@ -8,6 +8,7 @@ import 'models/vocab.dart';
 import 'models/question.dart';
 import 'models/quiz.dart';
 import 'models/conversation.dart';
+import '../repositories/crud_test.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,7 @@ void main() async{
 
   // Open Hive Boxes
   await Hive.openBox<Category>('categories');
-  await Hive.openBox<VocabWord>('vocab_words');
+  var vocab = await Hive.openBox<VocabWord>('vocab_words');
   await Hive.openBox<Question>('questions');
   await Hive.openBox<Response>('responses');
   await Hive.openBox<Quiz>('quizzes');
@@ -39,7 +40,7 @@ void main() async{
   await Hive.openBox<QuizAnswer>('quiz_answers');
   await Hive.openBox<Conversation>('conversations');
 
-  
+  await performCrudOperations(vocab);
   runApp(const MyApp());
 }
 
