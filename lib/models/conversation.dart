@@ -12,7 +12,7 @@ class Conversation extends HiveObject {
   int categoryId;
 
   @HiveField(2)
-  String conversationText[];
+  String conversationText;
 
   Conversation(this.id, this.categoryId, this.conversationText);
 }

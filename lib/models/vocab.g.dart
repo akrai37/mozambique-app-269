@@ -1,0 +1,53 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'vocab.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class VocabWordAdapter extends TypeAdapter<VocabWord> {
+  @override
+  final int typeId = 1;
+
+  @override
+  VocabWord read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return VocabWord(
+      fields[0] as int,
+      fields[1] as String,
+      fields[2] as int,
+      fields[3] as String,
+      fields[4] as String,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, VocabWord obj) {
+    writer
+      ..writeByte(5)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.word)
+      ..writeByte(2)
+      ..write(obj.categoryId)
+      ..writeByte(3)
+      ..write(obj.imagePath)
+      ..writeByte(4)
+      ..write(obj.audioPath);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is VocabWordAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}

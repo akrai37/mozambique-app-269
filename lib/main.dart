@@ -3,15 +3,43 @@ import 'package:flutter/services.dart';
 import 'package:mozambique_app/view/home_screen.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-
+import 'models/category.dart';
+import 'models/vocab.dart';
+import 'models/question.dart';
+import 'models/quiz.dart';
+import 'models/conversation.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   // Lock the orientation of the app to landscape
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+
+  //INITIALIZE HIVE
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
+
+  // Register Hive Adapters
+  Hive.registerAdapter(CategoryAdapter());
+  Hive.registerAdapter(VocabWordAdapter());
+  Hive.registerAdapter(QuestionAdapter());
+  Hive.registerAdapter(ResponseAdapter());
+  Hive.registerAdapter(QuizAdapter());
+  Hive.registerAdapter(QuizQuestionAdapter());
+  Hive.registerAdapter(QuizAnswerAdapter());
+  Hive.registerAdapter(ConversationAdapter());
+
+  // Open Hive Boxes
+  await Hive.openBox<Category>('categories');
+  await Hive.openBox<VocabWord>('vocab_words');
+  await Hive.openBox<Question>('questions');
+  await Hive.openBox<Response>('responses');
+  await Hive.openBox<Quiz>('quizzes');
+  await Hive.openBox<QuizQuestion>('quiz_questions');
+  await Hive.openBox<QuizAnswer>('quiz_answers');
+  await Hive.openBox<Conversation>('conversations');
+
+  
   runApp(const MyApp());
 }
 

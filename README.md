@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+Lib File hierarchy
+This offline-first Flutter application uses Hive to store its data locally, and Firestore to sync updates.
+
+/lib/models             The blueprints for Hive objects (ie. category, vocab, q&a, quiz, conversation)
+/lib/repositories       The functions that update/retrieve the Hive data directly
+/lib/viewmodel          The bridge between model & view: functions that use the repositories to update the views
+/lib/assets             The misc data, image, and audio files that will be intitially bundled with the project to ensure the users have access even    
+                        without internet connection in the beginning; syncing with Firestore will update these
