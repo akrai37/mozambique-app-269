@@ -9,10 +9,10 @@ class Conversation extends HiveObject {
   int id;
 
   @HiveField(1)
-  int categoryId;
+  String categoryName;
 
   @HiveField(2)
   String conversationText;
 
-  Conversation(this.id, this.categoryId, this.conversationText);
+  Conversation(this.id, this.categoryName, this.conversationText);
 }

@@ -18,7 +18,7 @@ class ConversationAdapter extends TypeAdapter<Conversation> {
     };
     return Conversation(
       fields[0] as int,
-      fields[1] as int,
+      fields[1] as String,
       fields[2] as String,
     );
   }
@@ -30,7 +30,7 @@ class ConversationAdapter extends TypeAdapter<Conversation> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.categoryId)
+      ..write(obj.categoryName)
       ..writeByte(2)
       ..write(obj.conversationText);
   }

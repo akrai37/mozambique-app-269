@@ -17,9 +17,9 @@ class QuizAdapter extends TypeAdapter<Quiz> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Quiz(
-      fields[0] as int,
-      fields[1] as int,
-      fields[2] as String,
+      id: fields[0] as int,
+      categoryName: fields[1] as String,
+      title: fields[2] as String,
     );
   }
 
@@ -30,7 +30,7 @@ class QuizAdapter extends TypeAdapter<Quiz> {
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.categoryId)
+      ..write(obj.categoryName)
       ..writeByte(2)
       ..write(obj.title);
   }

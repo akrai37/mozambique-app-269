@@ -17,7 +17,7 @@ class VocabWordAdapter extends TypeAdapter<VocabWord> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return VocabWord(
-      fields[0] as int,
+      fields[0] as String,
       fields[1] as String,
       fields[2] as String,
       fields[3] as String,
@@ -30,7 +30,7 @@ class VocabWordAdapter extends TypeAdapter<VocabWord> {
     writer
       ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.categoryId)
+      ..write(obj.categoryName)
       ..writeByte(1)
       ..write(obj.word)
       ..writeByte(2)

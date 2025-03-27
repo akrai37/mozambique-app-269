@@ -8,12 +8,12 @@ class Quiz extends HiveObject{
   int id;
 
   @HiveField(1)
-  int categoryId;
+  String categoryName;
 
   @HiveField(2)
   String title;
 
-  Quiz(this.id, this.categoryId, this.title);
+  Quiz({required this.id, required this.categoryName, required this.title});
 }
 
 @HiveType(typeId: 5)

@@ -20,6 +20,7 @@ Lib File hierarchy
 This offline-first Flutter application uses Hive to store its data locally, and Firestore to sync updates.
 
 /lib/models             The blueprints for Hive objects (ie. category, vocab, q&a, quiz, conversation)
+                        To generate the *.g.dart files, run ```dart run build_runner build --delete-conflicting-outputs``` in terminal
 /lib/repositories       The functions that update/retrieve the Hive data directly
 /lib/viewmodel          The bridge between model & view: functions that use the repositories to update the views
 /lib/assets             The misc data, image, and audio files that will be intitially bundled with the project to ensure the users have access even    

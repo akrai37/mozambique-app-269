@@ -9,30 +9,27 @@ class Question {
   String questionText;
 
   @HiveField(1)
-  int categoryId;
+  String categoryName;
 
   @HiveField(2)
   String? audioPath;
 
-  Question( this.questionText, this.categoryId, this.audioPath);
+  Question( {required this.questionText, required this.categoryName, required this.audioPath});
 }
 
 @HiveType(typeId: 3)
 class Response {
   @HiveField(0)
-  int id;
-
-  @HiveField(1)
   String responseText;
 
-  @HiveField(2)
-  int categoryId;
+  @HiveField(1)
+  String categoryName;
 
-  @HiveField(3)
+  @HiveField(2)
   String? audioPath;
 
-  @HiveField(4)
+  @HiveField(3)
   String emotion;
 
-  Response(this.id, this.responseText, this.categoryId, this.audioPath, this.emotion);
+  Response( {required this.responseText, required this.categoryName, required this.audioPath, required this.emotion});
 }

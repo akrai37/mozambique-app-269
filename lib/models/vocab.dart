@@ -5,7 +5,7 @@ part 'vocab.g.dart'; //name of file that will be generated
 @HiveType(typeId: 1)
 class VocabWord extends HiveObject{
   @HiveField(0)
-  int categoryId;  // Foreign key reference
+  String categoryName;  // Foreign key reference
 
   @HiveField(1)
   String word;
@@ -19,5 +19,5 @@ class VocabWord extends HiveObject{
   @HiveField(4)
   String audioPath;
 
-  VocabWord( this.categoryId, this.word, this.portuguese, this.imagePath, this.audioPath);
+  VocabWord( this.categoryName, this.word, this.portuguese, this.imagePath, this.audioPath);
 }
