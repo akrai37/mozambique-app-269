@@ -3,7 +3,7 @@ import 'package:hive/hive.dart';
 part 'conversation.g.dart'; //name of file that will be generated
 
 
-@HiveType(typeId: 7)
+@HiveType(typeId: 6)
 class Conversation extends HiveObject {
   @HiveField(0)
   int id;

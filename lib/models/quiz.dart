@@ -2,27 +2,11 @@ import 'package:hive/hive.dart';
 
 part 'quiz.g.dart';//name of file that will be generated
 
+
 @HiveType(typeId: 4)
-class Quiz extends HiveObject{
-  @HiveField(0)
-  int id;
-
-  @HiveField(1)
-  String categoryName;
-
-  @HiveField(2)
-  String title;
-
-  Quiz({required this.id, required this.categoryName, required this.title});
-}
-
-@HiveType(typeId: 5)
 class QuizQuestion extends HiveObject{
   @HiveField(0)
   int id;
-
-  @HiveField(1)
-  int quizId;  // Foreign key reference to Quiz
 
   @HiveField(2)
   String questionText;
@@ -30,10 +14,10 @@ class QuizQuestion extends HiveObject{
   @HiveField(3)
   String? audioPath;
 
-  QuizQuestion(this.id, this.quizId, this.questionText, this.audioPath);
+  QuizQuestion({required this.id, required this.questionText, required this.audioPath});
 }
 
-@HiveType(typeId: 6)
+@HiveType(typeId: 5)
 class QuizAnswer extends HiveObject{
   @HiveField(0)
   int quizQuestionId;  // Foreign key reference to QuizQuestion
@@ -44,5 +28,5 @@ class QuizAnswer extends HiveObject{
   @HiveField(2)
   bool isCorrect;
 
-  QuizAnswer(this.quizQuestionId, this.answerText, this.isCorrect);
+  QuizAnswer({required this.quizQuestionId, required this.answerText, required this.isCorrect} );
 }

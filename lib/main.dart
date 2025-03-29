@@ -25,7 +25,6 @@ void main() async{
   Hive.registerAdapter(VocabWordAdapter());
   Hive.registerAdapter(QuestionAdapter());
   Hive.registerAdapter(ResponseAdapter());
-  Hive.registerAdapter(QuizAdapter());
   Hive.registerAdapter(QuizQuestionAdapter());
   Hive.registerAdapter(QuizAnswerAdapter());
   Hive.registerAdapter(ConversationAdapter());
@@ -35,7 +34,6 @@ void main() async{
   var vocab = await Hive.openBox<VocabWord>('vocab_words');
   await Hive.openBox<Question>('questions');
   await Hive.openBox<Response>('responses');
-  await Hive.openBox<Quiz>('quizzes');
   await Hive.openBox<QuizQuestion>('quiz_questions');
   await Hive.openBox<QuizAnswer>('quiz_answers');
   await Hive.openBox<Conversation>('conversations');
