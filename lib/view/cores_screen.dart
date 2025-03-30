@@ -1,32 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:mozambique_app/view/cores_screen.dart';
 import 'package:mozambique_app/view/home_card.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class CoresScreen extends StatefulWidget {
+  const CoresScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CoresScreen> createState() => _CoresScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CoresScreenState extends State<CoresScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        // Column is also a layout widget. It takes a list of children and
-        // arranges them vertically. By default, it sizes itself to fit its
-        // children horizontally, and tries to be as tall as its parent.
-        //
-        // Column has various properties to control how it sizes itself and
-        // how it positions its children. Here we use mainAxisAlignment to
-        // center the children vertically; the main axis here is the vertical
-        // axis because Columns are vertical (the cross axis would be
-        // horizontal).
-        //
-        // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-        // action in the IDE, or press "p" in the console), to see the
-        // wireframe for each widget.
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
@@ -89,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
               children: [
                 const Text(
-                  'Olá!',
+                  'Cores',
                   style: TextStyle(
                     fontSize: 33,
                     fontWeight: FontWeight.bold,
@@ -107,20 +93,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 spacing: 10,
                 runSpacing: 10,
                 children: [
-                  HomeCard(img_src: 'assets/images/learn/Numbers.png', title: 'Números'),
-                  HomeCard(img_src: 'assets/images/learn/Colors.png', title: 'Cores'),
-                  HomeCard(img_src: 'assets/images/learn/Fruits.png', title: 'Frutas'),
-                  HomeCard(img_src: '', title: 'Produtos Hortícolas',),
-                  HomeCard(img_src: 'assets/images/learn/Animals.png', title: 'Animais'),
-                  HomeCard(img_src: 'assets/images/learn/Common Actions.png', title: 'Ações Comuns'),
-                  HomeCard(img_src: 'assets/images/learn/Everyday Activities.png', title: 'Atividades Cotidianas'),
-                  HomeCard(img_src: '', title: 'Profissões'),
-                  HomeCard(img_src: 'assets/images/learn/Household Items.png', title: 'Coisas da Casa'),
-                  HomeCard(img_src: 'assets/images/learn/Kitchen Items.png', title: 'Coisas da Cozinha'),
-                  HomeCard(img_src: 'assets/images/learn/Face.png', title: 'Rosto'),
-                  HomeCard(img_src: 'assets/images/learn/Body.png', title: 'Corpo'),
-                  HomeCard(img_src: 'assets/images/learn/Greetings.png', title: 'Saudações'),
-                  HomeCard(img_src: '', title: 'Pedidos'),
+                  HomeCard(img_src: 'assets/images/colors/Red.png', title: 'Vermelho'),
+                  HomeCard(img_src: 'assets/images/colors/Orange.png', title: 'Laranja'),
+                  HomeCard(img_src: 'assets/images/colors/Yellow.png', title: 'Amarelo'),
+                  HomeCard(img_src: 'assets/images/colors/Green.png', title: 'Verde'),
+                  HomeCard(img_src: 'assets/images/colors/Blue.png', title: 'Azul'),
+                  HomeCard(img_src: 'assets/images/colors/Purple.png', title: 'Roxo'),
+                  HomeCard(img_src: 'assets/images/colors/Pink.png', title: 'Rosa'),
+                  HomeCard(img_src: 'assets/images/colors/Black.png', title: 'Preto'),
+                  HomeCard(img_src: 'assets/images/colors/White.png', title: 'Branco'),
+                  HomeCard(img_src: 'assets/images/colors/Gray.png', title: 'Cinza'),
+                  HomeCard(img_src: 'assets/images/colors/Brown.png', title: 'Castanho'),
+                  HomeCard(img_src: 'assets/images/colors/Gold.png', title: 'Dourado'),
+                  HomeCard(img_src: 'assets/images/colors/Silver.png', title: 'Prateado'),
                 ],
               ),
             ),
