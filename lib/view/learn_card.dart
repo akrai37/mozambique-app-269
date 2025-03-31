@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:mozambique_app/view/learn_screens.dart';
-
-class HomeCard extends StatelessWidget {
+class LearnCard extends StatelessWidget {
   final String img;
   final String title;
-  final String tag;
 
-  const HomeCard({
+  const LearnCard({
     super.key,
     required this.img,
     required this.title,
-    required this.tag,
   });
 
   @override
@@ -21,12 +17,7 @@ class HomeCard extends StatelessWidget {
       width: 300,
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LearnScreens(title: title, tag: tag),
-            ),
-          );
+          print('Tapped on $title');
         },
         child: Container(
           decoration: BoxDecoration(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mozambique_app/view/cores_screen.dart';
 import 'package:mozambique_app/view/home_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -107,20 +106,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 spacing: 10,
                 runSpacing: 10,
                 children: [
-                  HomeCard(img_src: 'assets/images/learn/Numbers.png', title: 'Números'),
-                  HomeCard(img_src: 'assets/images/learn/Colors.png', title: 'Cores'),
-                  HomeCard(img_src: 'assets/images/learn/Fruits.png', title: 'Frutas'),
-                  HomeCard(img_src: '', title: 'Produtos Hortícolas',),
-                  HomeCard(img_src: 'assets/images/learn/Animals.png', title: 'Animais'),
-                  HomeCard(img_src: 'assets/images/learn/Common Actions.png', title: 'Ações Comuns'),
-                  HomeCard(img_src: 'assets/images/learn/Everyday Activities.png', title: 'Atividades Cotidianas'),
-                  HomeCard(img_src: '', title: 'Profissões'),
-                  HomeCard(img_src: 'assets/images/learn/Household Items.png', title: 'Coisas da Casa'),
-                  HomeCard(img_src: 'assets/images/learn/Kitchen Items.png', title: 'Coisas da Cozinha'),
-                  HomeCard(img_src: 'assets/images/learn/Face.png', title: 'Rosto'),
-                  HomeCard(img_src: 'assets/images/learn/Body.png', title: 'Corpo'),
-                  HomeCard(img_src: 'assets/images/learn/Greetings.png', title: 'Saudações'),
-                  HomeCard(img_src: '', title: 'Pedidos'),
+                  HomeCard(img: 'assets/images/learn/Numbers.png', title: 'Números', tag: 'numbers'),
+                  HomeCard(img: 'assets/images/learn/Colors.png', title: 'Cores', tag: 'colors'),
+                  HomeCard(img: 'assets/images/learn/Fruits.png', title: 'Frutas', tag: 'fruits'),
+                  HomeCard(img: '', title: 'Produtos Hortícolas', tag: 'vegetables'),
+                  HomeCard(img: 'assets/images/learn/Animals.png', title: 'Animais', tag: 'animals'),
+                  HomeCard(img: 'assets/images/learn/Common Actions.png', title: 'Ações Comuns', tag: 'common_actions'),
+                  HomeCard(img: 'assets/images/learn/Everyday Activities.png', title: 'Atividades Cotidianas', tag: 'everyday_activities'),
+                  HomeCard(img: '', title: 'Profissões', tag: 'professions'),
+                  HomeCard(img: 'assets/images/learn/Household Items.png', title: 'Coisas da Casa', tag: 'household_items'),
+                  HomeCard(img: 'assets/images/learn/Kitchen Items.png', title: 'Coisas da Cozinha', tag: 'kitchen_items'),
+                  HomeCard(img: 'assets/images/learn/Face.png', title: 'Rosto', tag: 'face'),
+                  HomeCard(img: 'assets/images/learn/Body.png', title: 'Corpo', tag: 'body'),
+                  HomeCard(img: 'assets/images/learn/Greetings.png', title: 'Saudações', tag: 'greetings'),
+                  HomeCard(img: '', title: 'Pedidos', tag: 'requests'),
                 ],
               ),
             ),

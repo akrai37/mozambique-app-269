@@ -1,14 +1,56 @@
 import 'package:flutter/material.dart';
-import 'package:mozambique_app/view/home_card.dart';
+import 'package:flutter/services.dart' show rootBundle;
 
-class CoresScreen extends StatefulWidget {
-  const CoresScreen({super.key});
+import 'dart:convert' show json;
+
+import 'package:mozambique_app/model/image_button.dart';
+import 'package:mozambique_app/view/learn_card.dart';
+
+class LearnScreens extends StatefulWidget {
+  final String title;
+  final String tag;
+  // final List<ImageButton> imageButtons;
+
+  const LearnScreens({
+    super.key,
+    required this.title,
+    required this.tag,
+  });
 
   @override
-  State<CoresScreen> createState() => _CoresScreenState();
+  State<LearnScreens> createState() => _LearnScreensState();
 }
 
-class _CoresScreenState extends State<CoresScreen> {
+class _LearnScreensState extends State<LearnScreens> {
+  late List<ImageButton> _imageButtons = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    
+
+    // Get the list of image buttons from a .json file
+
+    // // Load the JSON file
+    // final String jsonString = await rootBundle.loadString('assets/json/all_cards.json');
+    // // Decode the JSON string into a list of dynamic objects
+    // final data = json.decode(jsonString);
+    // final cards = data[widget.tag.toLowerCase()];
+    
+    // _imageButtons = List<ImageButton>.from(cards.map((item) => ImageButton.fromJson(item)));
+
+    rootBundle.loadString('assets/json/all_cards.json').then((jsonString) {
+      final data = json.decode(jsonString);
+      final cards = data[widget.tag.toLowerCase()];
+      setState(() {
+        _imageButtons = List<ImageButton>.from(cards.map((item) => ImageButton.fromJson(item)));
+      });
+    }).catchError((error) {
+      print("Error loading JSON: $error");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,8 +116,8 @@ class _CoresScreenState extends State<CoresScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
               children: [
-                const Text(
-                  'Cores',
+                Text(
+                  widget.title,
                   style: TextStyle(
                     fontSize: 33,
                     fontWeight: FontWeight.bold,
@@ -92,21 +134,27 @@ class _CoresScreenState extends State<CoresScreen> {
                 direction: Axis.horizontal,
                 spacing: 10,
                 runSpacing: 10,
-                children: [
-                  HomeCard(img_src: 'assets/images/colors/Red.png', title: 'Vermelho'),
-                  HomeCard(img_src: 'assets/images/colors/Orange.png', title: 'Laranja'),
-                  HomeCard(img_src: 'assets/images/colors/Yellow.png', title: 'Amarelo'),
-                  HomeCard(img_src: 'assets/images/colors/Green.png', title: 'Verde'),
-                  HomeCard(img_src: 'assets/images/colors/Blue.png', title: 'Azul'),
-                  HomeCard(img_src: 'assets/images/colors/Purple.png', title: 'Roxo'),
-                  HomeCard(img_src: 'assets/images/colors/Pink.png', title: 'Rosa'),
-                  HomeCard(img_src: 'assets/images/colors/Black.png', title: 'Preto'),
-                  HomeCard(img_src: 'assets/images/colors/White.png', title: 'Branco'),
-                  HomeCard(img_src: 'assets/images/colors/Gray.png', title: 'Cinza'),
-                  HomeCard(img_src: 'assets/images/colors/Brown.png', title: 'Castanho'),
-                  HomeCard(img_src: 'assets/images/colors/Gold.png', title: 'Dourado'),
-                  HomeCard(img_src: 'assets/images/colors/Silver.png', title: 'Prateado'),
-                ],
+                // children: [
+                //   LearnCard(img: 'assets/images/colors/Red.png', title: 'Vermelho'),
+                //   LearnCard(img: 'assets/images/colors/Orange.png', title: 'Laranja'),
+                //   LearnCard(img: 'assets/images/colors/Yellow.png', title: 'Amarelo'),
+                //   LearnCard(img: 'assets/images/colors/Green.png', title: 'Verde'),
+                //   LearnCard(img: 'assets/images/colors/Blue.png', title: 'Azul'),
+                //   LearnCard(img: 'assets/images/colors/Purple.png', title: 'Roxo'),
+                //   LearnCard(img: 'assets/images/colors/Pink.png', title: 'Rosa'),
+                //   LearnCard(img: 'assets/images/colors/Black.png', title: 'Preto'),
+                //   LearnCard(img: 'assets/images/colors/White.png', title: 'Branco'),
+                //   LearnCard(img: 'assets/images/colors/Gray.png', title: 'Cinza'),
+                //   LearnCard(img: 'assets/images/colors/Brown.png', title: 'Castanho'),
+                //   LearnCard(img: 'assets/images/colors/Gold.png', title: 'Dourado'),
+                //   LearnCard(img: 'assets/images/colors/Silver.png', title: 'Prateado'),
+                // ],
+                children: _imageButtons.map((imageButton) {
+                  return LearnCard(
+                    title: imageButton.word,
+                    img: imageButton.img,
+                  );
+                }).toList(),
               ),
             ),
           ),
