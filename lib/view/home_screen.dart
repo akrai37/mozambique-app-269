@@ -44,14 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded( // ensures the TextField takes up the remaining space
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Search',
                       hintStyle: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFF95A5A5),
+                        color: Color(0xFF95A5A5),
                       ),
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.search,
                         color: Color(0xFF95A5A5),
                       ),

@@ -34,13 +34,6 @@ class LearnCard extends StatelessWidget {
                   height: 200,
                 ),
               ),
-              // Text(
-              //   icon,
-              //   style: TextStyle(
-              //     fontSize: 150,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
               Text(
                 title,
                 style: TextStyle(
