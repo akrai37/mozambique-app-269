@@ -1,0 +1,662 @@
+{
+    "numbers": [
+        {
+            "word": "Zero",
+            "img": "assets/images/numbers/0.png"
+        },
+        {
+            "word": "Um",
+            "img": "assets/images/numbers/1.png"
+        },
+        {
+            "word": "Dois",
+            "img": "assets/images/numbers/2.png"
+        },
+        {
+            "word": "Tres",
+            "img": "assets/images/numbers/3.png"
+        },
+        {
+            "word": "Quatro",
+            "img": "assets/images/numbers/4.png"
+        },
+        {
+            "word": "Cinco",
+            "img": "assets/images/numbers/5.png"
+        },
+        {
+            "word": "Seis",
+            "img": "assets/images/numbers/6.png"
+        },
+        {
+            "word": "Sete",
+            "img": "assets/images/numbers/7.png"
+        },
+        {
+            "word": "Oito",
+            "img": "assets/images/numbers/8.png"
+        },
+        {
+            "word": "Nove",
+            "img": "assets/images/numbers/9.png"
+        },
+        {
+            "word": "Dez",
+            "img": "assets/images/numbers/10.png"
+        },
+        {
+            "word": "Onze",
+            "img": "assets/images/numbers/11.png"
+        },
+        {
+            "word": "Doze",
+            "img": "assets/images/numbers/12.png"
+        },
+        {
+            "word": "Treze",
+            "img": "assets/images/numbers/13.png"
+        },
+        {
+            "word": "Quatorze",
+            "img": "assets/images/numbers/14.png"
+        },
+        {
+            "word": "Quinze",
+            "img": "assets/images/numbers/15.png"
+        },
+        {
+            "word": "Dezesseis",
+            "img": "assets/images/numbers/16.png"
+        },
+        {
+            "word": "Dezessete",
+            "img": "assets/images/numbers/17.png"
+        },
+        {
+            "word": "Dezeoito",
+            "img": "assets/images/numbers/18.png"
+        },
+        {
+            "word": "Dezenove",
+            "img": "assets/images/numbers/19.png"
+        },
+        {
+            "word": "Vinte",
+            "img": "assets/images/numbers/20.png"
+        },
+        {
+            "word": "Vinte e um",
+            "img": "assets/images/numbers/21.png"
+        },
+        {
+            "word": "Trinta",
+            "img": "assets/images/numbers/30.png"
+        },
+        {
+            "word": "Trinta e um",
+            "img": "assets/images/numbers/31.png"
+        },
+        {
+            "word": "Quarenta",
+            "img": "assets/images/numbers/40.png"
+        },
+        {
+            "word": "Cinquenta",
+            "img": "assets/images/numbers/50.png"
+        },
+        {
+            "word": "Sessenta",
+            "img": "assets/images/numbers/60.png"
+        },
+        {
+            "word": "Setenta",
+            "img": "assets/images/numbers/70.png"
+        },
+        {
+            "word": "Oitenta",
+            "img": "assets/images/numbers/80.png"
+        },
+        {
+            "word": "Noventa",
+            "img": "assets/images/numbers/90.png"
+        },
+        {
+            "word": "Cem",
+            "img": "assets/images/numbers/100.png"
+        },
+        {
+            "word": "Cento e um",
+            "img": "assets/images/numbers/101.png"
+        }
+    ],
+    "colors": [
+        {
+            "word": "Vermelho",
+            "img": "assets/images/colors/Red.png"
+        },
+        {
+            "word": "Azul",
+            "img": "assets/images/colors/Blue.png"
+        },
+        {
+            "word": "Verde",
+            "img": "assets/images/colors/Green.png"
+        },
+        {
+            "word": "Amarelo",
+            "img": "assets/images/colors/Yellow.png"
+        },
+        {
+            "word": "Preto",
+            "img": "assets/images/colors/Black.png"
+        },
+        {
+            "word": "Branco",
+            "img": "assets/images/colors/White.png"
+        },
+        {
+            "word": "Laranja",
+            "img": "assets/images/colors/Orange.png"
+        },
+        {
+            "word": "Roxo",
+            "img": "assets/images/colors/Purple.png"
+        },
+        {
+            "word": "Rosa",
+            "img": "assets/images/colors/Pink.png"
+        },
+        {
+            "word": "Castanho",
+            "img": "assets/images/colors/Brown.png"
+        },
+        {
+            "word": "Cinza",
+            "img": "assets/images/colors/Gray.png"
+        },
+        {
+            "word": "Dourado",
+            "img": "assets/images/colors/Gold.png"
+        },
+        {
+            "word": "Prateado",
+            "img": "assets/images/colors/Silver.png"
+        }
+    ],
+    "animals": [
+        {
+            "word": "Gato",
+            "img": "assets/images/animals/Cat.png"
+        },
+        {
+            "word": "Cão",
+            "img": "assets/images/animals/Dog.png"
+        },
+        {
+            "word": "Tartaruga",
+            "img": "assets/images/animals/Turtle.png"
+        },
+        {
+            "word": "Macaco",
+            "img": "assets/images/animals/Monkey.png"
+        },
+        {
+            "word": "Pássaro",
+            "img": "assets/images/animals/Bird.png"
+        },
+        {
+            "word": "Galinha",
+            "img": "assets/images/animals/Chicken.png"
+        },
+        {
+            "word": "Cabra",
+            "img": "assets/images/animals/Goat.png"
+        },
+        {
+            "word": "Ovelha",
+            "img": "assets/images/animals/Sheep.png"
+        },
+        {
+            "word": "Vaca",
+            "img": "assets/images/animals/Cow.png"
+        },
+        {
+            "word": "Cavalo",
+            "img": "assets/images/animals/Horse.png"
+        },
+        {
+            "word": "Burro",
+            "img": "assets/images/animals/Donkey.png"
+        },
+        {
+            "word": "Peixe",
+            "img": "assets/images/animals/Fish.png"
+        }
+    ],
+    "fruits": [
+        {
+            "word": "Banana",
+            "img": "assets/images/fruits/Banana.png"
+        },
+        {
+            "word": "Limão",
+            "img": "assets/images/fruits/Lemon.png"
+        },
+        {
+            "word": "Abacate",
+            "img": "assets/images/fruits/Avocado.png"
+        },
+        {
+            "word": "Mamão",
+            "img": "assets/images/fruits/Papaya.png"
+        },
+        {
+            "word": "Manga",
+            "img": "assets/images/fruits/Mango.png"
+        },
+        {
+            "word": "Maçã",
+            "img": "assets/images/fruits/Apple.png"
+        },
+        {
+            "word": "Laranja",
+            "img": "assets/images/fruits/Orange.png"
+        },
+        {
+            "word": "Melancia",
+            "img": "assets/images/fruits/Watermelon.png"
+        }
+    ],
+    "vegetables": [
+        {
+            "word": "Tomate",
+            "img": "assets/images/vegetables/Tomato.png"
+        },
+        {
+            "word": "Alface",
+            "img": "assets/images/vegetables/Lettuce.png"
+        },
+        {
+            "word": "Pepino",
+            "img": "assets/images/vegetables/Cucumber.png"
+        },
+        {
+            "word": "Cenoura",
+            "img": "assets/images/vegetables/Carrot.png"
+        },
+        {
+            "word": "Mandioca",
+            "img": "assets/images/vegetables/Yuca.png"
+        },
+        {
+            "word": "Batata",
+            "img": "assets/images/vegetables/Potato.png"
+        },
+        {
+            "word": "Batata-doce",
+            "img": "assets/images/vegetables/Sweet Potato.png"
+        },
+        {
+            "word": "Abóbora",
+            "img": "assets/images/vegetables/Pumpkin.png"
+        },
+        {
+            "word": "Milho",
+            "img": "assets/images/vegetables/Corn.png"
+        }
+    ],
+    "professions": [
+        {
+            "word": "Contabilista",
+            "img": "assets/images/professions/Accountant.png"
+        },
+        {
+            "word": "Ator",
+            "img": "assets/images/professions/Actor.png"
+        },
+        {
+            "word": "Arquiteto",
+            "img": "assets/images/professions/Architect.png"
+        },
+        {
+            "word": "Artista",
+            "img": "assets/images/professions/Artist.png"
+        },
+        {
+            "word": "Padeiro",
+            "img": "assets/images/professions/Baker.png"
+        },
+        {
+            "word": "Barbeiro",
+            "img": "assets/images/professions/Barber.png"
+        },
+        {
+            "word": "Chefe de cozinha",
+            "img": "assets/images/professions/Chef.png"
+        },
+        {
+            "word": "Médico",
+            "img": "assets/images/professions/Doctor.png"
+        },
+        {
+            "word": "Agricultor",
+            "img": "assets/images/professions/Farmer.png"
+        },
+        {
+            "word": "Bombeiro",
+            "img": "assets/images/professions/Firefighter.png"
+        },
+        {
+            "word": "Advogado",
+            "img": "assets/images/professions/Lawyer.png"
+        },
+        {
+            "word": "Músico",
+            "img": "assets/images/professions/Musician.png"
+        },
+        {
+            "word": "Farmacêutico",
+            "img": "assets/images/professions/Pharmacist.png"
+        },
+        {
+            "word": "Piloto",
+            "img": "assets/images/professions/Pilot.png"
+        },
+        {
+            "word": "Policial",
+            "img": "assets/images/professions/Police Officer.png"
+        },
+        {
+            "word": "Professor",
+            "img": "assets/images/professions/Teacher.png"
+        },
+        {
+            "word": "Escritor",
+            "img": "assets/images/professions/Writer.png"
+        }
+    ],
+    "kitchen_items": [
+        {
+            "word": "Geladeira",
+            "img": "assets/images/kitchen_items/Refrigerator.png"
+        },
+        {
+            "word": "Microondas",
+            "img": "assets/images/kitchen_items/Microwave.png"
+        },
+        {
+            "word": "Fogão",
+            "img": "assets/images/kitchen_items/Stove.png"
+        },
+        {
+            "word": "Forno",
+            "img": "assets/images/kitchen_items/Oven.png"
+        },
+        {
+            "word": "Faca",
+            "img": "assets/images/kitchen_items/Knife.png"
+        },
+        {
+            "word": "Garfo",
+            "img": "assets/images/kitchen_items/Fork.png"
+        },
+        {
+            "word": "Colher",
+            "img": "assets/images/kitchen_items/Spoon.png"
+        },
+        {
+            "word": "Prato",
+            "img": "assets/images/kitchen_items/Plate.png"
+        },
+        {
+            "word": "Copo",
+            "img": "assets/images/kitchen_items/Glass.png"
+        },
+        {
+            "word": "Xícara",
+            "img": "assets/images/kitchen_items/Cup.png"
+        },
+        {
+            "word": "Panela",
+            "img": "assets/images/kitchen_items/Pot.png"
+        },
+        {
+            "word": "Frigideira",
+            "img": "assets/images/kitchen_items/Pan.png"
+        }
+    ],
+    "household_items": [
+        {
+            "word": "Cadeira",
+            "img": "assets/images/household_items/Chair.png"
+        },
+        {
+            "word": "Mesa",
+            "img": "assets/images/household_items/Table.png"
+        },
+        {
+            "word": "Sofá",
+            "img": "assets/images/household_items/Sofa.png"
+        },
+        {
+            "word": "Cama",
+            "img": "assets/images/household_items/Bed.png"
+        },
+        {
+            "word": "Almofada",
+            "img": "assets/images/household_items/Pillow.png"
+        },
+        {
+            "word": "Cobertor",
+            "img": "assets/images/household_items/Blanket.png"
+        },
+        {
+            "word": "Estante",
+            "img": "assets/images/household_items/Bookshelf.png"
+        },
+        {
+            "word": "Escrivaninha",
+            "img": "assets/images/household_items/Desk.png"
+        },
+        {
+            "word": "Lâmpada",
+            "img": "assets/images/household_items/Lamp.png"
+        },
+        {
+            "word": "Cortinas",
+            "img": "assets/images/household_items/Curtains.png"
+        },
+        {
+            "word": "Televisão",
+            "img": "assets/images/household_items/Television.png"
+        },
+        {
+            "word": "Relógio",
+            "img": "assets/images/household_items/Clock.png"
+        },
+        {
+            "word": "Carro",
+            "img": "assets/images/household_items/Car.png"
+        },
+        {
+            "word": "Livro",
+            "img": "assets/images/household_items/Book.png"
+        }
+    ],
+    "face": [
+        {
+            "word": "Cabeça",
+            "img": "assets/images/face/Head.png"
+        },
+        {
+            "word": "Cabelo",
+            "img": "assets/images/face/Hair.png"
+        },
+        {
+            "word": "Olho",
+            "img": "assets/images/face/Eye.png"
+        },
+        {
+            "word": "Orelha",
+            "img": "assets/images/face/Ear.png"
+        },
+        {
+            "word": "Nariz",
+            "img": "assets/images/face/Nose.png"
+        },
+        {
+            "word": "Boca",
+            "img": "assets/images/face/Mouth.png"
+        },
+        {
+            "word": "Dente",
+            "img": "assets/images/face/Tooth.png"
+        },
+        {
+            "word": "Língua",
+            "img": "assets/images/face/Tongue.png"
+        },
+        {
+            "word": "Pescoço",
+            "img": "assets/images/face/Neck.png"
+        }
+    ],
+    "body": [
+        {
+            "word": "Braço",
+            "img": "assets/images/body/Arm.png"
+        },
+        {
+            "word": "Cotovelo",
+            "img": "assets/images/body/Elbow.png"
+        },
+        {
+            "word": "Mão",
+            "img": "assets/images/body/Hand.png"
+        },
+        {
+            "word": "Dedo",
+            "img": "assets/images/body/Finger.png"
+        },
+        {
+            "word": "Perna",
+            "img": "assets/images/body/Leg.png"
+        },
+        {
+            "word": "Joelho",
+            "img": "assets/images/body/Knee.png"
+        },
+        {
+            "word": "Pé",
+            "img": "assets/images/body/Foot.png"
+        },
+        {
+            "word": "Dedo do pé",
+            "img": "assets/images/body/Toe.png"
+        }
+    ],
+    "everyday_activities": [
+        {
+            "word": "Acordar",
+            "img": "assets/images/everyday_activities/To wake up.png"
+        },
+        {
+            "word": "Levantar se",
+            "img": "assets/images/everyday_activities/To get up.png"
+        },
+        {
+            "word": "Tomar banho",
+            "img": "assets/images/everyday_activities/To take a shower.png"
+        },
+        {
+            "word": "Escovar os dentes",
+            "img": "assets/images/everyday_activities/To brush teeth.png"
+        },
+        {
+            "word": "Vestir se",
+            "img": "assets/images/everyday_activities/To get dressed.png"
+        },
+        {
+            "word": "Tomar pequeno-almoço",
+            "img": "assets/images/everyday_activities/To have breakfast.png"
+        },
+        {
+            "word": "Ir para o trabalho",
+            "img": "assets/images/everyday_activities/To go to work.png"
+        },
+        {
+            "word": "Ir para a escola",
+            "img": "assets/images/everyday_activities/To go to school.png"
+        },
+        {
+            "word": "Estudar",
+            "img": "assets/images/everyday_activities/To study.png"
+        },
+        {
+            "word": "Almoçar",
+            "img": "assets/images/everyday_activities/To have lunch.png"
+        },
+        {
+            "word": "Fazer exercício",
+            "img": "assets/images/everyday_activities/To exercise.png"
+        },
+        {
+            "word": "Cozinhar",
+            "img": "assets/images/everyday_activities/To cook.png"
+        },
+        {
+            "word": "Jantar",
+            "img": "assets/images/everyday_activities/To have dinner.png"
+        }
+    ],
+    "common_actions": [
+        {
+            "word": "Comer",
+            "img": "assets/images/common_actions/To eat.png"
+        },
+        {
+            "word": "Beber",
+            "img": "assets/images/common_actions/To drink.png"
+        },
+        {
+            "word": "Dormir",
+            "img": "assets/images/common_actions/To sleep.png"
+        },
+        {
+            "word": "Ler",
+            "img": "assets/images/common_actions/To read.png"
+        },
+        {
+            "word": "Escrever",
+            "img": "assets/images/common_actions/To write.png"
+        },
+        {
+            "word": "Andar",
+            "img": "assets/images/common_actions/To walk.png"
+        },
+        {
+            "word": "Correr",
+            "img": "assets/images/common_actions/To run.png"
+        },
+        {
+            "word": "Falar",
+            "img": "assets/images/common_actions/To speak.png"
+        },
+        {
+            "word": "Ouvir",
+            "img": "assets/images/common_actions/To listen.png"
+        },
+        {
+            "word": "Ir",
+            "img": "assets/images/common_actions/To go.png"
+        },
+        {
+            "word": "Vir",
+            "img": "assets/images/common_actions/To come.png"
+        },
+        {
+            "word": "Relaxar",
+            "img": "assets/images/common_actions/To relax.png"
+        }
+    ]
+}

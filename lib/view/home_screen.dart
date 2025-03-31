@@ -44,14 +44,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded( // ensures the TextField takes up the remaining space
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Search',
                       hintStyle: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: const Color(0xFF95A5A5),
+                        color: Color(0xFF95A5A5),
                       ),
-                      prefixIcon: const Icon(
+                      prefixIcon: Icon(
                         Icons.search,
                         color: Color(0xFF95A5A5),
                       ),
@@ -106,20 +106,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 spacing: 10,
                 runSpacing: 10,
                 children: [
-                  HomeCard(icon: '🔢', title: 'Números'),
-                  HomeCard(icon: '🎨', title: 'Cores'),
-                  HomeCard(icon: '🍎', title: 'Frutas'),
-                  HomeCard(icon: '🥬', title: 'Produtos Hortícolas',),
-                  HomeCard(icon: '🐾', title: 'Animais'),
-                  HomeCard(icon: '🏃🏾', title: 'Ações Comuns'),
-                  HomeCard(icon: '🗓️', title: 'Atividades Cotidianas'),
-                  HomeCard(icon: '💼', title: 'Profissões'),
-                  HomeCard(icon: '🏠', title: 'Coisas da Casa'),
-                  HomeCard(icon: '🍽️', title: 'Coisas da Cozinha'),
-                  HomeCard(icon: '🧑🏾', title: 'Rosto'),
-                  HomeCard(icon: '🧍🏾', title: 'Corpo'),
-                  HomeCard(icon: '👋🏾', title: 'Saudações'),
-                  HomeCard(icon: '❓', title: 'Pedidos'),
+                  HomeCard(img: 'assets/images/learn/Numbers.png', title: 'Números', tag: 'numbers'),
+                  HomeCard(img: 'assets/images/learn/Colors.png', title: 'Cores', tag: 'colors'),
+                  HomeCard(img: 'assets/images/learn/Fruits.png', title: 'Frutas', tag: 'fruits'),
+                  HomeCard(img: '', title: 'Produtos Hortícolas', tag: 'vegetables'),
+                  HomeCard(img: 'assets/images/learn/Animals.png', title: 'Animais', tag: 'animals'),
+                  HomeCard(img: 'assets/images/learn/Common Actions.png', title: 'Ações Comuns', tag: 'common_actions'),
+                  HomeCard(img: 'assets/images/learn/Everyday Activities.png', title: 'Atividades Cotidianas', tag: 'everyday_activities'),
+                  HomeCard(img: '', title: 'Profissões', tag: 'professions'),
+                  HomeCard(img: 'assets/images/learn/Household Items.png', title: 'Coisas da Casa', tag: 'household_items'),
+                  HomeCard(img: 'assets/images/learn/Kitchen Items.png', title: 'Coisas da Cozinha', tag: 'kitchen_items'),
+                  HomeCard(img: 'assets/images/learn/Face.png', title: 'Rosto', tag: 'face'),
+                  HomeCard(img: 'assets/images/learn/Body.png', title: 'Corpo', tag: 'body'),
+                  HomeCard(img: 'assets/images/learn/Greetings.png', title: 'Saudações', tag: 'greetings'),
+                  HomeCard(img: '', title: 'Pedidos', tag: 'requests'),
                 ],
               ),
             ),
