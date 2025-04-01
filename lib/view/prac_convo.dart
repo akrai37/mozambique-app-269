@@ -11,6 +11,59 @@ class PracConvo extends StatefulWidget {
 }
 
 class _PracConvoState extends State<PracConvo> {
+  int _visibleMessages = 1; // Start with only 1 message visible
+  final ScrollController _scrollController = ScrollController();
+
+  // List of message widgets
+  //final List<Widget> _messages = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize messages and pass onTap function
+    // _messages.addAll([
+    //   Msg1(msg1: 'Olá.', onTap: _revealNextMessage),
+    //   Msg2(msg2: 'Olá.', onTap: _revealNextMessage),
+    //   Msg1(msg1: 'Bom dia.', onTap: _revealNextMessage),
+    //   Msg2(msg2: 'Bom dia.', onTap: _revealNextMessage),
+    //   Msg1(msg1: 'Como estás?', onTap: _revealNextMessage),
+    //   Msg2(msg2: 'Estou bem, obrigado!', onTap: _revealNextMessage),
+    // ]);
+  }
+
+  final List<Widget> _messages = [
+    Msg1(msg1: 'Olá.'),
+    Msg2(msg2: 'Olá.'),
+    Msg1(msg1: 'Bom dia.'),
+    Msg2(msg2: 'Bom dia.'),
+    Msg1(msg1: 'Como estás?'),
+    Msg2(msg2: 'Estou bem, obrigado!'),
+  ];
+
+  void _revealNextMessage() {
+    if (_visibleMessages < _messages.length) {
+      setState(() {
+        _visibleMessages++; // Show the next message
+      });
+
+      // Ensure scrolling happens *after* UI updates
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollToBottom();
+      });
+    }
+  }
+
+  void _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: Duration(milliseconds: 500),
+        curve: Curves.easeOut,
+      );
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -122,46 +175,68 @@ class _PracConvoState extends State<PracConvo> {
                               ),
                               Container(
                                 height: 175,
+                                width: MediaQuery.of(context).size.width / 2 - 15,
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFECF0F1),
                                 ),
                                 child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SizedBox(width: MediaQuery.of(context).size.width / 28 - 15),
-                                    Image(
+                                    Container(
+                                      margin: EdgeInsets.symmetric(horizontal: 20),
+                                      alignment: Alignment.centerLeft,
+                                      child:Image(
                                       image: AssetImage('assets/images/NavyPerson.png'),
                                       width: 75,
                                       height: 75,
+                                      ),
                                     ),
-                                    SizedBox(width: MediaQuery.of(context).size.width / 3 - 15),
-                                    Image(
+                                    Container(
+                                      margin: EdgeInsets.symmetric(horizontal: 20),
+                                      alignment: Alignment.centerRight,
+                                      child:Image(
                                       image: AssetImage('assets/images/GrayPerson.png'),
                                       width: 75,
                                       height: 75,
-                                    ),
-                                    SizedBox(width: MediaQuery.of(context).size.width / 28 - 15),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    SingleChildScrollView(
-                                      scrollDirection: Axis.vertical, // Enables vertical scrolling
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
-                                        children: [
-                                          /// First Column (List of Messages)
-                                          Msg1(msg1: 'Olá.'),
-                                          Msg2(msg2: 'Olá.'),
-                                          Msg1(msg1: 'Bon dia.'),
-                                          Msg2(msg2: 'Bon dia.'),
-                                        ],
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
+                              Expanded(
+                                child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical, // Enables vertical scrolling
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
+                                        children: [
+                                          for (int i = 0; i < _visibleMessages; i++)
+                                            GestureDetector(
+                                            onTap: _revealNextMessage, // Click to show next message
+                                            child: _messages[i],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                              ),
+                              // Expanded(
+                              //   child: Row(
+                              //     children: [
+                              //       SingleChildScrollView(
+                              //         scrollDirection: Axis.vertical, // Enables vertical scrolling
+                              //         child: Column(
+                              //           crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
+                              //           children: [
+                              //             for (int i = 0; i < _visibleMessages; i++)
+                              //               GestureDetector(
+                              //               onTap: _revealNextMessage, // Click to show next message
+                              //               child: _messages[i],
+                              //             ),
+                              //           ],
+                              //         ),
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),

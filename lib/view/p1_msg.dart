@@ -3,11 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Msg1 extends StatelessWidget {
   final String msg1;
+  // final VoidCallback onTap;
 
-  const Msg1({
-    super.key,
-    required this.msg1,
-  });
+  // const Msg1({required this.msg1, required this.onTap, Key? key}) : super(key: key);
+  const Msg1({required this.msg1, super.key});
 
   final String volumeUpSvg = '''
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -58,18 +57,32 @@ class Msg1 extends StatelessWidget {
                       color: const Color(0xFFECF0F1),
                     ),
                   ),
-                  SizedBox(width: 10), // Spacing between text and icon
+                  SizedBox(width: 10),
+                  // GestureDetector(
+                  //   onTap: onTap, // Call function when tapped
+                  //   child: Container(
+                  //     padding: EdgeInsets.all(5), // Space around the icon
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.white, // White circular background
+                  //       shape: BoxShape.circle,
+                  //     ),
+                  //     child: SvgPicture.string(
+                  //       volumeUpSvg,
+                  //       colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
+                  //     ),
+                  //   ), 
+                  // ),
                   Container(
-                    padding: EdgeInsets.all(5), // Space around the icon
-                    decoration: BoxDecoration(
-                      color: Colors.white, // White circular background
-                      shape: BoxShape.circle,
-                    ),
-                    child: SvgPicture.string(
-                      volumeUpSvg,
-                      colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
-                    ),
-                  ),
+                      padding: EdgeInsets.all(5), // Space around the icon
+                      decoration: BoxDecoration(
+                        color: Colors.white, // White circular background
+                        shape: BoxShape.circle,
+                      ),
+                      child: SvgPicture.string(
+                        volumeUpSvg,
+                        colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
+                      ),
+                    ), // Spacing between text and icon
                 ],
               ),
             ),
