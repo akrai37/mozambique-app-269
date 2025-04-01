@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/view/msg_sample.dart';
-
+import 'package:mozambique_app/view/p1_msg.dart';
 
 //may need to change depending on how routing works
 class HomeScreen extends StatefulWidget {
@@ -140,10 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
                                       children: [
                                         /// First Column (List of Messages)
-                                        MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
-                                        MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
-                                        MsgSample(greeting: 'Olá.', response: 'Olá! Que bom ver você!'),
-                                        MsgSample(greeting: 'Bom dia.', response: 'Como você vai?'),
+                                        Msg1(msg1: 'Olá.'),
                                       ],
                                     ),
                                   ),
