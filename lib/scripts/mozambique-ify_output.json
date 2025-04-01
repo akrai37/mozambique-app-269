@@ -1,0 +1,54 @@
+[
+    {
+        "word": "Comer",
+        "img": "assets/images/common_actions/To eat.png"
+    },
+    {
+        "word": "Beber",
+        "img": "assets/images/common_actions/To drink.png"
+    },
+    {
+        "word": "Dormir",
+        "img": "assets/images/common_actions/To sleep.png"
+    },
+    {
+        "word": "Ler",
+        "img": "assets/images/common_actions/To read.png"
+    },
+    {
+        "word": "Escrever",
+        "img": "assets/images/common_actions/To write.png"
+    },
+    {
+        "word": "Andar",
+        "img": "assets/images/common_actions/To walk.png"
+    },
+    {
+        "word": "Correr",
+        "img": "assets/images/common_actions/To run.png"
+    },
+    {
+        "word": "Falar",
+        "img": "assets/images/common_actions/To speak.png"
+    },
+    {
+        "word": "Ouvir",
+        "img": "assets/images/common_actions/To listen.png"
+    },
+    {
+        "word": "Ver",
+        "img": "assets/images/common_actions/To see.png"
+    },
+    {
+        "word": "Ir",
+        "img": "assets/images/common_actions/To go.png"
+    },
+    {
+        "word": "Vir",
+        "img": "assets/images/common_actions/To come.png"
+    },
+    {
+        "word": "Relaxar",
+        "img": "assets/images/common_actions/To relax.png"
+    }
+]
