@@ -2,661 +2,820 @@
     "numbers": [
         {
             "word": "Zero",
-            "img": "assets/images/numbers/0.png"
+            "img": "assets/images/numbers/0.png",
+            "audio": "assets/audio/numbers/0.mp3"
         },
         {
             "word": "Um",
-            "img": "assets/images/numbers/1.png"
+            "img": "assets/images/numbers/1.png",
+            "audio": "assets/audio/numbers/1.mp3"
         },
         {
             "word": "Dois",
-            "img": "assets/images/numbers/2.png"
+            "img": "assets/images/numbers/2.png",
+            "audio": "assets/audio/numbers/2.mp3"
         },
         {
             "word": "Tres",
-            "img": "assets/images/numbers/3.png"
+            "img": "assets/images/numbers/3.png",
+            "audio": "assets/audio/numbers/3.mp3"
         },
         {
             "word": "Quatro",
-            "img": "assets/images/numbers/4.png"
+            "img": "assets/images/numbers/4.png",
+            "audio": "assets/audio/numbers/4.mp3"
         },
         {
             "word": "Cinco",
-            "img": "assets/images/numbers/5.png"
+            "img": "assets/images/numbers/5.png",
+            "audio": "assets/audio/numbers/5.mp3"
         },
         {
             "word": "Seis",
-            "img": "assets/images/numbers/6.png"
+            "img": "assets/images/numbers/6.png",
+            "audio": "assets/audio/numbers/6.mp3"
         },
         {
             "word": "Sete",
-            "img": "assets/images/numbers/7.png"
+            "img": "assets/images/numbers/7.png",
+            "audio": "assets/audio/numbers/7.mp3"
         },
         {
             "word": "Oito",
-            "img": "assets/images/numbers/8.png"
+            "img": "assets/images/numbers/8.png",
+            "audio": "assets/audio/numbers/8.mp3"
         },
         {
             "word": "Nove",
-            "img": "assets/images/numbers/9.png"
+            "img": "assets/images/numbers/9.png",
+            "audio": "assets/audio/numbers/9.mp3"
         },
         {
             "word": "Dez",
-            "img": "assets/images/numbers/10.png"
+            "img": "assets/images/numbers/10.png",
+            "audio": "assets/audio/numbers/10.mp3"
         },
         {
             "word": "Onze",
-            "img": "assets/images/numbers/11.png"
+            "img": "assets/images/numbers/11.png",
+            "audio": "assets/audio/numbers/11.mp3"
         },
         {
             "word": "Doze",
-            "img": "assets/images/numbers/12.png"
+            "img": "assets/images/numbers/12.png",
+            "audio": "assets/audio/numbers/12.mp3"
         },
         {
             "word": "Treze",
-            "img": "assets/images/numbers/13.png"
+            "img": "assets/images/numbers/13.png",
+            "audio": "assets/audio/numbers/13.mp3"
         },
         {
             "word": "Quatorze",
-            "img": "assets/images/numbers/14.png"
+            "img": "assets/images/numbers/14.png",
+            "audio": "assets/audio/numbers/14.mp3"
         },
         {
             "word": "Quinze",
-            "img": "assets/images/numbers/15.png"
+            "img": "assets/images/numbers/15.png",
+            "audio": "assets/audio/numbers/15.mp3"
         },
         {
             "word": "Dezesseis",
-            "img": "assets/images/numbers/16.png"
+            "img": "assets/images/numbers/16.png",
+            "audio": "assets/audio/numbers/16.mp3"
         },
         {
             "word": "Dezessete",
-            "img": "assets/images/numbers/17.png"
+            "img": "assets/images/numbers/17.png",
+            "audio": "assets/audio/numbers/17.mp3"
         },
         {
             "word": "Dezeoito",
-            "img": "assets/images/numbers/18.png"
+            "img": "assets/images/numbers/18.png",
+            "audio": "assets/audio/numbers/18.mp3"
         },
         {
             "word": "Dezenove",
-            "img": "assets/images/numbers/19.png"
+            "img": "assets/images/numbers/19.png",
+            "audio": "assets/audio/numbers/19.mp3"
         },
         {
             "word": "Vinte",
-            "img": "assets/images/numbers/20.png"
+            "img": "assets/images/numbers/20.png",
+            "audio": "assets/audio/numbers/20.mp3"
         },
         {
             "word": "Vinte e um",
-            "img": "assets/images/numbers/21.png"
+            "img": "assets/images/numbers/21.png",
+            "audio": "assets/audio/numbers/21.mp3"
         },
         {
             "word": "Trinta",
-            "img": "assets/images/numbers/30.png"
+            "img": "assets/images/numbers/30.png",
+            "audio": "assets/audio/numbers/30.mp3"
         },
         {
             "word": "Trinta e um",
-            "img": "assets/images/numbers/31.png"
+            "img": "assets/images/numbers/31.png",
+            "audio": "assets/audio/numbers/31.mp3"
         },
         {
             "word": "Quarenta",
-            "img": "assets/images/numbers/40.png"
+            "img": "assets/images/numbers/40.png",
+            "audio": "assets/audio/numbers/40.mp3"
         },
         {
             "word": "Cinquenta",
-            "img": "assets/images/numbers/50.png"
+            "img": "assets/images/numbers/50.png",
+            "audio": "assets/audio/numbers/50.mp3"
         },
         {
             "word": "Sessenta",
-            "img": "assets/images/numbers/60.png"
+            "img": "assets/images/numbers/60.png",
+            "audio": "assets/audio/numbers/60.mp3"
         },
         {
             "word": "Setenta",
-            "img": "assets/images/numbers/70.png"
+            "img": "assets/images/numbers/70.png",
+            "audio": "assets/audio/numbers/70.mp3"
         },
         {
             "word": "Oitenta",
-            "img": "assets/images/numbers/80.png"
+            "img": "assets/images/numbers/80.png",
+            "audio": "assets/audio/numbers/80.mp3"
         },
         {
             "word": "Noventa",
-            "img": "assets/images/numbers/90.png"
+            "img": "assets/images/numbers/90.png",
+            "audio": "assets/audio/numbers/90.mp3"
         },
         {
             "word": "Cem",
-            "img": "assets/images/numbers/100.png"
+            "img": "assets/images/numbers/100.png",
+            "audio": "assets/audio/numbers/100.mp3"
         },
         {
             "word": "Cento e um",
-            "img": "assets/images/numbers/101.png"
+            "img": "assets/images/numbers/101.png",
+            "audio": "assets/audio/numbers/101.mp3"
         }
     ],
     "colors": [
         {
             "word": "Vermelho",
-            "img": "assets/images/colors/Red.png"
+            "img": "assets/images/colors/Red.png",
+            "audio": "assets/audio/colors/Red.mp3"
         },
         {
             "word": "Azul",
-            "img": "assets/images/colors/Blue.png"
+            "img": "assets/images/colors/Blue.png",
+            "audio": "assets/audio/colors/Blue.mp3"
         },
         {
             "word": "Verde",
-            "img": "assets/images/colors/Green.png"
+            "img": "assets/images/colors/Green.png",
+            "audio": "assets/audio/colors/Green.mp3"
         },
         {
             "word": "Amarelo",
-            "img": "assets/images/colors/Yellow.png"
+            "img": "assets/images/colors/Yellow.png",
+            "audio": "assets/audio/colors/Yellow.mp3"
         },
         {
             "word": "Preto",
-            "img": "assets/images/colors/Black.png"
+            "img": "assets/images/colors/Black.png",
+            "audio": "assets/audio/colors/Black.mp3"
         },
         {
             "word": "Branco",
-            "img": "assets/images/colors/White.png"
+            "img": "assets/images/colors/White.png",
+            "audio": "assets/audio/colors/White.mp3"
         },
         {
             "word": "Laranja",
-            "img": "assets/images/colors/Orange.png"
+            "img": "assets/images/colors/Orange.png",
+            "audio": "assets/audio/colors/Orange.mp3"
         },
         {
             "word": "Roxo",
-            "img": "assets/images/colors/Purple.png"
+            "img": "assets/images/colors/Purple.png",
+            "audio": "assets/audio/colors/Purple.mp3"
         },
         {
             "word": "Rosa",
-            "img": "assets/images/colors/Pink.png"
+            "img": "assets/images/colors/Pink.png",
+            "audio": "assets/audio/colors/Pink.mp3"
         },
         {
             "word": "Castanho",
-            "img": "assets/images/colors/Brown.png"
+            "img": "assets/images/colors/Brown.png",
+            "audio": "assets/audio/colors/Brown.mp3"
         },
         {
             "word": "Cinza",
-            "img": "assets/images/colors/Gray.png"
+            "img": "assets/images/colors/Gray.png",
+            "audio": "assets/audio/colors/Gray.mp3"
         },
         {
             "word": "Dourado",
-            "img": "assets/images/colors/Gold.png"
+            "img": "assets/images/colors/Gold.png",
+            "audio": "assets/audio/colors/Gold.mp3"
         },
         {
             "word": "Prateado",
-            "img": "assets/images/colors/Silver.png"
+            "img": "assets/images/colors/Silver.png",
+            "audio": "assets/audio/colors/Silver.mp3"
         }
     ],
     "animals": [
         {
             "word": "Gato",
-            "img": "assets/images/animals/Cat.png"
+            "img": "assets/images/animals/Cat.png",
+            "audio": "assets/audio/animals/Cat.mp3"
         },
         {
             "word": "Cão",
-            "img": "assets/images/animals/Dog.png"
+            "img": "assets/images/animals/Dog.png",
+            "audio": "assets/audio/animals/Dog.mp3"
         },
         {
             "word": "Tartaruga",
-            "img": "assets/images/animals/Turtle.png"
+            "img": "assets/images/animals/Turtle.png",
+            "audio": "assets/audio/animals/Turtle.mp3"
         },
         {
             "word": "Macaco",
-            "img": "assets/images/animals/Monkey.png"
+            "img": "assets/images/animals/Monkey.png",
+            "audio": "assets/audio/animals/Monkey.mp3"
         },
         {
             "word": "Pássaro",
-            "img": "assets/images/animals/Bird.png"
+            "img": "assets/images/animals/Bird.png",
+            "audio": "assets/audio/animals/Bird.mp3"
         },
         {
             "word": "Galinha",
-            "img": "assets/images/animals/Chicken.png"
+            "img": "assets/images/animals/Chicken.png",
+            "audio": "assets/audio/animals/Chicken.mp3"
         },
         {
             "word": "Cabra",
-            "img": "assets/images/animals/Goat.png"
+            "img": "assets/images/animals/Goat.png",
+            "audio": "assets/audio/animals/Goat.mp3"
         },
         {
             "word": "Ovelha",
-            "img": "assets/images/animals/Sheep.png"
+            "img": "assets/images/animals/Sheep.png",
+            "audio": "assets/audio/animals/Sheep.mp3"
         },
         {
             "word": "Vaca",
-            "img": "assets/images/animals/Cow.png"
+            "img": "assets/images/animals/Cow.png",
+            "audio": "assets/audio/animals/Cow.mp3"
         },
         {
             "word": "Cavalo",
-            "img": "assets/images/animals/Horse.png"
+            "img": "assets/images/animals/Horse.png",
+            "audio": "assets/audio/animals/Horse.mp3"
         },
         {
             "word": "Burro",
-            "img": "assets/images/animals/Donkey.png"
+            "img": "assets/images/animals/Donkey.png",
+            "audio": "assets/audio/animals/Donkey.mp3"
         },
         {
             "word": "Peixe",
-            "img": "assets/images/animals/Fish.png"
+            "img": "assets/images/animals/Fish.png",
+            "audio": "assets/audio/animals/Fish.mp3"
         }
     ],
     "fruits": [
         {
             "word": "Banana",
-            "img": "assets/images/fruits/Banana.png"
+            "img": "assets/images/fruits/Banana.png",
+            "audio": "assets/audio/fruits/Banana.mp3"
         },
         {
             "word": "Limão",
-            "img": "assets/images/fruits/Lemon.png"
+            "img": "assets/images/fruits/Lemon.png",
+            "audio": "assets/audio/fruits/Lemon.mp3"
         },
         {
             "word": "Abacate",
-            "img": "assets/images/fruits/Avocado.png"
+            "img": "assets/images/fruits/Avocado.png",
+            "audio": "assets/audio/fruits/Avocado.mp3"
         },
         {
             "word": "Mamão",
-            "img": "assets/images/fruits/Papaya.png"
+            "img": "assets/images/fruits/Papaya.png",
+            "audio": "assets/audio/fruits/Papaya.mp3"
         },
         {
             "word": "Manga",
-            "img": "assets/images/fruits/Mango.png"
+            "img": "assets/images/fruits/Mango.png",
+            "audio": "assets/audio/fruits/Mango.mp3"
         },
         {
             "word": "Maçã",
-            "img": "assets/images/fruits/Apple.png"
+            "img": "assets/images/fruits/Apple.png",
+            "audio": "assets/audio/fruits/Apple.mp3"
         },
         {
             "word": "Laranja",
-            "img": "assets/images/fruits/Orange.png"
+            "img": "assets/images/fruits/Orange.png",
+            "audio": "assets/audio/fruits/Orange.mp3"
         },
         {
             "word": "Melancia",
-            "img": "assets/images/fruits/Watermelon.png"
+            "img": "assets/images/fruits/Watermelon.png",
+            "audio": "assets/audio/fruits/Watermelon.mp3"
         }
     ],
     "vegetables": [
         {
             "word": "Tomate",
-            "img": "assets/images/vegetables/Tomato.png"
+            "img": "assets/images/vegetables/Tomato.png",
+            "audio": "assets/audio/vegetables/Tomato.mp3"
         },
         {
             "word": "Alface",
-            "img": "assets/images/vegetables/Lettuce.png"
+            "img": "assets/images/vegetables/Lettuce.png",
+            "audio": "assets/audio/vegetables/Lettuce.mp3"
         },
         {
             "word": "Pepino",
-            "img": "assets/images/vegetables/Cucumber.png"
+            "img": "assets/images/vegetables/Cucumber.png",
+            "audio": "assets/audio/vegetables/Cucumber.mp3"
         },
         {
             "word": "Cenoura",
-            "img": "assets/images/vegetables/Carrot.png"
+            "img": "assets/images/vegetables/Carrot.png",
+            "audio": "assets/audio/vegetables/Carrot.mp3"
         },
         {
             "word": "Mandioca",
-            "img": "assets/images/vegetables/Yuca.png"
+            "img": "assets/images/vegetables/Yuca.png",
+            "audio": "assets/audio/vegetables/Yuca.mp3"
         },
         {
             "word": "Batata",
-            "img": "assets/images/vegetables/Potato.png"
+            "img": "assets/images/vegetables/Potato.png",
+            "audio": "assets/audio/vegetables/Potato.mp3"
         },
         {
             "word": "Batata-doce",
-            "img": "assets/images/vegetables/Sweet Potato.png"
+            "img": "assets/images/vegetables/Sweet Potato.png",
+            "audio": "assets/audio/vegetables/Sweet Potato.mp3"
         },
         {
             "word": "Abóbora",
-            "img": "assets/images/vegetables/Pumpkin.png"
+            "img": "assets/images/vegetables/Pumpkin.png",
+            "audio": "assets/audio/vegetables/Pumpkin.mp3"
         },
         {
             "word": "Milho",
-            "img": "assets/images/vegetables/Corn.png"
+            "img": "assets/images/vegetables/Corn.png",
+            "audio": "assets/audio/vegetables/Corn.mp3"
         }
     ],
     "professions": [
         {
             "word": "Contabilista",
-            "img": "assets/images/professions/Accountant.png"
+            "img": "assets/images/professions/Accountant.png",
+            "audio": "assets/audio/professions/Accountant.mp3"
         },
         {
             "word": "Ator",
-            "img": "assets/images/professions/Actor.png"
+            "img": "assets/images/professions/Actor.png",
+            "audio": "assets/audio/professions/Actor.mp3"
         },
         {
             "word": "Arquiteto",
-            "img": "assets/images/professions/Architect.png"
+            "img": "assets/images/professions/Architect.png",
+            "audio": "assets/audio/professions/Architect.mp3"
         },
         {
             "word": "Artista",
-            "img": "assets/images/professions/Artist.png"
+            "img": "assets/images/professions/Artist.png",
+            "audio": "assets/audio/professions/Artist.mp3"
         },
         {
             "word": "Padeiro",
-            "img": "assets/images/professions/Baker.png"
+            "img": "assets/images/professions/Baker.png",
+            "audio": "assets/audio/professions/Baker.mp3"
         },
         {
             "word": "Barbeiro",
-            "img": "assets/images/professions/Barber.png"
+            "img": "assets/images/professions/Barber.png",
+            "audio": "assets/audio/professions/Barber.mp3"
         },
         {
             "word": "Chefe de cozinha",
-            "img": "assets/images/professions/Chef.png"
+            "img": "assets/images/professions/Chef.png",
+            "audio": "assets/audio/professions/Chef.mp3"
         },
         {
             "word": "Médico",
-            "img": "assets/images/professions/Doctor.png"
+            "img": "assets/images/professions/Doctor.png",
+            "audio": "assets/audio/professions/Doctor.mp3"
         },
         {
             "word": "Agricultor",
-            "img": "assets/images/professions/Farmer.png"
+            "img": "assets/images/professions/Farmer.png",
+            "audio": "assets/audio/professions/Farmer.mp3"
         },
         {
             "word": "Bombeiro",
-            "img": "assets/images/professions/Firefighter.png"
+            "img": "assets/images/professions/Firefighter.png",
+            "audio": "assets/audio/professions/Firefighter.mp3"
         },
         {
             "word": "Advogado",
-            "img": "assets/images/professions/Lawyer.png"
+            "img": "assets/images/professions/Lawyer.png",
+            "audio": "assets/audio/professions/Lawyer.mp3"
         },
         {
             "word": "Músico",
-            "img": "assets/images/professions/Musician.png"
+            "img": "assets/images/professions/Musician.png",
+            "audio": "assets/audio/professions/Musician.mp3"
         },
         {
             "word": "Farmacêutico",
-            "img": "assets/images/professions/Pharmacist.png"
+            "img": "assets/images/professions/Pharmacist.png",
+            "audio": "assets/audio/professions/Pharmacist.mp3"
         },
         {
             "word": "Piloto",
-            "img": "assets/images/professions/Pilot.png"
+            "img": "assets/images/professions/Pilot.png",
+            "audio": "assets/audio/professions/Pilot.mp3"
         },
         {
             "word": "Policial",
-            "img": "assets/images/professions/Police Officer.png"
+            "img": "assets/images/professions/Police Officer.png",
+            "audio": "assets/audio/professions/Police Officer.mp3"
         },
         {
             "word": "Professor",
-            "img": "assets/images/professions/Teacher.png"
+            "img": "assets/images/professions/Teacher.png",
+            "audio": "assets/audio/professions/Teacher.mp3"
         },
         {
             "word": "Escritor",
-            "img": "assets/images/professions/Writer.png"
+            "img": "assets/images/professions/Writer.png",
+            "audio": "assets/audio/professions/Writer.mp3"
         }
     ],
     "kitchen_items": [
         {
             "word": "Geladeira",
-            "img": "assets/images/kitchen_items/Refrigerator.png"
+            "img": "assets/images/kitchen_items/Refrigerator.png",
+            "audio": "assets/audio/kitchen_items/Refrigerator.mp3"
         },
         {
             "word": "Microondas",
-            "img": "assets/images/kitchen_items/Microwave.png"
+            "img": "assets/images/kitchen_items/Microwave.png",
+            "audio": "assets/audio/kitchen_items/Microwave.mp3"
         },
         {
             "word": "Fogão",
-            "img": "assets/images/kitchen_items/Stove.png"
+            "img": "assets/images/kitchen_items/Stove.png",
+            "audio": "assets/audio/kitchen_items/Stove.mp3"
         },
         {
             "word": "Forno",
-            "img": "assets/images/kitchen_items/Oven.png"
+            "img": "assets/images/kitchen_items/Oven.png",
+            "audio": "assets/audio/kitchen_items/Oven.mp3"
         },
         {
             "word": "Faca",
-            "img": "assets/images/kitchen_items/Knife.png"
+            "img": "assets/images/kitchen_items/Knife.png",
+            "audio": "assets/audio/kitchen_items/Knife.mp3"
         },
         {
             "word": "Garfo",
-            "img": "assets/images/kitchen_items/Fork.png"
+            "img": "assets/images/kitchen_items/Fork.png",
+            "audio": "assets/audio/kitchen_items/Fork.mp3"
         },
         {
             "word": "Colher",
-            "img": "assets/images/kitchen_items/Spoon.png"
+            "img": "assets/images/kitchen_items/Spoon.png",
+            "audio": "assets/audio/kitchen_items/Spoon.mp3"
         },
         {
             "word": "Prato",
-            "img": "assets/images/kitchen_items/Plate.png"
+            "img": "assets/images/kitchen_items/Plate.png",
+            "audio": "assets/audio/kitchen_items/Plate.mp3"
         },
         {
             "word": "Copo",
-            "img": "assets/images/kitchen_items/Glass.png"
+            "img": "assets/images/kitchen_items/Glass.png",
+            "audio": "assets/audio/kitchen_items/Glass.mp3"
         },
         {
             "word": "Xícara",
-            "img": "assets/images/kitchen_items/Cup.png"
+            "img": "assets/images/kitchen_items/Cup.png",
+            "audio": "assets/audio/kitchen_items/Cup.mp3"
         },
         {
             "word": "Panela",
-            "img": "assets/images/kitchen_items/Pot.png"
+            "img": "assets/images/kitchen_items/Pot.png",
+            "audio": "assets/audio/kitchen_items/Pot.mp3"
         },
         {
             "word": "Frigideira",
-            "img": "assets/images/kitchen_items/Pan.png"
+            "img": "assets/images/kitchen_items/Pan.png",
+            "audio": "assets/audio/kitchen_items/Pan.mp3"
         }
     ],
     "household_items": [
         {
             "word": "Cadeira",
-            "img": "assets/images/household_items/Chair.png"
+            "img": "assets/images/household_items/Chair.png",
+            "audio": "assets/audio/household_items/Chair.mp3"
         },
         {
             "word": "Mesa",
-            "img": "assets/images/household_items/Table.png"
+            "img": "assets/images/household_items/Table.png",
+            "audio": "assets/audio/household_items/Table.mp3"
         },
         {
             "word": "Sofá",
-            "img": "assets/images/household_items/Sofa.png"
+            "img": "assets/images/household_items/Sofa.png",
+            "audio": "assets/audio/household_items/Sofa.mp3"
         },
         {
             "word": "Cama",
-            "img": "assets/images/household_items/Bed.png"
+            "img": "assets/images/household_items/Bed.png",
+            "audio": "assets/audio/household_items/Bed.mp3"
         },
         {
             "word": "Almofada",
-            "img": "assets/images/household_items/Pillow.png"
+            "img": "assets/images/household_items/Pillow.png",
+            "audio": "assets/audio/household_items/Pillow.mp3"
         },
         {
             "word": "Cobertor",
-            "img": "assets/images/household_items/Blanket.png"
+            "img": "assets/images/household_items/Blanket.png",
+            "audio": "assets/audio/household_items/Blanket.mp3"
         },
         {
             "word": "Estante",
-            "img": "assets/images/household_items/Bookshelf.png"
+            "img": "assets/images/household_items/Bookshelf.png",
+            "audio": "assets/audio/household_items/Bookshelf.mp3"
         },
         {
             "word": "Escrivaninha",
-            "img": "assets/images/household_items/Desk.png"
+            "img": "assets/images/household_items/Desk.png",
+            "audio": "assets/audio/household_items/Desk.mp3"
         },
         {
             "word": "Lâmpada",
-            "img": "assets/images/household_items/Lamp.png"
+            "img": "assets/images/household_items/Lamp.png",
+            "audio": "assets/audio/household_items/Lamp.mp3"
         },
         {
             "word": "Cortinas",
-            "img": "assets/images/household_items/Curtains.png"
+            "img": "assets/images/household_items/Curtains.png",
+            "audio": "assets/audio/household_items/Curtains.mp3"
         },
         {
             "word": "Televisão",
-            "img": "assets/images/household_items/Television.png"
+            "img": "assets/images/household_items/Television.png",
+            "audio": "assets/audio/household_items/Television.mp3"
         },
         {
             "word": "Relógio",
-            "img": "assets/images/household_items/Clock.png"
+            "img": "assets/images/household_items/Clock.png",
+            "audio": "assets/audio/household_items/Clock.mp3"
         },
         {
             "word": "Carro",
-            "img": "assets/images/household_items/Car.png"
+            "img": "assets/images/household_items/Car.png",
+            "audio": "assets/audio/household_items/Car.mp3"
         },
         {
             "word": "Livro",
-            "img": "assets/images/household_items/Book.png"
+            "img": "assets/images/household_items/Book.png",
+            "audio": "assets/audio/household_items/Book.mp3"
         }
     ],
     "face": [
         {
             "word": "Cabeça",
-            "img": "assets/images/face/Head.png"
+            "img": "assets/images/face/Head.png",
+            "audio": "assets/audio/face/Head.mp3"
         },
         {
             "word": "Cabelo",
-            "img": "assets/images/face/Hair.png"
+            "img": "assets/images/face/Hair.png",
+            "audio": "assets/audio/face/Hair.mp3"
         },
         {
             "word": "Olho",
-            "img": "assets/images/face/Eye.png"
+            "img": "assets/images/face/Eye.png",
+            "audio": "assets/audio/face/Eye.mp3"
         },
         {
             "word": "Orelha",
-            "img": "assets/images/face/Ear.png"
+            "img": "assets/images/face/Ear.png",
+            "audio": "assets/audio/face/Ear.mp3"
         },
         {
             "word": "Nariz",
-            "img": "assets/images/face/Nose.png"
+            "img": "assets/images/face/Nose.png",
+            "audio": "assets/audio/face/Nose.mp3"
         },
         {
             "word": "Boca",
-            "img": "assets/images/face/Mouth.png"
+            "img": "assets/images/face/Mouth.png",
+            "audio": "assets/audio/face/Mouth.mp3"
         },
         {
             "word": "Dente",
-            "img": "assets/images/face/Tooth.png"
+            "img": "assets/images/face/Tooth.png",
+            "audio": "assets/audio/face/Tooth.mp3"
         },
         {
             "word": "Língua",
-            "img": "assets/images/face/Tongue.png"
+            "img": "assets/images/face/Tongue.png",
+            "audio": "assets/audio/face/Tongue.mp3"
         },
         {
             "word": "Pescoço",
-            "img": "assets/images/face/Neck.png"
+            "img": "assets/images/face/Neck.png",
+            "audio": "assets/audio/face/Neck.mp3"
         }
     ],
     "body": [
         {
             "word": "Braço",
-            "img": "assets/images/body/Arm.png"
+            "img": "assets/images/body/Arm.png",
+            "audio": "assets/audio/body/Arm.mp3"
         },
         {
             "word": "Cotovelo",
-            "img": "assets/images/body/Elbow.png"
+            "img": "assets/images/body/Elbow.png",
+            "audio": "assets/audio/body/Elbow.mp3"
         },
         {
             "word": "Mão",
-            "img": "assets/images/body/Hand.png"
+            "img": "assets/images/body/Hand.png",
+            "audio": "assets/audio/body/Hand.mp3"
         },
         {
             "word": "Dedo",
-            "img": "assets/images/body/Finger.png"
+            "img": "assets/images/body/Finger.png",
+            "audio": "assets/audio/body/Finger.mp3"
         },
         {
             "word": "Perna",
-            "img": "assets/images/body/Leg.png"
+            "img": "assets/images/body/Leg.png",
+            "audio": "assets/audio/body/Leg.mp3"
         },
         {
             "word": "Joelho",
-            "img": "assets/images/body/Knee.png"
+            "img": "assets/images/body/Knee.png",
+            "audio": "assets/audio/body/Knee.mp3"
         },
         {
             "word": "Pé",
-            "img": "assets/images/body/Foot.png"
+            "img": "assets/images/body/Foot.png",
+            "audio": "assets/audio/body/Foot.mp3"
         },
         {
             "word": "Dedo do pé",
-            "img": "assets/images/body/Toe.png"
+            "img": "assets/images/body/Toe.png",
+            "audio": "assets/audio/body/Toe.mp3"
         }
     ],
     "everyday_activities": [
         {
             "word": "Acordar",
-            "img": "assets/images/everyday_activities/To wake up.png"
+            "img": "assets/images/everyday_activities/To wake up.png",
+            "audio": "assets/audio/everyday_activities/To wake up.mp3"
         },
         {
             "word": "Levantar se",
-            "img": "assets/images/everyday_activities/To get up.png"
+            "img": "assets/images/everyday_activities/To get up.png",
+            "audio": "assets/audio/everyday_activities/To get up.mp3"
         },
         {
             "word": "Tomar banho",
-            "img": "assets/images/everyday_activities/To take a shower.png"
+            "img": "assets/images/everyday_activities/To take a shower.png",
+            "audio": "assets/audio/everyday_activities/To take a shower.mp3"
         },
         {
             "word": "Escovar os dentes",
-            "img": "assets/images/everyday_activities/To brush teeth.png"
+            "img": "assets/images/everyday_activities/To brush teeth.png",
+            "audio": "assets/audio/everyday_activities/To brush teeth.mp3"
         },
         {
             "word": "Vestir se",
-            "img": "assets/images/everyday_activities/To get dressed.png"
+            "img": "assets/images/everyday_activities/To get dressed.png",
+            "audio": "assets/audio/everyday_activities/To get dressed.mp3"
         },
         {
             "word": "Tomar pequeno-almoço",
-            "img": "assets/images/everyday_activities/To have breakfast.png"
+            "img": "assets/images/everyday_activities/To have breakfast.png",
+            "audio": "assets/audio/everyday_activities/To have breakfast.mp3"
         },
         {
             "word": "Ir para o trabalho",
-            "img": "assets/images/everyday_activities/To go to work.png"
+            "img": "assets/images/everyday_activities/To go to work.png",
+            "audio": "assets/audio/everyday_activities/To go to work.mp3"
         },
         {
             "word": "Ir para a escola",
-            "img": "assets/images/everyday_activities/To go to school.png"
+            "img": "assets/images/everyday_activities/To go to school.png",
+            "audio": "assets/audio/everyday_activities/To go to school.mp3"
         },
         {
             "word": "Estudar",
-            "img": "assets/images/everyday_activities/To study.png"
+            "img": "assets/images/everyday_activities/To study.png",
+            "audio": "assets/audio/everyday_activities/To study.mp3"
         },
         {
             "word": "Almoçar",
-            "img": "assets/images/everyday_activities/To have lunch.png"
+            "img": "assets/images/everyday_activities/To have lunch.png",
+            "audio": "assets/audio/everyday_activities/To have lunch.mp3"
         },
         {
             "word": "Fazer exercício",
-            "img": "assets/images/everyday_activities/To exercise.png"
+            "img": "assets/images/everyday_activities/To exercise.png",
+            "audio": "assets/audio/everyday_activities/To exercise.mp3"
         },
         {
             "word": "Cozinhar",
-            "img": "assets/images/everyday_activities/To cook.png"
+            "img": "assets/images/everyday_activities/To cook.png",
+            "audio": "assets/audio/everyday_activities/To cook.mp3"
         },
         {
             "word": "Jantar",
-            "img": "assets/images/everyday_activities/To have dinner.png"
+            "img": "assets/images/everyday_activities/To have dinner.png",
+            "audio": "assets/audio/everyday_activities/To have dinner.mp3"
         }
     ],
     "common_actions": [
         {
             "word": "Comer",
-            "img": "assets/images/common_actions/To eat.png"
+            "img": "assets/images/common_actions/To eat.png",
+            "audio": "assets/audio/common_actions/To eat.mp3"
         },
         {
             "word": "Beber",
-            "img": "assets/images/common_actions/To drink.png"
+            "img": "assets/images/common_actions/To drink.png",
+            "audio": "assets/audio/common_actions/To drink.mp3"
         },
         {
             "word": "Dormir",
-            "img": "assets/images/common_actions/To sleep.png"
+            "img": "assets/images/common_actions/To sleep.png",
+            "audio": "assets/audio/common_actions/To sleep.mp3"
         },
         {
             "word": "Ler",
-            "img": "assets/images/common_actions/To read.png"
+            "img": "assets/images/common_actions/To read.png",
+            "audio": "assets/audio/common_actions/To read.mp3"
         },
         {
             "word": "Escrever",
-            "img": "assets/images/common_actions/To write.png"
+            "img": "assets/images/common_actions/To write.png",
+            "audio": "assets/audio/common_actions/To write.mp3"
         },
         {
             "word": "Andar",
-            "img": "assets/images/common_actions/To walk.png"
+            "img": "assets/images/common_actions/To walk.png",
+            "audio": "assets/audio/common_actions/To walk.mp3"
         },
         {
             "word": "Correr",
-            "img": "assets/images/common_actions/To run.png"
+            "img": "assets/images/common_actions/To run.png",
+            "audio": "assets/audio/common_actions/To run.mp3"
         },
         {
             "word": "Falar",
-            "img": "assets/images/common_actions/To speak.png"
+            "img": "assets/images/common_actions/To speak.png",
+            "audio": "assets/audio/common_actions/To speak.mp3"
         },
         {
             "word": "Ouvir",
-            "img": "assets/images/common_actions/To listen.png"
+            "img": "assets/images/common_actions/To listen.png",
+            "audio": "assets/audio/common_actions/To listen.mp3"
         },
         {
             "word": "Ir",
-            "img": "assets/images/common_actions/To go.png"
+            "img": "assets/images/common_actions/To go.png",
+            "audio": "assets/audio/common_actions/To go.mp3"
         },
         {
             "word": "Vir",
-            "img": "assets/images/common_actions/To come.png"
+            "img": "assets/images/common_actions/To come.png",
+            "audio": "assets/audio/common_actions/To come.mp3"
         },
         {
             "word": "Relaxar",
-            "img": "assets/images/common_actions/To relax.png"
+            "img": "assets/images/common_actions/To relax.png",
+            "audio": "assets/audio/common_actions/To relax.mp3"
         }
     ]
 }
