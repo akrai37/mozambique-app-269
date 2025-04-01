@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
-import 'dart:convert' show json;
-
+import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/model/image_button.dart';
 import 'package:mozambique_app/view/learn_card.dart';
 
@@ -33,12 +31,7 @@ class _LearnScreensState extends State<LearnScreens> {
 
   Future<void> _loadData() async {
     try {
-      // Load the JSON file
-      String jsonString = await rootBundle.loadString('assets/json/all_cards.json');
-      final data = json.decode(jsonString);
-      final cards = data[widget.tag];
-
-      _imageButtons = List<ImageButton>.from(cards.map((item) => ImageButton.fromJson(item)));
+      _imageButtons = await fetchCards(widget.tag);
 
       // Preload images
       for (var imageButton in _imageButtons) {
@@ -145,10 +138,7 @@ class _LearnScreensState extends State<LearnScreens> {
                     spacing: 10,
                     runSpacing: 10,
                     children: _imageButtons.map((imageButton) {
-                      return LearnCard(
-                        title: imageButton.word,
-                        img: imageButton.img,
-                      );
+                      return LearnCard(imageButton: imageButton);
                     }).toList(),
                   ),
                 ),
