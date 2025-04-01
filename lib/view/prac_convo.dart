@@ -14,22 +14,9 @@ class _PracConvoState extends State<PracConvo> {
   int _visibleMessages = 1; // Start with only 1 message visible
   final ScrollController _scrollController = ScrollController();
 
-  // List of message widgets
-  //final List<Widget> _messages = [];
-
   @override
   void initState() {
     super.initState();
-
-    // Initialize messages and pass onTap function
-    // _messages.addAll([
-    //   Msg1(msg1: 'Olá.', onTap: _revealNextMessage),
-    //   Msg2(msg2: 'Olá.', onTap: _revealNextMessage),
-    //   Msg1(msg1: 'Bom dia.', onTap: _revealNextMessage),
-    //   Msg2(msg2: 'Bom dia.', onTap: _revealNextMessage),
-    //   Msg1(msg1: 'Como estás?', onTap: _revealNextMessage),
-    //   Msg2(msg2: 'Estou bem, obrigado!', onTap: _revealNextMessage),
-    // ]);
   }
 
   final List<Widget> _messages = [
@@ -74,19 +61,6 @@ class _PracConvoState extends State<PracConvo> {
         height: double.infinity,
         color: Color.fromRGBO(53, 64, 79, 1),
         child: Column(
-        // Column is also a layout widget. It takes a list of children and
-        // arranges them vertically. By default, it sizes itself to fit its
-        // children horizontally, and tries to be as tall as its parent.
-        //
-        // Column has various properties to control how it sizes itself and
-        // how it positions its children. Here we use mainAxisAlignment to
-        // center the children vertically; the main axis here is the vertical
-        // axis because Columns are vertical (the cross axis would be
-        // horizontal).
-        //
-        // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-        // action in the IDE, or press "p" in the console), to see the
-        // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
@@ -218,25 +192,6 @@ class _PracConvoState extends State<PracConvo> {
                                       ),
                                     ),
                               ),
-                              // Expanded(
-                              //   child: Row(
-                              //     children: [
-                              //       SingleChildScrollView(
-                              //         scrollDirection: Axis.vertical, // Enables vertical scrolling
-                              //         child: Column(
-                              //           crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
-                              //           children: [
-                              //             for (int i = 0; i < _visibleMessages; i++)
-                              //               GestureDetector(
-                              //               onTap: _revealNextMessage, // Click to show next message
-                              //               child: _messages[i],
-                              //             ),
-                              //           ],
-                              //         ),
-                              //       ),
-                              //     ],
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
