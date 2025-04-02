@@ -6,12 +6,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'package:mozambique_app/view/home_screen.dart';
-import 'package:mozambique_app/models/category.dart';
-import 'package:mozambique_app/models/conversation.dart';
-import 'package:mozambique_app/models/question.dart';
-import 'package:mozambique_app/models/quiz.dart';
-import 'package:mozambique_app/models/vocab.dart';
-import 'package:mozambique_app/repositories/crud_test.dart';
+import 'package:mozambique_app/model/category.dart';
+import 'package:mozambique_app/model/conversation.dart';
+import 'package:mozambique_app/model/question.dart';
+import 'package:mozambique_app/model/quiz.dart';
+import 'package:mozambique_app/model/vocab.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,16 +36,15 @@ void main() async{
   Hive.registerAdapter(QuizAnswerAdapter());
   Hive.registerAdapter(ConversationAdapter());
 
-  // Open Hive Boxes
+  // Open Hive Boxes (key-value store/container)
   await Hive.openBox<Category>('categories');
-  var vocab = await Hive.openBox<VocabWord>('vocab_words');
+  await Hive.openBox<List<VocabWord>>('vocab_words'); // storing vocab words as a list
   await Hive.openBox<Question>('questions');
   await Hive.openBox<Response>('responses');
   await Hive.openBox<QuizQuestion>('quiz_questions');
   await Hive.openBox<QuizAnswer>('quiz_answers');
   await Hive.openBox<Conversation>('conversations');
 
-  await performCrudOperations(vocab);
   runApp(const MyApp());
 }
 

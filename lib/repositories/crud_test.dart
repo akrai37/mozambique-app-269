@@ -1,4 +1,4 @@
-import '../models/vocab.dart';
+import '../model/vocab.dart';
 import 'package:hive/hive.dart';
 import 'dart:developer';
 
@@ -11,11 +11,23 @@ Future<void> performCrudOperations(Box<VocabWord> box) async {
   log("All Words: ${words.map((w) => w.word).toList()}");
 
   //CREATE - Add a new vocab word
-  var word1 = VocabWord(1, "Green", "Vermehlo", "lib/assets/images/colors/Red.png", "lib/assets/audio/colors/red.mp3");
+  var word1 = VocabWord(
+    categoryName: "colors", 
+    word: "Green", 
+    portuguese: "Vermehlo", 
+    imagePath: "assets/images/colors/Red.png", 
+    audioPath: "assets/audio/colors/Red.mp3",
+  );
   await box.put(word1.word, word1);
   log("Created: ${word1.word} -  ${word1.portuguese} ");
 
-  var word2 = VocabWord(1, "Red", "Verde", "lib/assets/images/colors/Red.png", "lib/assets/audio/colors/red.mp3");
+  var word2 = VocabWord(
+    categoryName: "colors", 
+    word: "Red", 
+    portuguese: "Verde", 
+    imagePath: "assets/images/colors/Red.png", 
+    audioPath: "assets/audio/colors/Red.mp3"
+  );
   await box.put(word2.word, word2);
   log("Created: ${word2.word} -  ${word2.portuguese}  ");
 
@@ -24,11 +36,23 @@ Future<void> performCrudOperations(Box<VocabWord> box) async {
   log("Words: ${words.map((w) => w.word).toList()}, Translations: ${words.map((w) => w.portuguese).toList()}");
 
   //UPDATE - Modify a word
-  var updatedWord = VocabWord(1, "Green", "Verde", "lib/assets/images/colors/Green.png", "lib/assets/audio/colors/Green.mp3");
+  var updatedWord = VocabWord(
+    categoryName: "colors", 
+    word: "Green", 
+    portuguese: "Verde", 
+    imagePath: "assets/images/colors/Green.png", 
+    audioPath: "assets/audio/colors/Green.mp3"
+  );
   await box.put(updatedWord.word, updatedWord);
   log("Updated: ${updatedWord.word} - ${updatedWord.portuguese}");
 
-  var updatedWord2 = VocabWord(1, "Red", "Vermehlo", "lib/assets/images/colors/Red.png", "lib/assets/audio/colors/red.mp3");
+  var updatedWord2 = VocabWord(
+    categoryName: "colors", 
+    word: "Red", 
+    portuguese: "Vermehlo", 
+    imagePath: "assets/images/colors/Red.png", 
+    audioPath: "assets/audio/colors/Red.mp3"
+  );
   await box.put(updatedWord2.word, updatedWord2);
   log("Updated: ${updatedWord2.word} - ${updatedWord2.portuguese}");
 

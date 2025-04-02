@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:mozambique_app/view/home_card.dart';
+import 'package:mozambique_app/services/database_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final DatabaseService _databaseService = DatabaseService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,8 +62,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {},
+                TextButton( // Using as Update/Sync button (for now)
+                  onPressed: () async {
+                    await _databaseService.syncContent();
+                  },
                   style: ButtonStyle(
                     shape: WidgetStateProperty.all(
                       RoundedRectangleBorder(

@@ -1,8 +1,7 @@
 import 'dart:developer';
 
 import 'package:hive/hive.dart';
-import 'package:mozambique_app/models/question.dart';
-import '../models/category.dart';
+import 'package:mozambique_app/model/question.dart';
 
 /*Class: Question and Response Repository
   Gets, adds, and deletes data in database for Question & Response exercises

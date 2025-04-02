@@ -17,11 +17,11 @@ class VocabWordAdapter extends TypeAdapter<VocabWord> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return VocabWord(
-      fields[0] as String,
-      fields[1] as String,
-      fields[2] as String,
-      fields[3] as String,
-      fields[4] as String,
+      categoryName: fields[0] as String,
+      word: fields[1] as String,
+      portuguese: fields[2] as String,
+      imagePath: fields[3] as String,
+      audioPath: fields[4] as String,
     );
   }
 

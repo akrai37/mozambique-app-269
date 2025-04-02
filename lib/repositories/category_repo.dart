@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import '../models/category.dart';
+import '../model/category.dart';
 
 class CategoryRepository {
   final Box<Category> _categoryBox = Hive.box<Category>('categories'); //mark

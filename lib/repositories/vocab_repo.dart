@@ -1,6 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:mozambique_app/models/vocab.dart';
-import '../models/category.dart';
+import 'package:mozambique_app/model/vocab.dart';
 
 /*Class: Vocab Repository
   Works with  
