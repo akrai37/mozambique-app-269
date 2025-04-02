@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mozambique_app/view/home_screen.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'models/category.dart';
-import 'models/vocab.dart';
-import 'models/question.dart';
-import 'models/quiz.dart';
-import 'models/conversation.dart';
-import '../repositories/crud_test.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+import 'package:mozambique_app/view/home_screen.dart';
+import 'package:mozambique_app/models/category.dart';
+import 'package:mozambique_app/models/conversation.dart';
+import 'package:mozambique_app/models/question.dart';
+import 'package:mozambique_app/models/quiz.dart';
+import 'package:mozambique_app/models/vocab.dart';
+import 'package:mozambique_app/repositories/crud_test.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   // Lock the orientation of the app to landscape
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   //INITIALIZE HIVE
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
