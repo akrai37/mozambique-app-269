@@ -11,6 +11,7 @@ import 'package:mozambique_app/model/conversation.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
+import 'package:mozambique_app/services/database_service.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,12 +39,17 @@ void main() async{
 
   // Open Hive Boxes (key-value store/container)
   await Hive.openBox<Category>('categories');
-  await Hive.openBox<List<VocabWord>>('vocab_words'); // storing vocab words as a list
+  // MAKE SURE TO OPEN AS List NOT AS List<VocabWord>
+  await Hive.openBox<List>('vocab_words'); // storing vocab words as a list
   await Hive.openBox<Question>('questions');
   await Hive.openBox<Response>('responses');
   await Hive.openBox<QuizQuestion>('quiz_questions');
   await Hive.openBox<QuizAnswer>('quiz_answers');
   await Hive.openBox<Conversation>('conversations');
+
+  // Load data from Hive or fetch from Firestore (if needed)
+  final DatabaseService dbService = DatabaseService();
+  await dbService.initializeDatabase();
 
   runApp(const MyApp());
 }

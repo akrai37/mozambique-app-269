@@ -28,7 +28,7 @@ Future<List<VocabWord>> fetchCards(String category) async {
   // Load from Hive first
   List<VocabWord>? localData = dbService.getLocalContent(category);
 
-  if (localData != null) return localData;
+  if (localData != null && localData.isNotEmpty) return localData;
 
   // If Hive data is not available, fetch from Firestore
   await dbService.syncContent();
