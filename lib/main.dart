@@ -8,6 +8,7 @@ import 'firebase_options.dart';
 import 'package:mozambique_app/view/home_screen.dart';
 import 'package:mozambique_app/model/category.dart';
 import 'package:mozambique_app/model/conversation.dart';
+import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
@@ -31,6 +32,7 @@ void main() async{
   // Register Hive Adapters
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(VocabWordAdapter());
+  Hive.registerAdapter(HomeWordAdapter());
   Hive.registerAdapter(QuestionAdapter());
   Hive.registerAdapter(ResponseAdapter());
   Hive.registerAdapter(QuizQuestionAdapter());
@@ -41,6 +43,7 @@ void main() async{
   await Hive.openBox<Category>('categories');
   // MAKE SURE TO OPEN AS List NOT AS List<VocabWord>
   await Hive.openBox<List>('vocab_words'); // storing vocab words as a list
+  await Hive.openBox<List>('home_words');
   await Hive.openBox<Question>('questions');
   await Hive.openBox<Response>('responses');
   await Hive.openBox<QuizQuestion>('quiz_questions');

@@ -32,11 +32,11 @@ class _LearnScreensState extends State<LearnScreens> {
   }
 
   Future<void> _loadContent() async {
-    List<VocabWord>? localData = _databaseService.getLocalContent(widget.tag);
+    List<VocabWord>? localData = _databaseService.getVocabWords(widget.tag);
 
     /* // This fetches from the local JSON file
     try {
-      _imageButtons = await fetchJSONCards(widget.tag);
+      _imageButtons = await fetchJSONVocabCards(widget.tag);
 
       // Preload images
       for (var imageButton in _imageButtons) {
@@ -50,7 +50,7 @@ class _LearnScreensState extends State<LearnScreens> {
     // This fetches from the local Hive database
     try {
       if (localData != null) {
-        _imageButtons = await fetchCards(widget.tag);
+        _imageButtons = await fetchVocabCards(widget.tag);
 
         // Preload images
         for (VocabWord imageButton in _imageButtons) {

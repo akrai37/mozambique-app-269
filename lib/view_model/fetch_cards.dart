@@ -3,12 +3,40 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert' show json;
 
 import 'package:mozambique_app/services/database_service.dart';
+import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';
 
-Future<List<VocabWord>> fetchJSONCards(String category) async {
+Future<List<HomeWord>> fetchHomeCards() async {
+  final DatabaseService dbService = DatabaseService();
+
+  // Load from Hive first
+  List<HomeWord>? localData = dbService.getHomeWords();
+
+  if (localData != null && localData.isNotEmpty) return localData;
+
+  // If Hive data is not available, fetch from Firestore
+  await dbService.syncContent();
+  return dbService.getHomeWords() ?? [];
+}
+
+Future<List<VocabWord>> fetchVocabCards(String category) async {
+  final DatabaseService dbService = DatabaseService();
+
+  // Load from Hive first
+  List<VocabWord>? localData = dbService.getVocabWords(category);
+
+  if (localData != null && localData.isNotEmpty) return localData;
+
+  // If Hive data is not available, fetch from Firestore
+  await dbService.syncContent();
+  return dbService.getVocabWords(category) ?? [];
+}
+
+/*
+Future<List<VocabWord>> fetchJSONVocabCards(String category) async {
   try {
     // Load the JSON file
-    String jsonString = await rootBundle.loadString('assets/json/all_cards2.json');
+    String jsonString = await rootBundle.loadString('assets/json/vocab_words.json');
     final data = json.decode(jsonString);
     final cards = data[category];
 
@@ -21,16 +49,4 @@ Future<List<VocabWord>> fetchJSONCards(String category) async {
     return []; // Return an empty list in case of error
   }
 }
-
-Future<List<VocabWord>> fetchCards(String category) async {
-  final DatabaseService dbService = DatabaseService();
-
-  // Load from Hive first
-  List<VocabWord>? localData = dbService.getLocalContent(category);
-
-  if (localData != null && localData.isNotEmpty) return localData;
-
-  // If Hive data is not available, fetch from Firestore
-  await dbService.syncContent();
-  return dbService.getLocalContent(category) ?? [];
-}
+*/
