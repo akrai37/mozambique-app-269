@@ -1,0 +1,100 @@
+[
+    {
+        "word": "Numbers",
+        "portuguese": "Números",
+        "categoryName": "numbers",
+        "imagePath": "assets/images/learn/Numbers.png",
+        "type": "cards"
+    },
+    {
+        "word": "Colors",
+        "portuguese": "Cores",
+        "categoryName": "colors",
+        "imagePath": "assets/images/learn/Colors.png",
+        "type": "cards"
+    },
+    {
+        "word": "Fruits",
+        "portuguese": "Frutas",
+        "categoryName": "fruits",
+        "imagePath": "assets/images/learn/Fruits.png",
+        "type": "cards"
+    },
+    {
+        "word": "Vegetables",
+        "portuguese": "Horta",
+        "categoryName": "vegetables",
+        "imagePath": "assets/images/learn/Vegetables.png",
+        "type": "cards"
+    },
+    {
+        "word": "Animals",
+        "portuguese": "Animais",
+        "categoryName": "animals",
+        "imagePath": "assets/images/learn/Animals.png",
+        "type": "cards"
+    },
+    {
+        "word": "Common Actions",
+        "portuguese": "Ações Comuns",
+        "categoryName": "common_actions",
+        "imagePath": "assets/images/learn/Common Actions.png",
+        "type": "cards"
+    },
+    {
+        "word": "Everyday Activities",
+        "portuguese": "Atividades Cotidianas",
+        "categoryName": "everyday_activities",
+        "imagePath": "assets/images/learn/Everyday Activities.png",
+        "type": "cards"
+    },
+    {
+        "word": "Professions",
+        "portuguese": "Profissões",
+        "categoryName": "professions",
+        "imagePath": "assets/images/learn/Professions.png",
+        "type": "cards"
+    },
+    {
+        "word": "Household Items",
+        "portuguese": "Coisas da Casa",
+        "categoryName": "household_items",
+        "imagePath": "assets/images/learn/Household Items.png",
+        "type": "cards"
+    },
+    {
+        "word": "Kitchen Items",
+        "portuguese": "Coisas da Cozinha",
+        "categoryName": "kitchen_items",
+        "imagePath": "assets/images/learn/Kitchen Items.png",
+        "type": "cards"
+    },
+    {
+        "word": "Face",
+        "portuguese": "Rosto",
+        "categoryName": "face",
+        "imagePath": "assets/images/learn/Face.png",
+        "type": "cards"
+    },
+    {
+        "word": "Body",
+        "portuguese": "Corpo",
+        "categoryName": "body",
+        "imagePath": "assets/images/learn/Body.png",
+        "type": "cards"
+    },
+    {
+        "word": "Greetings",
+        "portuguese": "Saudações",
+        "categoryName": "greetings",
+        "imagePath": "assets/images/learn/Greetings.png",
+        "type": "conversation"
+    },
+    {
+        "word": "Requests",
+        "portuguese": "Pedidos",
+        "categoryName": "requests",
+        "imagePath": "assets/images/learn/Requests.png",
+        "type": "conversation"
+    }
+]
