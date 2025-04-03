@@ -5,7 +5,6 @@ import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/view/home_card.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/navbar.dart';
-import 'package:mozambique_app/model/vocab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,20 +17,21 @@ class _HomeScreenState extends State<HomeScreen> {
   final DatabaseService _databaseService = DatabaseService();
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
-  Map<String, List<VocabWord>> _allVocabWords = {};
-  Map<String, List<VocabWord>> _filteredVocabWords = {};
+  List<HomeWord> _filteredHomeWords = [];
+  Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
   void initState() {
     super.initState();
 
     _loadingFuture = _loadContent();
-    // _loadAllVocabWords();
   }
 
   Future<void> _loadContent() async {
     // Load home words from Hive
     _homeWords = await fetchHomeCards();
+
+    _filteredHomeWords = _homeWords; // Initialize filtered words with all words
 
     if (_homeWords.isNotEmpty) {
       for (HomeWord homeWord in _homeWords) {
@@ -39,39 +39,26 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     }
 
-    // Load all vocab words from Hive
-    // await _loadAllVocabWords();
+    // Load all vocab words from Hive (for search functionality)
+    await _loadAllVocabWords();
   }
 
   Future<void> _loadAllVocabWords() async {
     await _databaseService.initializeDatabase(); // Ensure the database is initialized
-    Map<String, List<VocabWord>> vocabWordsMap = _databaseService.getAllVocabWords(); // Fetch all vocab words from Hive
-
-    if (vocabWordsMap.isNotEmpty) {
-      setState(() {
-        _allVocabWords = vocabWordsMap;
-        _filteredVocabWords = vocabWordsMap; // Initialize filtered words with all words
-      });
-    }
+    _vocabWordsMap = _databaseService.getAllPortugueseWords(); // Fetch all Portuguese vocab words
   }
 
   void _onSearchChanged(String searchText) {
     if (searchText.isEmpty) {
       setState(() {
-        _filteredVocabWords = _allVocabWords; // Reset to all vocab words if search is empty
+        _filteredHomeWords = _homeWords; // Reset to all words if search is empty
       });
     } else {
-      Map<String, List<VocabWord>> filteredWords = {};
-
-      _allVocabWords.forEach((category, words) {
-        List<VocabWord> filteredList = words.where((word) => word.portuguese.toLowerCase().contains(searchText.toLowerCase())).toList();
-        if (filteredList.isNotEmpty) {
-          filteredWords[category] = filteredList;
-        }
-      });
-
       setState(() {
-        _filteredVocabWords = filteredWords; // Update the filtered words
+        _filteredHomeWords = _homeWords.where((homeWord) {
+          return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
+                 _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
+        }).toList();
       });
     }
   }
@@ -86,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Show a loading indicator while waiting for images to load
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error:${snapshot.error}'));
+            return Center(child: Text('Error: ${snapshot.error}'));
           }
 
           // Once the images are loaded, build the UI
@@ -117,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     direction: Axis.horizontal,
                     spacing: 10,
                     runSpacing: 10,
-                    children: _homeWords.map((homeWord) {
+                    children: _filteredHomeWords.map((homeWord) {
                       return HomeCard(homeWord: homeWord);
                     }).toList(),
                   ),

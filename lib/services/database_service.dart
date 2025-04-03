@@ -116,6 +116,21 @@ class DatabaseService {
     return allData;
   }
 
+  Map<String, List<String>> getAllPortugueseWords() {
+    Map<String, List<String>> allData = {};
+
+    List<String> keys = _vocabWordBox.keys.cast<String>().toList();
+    for (String key in keys) {
+      List<dynamic>? words = _vocabWordBox.get(key);
+
+      if (words != null) {
+        allData[key] = words.map((word) => word.portuguese).cast<String>().toList(); // Cast to List<String>
+      }
+    }
+
+    return allData;
+  }
+
   // For debugging purposes: Print all vocab words in the box
   void printAllVocabWords() {
     List<String> keys = _vocabWordBox.keys.cast<String>().toList();
