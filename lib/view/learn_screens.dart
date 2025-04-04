@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view_model/fetch_cards.dart';
-import 'package:mozambique_app/model/image_button.dart';
 import 'package:mozambique_app/view/learn_card.dart';
+import 'package:mozambique_app/services/database_service.dart';
+import 'package:mozambique_app/model/vocab.dart';
 
 class LearnScreens extends StatefulWidget {
   final String title;
@@ -19,19 +20,23 @@ class LearnScreens extends StatefulWidget {
 }
 
 class _LearnScreensState extends State<LearnScreens> {
-  late List<ImageButton> _imageButtons = [];
+  late List<VocabWord> _imageButtons = [];
   late Future<void> _loadingFuture;
+  final DatabaseService _databaseService = DatabaseService();
 
   @override
   void initState() {
     super.initState();
 
-    _loadingFuture = _loadData();
+    _loadingFuture = _loadContent();
   }
 
-  Future<void> _loadData() async {
+  Future<void> _loadContent() async {
+    List<VocabWord>? localData = _databaseService.getVocabWords(widget.tag);
+
+    /* // This fetches from the local JSON file
     try {
-      _imageButtons = await fetchCards(widget.tag);
+      _imageButtons = await fetchJSONVocabCards(widget.tag);
 
       // Preload images
       for (var imageButton in _imageButtons) {
@@ -39,6 +44,21 @@ class _LearnScreensState extends State<LearnScreens> {
       }
     } catch (error) {
       print("Error loading JSON data: $error");
+    }
+    */
+
+    // This fetches from the local Hive database
+    try {
+      if (localData != null) {
+        _imageButtons = await fetchVocabCards(widget.tag);
+
+        // Preload images
+        for (VocabWord imageButton in _imageButtons) {
+          await precacheImage(AssetImage(imageButton.imagePath), context);
+        }
+      }
+    } catch (error) {
+      print("Error loading data from Hive: $error");
     }
   }
 

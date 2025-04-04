@@ -1,0 +1,1139 @@
+{
+    "numbers": [
+        {
+            "categoryName": "numbers",
+            "word": "0",
+            "portuguese": "Zero",
+            "imagePath": "assets/images/numbers/0.png",
+            "audioPath": "assets/audio/numbers/0.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "1",
+            "portuguese": "Um",
+            "imagePath": "assets/images/numbers/1.png",
+            "audioPath": "assets/audio/numbers/1.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "2",
+            "portuguese": "Dois",
+            "imagePath": "assets/images/numbers/2.png",
+            "audioPath": "assets/audio/numbers/2.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "3",
+            "portuguese": "Tres",
+            "imagePath": "assets/images/numbers/3.png",
+            "audioPath": "assets/audio/numbers/3.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "4",
+            "portuguese": "Quatro",
+            "imagePath": "assets/images/numbers/4.png",
+            "audioPath": "assets/audio/numbers/4.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "5",
+            "portuguese": "Cinco",
+            "imagePath": "assets/images/numbers/5.png",
+            "audioPath": "assets/audio/numbers/5.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "6",
+            "portuguese": "Seis",
+            "imagePath": "assets/images/numbers/6.png",
+            "audioPath": "assets/audio/numbers/6.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "7",
+            "portuguese": "Sete",
+            "imagePath": "assets/images/numbers/7.png",
+            "audioPath": "assets/audio/numbers/7.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "8",
+            "portuguese": "Oito",
+            "imagePath": "assets/images/numbers/8.png",
+            "audioPath": "assets/audio/numbers/8.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "9",
+            "portuguese": "Nove",
+            "imagePath": "assets/images/numbers/9.png",
+            "audioPath": "assets/audio/numbers/9.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "10",
+            "portuguese": "Dez",
+            "imagePath": "assets/images/numbers/10.png",
+            "audioPath": "assets/audio/numbers/10.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "11",
+            "portuguese": "Onze",
+            "imagePath": "assets/images/numbers/11.png",
+            "audioPath": "assets/audio/numbers/11.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "12",
+            "portuguese": "Doze",
+            "imagePath": "assets/images/numbers/12.png",
+            "audioPath": "assets/audio/numbers/12.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "13",
+            "portuguese": "Treze",
+            "imagePath": "assets/images/numbers/13.png",
+            "audioPath": "assets/audio/numbers/13.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "14",
+            "portuguese": "Quatorze",
+            "imagePath": "assets/images/numbers/14.png",
+            "audioPath": "assets/audio/numbers/14.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "15",
+            "portuguese": "Quinze",
+            "imagePath": "assets/images/numbers/15.png",
+            "audioPath": "assets/audio/numbers/15.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "16",
+            "portuguese": "Dezesseis",
+            "imagePath": "assets/images/numbers/16.png",
+            "audioPath": "assets/audio/numbers/16.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "17",
+            "portuguese": "Dezessete",
+            "imagePath": "assets/images/numbers/17.png",
+            "audioPath": "assets/audio/numbers/17.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "18",
+            "portuguese": "Dezeoito",
+            "imagePath": "assets/images/numbers/18.png",
+            "audioPath": "assets/audio/numbers/18.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "19",
+            "portuguese": "Dezenove",
+            "imagePath": "assets/images/numbers/19.png",
+            "audioPath": "assets/audio/numbers/19.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "20",
+            "portuguese": "Vinte",
+            "imagePath": "assets/images/numbers/20.png",
+            "audioPath": "assets/audio/numbers/20.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "21",
+            "portuguese": "Vinte e um",
+            "imagePath": "assets/images/numbers/21.png",
+            "audioPath": "assets/audio/numbers/21.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "30",
+            "portuguese": "Trinta",
+            "imagePath": "assets/images/numbers/30.png",
+            "audioPath": "assets/audio/numbers/30.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "31",
+            "portuguese": "Trinta e um",
+            "imagePath": "assets/images/numbers/31.png",
+            "audioPath": "assets/audio/numbers/31.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "40",
+            "portuguese": "Quarenta",
+            "imagePath": "assets/images/numbers/40.png",
+            "audioPath": "assets/audio/numbers/40.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "50",
+            "portuguese": "Cinquenta",
+            "imagePath": "assets/images/numbers/50.png",
+            "audioPath": "assets/audio/numbers/50.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "60",
+            "portuguese": "Sessenta",
+            "imagePath": "assets/images/numbers/60.png",
+            "audioPath": "assets/audio/numbers/60.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "70",
+            "portuguese": "Setenta",
+            "imagePath": "assets/images/numbers/70.png",
+            "audioPath": "assets/audio/numbers/70.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "80",
+            "portuguese": "Oitenta",
+            "imagePath": "assets/images/numbers/80.png",
+            "audioPath": "assets/audio/numbers/80.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "90",
+            "portuguese": "Noventa",
+            "imagePath": "assets/images/numbers/90.png",
+            "audioPath": "assets/audio/numbers/90.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "100",
+            "portuguese": "Cem",
+            "imagePath": "assets/images/numbers/100.png",
+            "audioPath": "assets/audio/numbers/100.mp3"
+        },
+        {
+            "categoryName": "numbers",
+            "word": "101",
+            "portuguese": "Cento e um",
+            "imagePath": "assets/images/numbers/101.png",
+            "audioPath": "assets/audio/numbers/101.mp3"
+        }
+    ],
+    "colors": [
+        {
+            "categoryName": "colors",
+            "word": "Red",
+            "portuguese": "Vermelho",
+            "imagePath": "assets/images/colors/Red.png",
+            "audioPath": "assets/audio/colors/Red.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Blue",
+            "portuguese": "Azul",
+            "imagePath": "assets/images/colors/Blue.png",
+            "audioPath": "assets/audio/colors/Blue.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Green",
+            "portuguese": "Verde",
+            "imagePath": "assets/images/colors/Green.png",
+            "audioPath": "assets/audio/colors/Green.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Yellow",
+            "portuguese": "Amarelo",
+            "imagePath": "assets/images/colors/Yellow.png",
+            "audioPath": "assets/audio/colors/Yellow.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Black",
+            "portuguese": "Preto",
+            "imagePath": "assets/images/colors/Black.png",
+            "audioPath": "assets/audio/colors/Black.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "White",
+            "portuguese": "Branco",
+            "imagePath": "assets/images/colors/White.png",
+            "audioPath": "assets/audio/colors/White.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Orange",
+            "portuguese": "Laranja",
+            "imagePath": "assets/images/colors/Orange.png",
+            "audioPath": "assets/audio/colors/Orange.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Purple",
+            "portuguese": "Roxo",
+            "imagePath": "assets/images/colors/Purple.png",
+            "audioPath": "assets/audio/colors/Purple.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Pink",
+            "portuguese": "Rosa",
+            "imagePath": "assets/images/colors/Pink.png",
+            "audioPath": "assets/audio/colors/Pink.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Brown",
+            "portuguese": "Castanho",
+            "imagePath": "assets/images/colors/Brown.png",
+            "audioPath": "assets/audio/colors/Brown.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Gray",
+            "portuguese": "Cinza",
+            "imagePath": "assets/images/colors/Gray.png",
+            "audioPath": "assets/audio/colors/Gray.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Gold",
+            "portuguese": "Dourado",
+            "imagePath": "assets/images/colors/Gold.png",
+            "audioPath": "assets/audio/colors/Gold.mp3"
+        },
+        {
+            "categoryName": "colors",
+            "word": "Silver",
+            "portuguese": "Prateado",
+            "imagePath": "assets/images/colors/Silver.png",
+            "audioPath": "assets/audio/colors/Silver.mp3"
+        }
+    ],
+    "animals": [
+        {
+            "categoryName": "animals",
+            "word": "Cat",
+            "portuguese": "Gato",
+            "imagePath": "assets/images/animals/Cat.png",
+            "audioPath": "assets/audio/animals/Cat.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Dog",
+            "portuguese": "Cão",
+            "imagePath": "assets/images/animals/Dog.png",
+            "audioPath": "assets/audio/animals/Dog.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Turtle",
+            "portuguese": "Tartaruga",
+            "imagePath": "assets/images/animals/Turtle.png",
+            "audioPath": "assets/audio/animals/Turtle.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Monkey",
+            "portuguese": "Macaco",
+            "imagePath": "assets/images/animals/Monkey.png",
+            "audioPath": "assets/audio/animals/Monkey.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Bird",
+            "portuguese": "Pássaro",
+            "imagePath": "assets/images/animals/Bird.png",
+            "audioPath": "assets/audio/animals/Bird.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Chicken",
+            "portuguese": "Galinha",
+            "imagePath": "assets/images/animals/Chicken.png",
+            "audioPath": "assets/audio/animals/Chicken.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Goat",
+            "portuguese": "Cabra",
+            "imagePath": "assets/images/animals/Goat.png",
+            "audioPath": "assets/audio/animals/Goat.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Sheep",
+            "portuguese": "Ovelha",
+            "imagePath": "assets/images/animals/Sheep.png",
+            "audioPath": "assets/audio/animals/Sheep.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Cow",
+            "portuguese": "Vaca",
+            "imagePath": "assets/images/animals/Cow.png",
+            "audioPath": "assets/audio/animals/Cow.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Horse",
+            "portuguese": "Cavalo",
+            "imagePath": "assets/images/animals/Horse.png",
+            "audioPath": "assets/audio/animals/Horse.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Donkey",
+            "portuguese": "Burro",
+            "imagePath": "assets/images/animals/Donkey.png",
+            "audioPath": "assets/audio/animals/Donkey.mp3"
+        },
+        {
+            "categoryName": "animals",
+            "word": "Fish",
+            "portuguese": "Peixe",
+            "imagePath": "assets/images/animals/Fish.png",
+            "audioPath": "assets/audio/animals/Fish.mp3"
+        }
+    ],
+    "fruits": [
+        {
+            "categoryName": "fruits",
+            "word": "Banana",
+            "portuguese": "Banana",
+            "imagePath": "assets/images/fruits/Banana.png",
+            "audioPath": "assets/audio/fruits/Banana.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Lemon",
+            "portuguese": "Limão",
+            "imagePath": "assets/images/fruits/Lemon.png",
+            "audioPath": "assets/audio/fruits/Lemon.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Avocado",
+            "portuguese": "Abacate",
+            "imagePath": "assets/images/fruits/Avocado.png",
+            "audioPath": "assets/audio/fruits/Avocado.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Papaya",
+            "portuguese": "Mamão",
+            "imagePath": "assets/images/fruits/Papaya.png",
+            "audioPath": "assets/audio/fruits/Papaya.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Mango",
+            "portuguese": "Manga",
+            "imagePath": "assets/images/fruits/Mango.png",
+            "audioPath": "assets/audio/fruits/Mango.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Apple",
+            "portuguese": "Maçã",
+            "imagePath": "assets/images/fruits/Apple.png",
+            "audioPath": "assets/audio/fruits/Apple.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Orange",
+            "portuguese": "Laranja",
+            "imagePath": "assets/images/fruits/Orange.png",
+            "audioPath": "assets/audio/fruits/Orange.mp3"
+        },
+        {
+            "categoryName": "fruits",
+            "word": "Watermelon",
+            "portuguese": "Melancia",
+            "imagePath": "assets/images/fruits/Watermelon.png",
+            "audioPath": "assets/audio/fruits/Watermelon.mp3"
+        }
+    ],
+    "vegetables": [
+        {
+            "categoryName": "vegetables",
+            "word": "Tomato",
+            "portuguese": "Tomate",
+            "imagePath": "assets/images/vegetables/Tomato.png",
+            "audioPath": "assets/audio/vegetables/Tomato.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Lettuce",
+            "portuguese": "Alface",
+            "imagePath": "assets/images/vegetables/Lettuce.png",
+            "audioPath": "assets/audio/vegetables/Lettuce.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Cucumber",
+            "portuguese": "Pepino",
+            "imagePath": "assets/images/vegetables/Cucumber.png",
+            "audioPath": "assets/audio/vegetables/Cucumber.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Carrot",
+            "portuguese": "Cenoura",
+            "imagePath": "assets/images/vegetables/Carrot.png",
+            "audioPath": "assets/audio/vegetables/Carrot.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Yuca",
+            "portuguese": "Mandioca",
+            "imagePath": "assets/images/vegetables/Yuca.png",
+            "audioPath": "assets/audio/vegetables/Yuca.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Potato",
+            "portuguese": "Batata",
+            "imagePath": "assets/images/vegetables/Potato.png",
+            "audioPath": "assets/audio/vegetables/Potato.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Sweet Potato",
+            "portuguese": "Batata-doce",
+            "imagePath": "assets/images/vegetables/Sweet Potato.png",
+            "audioPath": "assets/audio/vegetables/Sweet Potato.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Pumpkin",
+            "portuguese": "Abóbora",
+            "imagePath": "assets/images/vegetables/Pumpkin.png",
+            "audioPath": "assets/audio/vegetables/Pumpkin.mp3"
+        },
+        {
+            "categoryName": "vegetables",
+            "word": "Corn",
+            "portuguese": "Milho",
+            "imagePath": "assets/images/vegetables/Corn.png",
+            "audioPath": "assets/audio/vegetables/Corn.mp3"
+        }
+    ],
+    "professions": [
+        {
+            "categoryName": "professions",
+            "word": "Accountant",
+            "portuguese": "Contabilista",
+            "imagePath": "assets/images/professions/Accountant.png",
+            "audioPath": "assets/audio/professions/Accountant.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Actor",
+            "portuguese": "Ator",
+            "imagePath": "assets/images/professions/Actor.png",
+            "audioPath": "assets/audio/professions/Actor.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Architect",
+            "portuguese": "Arquiteto",
+            "imagePath": "assets/images/professions/Architect.png",
+            "audioPath": "assets/audio/professions/Architect.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Artist",
+            "portuguese": "Artista",
+            "imagePath": "assets/images/professions/Artist.png",
+            "audioPath": "assets/audio/professions/Artist.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Baker",
+            "portuguese": "Padeiro",
+            "imagePath": "assets/images/professions/Baker.png",
+            "audioPath": "assets/audio/professions/Baker.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Barber",
+            "portuguese": "Barbeiro",
+            "imagePath": "assets/images/professions/Barber.png",
+            "audioPath": "assets/audio/professions/Barber.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Chef",
+            "portuguese": "Chefe de cozinha",
+            "imagePath": "assets/images/professions/Chef.png",
+            "audioPath": "assets/audio/professions/Chef.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Doctor",
+            "portuguese": "Médico",
+            "imagePath": "assets/images/professions/Doctor.png",
+            "audioPath": "assets/audio/professions/Doctor.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Farmer",
+            "portuguese": "Agricultor",
+            "imagePath": "assets/images/professions/Farmer.png",
+            "audioPath": "assets/audio/professions/Farmer.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Firefighter",
+            "portuguese": "Bombeiro",
+            "imagePath": "assets/images/professions/Firefighter.png",
+            "audioPath": "assets/audio/professions/Firefighter.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Lawyer",
+            "portuguese": "Advogado",
+            "imagePath": "assets/images/professions/Lawyer.png",
+            "audioPath": "assets/audio/professions/Lawyer.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Musician",
+            "portuguese": "Músico",
+            "imagePath": "assets/images/professions/Musician.png",
+            "audioPath": "assets/audio/professions/Musician.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Pharmacist",
+            "portuguese": "Farmacêutico",
+            "imagePath": "assets/images/professions/Pharmacist.png",
+            "audioPath": "assets/audio/professions/Pharmacist.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Pilot",
+            "portuguese": "Piloto",
+            "imagePath": "assets/images/professions/Pilot.png",
+            "audioPath": "assets/audio/professions/Pilot.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Police Officer",
+            "portuguese": "Policial",
+            "imagePath": "assets/images/professions/Police Officer.png",
+            "audioPath": "assets/audio/professions/Police Officer.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Teacher",
+            "portuguese": "Professor",
+            "imagePath": "assets/images/professions/Teacher.png",
+            "audioPath": "assets/audio/professions/Teacher.mp3"
+        },
+        {
+            "categoryName": "professions",
+            "word": "Writer",
+            "portuguese": "Escritor",
+            "imagePath": "assets/images/professions/Writer.png",
+            "audioPath": "assets/audio/professions/Writer.mp3"
+        }
+    ],
+    "kitchen_items": [
+        {
+            "categoryName": "kitchen_items",
+            "word": "Refrigerator",
+            "portuguese": "Geladeira",
+            "imagePath": "assets/images/kitchen_items/Refrigerator.png",
+            "audioPath": "assets/audio/kitchen_items/Refrigerator.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Microwave",
+            "portuguese": "Microondas",
+            "imagePath": "assets/images/kitchen_items/Microwave.png",
+            "audioPath": "assets/audio/kitchen_items/Microwave.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Stove",
+            "portuguese": "Fogão",
+            "imagePath": "assets/images/kitchen_items/Stove.png",
+            "audioPath": "assets/audio/kitchen_items/Stove.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Oven",
+            "portuguese": "Forno",
+            "imagePath": "assets/images/kitchen_items/Oven.png",
+            "audioPath": "assets/audio/kitchen_items/Oven.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Knife",
+            "portuguese": "Faca",
+            "imagePath": "assets/images/kitchen_items/Knife.png",
+            "audioPath": "assets/audio/kitchen_items/Knife.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Fork",
+            "portuguese": "Garfo",
+            "imagePath": "assets/images/kitchen_items/Fork.png",
+            "audioPath": "assets/audio/kitchen_items/Fork.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Spoon",
+            "portuguese": "Colher",
+            "imagePath": "assets/images/kitchen_items/Spoon.png",
+            "audioPath": "assets/audio/kitchen_items/Spoon.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Plate",
+            "portuguese": "Prato",
+            "imagePath": "assets/images/kitchen_items/Plate.png",
+            "audioPath": "assets/audio/kitchen_items/Plate.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Glass",
+            "portuguese": "Copo",
+            "imagePath": "assets/images/kitchen_items/Glass.png",
+            "audioPath": "assets/audio/kitchen_items/Glass.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Cup",
+            "portuguese": "Xícara",
+            "imagePath": "assets/images/kitchen_items/Cup.png",
+            "audioPath": "assets/audio/kitchen_items/Cup.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Pot",
+            "portuguese": "Panela",
+            "imagePath": "assets/images/kitchen_items/Pot.png",
+            "audioPath": "assets/audio/kitchen_items/Pot.mp3"
+        },
+        {
+            "categoryName": "kitchen_items",
+            "word": "Pan",
+            "portuguese": "Frigideira",
+            "imagePath": "assets/images/kitchen_items/Pan.png",
+            "audioPath": "assets/audio/kitchen_items/Pan.mp3"
+        }
+    ],
+    "household_items": [
+        {
+            "categoryName": "household_items",
+            "word": "Chair",
+            "portuguese": "Cadeira",
+            "imagePath": "assets/images/household_items/Chair.png",
+            "audioPath": "assets/audio/household_items/Chair.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Table",
+            "portuguese": "Mesa",
+            "imagePath": "assets/images/household_items/Table.png",
+            "audioPath": "assets/audio/household_items/Table.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Sofa",
+            "portuguese": "Sofá",
+            "imagePath": "assets/images/household_items/Sofa.png",
+            "audioPath": "assets/audio/household_items/Sofa.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Bed",
+            "portuguese": "Cama",
+            "imagePath": "assets/images/household_items/Bed.png",
+            "audioPath": "assets/audio/household_items/Bed.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Pillow",
+            "portuguese": "Almofada",
+            "imagePath": "assets/images/household_items/Pillow.png",
+            "audioPath": "assets/audio/household_items/Pillow.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Blanket",
+            "portuguese": "Cobertor",
+            "imagePath": "assets/images/household_items/Blanket.png",
+            "audioPath": "assets/audio/household_items/Blanket.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Bookshelf",
+            "portuguese": "Estante",
+            "imagePath": "assets/images/household_items/Bookshelf.png",
+            "audioPath": "assets/audio/household_items/Bookshelf.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Desk",
+            "portuguese": "Escrivaninha",
+            "imagePath": "assets/images/household_items/Desk.png",
+            "audioPath": "assets/audio/household_items/Desk.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Lamp",
+            "portuguese": "Lâmpada",
+            "imagePath": "assets/images/household_items/Lamp.png",
+            "audioPath": "assets/audio/household_items/Lamp.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Curtains",
+            "portuguese": "Cortinas",
+            "imagePath": "assets/images/household_items/Curtains.png",
+            "audioPath": "assets/audio/household_items/Curtains.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Television",
+            "portuguese": "Televisão",
+            "imagePath": "assets/images/household_items/Television.png",
+            "audioPath": "assets/audio/household_items/Television.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Clock",
+            "portuguese": "Relógio",
+            "imagePath": "assets/images/household_items/Clock.png",
+            "audioPath": "assets/audio/household_items/Clock.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Car",
+            "portuguese": "Carro",
+            "imagePath": "assets/images/household_items/Car.png",
+            "audioPath": "assets/audio/household_items/Car.mp3"
+        },
+        {
+            "categoryName": "household_items",
+            "word": "Book",
+            "portuguese": "Livro",
+            "imagePath": "assets/images/household_items/Book.png",
+            "audioPath": "assets/audio/household_items/Book.mp3"
+        }
+    ],
+    "face": [
+        {
+            "categoryName": "face",
+            "word": "Head",
+            "portuguese": "Cabeça",
+            "imagePath": "assets/images/face/Head.png",
+            "audioPath": "assets/audio/face/Head.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Hair",
+            "portuguese": "Cabelo",
+            "imagePath": "assets/images/face/Hair.png",
+            "audioPath": "assets/audio/face/Hair.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Eye",
+            "portuguese": "Olho",
+            "imagePath": "assets/images/face/Eye.png",
+            "audioPath": "assets/audio/face/Eye.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Ear",
+            "portuguese": "Orelha",
+            "imagePath": "assets/images/face/Ear.png",
+            "audioPath": "assets/audio/face/Ear.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Nose",
+            "portuguese": "Nariz",
+            "imagePath": "assets/images/face/Nose.png",
+            "audioPath": "assets/audio/face/Nose.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Mouth",
+            "portuguese": "Boca",
+            "imagePath": "assets/images/face/Mouth.png",
+            "audioPath": "assets/audio/face/Mouth.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Tooth",
+            "portuguese": "Dente",
+            "imagePath": "assets/images/face/Tooth.png",
+            "audioPath": "assets/audio/face/Tooth.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Tongue",
+            "portuguese": "Língua",
+            "imagePath": "assets/images/face/Tongue.png",
+            "audioPath": "assets/audio/face/Tongue.mp3"
+        },
+        {
+            "categoryName": "face",
+            "word": "Neck",
+            "portuguese": "Pescoço",
+            "imagePath": "assets/images/face/Neck.png",
+            "audioPath": "assets/audio/face/Neck.mp3"
+        }
+    ],
+    "body": [
+        {
+            "categoryName": "body",
+            "word": "Arm",
+            "portuguese": "Braço",
+            "imagePath": "assets/images/body/Arm.png",
+            "audioPath": "assets/audio/body/Arm.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Elbow",
+            "portuguese": "Cotovelo",
+            "imagePath": "assets/images/body/Elbow.png",
+            "audioPath": "assets/audio/body/Elbow.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Hand",
+            "portuguese": "Mão",
+            "imagePath": "assets/images/body/Hand.png",
+            "audioPath": "assets/audio/body/Hand.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Finger",
+            "portuguese": "Dedo",
+            "imagePath": "assets/images/body/Finger.png",
+            "audioPath": "assets/audio/body/Finger.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Leg",
+            "portuguese": "Perna",
+            "imagePath": "assets/images/body/Leg.png",
+            "audioPath": "assets/audio/body/Leg.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Knee",
+            "portuguese": "Joelho",
+            "imagePath": "assets/images/body/Knee.png",
+            "audioPath": "assets/audio/body/Knee.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Foot",
+            "portuguese": "Pé",
+            "imagePath": "assets/images/body/Foot.png",
+            "audioPath": "assets/audio/body/Foot.mp3"
+        },
+        {
+            "categoryName": "body",
+            "word": "Toe",
+            "portuguese": "Dedo do pé",
+            "imagePath": "assets/images/body/Toe.png",
+            "audioPath": "assets/audio/body/Toe.mp3"
+        }
+    ],
+    "everyday_activities": [
+        {
+            "categoryName": "everyday_activities",
+            "word": "To wake up",
+            "portuguese": "Acordar",
+            "imagePath": "assets/images/everyday_activities/To wake up.png",
+            "audioPath": "assets/audio/everyday_activities/To wake up.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To get up",
+            "portuguese": "Levantar se",
+            "imagePath": "assets/images/everyday_activities/To get up.png",
+            "audioPath": "assets/audio/everyday_activities/To get up.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To take a shower",
+            "portuguese": "Tomar banho",
+            "imagePath": "assets/images/everyday_activities/To take a shower.png",
+            "audioPath": "assets/audio/everyday_activities/To take a shower.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To brush teeth",
+            "portuguese": "Escovar os dentes",
+            "imagePath": "assets/images/everyday_activities/To brush teeth.png",
+            "audioPath": "assets/audio/everyday_activities/To brush teeth.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To get dressed",
+            "portuguese": "Vestir se",
+            "imagePath": "assets/images/everyday_activities/To get dressed.png",
+            "audioPath": "assets/audio/everyday_activities/To get dressed.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To have breakfast",
+            "portuguese": "Tomar pequeno-almoço",
+            "imagePath": "assets/images/everyday_activities/To have breakfast.png",
+            "audioPath": "assets/audio/everyday_activities/To have breakfast.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To go to work",
+            "portuguese": "Ir para o trabalho",
+            "imagePath": "assets/images/everyday_activities/To go to work.png",
+            "audioPath": "assets/audio/everyday_activities/To go to work.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To go to school",
+            "portuguese": "Ir para a escola",
+            "imagePath": "assets/images/everyday_activities/To go to school.png",
+            "audioPath": "assets/audio/everyday_activities/To go to school.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To study",
+            "portuguese": "Estudar",
+            "imagePath": "assets/images/everyday_activities/To study.png",
+            "audioPath": "assets/audio/everyday_activities/To study.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To have lunch",
+            "portuguese": "Almoçar",
+            "imagePath": "assets/images/everyday_activities/To have lunch.png",
+            "audioPath": "assets/audio/everyday_activities/To have lunch.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To exercise",
+            "portuguese": "Fazer exercício",
+            "imagePath": "assets/images/everyday_activities/To exercise.png",
+            "audioPath": "assets/audio/everyday_activities/To exercise.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To cook",
+            "portuguese": "Cozinhar",
+            "imagePath": "assets/images/everyday_activities/To cook.png",
+            "audioPath": "assets/audio/everyday_activities/To cook.mp3"
+        },
+        {
+            "categoryName": "everyday_activities",
+            "word": "To have dinner",
+            "portuguese": "Jantar",
+            "imagePath": "assets/images/everyday_activities/To have dinner.png",
+            "audioPath": "assets/audio/everyday_activities/To have dinner.mp3"
+        }
+    ],
+    "common_actions": [
+        {
+            "categoryName": "common_actions",
+            "word": "To eat",
+            "portuguese": "Comer",
+            "imagePath": "assets/images/common_actions/To eat.png",
+            "audioPath": "assets/audio/common_actions/To eat.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To drink",
+            "portuguese": "Beber",
+            "imagePath": "assets/images/common_actions/To drink.png",
+            "audioPath": "assets/audio/common_actions/To drink.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To sleep",
+            "portuguese": "Dormir",
+            "imagePath": "assets/images/common_actions/To sleep.png",
+            "audioPath": "assets/audio/common_actions/To sleep.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To read",
+            "portuguese": "Ler",
+            "imagePath": "assets/images/common_actions/To read.png",
+            "audioPath": "assets/audio/common_actions/To read.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To write",
+            "portuguese": "Escrever",
+            "imagePath": "assets/images/common_actions/To write.png",
+            "audioPath": "assets/audio/common_actions/To write.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To walk",
+            "portuguese": "Andar",
+            "imagePath": "assets/images/common_actions/To walk.png",
+            "audioPath": "assets/audio/common_actions/To walk.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To run",
+            "portuguese": "Correr",
+            "imagePath": "assets/images/common_actions/To run.png",
+            "audioPath": "assets/audio/common_actions/To run.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To speak",
+            "portuguese": "Falar",
+            "imagePath": "assets/images/common_actions/To speak.png",
+            "audioPath": "assets/audio/common_actions/To speak.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To listen",
+            "portuguese": "Ouvir",
+            "imagePath": "assets/images/common_actions/To listen.png",
+            "audioPath": "assets/audio/common_actions/To listen.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To go",
+            "portuguese": "Ir",
+            "imagePath": "assets/images/common_actions/To go.png",
+            "audioPath": "assets/audio/common_actions/To go.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To come",
+            "portuguese": "Vir",
+            "imagePath": "assets/images/common_actions/To come.png",
+            "audioPath": "assets/audio/common_actions/To come.mp3"
+        },
+        {
+            "categoryName": "common_actions",
+            "word": "To relax",
+            "portuguese": "Relaxar",
+            "imagePath": "assets/images/common_actions/To relax.png",
+            "audioPath": "assets/audio/common_actions/To relax.mp3"
+        }
+    ]
+}

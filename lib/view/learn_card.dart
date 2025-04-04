@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-import 'package:mozambique_app/model/image_button.dart';
+import 'package:mozambique_app/model/vocab.dart';
 
 class LearnCard extends StatefulWidget {
-  final ImageButton imageButton;
+  final VocabWord imageButton;
 
   const LearnCard({
     super.key,
@@ -16,7 +16,7 @@ class LearnCard extends StatefulWidget {
 }
 
 class _LearnCardState extends State<LearnCard> {
-  late ImageButton _imageButton;
+  late VocabWord _imageButton;
   late String _img;
   late String _title;
   late String _audio;
@@ -27,9 +27,9 @@ class _LearnCardState extends State<LearnCard> {
     super.initState();
 
     _imageButton = widget.imageButton;
-    _img = _imageButton.img;
-    _title = _imageButton.word;
-    _audio = _imageButton.audio;
+    _img = _imageButton.imagePath;
+    _title = _imageButton.portuguese;
+    _audio = _imageButton.audioPath;
 
     if (_audioPlayer.audioCache.prefix != '') { // Clear prefix 
       _audioPlayer.audioCache.prefix = '';
