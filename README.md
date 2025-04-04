@@ -25,3 +25,8 @@ This offline-first Flutter application uses Hive to store its data locally, and 
 /lib/viewmodel          The bridge between model & view: functions that use the repositories to update the views
 /lib/assets             The misc data, image, and audio files that will be intitially bundled with the project to ensure the users have access even    
                         without internet connection in the beginning; syncing with Firestore will update these
+
+### Firebase Firestore:
+There are 2 important steps that are needed to allow the app to fetch from Firestore as you debug:
+- Place the Firebase Admin SDK private key (`mozambique-app-firebase-adminsdk-fbsvc-434948f8b5.json`) in the root of the folder
+- Place the Google Services SDK (`google-services.json`) in `android/app`
