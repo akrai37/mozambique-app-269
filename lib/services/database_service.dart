@@ -1,5 +1,8 @@
+import 'dart:convert';
+import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hive/hive.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';
@@ -19,6 +22,16 @@ class DatabaseService {
     }
   }
 
+  Future<Uint8List> fetchMedia(String url) async {
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      return response.bodyBytes;
+    } else {
+      throw Exception('Failed to load media from $url');
+    }
+  }
+
   // Sync content from Firestore to Hive
   Future<void> syncContent() async {
     await _syncHomeWords();
@@ -34,15 +47,22 @@ class DatabaseService {
       if (snapshot.exists) {
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
-        List<HomeWord> homeWords = data['home_cards'].map<HomeWord>((item) {
+        List<HomeWord> homeWords = await Future.wait(data['home_cards'].map<Future<HomeWord>>((item) async {
+          if (item['imageBase64'] != null) {
+            // Decode base64 image if available
+            item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
+          }
+          Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
+
           return HomeWord(
             word: item['word'],
             portuguese: item['portuguese'],
             categoryName: item['categoryName'],
+            imageBytes: imageBytes,
             imagePath: item['imagePath'],
             type: item['type'],
           );
-        }).toList();
+        }).toList());
 
         // Store the data in Hive
         await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
@@ -60,15 +80,29 @@ class DatabaseService {
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
         for (String category in data.keys) {
-          List<VocabWord> vocabWords = data[category].map<VocabWord>((item) {
+          List<VocabWord> vocabWords = await Future.wait(data[category].map<Future<VocabWord>>((item) async {
+            if (item['imageBase64'] != null) {
+              // Decode base64 image if available
+              item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
+            }
+            if (item['audioBase64'] != null) {
+              // Decode base64 audio if available
+              item['audioBase64'] = item['audioBase64'].replaceAll(RegExp(r'^data.*,'), '');
+            }
+
+            Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
+            Uint8List audioBytes = item['audioBase64'] != null ? base64Decode(item['audioBase64']) : await(fetchMedia(item['audioPath']));
+
             return VocabWord(
               categoryName: item['categoryName'],
               word: item['word'],
               portuguese: item['portuguese'],
+              imageBytes: imageBytes,
+              audioBytes: audioBytes,
               imagePath: item['imagePath'],
               audioPath: item['audioPath'],
             );
-          }).toList();
+          }).toList());
 
           // Store the data in Hive
           await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
@@ -142,7 +176,7 @@ class DatabaseService {
 
         print('Category: $key');
         for (VocabWord word in vocabWords) {
-          print('Word: ${word.word}, Portuguese: ${word.portuguese}');
+          print('Word: ${word.word}, Portuguese: ${word.portuguese}, ImageBytes: ${word.imageBytes}');
         }
       }
     }

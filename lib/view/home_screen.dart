@@ -33,10 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _filteredHomeWords = _homeWords; // Initialize filtered words with all words
 
-    if (_homeWords.isNotEmpty) {
-      for (HomeWord homeWord in _homeWords) {
-        await precacheImage(AssetImage(homeWord.imagePath), context);
-      }
+    // Preload images
+    for (HomeWord homeWord in _homeWords) {
+      await precacheImage(MemoryImage(homeWord.imageBytes), context);
     }
 
     // Load all vocab words from Hive (for search functionality)
