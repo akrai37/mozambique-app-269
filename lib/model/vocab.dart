@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:hive/hive.dart';
 
 part 'vocab.g.dart'; //name of file that will be generated
@@ -14,15 +15,23 @@ class VocabWord extends HiveObject{
   final String portuguese;
 
   @HiveField(3)
-  final String imagePath;
+  Uint8List imageBytes;
 
   @HiveField(4)
+  Uint8List audioBytes;
+
+  @HiveField(5)
+  final String imagePath;
+
+  @HiveField(6)
   final String audioPath;
 
   VocabWord({
     required this.categoryName,
     required this.word, 
     required this.portuguese, 
+    required this.imageBytes,
+    required this.audioBytes,
     required this.imagePath, 
     required this.audioPath,
   });
@@ -33,6 +42,8 @@ class VocabWord extends HiveObject{
       categoryName: json['categoryName'] as String,
       word: json['word'] as String,
       portuguese: json['portuguese'] as String,
+      imageBytes: json['imageBytes'] as Uint8List,
+      audioBytes: json['audioBytes'] as Uint8List,
       imagePath: json['imagePath'] as String,
       audioPath: json['audioPath'] as String,
     );
@@ -44,6 +55,8 @@ class VocabWord extends HiveObject{
       'categoryName': categoryName,
       'word': word,
       'portuguese': portuguese,
+      'imageBytes': imageBytes,
+      'audioBytes': audioBytes,
       'imagePath': imagePath,
       'audioPath': audioPath,
     };

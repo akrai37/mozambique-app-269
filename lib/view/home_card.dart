@@ -37,11 +37,16 @@ class HomeCard extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image(
-                  image: AssetImage(homeWord.imagePath),
-                  width: 200,
-                  height: 200,
-                ),
+                child: homeWord.imageBytes.isNotEmpty
+                  ? Image.memory(
+                      homeWord.imageBytes,
+                      height: 200,
+                      width: 200,
+                    )
+                  : const Icon(
+                      Icons.error,
+                      size: 200,
+                    ),
               ),
               // Text(
               //   icon,

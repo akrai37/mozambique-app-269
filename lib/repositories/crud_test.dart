@@ -1,6 +1,8 @@
-import '../model/vocab.dart';
-import 'package:hive/hive.dart';
 import 'dart:developer';
+import 'package:flutter/services.dart';
+import 'package:hive/hive.dart';
+
+import 'package:mozambique_app/model/vocab.dart';
 
 Future<void> performCrudOperations(Box<VocabWord> box) async {
   await box.delete("Vermehlo");
@@ -14,7 +16,9 @@ Future<void> performCrudOperations(Box<VocabWord> box) async {
   var word1 = VocabWord(
     categoryName: "colors", 
     word: "Green", 
-    portuguese: "Vermehlo", 
+    portuguese: "Vermehlo",
+    imageBytes: Uint8List(0),
+    audioBytes: Uint8List(0),
     imagePath: "assets/images/colors/Red.png", 
     audioPath: "assets/audio/colors/Red.mp3",
   );
@@ -25,6 +29,8 @@ Future<void> performCrudOperations(Box<VocabWord> box) async {
     categoryName: "colors", 
     word: "Red", 
     portuguese: "Verde", 
+    imageBytes: Uint8List(0),
+    audioBytes: Uint8List(0),
     imagePath: "assets/images/colors/Red.png", 
     audioPath: "assets/audio/colors/Red.mp3"
   );
@@ -40,6 +46,8 @@ Future<void> performCrudOperations(Box<VocabWord> box) async {
     categoryName: "colors", 
     word: "Green", 
     portuguese: "Verde", 
+    imageBytes: Uint8List(0),
+    audioBytes: Uint8List(0),
     imagePath: "assets/images/colors/Green.png", 
     audioPath: "assets/audio/colors/Green.mp3"
   );
@@ -50,6 +58,8 @@ Future<void> performCrudOperations(Box<VocabWord> box) async {
     categoryName: "colors", 
     word: "Red", 
     portuguese: "Vermehlo", 
+    imageBytes: Uint8List(0),
+    audioBytes: Uint8List(0),
     imagePath: "assets/images/colors/Red.png", 
     audioPath: "assets/audio/colors/Red.mp3"
   );

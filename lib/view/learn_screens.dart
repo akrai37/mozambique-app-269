@@ -54,7 +54,7 @@ class _LearnScreensState extends State<LearnScreens> {
 
         // Preload images
         for (VocabWord imageButton in _imageButtons) {
-          await precacheImage(AssetImage(imageButton.imagePath), context);
+          await precacheImage(MemoryImage(imageButton.imageBytes), context);
         }
       }
     } catch (error) {
