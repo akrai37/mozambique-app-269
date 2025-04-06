@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/view/learn_card.dart';
+import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/vocab.dart';
 
@@ -21,6 +22,7 @@ class LearnScreens extends StatefulWidget {
 
 class _LearnScreensState extends State<LearnScreens> {
   late List<VocabWord> _imageButtons = [];
+  late List<VocabWord> _filteredImageButtons = [];
   late Future<void> _loadingFuture;
   final DatabaseService _databaseService = DatabaseService();
 
@@ -52,6 +54,8 @@ class _LearnScreensState extends State<LearnScreens> {
       if (localData != null) {
         _imageButtons = await fetchVocabCards(widget.tag);
 
+        _filteredImageButtons = _imageButtons; // Initialize filtered words with all words
+
         // Preload images
         for (VocabWord imageButton in _imageButtons) {
           await precacheImage(MemoryImage(imageButton.imageBytes), context);
@@ -59,6 +63,20 @@ class _LearnScreensState extends State<LearnScreens> {
       }
     } catch (error) {
       print("Error loading data from Hive: $error");
+    }
+  }
+
+  void _onSearchChanged(String searchText) {
+    if (searchText.isEmpty) {
+      setState(() {
+        _filteredImageButtons = _imageButtons; // Reset to all words if search is empty
+      });
+    } else {
+      setState(() {
+        _filteredImageButtons = _imageButtons.where((imageButton) {
+          return imageButton.portuguese.toLowerCase().contains(searchText.trim().toLowerCase());
+        }).toList();
+      });
     }
   }
 
@@ -80,60 +98,7 @@ class _LearnScreensState extends State<LearnScreens> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 25.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 10,
-                  children: [
-                    const Text(
-                      'DIFF EDUCATION',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFFE84C3D),
-                      ),
-                    ),
-                    Expanded( // ensures the TextField takes up the remaining space
-                      child: TextField(
-                        decoration: const InputDecoration(
-                          hintText: 'Search',
-                          hintStyle: TextStyle(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFF95A5A5),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Color(0xFF95A5A5),
-                          ),
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                            side: const BorderSide(
-                              color: Color(0xFF2D3E50),
-                            ),
-                          ),
-                        ),
-                      ),
-                      child: const Text(
-                        'Practice',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF2D3E50),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+              Navbar(onSearchChanged: _onSearchChanged),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                 child: Row(
@@ -157,7 +122,7 @@ class _LearnScreensState extends State<LearnScreens> {
                     direction: Axis.horizontal,
                     spacing: 10,
                     runSpacing: 10,
-                    children: _imageButtons.map((imageButton) {
+                    children: _filteredImageButtons.map((imageButton) {
                       return LearnCard(imageButton: imageButton);
                     }).toList(),
                   ),
