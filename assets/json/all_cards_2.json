@@ -1,0 +1,179 @@
+{
+    "vegetables": [
+        {
+            "word": "Tomate",
+            "img": "assets/images/vegetables/Tomato.png",
+            "audio": "assets/audio/vegetables/Tomato.mp3"
+        },
+        {
+            "word": "Alface",
+            "img": "assets/images/vegetables/Lettuce.png",
+            "audio": "assets/audio/vegetables/Lettuce.mp3"
+        },
+        {
+            "word": "Pepino",
+            "img": "assets/images/vegetables/Cucumber.png",
+            "audio": "assets/audio/vegetables/Cucumber.mp3"
+        },
+        {
+            "word": "Cenoura",
+            "img": "assets/images/vegetables/Carrot.png",
+            "audio": "assets/audio/vegetables/Carrot.mp3"
+        },
+        {
+            "word": "Mandioca",
+            "img": "assets/images/vegetables/Yuca.png",
+            "audio": "assets/audio/vegetables/Yuca.mp3"
+        },
+        {
+            "word": "Batata",
+            "img": "assets/images/vegetables/Potato.png",
+            "audio": "assets/audio/vegetables/Potato.mp3"
+        },
+        {
+            "word": "Batata-doce",
+            "img": "assets/images/vegetables/Sweet Potato.png",
+            "audio": "assets/audio/vegetables/Sweet Potato.mp3"
+        },
+        {
+            "word": "Abóbora",
+            "img": "assets/images/vegetables/Pumpkin.png",
+            "audio": "assets/audio/vegetables/Pumpkin.mp3"
+        },
+        {
+            "word": "Milho",
+            "img": "assets/images/vegetables/Corn.png",
+            "audio": "assets/audio/vegetables/Corn.mp3"
+        }
+    ],
+    "household_items": [
+        {
+            "word": "Sofá",
+            "img": "assets/images/household_items/Sofa.png",
+            "audio": "assets/audio/household_items/Sofa.mp3"
+        },
+        {
+            "word": "Almofada",
+            "img": "assets/images/household_items/Pillow.png",
+            "audio": "assets/audio/household_items/Pillow.mp3"
+        },
+        {
+            "word": "Cortinas",
+            "img": "assets/images/household_items/Curtains.png",
+            "audio": "assets/audio/household_items/Curtains.mp3"
+        }
+    ],
+    "face": [
+        {
+            "word": "Cabeça",
+            "img": "assets/images/face/Head.png",
+            "audio": "assets/audio/face/Head.mp3"
+        },
+        {
+            "word": "Orelha",
+            "img": "assets/images/face/Ear.png",
+            "audio": "assets/audio/face/Ear.mp3"
+        }
+    ],
+    "body": [
+        {
+            "word": "Mão",
+            "img": "assets/images/body/Hand.png",
+            "audio": "assets/audio/body/Hand.mp3"
+        },
+        {
+            "word": "Perna",
+            "img": "assets/images/body/Leg.png",
+            "audio": "assets/audio/body/Leg.mp3"
+        },
+        {
+            "word": "Joelho",
+            "img": "assets/images/body/Knee.png",
+            "audio": "assets/audio/body/Knee.mp3"
+        },
+        {
+            "word": "Pé",
+            "img": "assets/images/body/Foot.png",
+            "audio": "assets/audio/body/Foot.mp3"
+        },
+        {
+            "word": "Dedo do pé",
+            "img": "assets/images/body/Toe.png",
+            "audio": "assets/audio/body/Toe.mp3"
+        }
+    ],
+    "everyday_activities": [
+        {
+            "word": "Levantar se",
+            "img": "assets/images/everyday_activities/To get up.png",
+            "audio": "assets/audio/everyday_activities/To get up.mp3"
+        },
+        {
+            "word": "Tomar banho",
+            "img": "assets/images/everyday_activities/To take a shower.png",
+            "audio": "assets/audio/everyday_activities/To take a shower.mp3"
+        },
+        {
+            "word": "Vestir se",
+            "img": "assets/images/everyday_activities/To get dressed.png",
+            "audio": "assets/audio/everyday_activities/To get dressed.mp3"
+        },
+        {
+            "word": "Estudar",
+            "img": "assets/images/everyday_activities/To study.png",
+            "audio": "assets/audio/everyday_activities/To study.mp3"
+        },
+        {
+            "word": "Fazer exercício",
+            "img": "assets/images/everyday_activities/To exercise.png",
+            "audio": "assets/audio/everyday_activities/To exercise.mp3"
+        },
+        {
+            "word": "Cozinhar",
+            "img": "assets/images/everyday_activities/To cook.png",
+            "audio": "assets/audio/everyday_activities/To cook.mp3"
+        },
+        {
+            "word": "Jantar",
+            "img": "assets/images/everyday_activities/To have dinner.png",
+            "audio": "assets/audio/everyday_activities/To have dinner.mp3"
+        }
+    ],
+    "common_actions": [
+        {
+            "word": "Comer",
+            "img": "assets/images/common_actions/To eat.png",
+            "audio": "assets/audio/common_actions/To eat.mp3"
+        },
+        {
+            "word": "Beber",
+            "img": "assets/images/common_actions/To drink.png",
+            "audio": "assets/audio/common_actions/To drink.mp3"
+        },
+        {
+            "word": "Dormir",
+            "img": "assets/images/common_actions/To sleep.png",
+            "audio": "assets/audio/common_actions/To sleep.mp3"
+        },
+        {
+            "word": "Ler",
+            "img": "assets/images/common_actions/To read.png",
+            "audio": "assets/audio/common_actions/To read.mp3"
+        },
+        {
+            "word": "Andar",
+            "img": "assets/images/common_actions/To walk.png",
+            "audio": "assets/audio/common_actions/To walk.mp3"
+        },
+        {
+            "word": "Correr",
+            "img": "assets/images/common_actions/To run.png",
+            "audio": "assets/audio/common_actions/To run.mp3"
+        },
+        {
+            "word": "Vir",
+            "img": "assets/images/common_actions/To come.png",
+            "audio": "assets/audio/common_actions/To come.mp3"
+        }
+    ]
+}
