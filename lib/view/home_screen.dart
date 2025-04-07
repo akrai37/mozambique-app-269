@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadAllVocabWords() async {
-    await _databaseService.initializeDatabase(); // Ensure the database is initialized
+    await _databaseService.initializeDatabase(context); // Ensure the database is initialized
     _vocabWordsMap = _databaseService.getAllPortugueseWords(); // Fetch all Portuguese vocab words
   }
 

@@ -59,7 +59,7 @@ class _NavbarState extends State<Navbar> {
           ),
           TextButton( // Using as Update/Sync button (for now)
             onPressed: () async {
-              await _databaseService.syncContent();
+              await _databaseService.syncContent(context: context);
             },
             style: ButtonStyle(
               shape: WidgetStateProperty.all(

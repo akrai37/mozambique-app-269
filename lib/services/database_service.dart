@@ -1,11 +1,15 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';
+import 'package:mozambique_app/view/no_data_screen.dart';
 
 class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -13,10 +17,10 @@ class DatabaseService {
   final Box<List> _vocabWordBox = Hive.box('vocab_words'); // Opened as List, not List<VocabWord>
 
   // Initialize the database and check if data exists in Hive
-  Future<void> initializeDatabase() async {
+  Future<void> initializeDatabase(BuildContext context) async {
     if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty) {
       print("Hive database is empty. Syncing with Firestore...");
-      await syncContent();
+      await syncContent(context: context);
     } else {
       print("Hive database has data. No need to sync.");
     }
@@ -32,8 +36,65 @@ class DatabaseService {
     }
   }
 
+  // Check internet connectivity
+  Future<bool> _checkInternetConnection() async {
+    final connectivityResult = await Connectivity().checkConnectivity();
+    
+    if (connectivityResult[0] == ConnectivityResult.none) {
+      return false;
+    } else {
+      try {
+        final result = await InternetAddress.lookup('google.com');
+        return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+      } on SocketException catch (_) {
+        return false;
+      }
+    }
+  }
+
+  void _showNoConnectionAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('No Internet Connection'),
+          content: const Text('Please check your internet connection and try again.'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   // Sync content from Firestore to Hive
-  Future<void> syncContent() async {
+  Future<void> syncContent({BuildContext? context}) async {
+    // Check internet connection
+    bool isConnected = await _checkInternetConnection();
+
+    if (!isConnected) {
+      print("No internet connection. Cannot sync data.");
+
+      
+      if (context != null) { 
+        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty) { // If there's no data, show NoDataScreen
+          Navigator.pushReplacement( // Navigate to NoDataScreen and remove all previous routes
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NoDataScreen(),
+            ),
+          );
+        } else { // Only show alert if data is already present in Hive
+          _showNoConnectionAlert(context);
+        }
+      }
+
+      return;
+    }
+
     await _syncHomeWords();
     await _syncVocabWords();
 
