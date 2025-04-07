@@ -5,14 +5,23 @@ A new Flutter project.
 ### Lib File Hierarchy
 This offline-first Flutter application uses Hive to store its data locally, and Firestore to sync updates.
 
-`/lib/model`: The blueprints for Hive objects (ie. category, vocab, q&a, quiz, conversation)
+`lib/model/`: The blueprints for Hive objects (ie. category, vocab, q&a, quiz, conversation)
 - To generate the *.g.dart files, run ```dart run build_runner build --delete-conflicting-outputs``` in terminal (if fields not updating in generated files, mark each field as required in constructor)
 
-`/lib/repositories`: The functions that update/retrieve the Hive data directly
+`lib/repositories/`: The functions that update/retrieve the Hive data directly
 
-`/lib/view_model`: The bridge between model & view: functions that use the repositories to update the views
+`lib/scripts/`: The scripts used to easily perform tasks at once (Check **Scripts** section for instructions)
+- `convertBase64ToJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
+- `convertToBase64inJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
+- `JSON2Firestore.js`: Uploads the JSON files to Firestore
+- `mozambique-fy.js`: Converts the spreadsheet to JSON files
+- `vocab2audio.js`: Converts the vocab words to audio files using tts2mp3.com API
 
-`/lib/assets`: **Deprecated**
+`lib/services/`: The functions that retrieve from the Firestore data and sync with the Hive data
+
+`lib/view/`: The UI of the app
+
+`lib/view_model`: The bridge between model & view: functions that use the repositories to update the views
 
 ### Firebase Firestore:
 There are 2 important steps that are needed to allow the app to fetch from Firestore as you debug:
@@ -20,9 +29,10 @@ There are 2 important steps that are needed to allow the app to fetch from Fires
 - Place the Google Services SDK (`google-services.json`) in `android/app`
 
 ### Firebase Hosting
-`npm install -g firebase-tools` - installs a Firebase CLI
-
-`firebase deploy` - deploy site to Firebase Hosting
+- `npm install -g firebase-tools` - installs a Firebase CLI
+- `firebase deploy` - deploy site to Firebase Hosting
+- Hosted website link: `https://mozambique-app.web.app/`
+- The media files are hosted in `public/images/` and `public/audio/` folders
 
 ### Steps For Adding New Media
 1. Add images/audio to their respective folder inside `public/`
