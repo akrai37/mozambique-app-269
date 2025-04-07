@@ -54,7 +54,7 @@ There are 2 important steps that are needed to allow the app to fetch from Fires
 3. Modify JSON input file paths (`jsonFilePath` variables)
 4. Run `node convertToBase64inJSON.js`. The input JSON files should now be modified with the new base64 strings.
 
-### (JSON2Firestore.js)
+### Writing Card Data to Firestore (JSON2Firestore.js)
 1. Make sure the firebase library is installed (refer to **Installing Necessary Libraries**)
 2. **Warning**: You may have to add `"type": "module",` in package.json to run this, but try without first
 3. Modify JSON input file paths (`vocabWordsJson` and `homeCardsJson` variables)
