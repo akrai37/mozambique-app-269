@@ -104,7 +104,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     spacing: 10,
                     runSpacing: 10,
                     children: _filteredHomeWords.map((homeWord) {
-                      return HomeCard(homeWord: homeWord);
+                        return HomeCard(
+                          key: ValueKey(homeWord.portuguese), // Use a unique key for each card
+                          homeWord: homeWord,
+                        );
                     }).toList(),
                   ),
                 ),

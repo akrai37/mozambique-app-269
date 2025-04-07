@@ -50,7 +50,7 @@ class _NavbarState extends State<Navbar> {
               ),
               onChanged: (value) {
                 setState(() {
-                  _searchText = value;
+                  _searchText = value.trim();
                 });
 
                 widget.onSearchChanged(_searchText);

@@ -1,7 +1,3 @@
-import 'package:flutter/services.dart' show rootBundle;
-
-import 'dart:convert' show json;
-
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';

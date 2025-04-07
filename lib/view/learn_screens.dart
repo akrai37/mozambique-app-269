@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/view/learn_card.dart';
 import 'package:mozambique_app/view/navbar.dart';
-import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/vocab.dart';
 
 class LearnScreens extends StatefulWidget {
@@ -24,7 +23,6 @@ class _LearnScreensState extends State<LearnScreens> {
   late List<VocabWord> _imageButtons = [];
   late List<VocabWord> _filteredImageButtons = [];
   late Future<void> _loadingFuture;
-  final DatabaseService _databaseService = DatabaseService();
 
   @override
   void initState() {
@@ -34,8 +32,6 @@ class _LearnScreensState extends State<LearnScreens> {
   }
 
   Future<void> _loadContent() async {
-    List<VocabWord>? localData = _databaseService.getVocabWords(widget.tag);
-
     /* // This fetches from the local JSON file
     try {
       _imageButtons = await fetchJSONVocabCards(widget.tag);
@@ -51,15 +47,13 @@ class _LearnScreensState extends State<LearnScreens> {
 
     // This fetches from the local Hive database
     try {
-      if (localData != null) {
-        _imageButtons = await fetchVocabCards(widget.tag);
+      _imageButtons = await fetchVocabCards(widget.tag);
 
-        _filteredImageButtons = _imageButtons; // Initialize filtered words with all words
+      _filteredImageButtons = _imageButtons; // Initialize filtered words with all words
 
-        // Preload images
-        for (VocabWord imageButton in _imageButtons) {
-          await precacheImage(MemoryImage(imageButton.imageBytes), context);
-        }
+      // Preload images
+      for (VocabWord imageButton in _imageButtons) {
+        await precacheImage(MemoryImage(imageButton.imageBytes), context);
       }
     } catch (error) {
       print("Error loading data from Hive: $error");
@@ -67,17 +61,15 @@ class _LearnScreensState extends State<LearnScreens> {
   }
 
   void _onSearchChanged(String searchText) {
-    if (searchText.isEmpty) {
-      setState(() {
+    setState(() {
+      if (searchText.isEmpty) {
         _filteredImageButtons = _imageButtons; // Reset to all words if search is empty
-      });
-    } else {
-      setState(() {
+      } else {
         _filteredImageButtons = _imageButtons.where((imageButton) {
-          return imageButton.portuguese.toLowerCase().contains(searchText.trim().toLowerCase());
+          return imageButton.portuguese.toLowerCase().contains(searchText.toLowerCase());
         }).toList();
-      });
-    }
+      }
+    });
   }
 
   @override
@@ -123,7 +115,10 @@ class _LearnScreensState extends State<LearnScreens> {
                     spacing: 10,
                     runSpacing: 10,
                     children: _filteredImageButtons.map((imageButton) {
-                      return LearnCard(imageButton: imageButton);
+                      return LearnCard(
+                          key: ValueKey(imageButton.portuguese), // Use a unique key for each card
+                          imageButton: imageButton,
+                        );
                     }).toList(),
                   ),
                 ),
