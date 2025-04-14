@@ -10,11 +10,6 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromRGBO(53, 64, 79, 255),

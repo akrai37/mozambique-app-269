@@ -13,6 +13,7 @@ import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
 import 'package:mozambique_app/services/database_service.dart';
+import 'package:mozambique_app/view/quiz.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -94,6 +95,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScreen();
+    return Quiz();
   }
 }
