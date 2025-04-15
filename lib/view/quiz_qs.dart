@@ -17,7 +17,7 @@ class QuizQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 500,
+      height: 400,
       width: MediaQuery.of(context).size.width / 1.1 - 15,
       child: Container(
         decoration: BoxDecoration(
@@ -25,12 +25,11 @@ class QuizQuestion extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 10),
+            SizedBox(height: 30),
             Container(
               width: MediaQuery.of(context).size.width / 1.25 - 15,
               height: 75,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 170, 170, 175),
                 border: Border.all(
@@ -40,8 +39,8 @@ class QuizQuestion extends StatelessWidget {
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(8),
                   topRight: Radius.circular(8),
-                  bottomLeft: Radius.circular(8),
-                  bottomRight: Radius.circular(8),
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
                 ),
               ),
               child: Row(
@@ -70,29 +69,36 @@ class QuizQuestion extends StatelessWidget {
                 ]
               ),
             ),
-
-            // Container(
-            //   decoration: BoxDecoration(
-            //     color: const Color.fromARGB(255, 135, 135, 140),
-            //     border: Border.all(
-            //       color: const Color.fromARGB(255, 135, 135, 140),
-            //       width: 2,
-            //     ),
-            //     borderRadius: BorderRadius.only(
-            //       topLeft: Radius.circular(8),
-            //       topRight: Radius.circular(8),
-            //       bottomLeft: Radius.circular(8),
-            //       bottomRight: Radius.circular(8),
-            //     ),
-            //   ),
-            //   margin: EdgeInsets.symmetric(horizontal: 20),
-            //   alignment: Alignment.centerLeft,
-            //   child:Image(
-            //     image: AssetImage(promptImage),
-            //     width: 75,
-            //     height: 75,
-            //   ),
+            // SizedBox(height: 20),
+            // Image(
+            //   image: AssetImage(promptImage),
+            //   width: 175,
+            //   height: 175,
             // ),
+
+            Container(
+              width: MediaQuery.of(context).size.width / 1.25 - 15,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 135, 135, 140),
+                border: Border.all(
+                  color: const Color.fromARGB(255, 135, 135, 140),
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(0),
+                  topRight: Radius.circular(0),
+                  bottomLeft: Radius.circular(8),
+                  bottomRight: Radius.circular(8),
+                ),
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              alignment: Alignment.center,
+              child:Image(
+                image: AssetImage(promptImage),
+                width: 275,
+                height: 275,
+              ),
+            ),
           ],
         ),
       ),

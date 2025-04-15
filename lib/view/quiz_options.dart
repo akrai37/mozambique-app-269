@@ -40,10 +40,10 @@ class _QuizOptionsState extends State<QuizOptions> {
           color: const Color(0xFFECF0F1),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left
+          mainAxisAlignment: MainAxisAlignment.center, // Ensures content is aligned to the left
           children: [ 
             Container(
-              width: MediaQuery.of(context).size.width / 4.25 - 15,
+              width: MediaQuery.of(context).size.width / 5 - 15,
               height: 55,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -111,7 +111,7 @@ class _QuizOptionsState extends State<QuizOptions> {
             SizedBox(width: 12),
 
             Container(
-              width: MediaQuery.of(context).size.width / 4.25 - 15,
+              width: MediaQuery.of(context).size.width / 5 - 15,
               height: 55,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -161,7 +161,7 @@ class _QuizOptionsState extends State<QuizOptions> {
             Transform.scale(
               scale: 3, // Increase or decrease this value as needed
               child: Checkbox(
-                value: isSelected1,
+                value: isSelected2,
                 checkColor: Colors.white,
                 fillColor: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.selected)) {
@@ -171,7 +171,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                 }),
                 onChanged: (bool? value) {
                   setState(() {
-                    isSelected1 = value ?? false;
+                    isSelected2 = value ?? false;
                   });
                 },
               ),
@@ -179,7 +179,7 @@ class _QuizOptionsState extends State<QuizOptions> {
             SizedBox(width: 12),
 
             Container(
-              width: MediaQuery.of(context).size.width / 4.25 - 15,
+              width: MediaQuery.of(context).size.width / 5 - 15,
               height: 55,
               padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
               margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
@@ -229,7 +229,7 @@ class _QuizOptionsState extends State<QuizOptions> {
             Transform.scale(
               scale: 3, // Increase or decrease this value as needed
               child: Checkbox(
-                value: isSelected1,
+                value: isSelected3,
                 checkColor: Colors.white,
                 fillColor: WidgetStateProperty.resolveWith((states) {
                   if (states.contains(WidgetState.selected)) {
@@ -239,7 +239,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                 }),
                 onChanged: (bool? value) {
                   setState(() {
-                    isSelected1 = value ?? false;
+                    isSelected3 = value ?? false;
                   });
                 },
               ),
