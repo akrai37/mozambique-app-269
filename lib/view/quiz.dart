@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mozambique_app/view/quiz_options.dart';
 
 //may need to change depending on how routing works
 class Quiz extends StatefulWidget {
@@ -104,7 +105,10 @@ class _QuizState extends State<Quiz> {
                               color:  Color(0xFFECF0F1),
                               child: Column(
                                 children: [
-                                  
+                                  QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho"),
+                                  QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo"),
+                                  QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho"),
+                                  QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz")
                                 ],
                               ),
                             ),
