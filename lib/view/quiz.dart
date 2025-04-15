@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/view/quiz_options.dart';
+import 'package:mozambique_app/view/quiz_qs.dart';
 
 //may need to change depending on how routing works
 class Quiz extends StatefulWidget {
@@ -105,9 +106,13 @@ class _QuizState extends State<Quiz> {
                               color:  Color(0xFFECF0F1),
                               child: Column(
                                 children: [
+                                  QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Head.png'),
                                   QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho"),
+                                  QuizQuestion(quizQ: "O que é isso?", promptImage: ),
                                   QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo"),
+                                  QuizQuestion(quizQ: "O que é isso?", promptImage: ),
                                   QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho"),
+                                  QuizQuestion(quizQ: "O que é isso?", promptImage: ),
                                   QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz")
                                 ],
                               ),
