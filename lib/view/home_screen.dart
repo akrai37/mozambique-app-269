@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Text(
                       'Olá!',
                       style: TextStyle(
-                        fontSize: 33,
+                        fontSize: 50,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2D3E50),
                       ),
