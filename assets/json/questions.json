@@ -1,0 +1,193 @@
+{
+    "requests": {
+        "0":{
+            "questionText": "Pode me ajudar?",
+            "audioPath":"assets/audio/Requests/RequestsA1",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Vou tentar. Do que você precisa?",
+                    "audioPath":"assets/audio/Requests/Requests1-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Certo, fico feliz em ajudar!",
+                    "audioPath":"assets/audio/Requests/Requests1-Happy"
+                }
+            ]
+        },
+        "1":{
+            "questionText": "Você fala inglês?",
+            "audioPath":"assets/audio/Requests/RequestsA2",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Um pouco.",
+                    "audioPath":"assets/audio/Requests/Requests2-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Sim, eu falou!",
+                    "audioPath":"assets/audio/Requests/Requests2-Happy"
+                }
+            ]
+        },
+        "2":{
+            "questionText": "Quanto custa?",
+            "audioPath":"assets/audio/Requests/RequestsA3",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Não tenho a certeza.",
+                    "audioPath":"assets/audio/Requests/Requests3-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Custa dez meticais.",
+                    "audioPath":"assets/audio/Requests/Requests3-Happy"
+                }
+            ]
+        },
+        "3":{
+            "questionText": "Onde é o banheiro?",
+            "audioPath": "assets/audio/Requests/RequestsA4",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"É ali.",
+                    "audioPath":"assets/audio/Requests/Requests4-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Vou te mostrar!",
+                    "audioPath":"assets/audio/Requests/Requests4-Happy"
+                }
+            ]
+        },
+        "4":{
+            "questionText": "Você tem família aqui?",
+            "audioPath": "assets/audio/Requests/RequestsA5",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Não, não tenho.",
+                    "audioPath":"assets/audio/Requests/Requests5-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Sim, muito!",
+                    "audioPath":"assets/audio/Requests/Requests5-Happy"
+                }
+            ]
+        }
+    },
+    "greetings":{
+        "0":{
+            "questionText": "Olá.",
+            "audioPath":"assets/audio/Requests/greetingsA1-Neutral",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Olá.",
+                    "audioPath":"assets/audio/Requests/greetings1-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Olá! Bom te ver!",
+                    "audioPath":"assets/audio/Requests/greetings1-Happy"
+                }
+            ]
+        },
+        "1":{
+            "questionText": "Bom dia.",
+            "audioPath":"assets/audio/Requests/greetingsA2",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Bom dia.",
+                    "audioPath":"assets/audio/Requests/greetings2-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Bom dia! Como você vai?",
+                    "audioPath":"assets/audio/Requests/greetings2-Happy"
+                }
+            ]
+        },
+        "2":{
+            "questionText": "Boa tarde.",
+            "audioPath":"assets/audio/Requests/greetingsA3-Neutral",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Boa tarde.",
+                    "audioPath":"assets/audio/Requests/greetings3-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Boa tarde! Como vai seu dia?",
+                    "audioPath":"assets/audio/Requests/greetings3-Happy"
+                }
+            ]
+        },
+        "3":{
+            "questionText": "Boa noite.",
+            "audioPath": "assets/audio/Requests/greetingsA4",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Boa noite.",
+                    "audioPath":"assets/audio/Requests/greetings4-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Boa noite! Como foi seu dia?",
+                    "audioPath":"assets/audio/Requests/greetings4-Happy"
+                }
+            ]
+        },
+        "4":{
+            "questionText": "E aí?",
+            "audioPath": "assets/audio/Requests/greetingsA5",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Tudo beleza.",
+                    "audioPath":"assets/audio/Requests/greetings5-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Só estou aqui passando tempo!",
+                    "audioPath":"assets/audio/Requests/greetings5-Happy"
+                }
+            ]
+        },
+        "5":{
+            "questionText": "Como vai?",
+            "audioPath": "assets/audio/Requests/greetingsA6-Neutral",
+            "responses":
+            [
+                {
+                    "emotion": "neutral",
+                    "responseText":"Estou bem.",
+                    "audioPath":"assets/audio/Requests/greetings6-Neutral"
+                },
+                {
+                    "emotion": "positive",
+                    "responseText":"Estou ótimo!",
+                    "audioPath":"assets/audio/Requests/greetings6-Happy"
+                }
+            ]
+        }
+    }
+}
