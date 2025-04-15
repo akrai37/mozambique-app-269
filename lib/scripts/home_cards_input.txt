@@ -1,0 +1,14 @@
+Numbers	Números
+Colors	Cores
+Fruits	Frutas
+Vegetables	Produtos Hortícolas
+Animals	Animais
+Common Actions	Ações Comuns
+Everyday Activities	Atividades Cotidianas
+Professions	Profissões
+Household Items	Coisas da Casa
+Kitchen Items	Coisas da Cozinha
+Face	Rosto
+Body	Corpo
+Greetings	Saudações
+Requests	Pedidos
