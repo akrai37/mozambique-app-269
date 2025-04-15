@@ -77,11 +77,47 @@ class _QuizState extends State<Quiz> {
                 ],
               ),
             ),
-          ],
 
-          
+            Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left
+                  children: [
+                    SizedBox(width: MediaQuery.of(context).size.width / 15 - 15), // Adds left spacing
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.topLeft, // Ensures "Pedidos" stays at the top-left
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start, // Aligns everything to the left
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 0),
+                              child: const Text(
+                                'Rosto',
+                                style: TextStyle(
+                                  fontSize: 75,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFECF0F1),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              color:  Color(0xFFECF0F1),
+                              child: Column(
+                                children: [
+                                  
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ), 
+          ],         
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
