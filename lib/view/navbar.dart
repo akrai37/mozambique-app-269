@@ -5,11 +5,13 @@ import 'package:mozambique_app/view/info_screen.dart';
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
   final VoidCallback? onSync; // When the sync button is pressed
+  final bool isInfoScreen; // To check if the user is on the InfoScreen
   
   const Navbar({
     super.key,
     required this.onSearchChanged,
     this.onSync,
+    this.isInfoScreen = false,
   });
 
   @override
@@ -80,21 +82,26 @@ class _NavbarState extends State<Navbar> {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.info_outline),
+            icon: Icon(
+              Icons.info_outline,
+              color: widget.isInfoScreen ? Colors.grey : Colors.black,
+            ),
             iconSize: 50,
-            onPressed: () async {
-              final didSync = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const InfoScreen(),
-                ),
-              );
+            onPressed: widget.isInfoScreen
+              ? null
+              : () async {
+                final didSync = await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const InfoScreen(),
+                  ),
+                );
 
-              // Check if the sync function is provided and if the user did sync
-              if (widget.onSync != null && didSync == true) {
-                widget.onSync!();
-              }
-            },
+                // Check if the sync function is provided and if the user did sync
+                if (widget.onSync != null && didSync == true) {
+                  widget.onSync!();
+                }
+              },
           )
         ],
       ),

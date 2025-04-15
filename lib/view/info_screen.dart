@@ -85,7 +85,10 @@ class _InfoScreenState extends State<InfoScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Navbar(onSearchChanged: (temp) {},),
+          Navbar(
+            onSearchChanged: (temp) {},
+            isInfoScreen: true, // Pass the isInfoScreen flag to Navbar,
+          ),
             Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                   child: Row(
