@@ -79,7 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(onSearchChanged: _onSearchChanged),
+                Navbar(
+                  onSearchChanged: _onSearchChanged,
+                  onSync: () async {
+                    await _loadContent();
+
+                    setState(() {}); // Force a rebuild
+                  }
+                ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                 child: Row(
