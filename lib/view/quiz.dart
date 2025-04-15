@@ -78,6 +78,8 @@ class _QuizState extends State<Quiz> {
               ),
             ),
           ],
+
+          
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
