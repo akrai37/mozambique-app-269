@@ -102,19 +102,21 @@ class _QuizState extends State<Quiz> {
                                 ),
                               ),
                             ),
-                            Container(
-                              color:  Color(0xFFECF0F1),
-                              child: Column(
-                                children: [
-                                  QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Head.png'),
-                                  QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho"),
-                                  QuizQuestion(quizQ: "O que é isso?", promptImage: ),
-                                  QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo"),
-                                  QuizQuestion(quizQ: "O que é isso?", promptImage: ),
-                                  QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho"),
-                                  QuizQuestion(quizQ: "O que é isso?", promptImage: ),
-                                  QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz")
-                                ],
+                            Expanded(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.vertical, // Enables vertical scrolling
+                                child: Column(
+                                  children: [
+                                    QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Head.png'),
+                                    QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho"),
+                                    QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Nose.png'),
+                                    QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo"),
+                                    QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Eyes.png'),
+                                    QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho"),
+                                    QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Mouth.png'),
+                                    QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz")
+                                  ],
+                                ),
                               ),
                             ),
                           ],
