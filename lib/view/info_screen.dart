@@ -144,12 +144,14 @@ class _InfoScreenState extends State<InfoScreen> {
                               ),
                             ),
                             SizedBox(width: 10),
-                            ElevatedButton( // border radius 5px
+                            TextButton( // border radius 5px
                               onPressed: _onSyncButtonPressed,
-                              style: ElevatedButton.styleFrom(
+                              style: TextButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(5), // border radius 5px
+                                  side: BorderSide(color: Color(0xFF2D3E50), width: 2),
                                 ),
+                                backgroundColor: Color(0xFFECF0F1),
                               ),
                               child: Text(
                                 'Atualizar aplicativo',
