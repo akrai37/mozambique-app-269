@@ -86,7 +86,7 @@ class _LearnCardState extends State<LearnCard> {
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.black.withValues( alpha: 0.3),
+                    color: Color(0xFF2D3E50),
                   ),
                   padding: const EdgeInsets.all(10),
                   child: const Icon(
