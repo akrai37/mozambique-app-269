@@ -39,15 +39,13 @@ class _LearnCardState extends State<LearnCard> {
     return SizedBox(
       height: 300,
       width: 300,
-      child: InkWell(
-        onTap: () {
-          _audioPlayer.resume(); // Play the audio when the card is tapped
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: const Color(0xFFECF0F1),
-          ),
+      child: Material(
+        color: const Color(0xFFECF0F1),
+        borderRadius: BorderRadius.circular(5),
+        child: InkWell(
+          onTap: () {
+            _audioPlayer.resume(); // Play the audio when the card is tapped
+          },
           child: Stack(
             children: [
               Positioned.fill(
@@ -78,7 +76,7 @@ class _LearnCardState extends State<LearnCard> {
                   ],
                 ),
               ),
-
+                  
               // Speaker Icon
               Positioned(
                 bottom: 8,
@@ -86,7 +84,7 @@ class _LearnCardState extends State<LearnCard> {
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.black.withValues( alpha: 0.3),
+                    color: Color(0xFF2D3E50),
                   ),
                   padding: const EdgeInsets.all(10),
                   child: const Icon(

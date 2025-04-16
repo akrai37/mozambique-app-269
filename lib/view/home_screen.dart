@@ -79,7 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(onSearchChanged: _onSearchChanged),
+                Navbar(
+                  onSearchChanged: _onSearchChanged,
+                  isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
+                  onSync: () async {
+                    await _loadContent();
+
+                    setState(() {}); // Force a rebuild
+                  }
+                ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                 child: Row(
@@ -88,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Text(
                       'Olá!',
                       style: TextStyle(
-                        fontSize: 33,
+                        fontSize: 50,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2D3E50),
                       ),
