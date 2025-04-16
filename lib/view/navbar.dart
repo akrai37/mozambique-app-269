@@ -58,7 +58,7 @@ class _NavbarState extends State<Navbar> {
               decoration: const InputDecoration(
                 hintText: 'Procurar...',
                 hintStyle: TextStyle(
-                  fontSize: 10,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF95A5A5),
                 ),
@@ -66,6 +66,17 @@ class _NavbarState extends State<Navbar> {
                   Icons.search,
                   color: Color(0xFF95A5A5),
                 ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Color(0xFFECF0F1),
+              ),
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF2D3E50),
               ),
               onChanged: (value) {
                 setState(() {
