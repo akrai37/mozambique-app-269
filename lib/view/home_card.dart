@@ -34,6 +34,7 @@ class HomeCard extends StatelessWidget {
             color: const Color(0xFFECF0F1),
           ),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
