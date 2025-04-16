@@ -5,12 +5,14 @@ import 'package:mozambique_app/view/info_screen.dart';
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
   final VoidCallback? onSync; // When the sync button is pressed
+  final bool isHomeScreen; // To check if the user is on the HomeScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
   
   const Navbar({
     super.key,
     required this.onSearchChanged,
     this.onSync,
+    this.isHomeScreen = false,
     this.isInfoScreen = false,
   });
 
@@ -29,13 +31,27 @@ class _NavbarState extends State<Navbar> {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 10,
         children: [
-          const Text(
-            'DIFF EDUCATION',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFFE84C3D),
-            ),
+          Row(
+            children: [
+              if (!widget.isHomeScreen) // Only show the back button if not on HomeScreen
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.black,
+                  ),
+                ),
+              const Text(
+                'DIFF EDUCATION',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFE84C3D),
+                ),
+              ),
+            ],
           ),
           Expanded( // ensures the TextField takes up the remaining space
             child: TextField(

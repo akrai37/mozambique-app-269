@@ -81,6 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
                 Navbar(
                   onSearchChanged: _onSearchChanged,
+                  isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
                   onSync: () async {
                     await _loadContent();
 
