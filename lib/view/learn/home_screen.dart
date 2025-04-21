@@ -33,10 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     _filteredHomeWords = _homeWords; // Initialize filtered words with all words
 
-    if (_homeWords.isNotEmpty) {
-      for (HomeWord homeWord in _homeWords) {
-        await precacheImage(AssetImage(homeWord.imagePath), context);
-      }
+    // Preload images
+    for (HomeWord homeWord in _homeWords) {
+      await precacheImage(MemoryImage(homeWord.imageBytes), context);
     }
 
     // Load all vocab words from Hive (for search functionality)
@@ -44,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _loadAllVocabWords() async {
-    await _databaseService.initializeDatabase(); // Ensure the database is initialized
+    await _databaseService.initializeDatabase(context); // Ensure the database is initialized
     _vocabWordsMap = _databaseService.getAllPortugueseWords(); // Fetch all Portuguese vocab words
   }
 
@@ -80,7 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(onSearchChanged: _onSearchChanged),
+                Navbar(
+                  onSearchChanged: _onSearchChanged,
+                  isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
+                  onSync: () async {
+                    await _loadContent();
+
+                    setState(() {}); // Force a rebuild
+                  }
+                ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                 child: Row(
@@ -89,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Text(
                       'Olá!',
                       style: TextStyle(
-                        fontSize: 33,
+                        fontSize: 50,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2D3E50),
                       ),
@@ -105,7 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     spacing: 10,
                     runSpacing: 10,
                     children: _filteredHomeWords.map((homeWord) {
-                      return HomeCard(homeWord: homeWord);
+                        return HomeCard(
+                          key: ValueKey(homeWord.portuguese), // Use a unique key for each card
+                          homeWord: homeWord,
+                        );
                     }).toList(),
                   ),
                 ),

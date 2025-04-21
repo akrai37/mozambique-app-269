@@ -16,40 +16,38 @@ class HomeCard extends StatelessWidget {
     return SizedBox(
       height: 300,
       width: 300,
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LearnScreens(
-                title: homeWord.portuguese, 
-                tag: homeWord.categoryName,
+      child: Material(
+        color: const Color(0xFFECF0F1),
+        borderRadius: BorderRadius.circular(5),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(5),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LearnScreens(
+                  title: homeWord.portuguese, 
+                  tag: homeWord.categoryName,
+                ),
               ),
-            ),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: const Color(0xFFECF0F1),
-          ),
+            );
+          },
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Image(
-                  image: AssetImage(homeWord.imagePath),
-                  width: 200,
-                  height: 200,
-                ),
+                child: homeWord.imageBytes.isNotEmpty
+                  ? Image.memory(
+                      homeWord.imageBytes,
+                      height: 200,
+                      width: 200,
+                    )
+                  : const Icon(
+                      Icons.error,
+                      size: 200,
+                    ),
               ),
-              // Text(
-              //   icon,
-              //   style: TextStyle(
-              //     fontSize: 150,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
               Text(
                 homeWord.portuguese,
                 style: TextStyle(

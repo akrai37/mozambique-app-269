@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:hive/hive.dart';
 
 part 'home_word.g.dart'; //name of file that will be generated
@@ -14,15 +15,19 @@ class HomeWord extends HiveObject {
   final String categoryName;
 
   @HiveField(3)
-  final String imagePath;
+  Uint8List imageBytes;
 
   @HiveField(4)
+  final String imagePath;
+
+  @HiveField(5)
   final String type;
 
   HomeWord({
     required this.word,
     required this.portuguese,
     required this.categoryName,
+    required this.imageBytes,
     required this.imagePath,
     required this.type,
   });
@@ -33,6 +38,7 @@ class HomeWord extends HiveObject {
       word: json['word'] as String,
       portuguese: json['portuguese'] as String,
       categoryName: json['categoryName'] as String,
+      imageBytes: json['imageBytes'] as Uint8List,
       imagePath: json['imagePath'] as String,
       type: json['type'] as String,
     );
@@ -44,6 +50,7 @@ class HomeWord extends HiveObject {
       'word': word,
       'portuguese': portuguese,
       'categoryName': categoryName,
+      'imageBytes': imageBytes,
       'imagePath': imagePath,
       'type': type,
     };

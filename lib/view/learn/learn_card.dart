@@ -17,9 +17,6 @@ class LearnCard extends StatefulWidget {
 
 class _LearnCardState extends State<LearnCard> {
   late VocabWord _imageButton;
-  late String _img;
-  late String _title;
-  late String _audio;
   final AudioPlayer _audioPlayer = AudioPlayer();
 
   @override
@@ -27,15 +24,12 @@ class _LearnCardState extends State<LearnCard> {
     super.initState();
 
     _imageButton = widget.imageButton;
-    _img = _imageButton.imagePath;
-    _title = _imageButton.portuguese;
-    _audio = _imageButton.audioPath;
 
     if (_audioPlayer.audioCache.prefix != '') { // Clear prefix 
       _audioPlayer.audioCache.prefix = '';
     }
 
-    _audioPlayer.setSource(AssetSource(_audio)); // Set the audio source
+    _audioPlayer.setSourceBytes(_imageButton.audioBytes); // Set the audio source to the byte data
     _audioPlayer.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
     _audioPlayer.setVolume(1.0); // Set the volume to maximum
   }
@@ -45,15 +39,13 @@ class _LearnCardState extends State<LearnCard> {
     return SizedBox(
       height: 300,
       width: 300,
-      child: InkWell(
-        onTap: () {
-          _audioPlayer.resume(); // Play the audio when the card is tapped
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: const Color(0xFFECF0F1),
-          ),
+      child: Material(
+        color: const Color(0xFFECF0F1),
+        borderRadius: BorderRadius.circular(5),
+        child: InkWell(
+          onTap: () {
+            _audioPlayer.resume(); // Play the audio when the card is tapped
+          },
           child: Stack(
             children: [
               Positioned.fill(
@@ -62,14 +54,19 @@ class _LearnCardState extends State<LearnCard> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Image(
-                        image: AssetImage(_img),
-                        width: 200,
-                        height: 200,
-                      ),
+                      child: _imageButton.imageBytes.isNotEmpty
+                        ? Image.memory(
+                            _imageButton.imageBytes,
+                            height: 200,
+                            width: 200,
+                          )
+                        : const Icon(
+                            Icons.error,
+                            size: 200,
+                          ),
                     ),
                     Text(
-                      _title,
+                      _imageButton.portuguese,
                       style: const TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
@@ -79,7 +76,7 @@ class _LearnCardState extends State<LearnCard> {
                   ],
                 ),
               ),
-
+                  
               // Speaker Icon
               Positioned(
                 bottom: 8,
@@ -87,7 +84,7 @@ class _LearnCardState extends State<LearnCard> {
                 child: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: Colors.black.withValues( alpha: 0.3),
+                    color: Color(0xFF2D3E50),
                   ),
                   padding: const EdgeInsets.all(10),
                   child: const Icon(
