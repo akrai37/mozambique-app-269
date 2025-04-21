@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mozambique_app/view/quiz_checkbox.dart';
 
 class QuizOptions extends StatefulWidget {
   final String option1;
   final String option2;
   final String option3;
+  final int correctOption;
 
   const QuizOptions({
     required this.option1,
     required this.option2,
     required this.option3,
+    required this.correctOption,
     super.key,
   });
 
@@ -91,22 +94,16 @@ class _QuizOptionsState extends State<QuizOptions> {
             ),
             SizedBox(width: 12),
             Transform.scale(
-              scale: 3, // Increase or decrease this value as needed
-              child: Checkbox(
-                value: isSelected1,
-                checkColor: Colors.white,
-                fillColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.selected)) {
-                    return Colors.teal;
-                  }
-                  return null;
-                }),
-                onChanged: (bool? value) {
-                  setState(() {
-                    isSelected1 = value ?? false;
+              scale: 2.25, // Increase or decrease this value as needed
+              child: CustomCheckbox(
+                isChecked: isSelected1,
+                isCorrect: widget.correctOption == 1,
+                onChanged: (newValue){
+                  setState((){
+                    isSelected1 = newValue;
                   });
                 },
-              ),
+              )
             ),
             SizedBox(width: 12),
 
@@ -159,22 +156,16 @@ class _QuizOptionsState extends State<QuizOptions> {
             ),
             SizedBox(width: 12),
             Transform.scale(
-              scale: 3, // Increase or decrease this value as needed
-              child: Checkbox(
-                value: isSelected2,
-                checkColor: Colors.white,
-                fillColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.selected)) {
-                    return Colors.teal;
-                  }
-                  return null;
-                }),
-                onChanged: (bool? value) {
-                  setState(() {
-                    isSelected2 = value ?? false;
+              scale: 2.25, // Increase or decrease this value as needed
+              child: CustomCheckbox(
+                isChecked: isSelected2,
+                isCorrect: widget.correctOption == 2,
+                onChanged: (newValue){
+                  setState((){
+                    isSelected2 = newValue;
                   });
                 },
-              ),
+              )
             ),
             SizedBox(width: 12),
 
@@ -227,22 +218,16 @@ class _QuizOptionsState extends State<QuizOptions> {
             ),
             SizedBox(width: 12),
             Transform.scale(
-              scale: 3, // Increase or decrease this value as needed
-              child: Checkbox(
-                value: isSelected3,
-                checkColor: Colors.white,
-                fillColor: WidgetStateProperty.resolveWith((states) {
-                  if (states.contains(WidgetState.selected)) {
-                    return Colors.teal;
-                  }
-                  return null;
-                }),
-                onChanged: (bool? value) {
-                  setState(() {
-                    isSelected3 = value ?? false;
+              scale: 2.25, // Increase or decrease this value as needed
+              child: CustomCheckbox(
+                isChecked: isSelected3,
+                isCorrect: widget.correctOption == 3,
+                onChanged: (newValue){
+                  setState((){
+                    isSelected3 = newValue;
                   });
                 },
-              ),
+              )
             ),
             SizedBox(width: 12),
           ],

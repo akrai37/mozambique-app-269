@@ -108,13 +108,13 @@ class _QuizState extends State<Quiz> {
                                 child: Column(
                                   children: [
                                     QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Head.png'),
-                                    QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho"),
+                                    QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho", correctOption: 2),
                                     QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Nose.png'),
-                                    QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo"),
+                                    QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo", correctOption: 1),
                                     QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Eyes.png'),
-                                    QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho"),
+                                    QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho", correctOption: 3),
                                     QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Mouth.png'),
-                                    QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz")
+                                    QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz", correctOption: 1)
                                   ],
                                 ),
                               ),
