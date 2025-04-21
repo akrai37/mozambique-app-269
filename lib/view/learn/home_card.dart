@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/model/home_word.dart';
-import 'package:mozambique_app/view/learn_screens.dart';
+import 'package:mozambique_app/view/learn/learn_screens.dart';
 
 class HomeCard extends StatelessWidget {
   final HomeWord homeWord;

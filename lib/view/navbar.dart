@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
+import 'package:mozambique_app/view/practice/practice_home_screen.dart';
 
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
@@ -26,12 +27,17 @@ class _NavbarState extends State<Navbar> {
         mainAxisAlignment: MainAxisAlignment.center,
         spacing: 10,
         children: [
-          const Text(
-            'DIFF EDUCATION',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFFE84C3D),
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text(
+              'DIFF EDUCATION',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFE84C3D),
+              ),
             ),
           ),
           Expanded( // ensures the TextField takes up the remaining space
@@ -58,8 +64,11 @@ class _NavbarState extends State<Navbar> {
             ),
           ),
           TextButton( // Using as Update/Sync button (for now)
-            onPressed: () async {
-              await _databaseService.syncContent();
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PHomeScreen()),
+              );
             },
             style: ButtonStyle(
               shape: WidgetStateProperty.all(
@@ -78,6 +87,7 @@ class _NavbarState extends State<Navbar> {
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF2D3E50),
               ),
+              
             ),
           )
         ],

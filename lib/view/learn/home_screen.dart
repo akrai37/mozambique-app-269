@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
-import 'package:mozambique_app/view/home_card.dart';
+import 'package:mozambique_app/view/learn/home_card.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/navbar.dart';
 
