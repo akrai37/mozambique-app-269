@@ -1,3 +1,4 @@
+import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';
@@ -26,6 +27,20 @@ Future<List<VocabWord>> fetchVocabCards(String category) async {
   // If Hive data is not available, fetch from Firestore
   await dbService.syncContent();
   return dbService.getVocabWords(category) ?? [];
+}
+
+//fetchQuestionresponse
+Future<List<Question>> fetchQuestionResponse(String category) async {
+  final DatabaseService dbService = DatabaseService();
+
+  // Load from Hive first
+  List<Question>? localData = dbService.getQuestion(category);
+
+  if (localData != null && localData.isNotEmpty) return localData;
+
+  // If Hive data is not available, fetch from Firestore
+  await dbService.syncContent();
+  return dbService.getQuestion(category) ?? [];
 }
 
 /*

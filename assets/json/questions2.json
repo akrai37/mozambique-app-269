@@ -1,6 +1,6 @@
 {
-    "requests": {
-        "0":{
+    "requests": [
+        {
             "questionText": "Pode me ajudar?",
             "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3",
             "responses":
@@ -17,7 +17,7 @@
                 }
             ]
         },
-        "1":{
+        {
             "questionText": "Você fala inglês?",
             "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA2.mp3",
             "responses":
@@ -34,7 +34,7 @@
                 }
             ]
         },
-        "2":{
+        {
             "questionText": "Quanto custa?",
             "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA3.mp3",
             "responses":
@@ -51,7 +51,7 @@
                 }
             ]
         },
-        "3":{
+        {
             "questionText": "Onde é o banheiro?",
             "audioPath": "https://mozambique-app.web.app/audio/Requests/RequestsA4.mp3",
             "responses":
@@ -68,7 +68,7 @@
                 }
             ]
         },
-        "4":{
+        {
             "questionText": "Você tem família aqui?",
             "audioPath": "https://mozambique-app.web.app/audio/Requests/RequestsA5.mp3",
             "responses":
@@ -85,9 +85,9 @@
                 }
             ]
         }
-    },
-    "greetings":{
-        "0":{
+    ],
+    "greetings":[
+        {
             "questionText": "Olá.",
             "audioPath":"https://mozambique-app.web.app/audio/Requests/greetingsA1.mp3",
             "responses":
@@ -104,7 +104,7 @@
                 }
             ]
         },
-        "1":{
+        {
             "questionText": "Bom dia.",
             "audioPath":"https://mozambique-app.web.app/audio/Requests/greetingsA2.mp3",
             "responses":
@@ -121,7 +121,7 @@
                 }
             ]
         },
-        "2":{
+        {
             "questionText": "Boa tarde.",
             "audioPath":"https://mozambique-app.web.app/audio/Requests/greetingsA3.mp3",
             "responses":
@@ -138,7 +138,7 @@
                 }
             ]
         },
-        "3":{
+        {
             "questionText": "Boa noite.",
             "audioPath": "https://mozambique-app.web.app/audio/Requests/greetingsA4.mp3",
             "responses":
@@ -155,7 +155,7 @@
                 }
             ]
         },
-        "4":{
+        {
             "questionText": "E aí?",
             "audioPath": "https://mozambique-app.web.app/audio/Requests/greetingsA5.mp3",
             "responses":
@@ -172,7 +172,7 @@
                 }
             ]
         },
-        "5":{
+        {
             "questionText": "Como vai?",
             "audioPath": "https://mozambique-app.web.app/audio/Requests/greetingsA6.mp3",
             "responses":
@@ -189,5 +189,5 @@
                 }
             ]
         }
-    }
+    ]
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:mozambique_app/model/home_word.dart';
+import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/vocab.dart';
 import 'package:mozambique_app/view/no_data_screen.dart';
 
@@ -15,6 +17,8 @@ class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Box<List> _homeWordBox = Hive.box('home_words'); // Opened as List, not List<HomeWord>
   final Box<List> _vocabWordBox = Hive.box('vocab_words'); // Opened as List, not List<VocabWord>
+  final Box<List> _questionWordBox = Hive.box('questions');
+  final Box<List> _responseWordBox = Hive.box('responses');
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
@@ -80,7 +84,7 @@ class DatabaseService {
 
       
       if (context != null) { 
-        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty) { // If there's no data, show NoDataScreen
+        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty && _questionWordBox.isEmpty && _responseWordBox.isEmpty) { // If there's no data, show NoDataScreen
           Navigator.pushReplacement( // Navigate to NoDataScreen and remove all previous routes
             context,
             MaterialPageRoute(
@@ -97,6 +101,7 @@ class DatabaseService {
 
     await _syncHomeWords();
     await _syncVocabWords();
+    await _syncQuestionResponse();
 
     print("Data synced from Firestore to Hive.");
   }
@@ -174,8 +179,48 @@ class DatabaseService {
     }
   }
 
-  // Fetch data from Hive
+  Future<void> _syncQuestionResponse() async {
+    try{
+      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('categories').get();
+      if(snapshot.exists){
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      
+        for (String category in data.keys) {
+          log(category); //should be all
+      //     List<Question> vocabWords = await Future.wait(data[category].map<Future<VocabWord>>((item) async {
+      //       if (item['imageBase64'] != null) {
+      //         // Decode base64 image if available
+      //         item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
+      //       }
+      //       if (item['audioBase64'] != null) {
+      //         // Decode base64 audio if available
+      //         item['audioBase64'] = item['audioBase64'].replaceAll(RegExp(r'^data.*,'), '');
+      //       }
 
+      //       Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
+      //       Uint8List audioBytes = item['audioBase64'] != null ? base64Decode(item['audioBase64']) : await(fetchMedia(item['audioPath']));
+
+      //     //   return Question(
+      //     //     categoryName: item['categoryName'],
+      //     //     word: item['word'],
+      //     //     portuguese: item['portuguese'],
+      //     //     imageBytes: imageBytes,
+      //     //     audioBytes: audioBytes,
+      //     //     imagePath: item['imagePath'],
+      //     //     audioPath: item['audioPath'],
+      //     //   );
+      //     // }).toList());
+          
+      //     // Store the data in Hive
+      //     //await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
+        }
+      }
+    } catch (err) {
+      print('Error syncing data: $err');
+    }
+  }
+
+// ------------- FETCHING DATA FROM HIVE -----------//
   List<HomeWord>? getHomeWords() {
     List<dynamic>? rawList = _homeWordBox.get('home_cards');
 
@@ -242,4 +287,8 @@ class DatabaseService {
       }
     }
   }
+
+  List<Question>? getQuestion(String category) {}
 }
+
+
