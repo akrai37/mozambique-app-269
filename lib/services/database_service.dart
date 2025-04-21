@@ -41,7 +41,7 @@ class DatabaseService {
   }
 
   // Check internet connectivity
-  Future<bool> _checkInternetConnection() async {
+  Future<bool> checkInternetConnection() async {
     final connectivityResult = await Connectivity().checkConnectivity();
     
     if (connectivityResult[0] == ConnectivityResult.none) {
@@ -75,9 +75,9 @@ class DatabaseService {
   }
 
   // Sync content from Firestore to Hive
-  Future<void> syncContent({BuildContext? context}) async {
+  Future<bool> syncContent({BuildContext? context}) async {
     // Check internet connection
-    bool isConnected = await _checkInternetConnection();
+    bool isConnected = await checkInternetConnection();
 
     if (!isConnected) {
       print("No internet connection. Cannot sync data.");
@@ -96,7 +96,7 @@ class DatabaseService {
         }
       }
 
-      return;
+      return false; // No internet connection
     }
 
     await _syncHomeWords();
@@ -104,6 +104,8 @@ class DatabaseService {
     await _syncQuestionResponse();
 
     print("Data synced from Firestore to Hive.");
+
+    return true; // Sync successful
   }
 
   Future<void> _syncHomeWords() async {

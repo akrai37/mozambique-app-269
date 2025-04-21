@@ -99,7 +99,7 @@ class _LearnScreensState extends State<LearnScreens> {
                     Text(
                       widget.title,
                       style: const TextStyle(
-                        fontSize: 33,
+                        fontSize: 50,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2D3E50),
                       ),
