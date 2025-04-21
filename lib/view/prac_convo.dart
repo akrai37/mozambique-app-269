@@ -36,21 +36,21 @@ class _PracConvoState extends State<PracConvo> {
 
       // Ensure scrolling happens *after* UI updates
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _scrollToBottom();
+        //_scrollToBottom();
+        _scrollController.animateTo(
+          _scrollController.position.maxScrollExtent,
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeOut,
+        );
       });
     }
   }
 
-  void _scrollToBottom() {
-    if (_scrollController.hasClients) {
-      _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: Duration(milliseconds: 500),
-        curve: Curves.easeOut,
-      );
-    }
+  @override
+  void dispose(){
+    _scrollController.dispose();
+    super.dispose();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -179,18 +179,21 @@ class _PracConvoState extends State<PracConvo> {
                               ),
                               Expanded(
                                 child: SingleChildScrollView(
-                                      scrollDirection: Axis.vertical, // Enables vertical scrolling
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
+                                  controller: _scrollController,
+                                  scrollDirection: Axis.vertical, // Enables vertical scrolling
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start, // Ensures text is left-aligned
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          for (int i = 0; i < _visibleMessages; i++)
-                                            GestureDetector(
-                                            onTap: _revealNextMessage, // Click to show next message
-                                            child: _messages[i],
-                                          ),
+                                          for (int i = 0; i < _visibleMessages; i++) _messages[i],
+                                          const SizedBox(height: 10),
                                         ],
                                       ),
-                                    ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
@@ -204,6 +207,15 @@ class _PracConvoState extends State<PracConvo> {
                               width: MediaQuery.of(context).size.width / 2.5 - 15,
                               height: MediaQuery.of(context).size.width / 2.5 - 15,
                             ),
+                            ElevatedButton(
+                              onPressed: _visibleMessages < _messages.length ? _revealNextMessage : null,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Color(0xFFE84C3D),
+                                foregroundColor: Colors.white,
+                                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                              ),
+                              child: Text(_visibleMessages == _messages.length ? 'Terminado' : 'Próximo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                            )
                           ],
                         ),
                       ],
