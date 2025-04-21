@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class QuizQuestion extends StatelessWidget {
   final String quizQ;
@@ -61,9 +60,10 @@ class QuizQuestion extends StatelessWidget {
                       color: Colors.white, // White circular background
                       shape: BoxShape.circle,
                     ),
-                    child: SvgPicture.string(
-                      volumeUpSvg,
-                      colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
+                    child: const Icon(
+                      Icons.volume_up,
+                      color: Color(0xFF2D3E50),
+                      size: 24,
                     ),
                   ),
                 ]
