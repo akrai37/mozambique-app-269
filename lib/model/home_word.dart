@@ -23,6 +23,9 @@ class HomeWord extends HiveObject {
   @HiveField(5)
   final String type;
 
+  @HiveField(6)
+  final bool hasPractice;
+
   HomeWord({
     required this.word,
     required this.portuguese,
@@ -30,6 +33,7 @@ class HomeWord extends HiveObject {
     required this.imageBytes,
     required this.imagePath,
     required this.type,
+    this.hasPractice = false,
   });
 
   // Method to create HomeWord from JSON
@@ -41,6 +45,7 @@ class HomeWord extends HiveObject {
       imageBytes: json['imageBytes'] as Uint8List,
       imagePath: json['imagePath'] as String,
       type: json['type'] as String,
+      hasPractice: json['hasPractice'] as bool? ?? false, // Default to false if not provided
     );
   }
 
@@ -53,6 +58,7 @@ class HomeWord extends HiveObject {
       'imageBytes': imageBytes,
       'imagePath': imagePath,
       'type': type,
+      'hasPractice': hasPractice,
     };
   }
 }

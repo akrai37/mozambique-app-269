@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view/info_screen.dart';
-import 'package:mozambique_app/view/practice/practice_home_screen.dart';
+import 'package:mozambique_app/view/home_screen.dart';
 
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
   final VoidCallback? onSync; // When the sync button is pressed
   final bool isHomeScreen; // To check if the user is on the HomeScreen
+  final bool isLearnScreen; // To check if the user is on the LearnScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
   
   const Navbar({
@@ -14,6 +15,7 @@ class Navbar extends StatefulWidget {
     required this.onSearchChanged,
     this.onSync,
     this.isHomeScreen = false,
+    this.isLearnScreen = true,
     this.isInfoScreen = false,
   });
 
@@ -90,9 +92,9 @@ class _NavbarState extends State<Navbar> {
           ),
           TextButton( // Using as Update/Sync button (for now)
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const PHomeScreen()),
+                MaterialPageRoute(builder: (context) => HomeScreen(type: widget.isLearnScreen ? 'practice' : 'learn')),
               );
             },
             style: ButtonStyle(
@@ -112,7 +114,6 @@ class _NavbarState extends State<Navbar> {
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF2D3E50),
               ),
-              
             ),
           ),
           IconButton(

@@ -2,18 +2,24 @@ import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
-import 'package:mozambique_app/view/learn/home_card.dart';
+import 'package:mozambique_app/view/home_card.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/navbar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String type;
+
+  const HomeScreen({
+    super.key,
+    this.type = 'learn', // Default type is 'learn'
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late String _type;
   final DatabaseService _databaseService = DatabaseService();
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
@@ -24,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
 
+    _type = widget.type;
     _loadingFuture = _loadContent();
   }
 
@@ -82,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navbar(
                   onSearchChanged: _onSearchChanged,
                   isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
+                  isLearnScreen: _type == 'learn',
                   onSync: () async {
                     await _loadContent();
 
@@ -93,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
                   children: [
-                    const Text(
-                      'Olá!',
+                    Text(
+                      _type == 'learn' ? 'Olá!' : 'Prática!',
                       style: TextStyle(
                         fontSize: 50,
                         fontWeight: FontWeight.bold,
