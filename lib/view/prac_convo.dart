@@ -207,15 +207,19 @@ class _PracConvoState extends State<PracConvo> {
                               width: MediaQuery.of(context).size.width / 2.5 - 15,
                               height: MediaQuery.of(context).size.width / 2.5 - 15,
                             ),
-                            ElevatedButton(
-                              onPressed: _visibleMessages < _messages.length ? _revealNextMessage : null,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Color(0xFFE84C3D),
-                                foregroundColor: Colors.white,
-                                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                              ),
-                              child: Text(_visibleMessages == _messages.length ? 'Terminado' : 'Próximo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                            )
+                            SizedBox(height: 10),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 3 - 15,
+                              child: ElevatedButton(
+                                onPressed: _visibleMessages < _messages.length ? _revealNextMessage : null,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Color(0xFFE84C3D),
+                                  foregroundColor: Colors.white,
+                                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                                ),
+                                child: Text(_visibleMessages == _messages.length ? 'Terminado' : 'Próximo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                              )
+                            ),
                           ],
                         ),
                       ],
