@@ -189,27 +189,20 @@ class DatabaseService {
         for (String category in data.keys) {
           //log(category); //should be requests + greetings
           List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
-            // if (item['imageBase64'] != null) {
-            //   // Decode base64 image if available
-            //   item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
-            // }
-            // if (item['audioBase64'] != null) {
-            //   // Decode base64 audio if available
-            //   item['audioBase64'] = item['audioBase64'].replaceAll(RegExp(r'^data.*,'), '');
-            // }
-
-            // Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
-            // Uint8List audioBytes = item['audioBase64'] != null ? base64Decode(item['audioBase64']) : await(fetchMedia(item['audioPath']));
-
+            Uint8List audioBytes = await(fetchMedia(item['audioPath']));
+            log('${audioBytes}');
             //make response objects
             List<Response> responses=[];
             //log("num response: ${item['responses'].length}");
             for(var j = 0; j < item['responses'].length; j++){
               //log(item['responses'][j]);
+              Uint8List audioBytesRes = await(fetchMedia(item['responses'][j]['audioPath']));
+              
               Response response = Response(
                 responseText: item['responses'][j]['responseText'],
                 audioPath: item['responses'][j]['audioPath'],
-                emotion: item['responses'][j]['emotion']
+                emotion: item['responses'][j]['emotion'],
+                audioBytes: audioBytesRes
               );
               //log(response.responseText);
               responses.add(response);
@@ -218,7 +211,8 @@ class DatabaseService {
               categoryName: category,
               questionText: item['questionText'],
               audioPath: item['audioPath'],
-              responses: responses
+              responses: responses,
+              audioBytes: audioBytes
             );
           }).toList());
           

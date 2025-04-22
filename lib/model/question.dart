@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 
 part 'question.g.dart';
@@ -17,7 +19,10 @@ class Question {
   @HiveField(3)
   List<Response> responses;
 
-  Question( {required this.questionText, required this.categoryName, required this.audioPath, required this.responses});
+   @HiveField(4)
+  Uint8List audioBytes;
+
+  Question( {required this.questionText, required this.categoryName, required this.audioPath, required this.responses, required this.audioBytes});
 }
 
 @HiveType(typeId: 3)
@@ -31,5 +36,8 @@ class Response {
   @HiveField(2)
   String emotion;
 
-  Response( {required this.responseText, required this.audioPath, required this.emotion});
+   @HiveField(3)
+  Uint8List audioBytes;
+
+  Response( {required this.responseText, required this.audioPath, required this.emotion, required this.audioBytes});
 }

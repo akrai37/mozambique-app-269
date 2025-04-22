@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/question.dart';
+import 'package:mozambique_app/view/learnConvoCard.dart';
 import 'package:mozambique_app/view/msg_sample.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/view/navbar.dart';
 
@@ -22,12 +22,6 @@ class LearnConvo extends StatefulWidget {
 }
 
 class _LearnConvoState extends State<LearnConvo> {
-  final String person1Svg = '''
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-  </svg>
-  ''';
-
   late List<Question> _questionList = [];
   late List<Question> _filteredQuestions = [];
   late Future<void> _loadingFuture;
@@ -151,7 +145,12 @@ class _LearnConvoState extends State<LearnConvo> {
                         child: Column(
                           spacing: 50,
                           children: _filteredQuestions.map((question){
-                            return MsgSample(greeting: question.questionText, response: question.responses[1].responseText);
+                            return LearnConvoCard(
+                              greeting: question.questionText, 
+                              response: question.responses[1].responseText,
+                              raudio: question.responses[1].audioBytes,
+                              qaudio: question.audioBytes
+                            );
                           }).toList(),
                         ),
                       ),
@@ -160,7 +159,12 @@ class _LearnConvoState extends State<LearnConvo> {
                         child: Column(
                           spacing: 50,
                           children: _filteredQuestions.map((question){
-                            return MsgSample(greeting: question.questionText, response: question.responses[0].responseText);
+                            return LearnConvoCard(
+                              greeting: question.questionText, 
+                              response: question.responses[0].responseText,
+                              raudio: question.responses[0].audioBytes,
+                              qaudio: question.audioBytes
+                            );
                           }).toList(),
                         ),
                       ),
