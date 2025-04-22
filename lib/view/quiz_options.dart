@@ -62,7 +62,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                     Text(
                       widget.option1,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFFECF0F1),
                       ),
@@ -72,7 +72,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                       padding: EdgeInsets.all(5), // Space around the icon
                       decoration: BoxDecoration(
                         color: Colors.white, // White circular background
-                        shape: BoxShape.circle,
+                        shape: BoxShape.circle, 
                       ),
                       child: const Icon(
                         Icons.volume_up,
@@ -125,7 +125,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                     Text(
                       widget.option2,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFFECF0F1),
                       ),
@@ -188,7 +188,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                     Text(
                       widget.option3,
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFFECF0F1),
                       ),
