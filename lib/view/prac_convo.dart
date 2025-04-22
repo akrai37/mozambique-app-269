@@ -1,3 +1,4 @@
+//MAIN DART FILE FOR PRACTICE CONVO PAGE
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/view/p1_msg.dart';
 import 'package:mozambique_app/view/p2_msg.dart';
@@ -19,6 +20,7 @@ class _PracConvoState extends State<PracConvo> {
     super.initState();
   }
 
+  //ORDER OF MESSAGES USING MSG1 AND MSG2 WIDGETS FOR FORMATTING
   final List<Widget> _messages = [
     Msg1(msg1: 'Olá.'),
     Msg2(msg2: 'Olá.'),
@@ -28,6 +30,7 @@ class _PracConvoState extends State<PracConvo> {
     Msg2(msg2: 'Estou bem, obrigado!'),
   ];
 
+  //FUNCTION TO SHOW NEXT MESSAGE IN THE ARRAY ABOVE AS WELL AS SCROLLING ANIMATION
   void _revealNextMessage() {
     if (_visibleMessages < _messages.length) {
       setState(() {
@@ -136,6 +139,7 @@ class _PracConvoState extends State<PracConvo> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start, // Aligns everything to the left
                             children: [
+                              //SECTION TITLE
                               Container(
                                 margin: EdgeInsets.symmetric(vertical: 0),
                                 child: const Text(
@@ -147,6 +151,7 @@ class _PracConvoState extends State<PracConvo> {
                                   ),
                                 ),
                               ),
+                              //CONVERSATION HEADER WITH PERSON ICONS
                               Container(
                                 height: 175,
                                 width: MediaQuery.of(context).size.width / 2 - 15,
@@ -177,6 +182,7 @@ class _PracConvoState extends State<PracConvo> {
                                   ],
                                 ),
                               ),
+                              //CONVERSATION SECTION WHERE MESSAGES WILL POPULATE
                               Expanded(
                                 child: SingleChildScrollView(
                                   controller: _scrollController,
@@ -199,6 +205,7 @@ class _PracConvoState extends State<PracConvo> {
                           ),
                         ),
                         SizedBox(width: MediaQuery.of(context).size.width / 20 - 15),
+                        //SECTION IMAGE
                         Column(
                           children: [
                             SizedBox(height: MediaQuery.of(context).size.height / 6 - 15),
@@ -208,6 +215,7 @@ class _PracConvoState extends State<PracConvo> {
                               height: MediaQuery.of(context).size.width / 2.5 - 15,
                             ),
                             SizedBox(height: 10),
+                            //NEXT BUTTON TO SHOW MESSAGES
                             Container(
                               width: MediaQuery.of(context).size.width / 3 - 15,
                               child: ElevatedButton(

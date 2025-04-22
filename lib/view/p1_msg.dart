@@ -1,3 +1,4 @@
+//DART FILE FOR LEFT SIDE MESSAGES WIDGET
 import 'package:flutter/material.dart';
 
 class Msg1 extends StatelessWidget {
@@ -16,6 +17,7 @@ class Msg1 extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFFECF0F1),
         ),
+        //MESSAGE BOX SETTINGS
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
           alignment: Alignment.centerLeft,
@@ -40,6 +42,7 @@ class Msg1 extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  //MESSAGE TEXT
                   Text(
                     msg1,
                     style: TextStyle(
@@ -49,20 +52,7 @@ class Msg1 extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 10),
-                  // GestureDetector(
-                  //   onTap: onTap, // Call function when tapped
-                  //   child: Container(
-                  //     padding: EdgeInsets.all(5), // Space around the icon
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.white, // White circular background
-                  //       shape: BoxShape.circle,
-                  //     ),
-                  //     child: SvgPicture.string(
-                  //       volumeUpSvg,
-                  //       colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
-                  //     ),
-                  //   ), 
-                  // ),
+                  //SOUND ICON
                   Container(
                       padding: EdgeInsets.all(5), // Space around the icon
                       decoration: BoxDecoration(
