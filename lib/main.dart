@@ -45,7 +45,6 @@ void main() async{
   await Hive.openBox<List>('vocab_words'); // storing vocab words as a list
   await Hive.openBox<List>('home_words');
   await Hive.openBox<List>('questions');
-  await Hive.openBox<List>('responses');
   await Hive.openBox<List>('quiz_questions');
   await Hive.openBox<List>('quiz_answers');
   await Hive.openBox<List>('conversations');

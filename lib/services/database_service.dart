@@ -17,8 +17,7 @@ class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Box<List> _homeWordBox = Hive.box('home_words'); // Opened as List, not List<HomeWord>
   final Box<List> _vocabWordBox = Hive.box('vocab_words'); // Opened as List, not List<VocabWord>
-  final Box<List> _questionWordBox = Hive.box('questions');
-  final Box<List> _responseWordBox = Hive.box('responses');
+  final Box<List> _questionBox = Hive.box('questions');
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
@@ -84,7 +83,7 @@ class DatabaseService {
 
       
       if (context != null) { 
-        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty && _questionWordBox.isEmpty && _responseWordBox.isEmpty) { // If there's no data, show NoDataScreen
+        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty && _questionBox.isEmpty) { // If there's no data, show NoDataScreen
           Navigator.pushReplacement( // Navigate to NoDataScreen and remove all previous routes
             context,
             MaterialPageRoute(
@@ -183,38 +182,48 @@ class DatabaseService {
 
   Future<void> _syncQuestionResponse() async {
     try{
-      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('categories').get();
+      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('learnConvo').get();
       if(snapshot.exists){
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       
         for (String category in data.keys) {
-          log(category); //should be all
-      //     List<Question> vocabWords = await Future.wait(data[category].map<Future<VocabWord>>((item) async {
-      //       if (item['imageBase64'] != null) {
-      //         // Decode base64 image if available
-      //         item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
-      //       }
-      //       if (item['audioBase64'] != null) {
-      //         // Decode base64 audio if available
-      //         item['audioBase64'] = item['audioBase64'].replaceAll(RegExp(r'^data.*,'), '');
-      //       }
+          //log(category); //should be requests + greetings
+          List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
+            // if (item['imageBase64'] != null) {
+            //   // Decode base64 image if available
+            //   item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
+            // }
+            // if (item['audioBase64'] != null) {
+            //   // Decode base64 audio if available
+            //   item['audioBase64'] = item['audioBase64'].replaceAll(RegExp(r'^data.*,'), '');
+            // }
 
-      //       Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
-      //       Uint8List audioBytes = item['audioBase64'] != null ? base64Decode(item['audioBase64']) : await(fetchMedia(item['audioPath']));
+            // Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
+            // Uint8List audioBytes = item['audioBase64'] != null ? base64Decode(item['audioBase64']) : await(fetchMedia(item['audioPath']));
 
-      //     //   return Question(
-      //     //     categoryName: item['categoryName'],
-      //     //     word: item['word'],
-      //     //     portuguese: item['portuguese'],
-      //     //     imageBytes: imageBytes,
-      //     //     audioBytes: audioBytes,
-      //     //     imagePath: item['imagePath'],
-      //     //     audioPath: item['audioPath'],
-      //     //   );
-      //     // }).toList());
+            //make response objects
+            List<Response> responses=[];
+            //log("num response: ${item['responses'].length}");
+            for(var j = 0; j < item['responses'].length; j++){
+              //log(item['responses'][j]);
+              Response response = Response(
+                responseText: item['responses'][j]['responseText'],
+                audioPath: item['responses'][j]['audioPath'],
+                emotion: item['responses'][j]['emotion']
+              );
+              //log(response.responseText);
+              responses.add(response);
+            };
+            return Question(
+              categoryName: category,
+              questionText: item['questionText'],
+              audioPath: item['audioPath'],
+              responses: responses
+            );
+          }).toList());
           
-      //     // Store the data in Hive
-      //     //await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
+          //Store the data in Hive
+          await _questionBox.put(category, questions.cast<dynamic>());
         }
       }
     } catch (err) {
@@ -290,7 +299,39 @@ class DatabaseService {
     }
   }
 
-  List<Question>? getQuestion(String category) {}
+  List<Question>? getQuestion(String category) {
+    List<dynamic>? rawList = _questionBox.get(category);
+
+    if (rawList != null) {
+      return rawList.cast<Question>(); // explicitly cast to List<VocabWord>
+    }
+
+    return null; // no data found for the category
+  }
+
+  void printAllQuestions() {
+      List<String> keys = _questionBox.keys.cast<String>().toList();
+      log("printing questions--");
+      log('${_questionBox.isEmpty}');
+      for (String key in keys) {
+        log(key);
+        List<dynamic>? questions = _questionBox.get(key);
+
+        if (questions != null) {
+          List<Question> questionS = questions.cast<Question>();
+
+          log('Category: $key');
+          for (Question q in questionS) {
+            log('text: ${q.questionText}, AudioPath: ${q.audioPath}');
+            for (Response r in q.responses){
+              log('Response - text: ${r.responseText}, AudioPath: ${r.audioPath}, emotion: ${r.emotion}');
+            }
+          }
+        }
+      }
+    }
 }
+
+
 
 
