@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:audioplayers/audioplayers.dart';
+
 
 class MsgSample extends StatelessWidget {
   final String greeting;
   final String response;
+  
 
 //no idea what this is for
   const MsgSample({
@@ -11,7 +14,6 @@ class MsgSample extends StatelessWidget {
     required this.greeting,
     required this.response,
   });
-
   final String volumeUpSvg = '''
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
     <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
@@ -66,17 +68,23 @@ class MsgSample extends StatelessWidget {
                           ),
                         ),
                       SizedBox(width: 10), // Spacing between text and icon
-                      Container(
-                        padding: EdgeInsets.all(5), // Space around the icon
-                        decoration: BoxDecoration(
-                          color: Colors.white, // White circular background
-                          shape: BoxShape.circle,
-                        ),
-                        child: SvgPicture.string(
-                          volumeUpSvg,
-                          colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
-                        ),
-                      ),
+                      // Speaker Icon
+                        Positioned(
+                          bottom: 4,
+                          right: 4,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xFF2D3E50),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: const Icon(
+                              Icons.volume_up,
+                              color: Colors.white,
+                              size: 24,
+                            ),
+                          )
+                        )
                     ],
                   ),
                 ),
@@ -117,17 +125,23 @@ class MsgSample extends StatelessWidget {
                           ),
                         ),
                       SizedBox(width: 5), // Spacing between text and icon
-                      Container(
-                        padding: EdgeInsets.all(5), // Space around the icon
-                        decoration: BoxDecoration(
-                          color: Colors.white, // White circular background
-                          shape: BoxShape.circle,
-                        ),
-                        child: SvgPicture.string(
-                          volumeUpSvg,
-                          colorFilter: ColorFilter.mode(Colors.black, BlendMode.srcIn), // Change icon color if needed
-                        ),
-                      ),
+                      // Speaker Icon
+                        Positioned(
+                          bottom: 4,
+                          right: 4,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: const Color(0xFF969FA7),
+                            ),
+                            padding: const EdgeInsets.all(5),
+                            child: const Icon(
+                              Icons.volume_up,
+                              color: Color(0xFF2D3E50),
+                              size: 24,
+                            ),
+                          )
+                        )
                     ],
                   ),
                 ),

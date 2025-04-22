@@ -1,27 +1,179 @@
 import 'package:flutter/material.dart';
+import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/view/msg_sample.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mozambique_app/view_model/fetch_cards.dart';
+import 'package:mozambique_app/view/navbar.dart';
 
 
 //may need to change depending on how routing works
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class LearnConvo extends StatefulWidget {
+  final String title;
+  final String tag;
+
+  const LearnConvo({
+    super.key, 
+    required this.title,
+    required this.tag
+  });
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LearnConvo> createState() => _LearnConvoState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LearnConvoState extends State<LearnConvo> {
   final String person1Svg = '''
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
   <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
   </svg>
   ''';
 
+  late List<Question> _questionList = [];
+  late List<Question> _filteredQuestions = [];
+  late Future<void> _loadingFuture;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _loadingFuture = _loadContent();
+  }
+
+  Future<void> _loadContent() async {
+    // This fetches from the local Hive database
+    try {
+      _questionList = await fetchQuestionResponse(widget.tag);
+      _filteredQuestions = _questionList;
+    } catch (error) {
+      print("Error loading data from Hive: $error");
+    }
+  }
+
+  // void _onSearchChanged(String searchText) {
+  //   setState(() {
+  //     if (searchText.isEmpty) {
+  //       _filteredQuestions = _questionList; // Reset to all words if search is empty
+  //     } else {
+  //       _filteredQuestions = _questionList.where((question) {
+  //         return question.questionText.toLowerCase().contains(searchText.toLowerCase());
+  //       }).toList();
+  //     }
+  //   });
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: FutureBuilder<void>(
+        future: _loadingFuture,
+        builder: (context, snapshot){
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Navbar(onSearchChanged: (test){}),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+                child: Column(
+                  children: [
+                    //PAGE TITLE
+                    Container(
+                          margin: EdgeInsets.symmetric(vertical: 0),
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                              widget.title,
+                              style: TextStyle(
+                                fontSize: 100,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF2D3E50),
+                              ),
+                            ),
+                        ),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Image(
+                              image: AssetImage('assets/images/bigSmile.png'),
+                              width: 100,
+                              height: 100,
+                            ),
+                            Image(
+                              image: AssetImage('assets/images/smile.png'),
+                              width: 100,
+                              height: 100,
+                            ),
+                          ]
+                        ),
+                        Row(
+                          children: [
+                            Image(
+                              image: AssetImage('assets/images/NavyPerson.png'),
+                              width: 100,
+                              height: 100,
+                            ),
+                            SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
+                            Image(
+                              image: AssetImage('assets/images/GrayPerson.png'),
+                              width: 100,
+                              height: 100,
+                            ),
+                            SizedBox(width: MediaQuery.of(context).size.width / 10 - 15),
+                            Image(
+                              image: AssetImage('assets/images/NavyPerson.png'),
+                              width: 100,
+                              height: 100,
+                            ),
+                            SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
+                            Image(
+                              image: AssetImage('assets/images/GrayPerson.png'),
+                              width: 100,
+                              height: 100,
+                            ),
+                            SizedBox(height: 15),
+                          ]
+                        ),
+                      ]
+                    )
+                  ],
+                ),
+              ),
+
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical, // Enables vertical scrolling
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      /// First Column (List of Messages)
+                      Expanded(
+                        child: Column(
+                          spacing: 50,
+                          children: _filteredQuestions.map((question){
+                            return MsgSample(greeting: question.questionText, response: question.responses[1].responseText);
+                          }).toList(),
+                        ),
+                      ),
+                      /// Second Column (List of Messages)
+                      Expanded(
+                        child: Column(
+                          spacing: 50,
+                          children: _filteredQuestions.map((question){
+                            return MsgSample(greeting: question.questionText, response: question.responses[0].responseText);
+                          }).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+      )
+      
+      /*Column(
         // Column is also a layout widget. It takes a list of children and
         // arranges them vertically. By default, it sizes itself to fit its
         // children horizontally, and tries to be as tall as its parent.
@@ -123,27 +275,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 100,
                           height: 100,
                         ),
-                        // const Text(
-                        //   '😁 ',
-                        //   style: TextStyle(
-                        //     fontSize: 100,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Color(0xFF2D3E50),
-                        //   ),
-                        // ),
                         Image(
                           image: AssetImage('assets/images/smile.png'),
                           width: 100,
                           height: 100,
                         ),
-                        // const Text(
-                        //   '   🙂',
-                        //   style: TextStyle(
-                        //     fontSize: 100,
-                        //     fontWeight: FontWeight.bold,
-                        //     color: Color(0xFF2D3E50),
-                        //   ),
-                        // ),
                       ]
                     ),
                     Row(
@@ -153,48 +289,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: 100,
                           height: 100,
                         ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
                         SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
                         Image(
                           image: AssetImage('assets/images/GrayPerson.png'),
                           width: 100,
                           height: 100,
                         ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
                         SizedBox(width: MediaQuery.of(context).size.width / 10 - 15),
                         Image(
                           image: AssetImage('assets/images/NavyPerson.png'),
                           width: 100,
                           height: 100,
                         ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF2D3E50), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
                         SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
                         Image(
                           image: AssetImage('assets/images/GrayPerson.png'),
                           width: 100,
                           height: 100,
                         ),
-                        // SvgPicture.string(
-                        //   person1Svg,
-                        //   colorFilter: ColorFilter.mode(const Color(0xFF969FA7), BlendMode.srcIn),
-                        //   width: 100,
-                        //   height: 100, // Change icon color if needed
-                        // ),
                         SizedBox(height: 15),
                       ]
                     ),
@@ -254,7 +366,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ],
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),*/ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
