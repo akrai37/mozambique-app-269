@@ -1,3 +1,4 @@
+//MAIN DART PAGE THAT CALLS ALL OTHER WIDGETS AND PUTS IT TOGETHER ON THE PAGE
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/view/quiz_options.dart';
 import 'package:mozambique_app/view/quiz_qs.dart';
@@ -84,13 +85,15 @@ class _QuizState extends State<Quiz> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left
                   children: [
+                    //LEFT SIDE MARGIN
                     SizedBox(width: MediaQuery.of(context).size.width / 15 - 15), // Adds left spacing
                     Expanded(
                       child: Align(
-                        alignment: Alignment.topLeft, // Ensures "Pedidos" stays at the top-left
+                        alignment: Alignment.topLeft, // Ensures "Rosto" stays at the top-left
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start, // Aligns everything to the left
                           children: [
+                            //SECTION TITLE
                             Container(
                               margin: EdgeInsets.symmetric(vertical: 0),
                               child: const Text(
@@ -102,6 +105,9 @@ class _QuizState extends State<Quiz> {
                                 ),
                               ),
                             ),
+                            //MIDDLE SCROLL SECTION THAT CALLS ON ALL WIDGETS
+                            //QUESTION TEXT AND IMAGE
+                            //3 OPTIONS AND THE CORRECT OPTION #
                             Expanded(
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.vertical, // Enables vertical scrolling

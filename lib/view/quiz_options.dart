@@ -1,7 +1,9 @@
+//DART FILE TO FORMAT THE QUIZ OPTIONS
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/view/quiz_checkbox.dart';
 
 class QuizOptions extends StatefulWidget {
+  //DICTATES WHAT THE WIDGET TAKES IN TO MAKE OPTIONS
   final String option1;
   final String option2;
   final String option3;
@@ -20,6 +22,7 @@ class QuizOptions extends StatefulWidget {
 }
 
 class _QuizOptionsState extends State<QuizOptions> {
+  //SETS ALL OF CHECKBOXES TO DEFAULT: NOT SELECTED
   bool isSelected1 = false;
   bool isSelected2 = false;
   bool isSelected3 = false;
@@ -36,6 +39,7 @@ class _QuizOptionsState extends State<QuizOptions> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center, // Ensures content is aligned to the left
           children: [ 
+            //OPTION 1 FORMATTING
             Container(
               width: MediaQuery.of(context).size.width / 5 - 15,
               height: 55,
@@ -59,6 +63,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                   mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    //OPTION TEXT
                     Text(
                       widget.option1,
                       style: TextStyle(
@@ -68,6 +73,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                       ),
                     ),
                     SizedBox(width: 10),
+                    //SOUND ICON
                     Container(
                       padding: EdgeInsets.all(5), // Space around the icon
                       decoration: BoxDecoration(
@@ -89,7 +95,8 @@ class _QuizOptionsState extends State<QuizOptions> {
               scale: 2.25, // Increase or decrease this value as needed
               child: CustomCheckbox(
                 isChecked: isSelected1,
-                isCorrect: widget.correctOption == 1,
+                isCorrect: widget.correctOption == 1, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
+                //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
                 onChanged: (newValue){
                   setState((){
                     isSelected1 = newValue;
@@ -99,6 +106,7 @@ class _QuizOptionsState extends State<QuizOptions> {
             ),
             SizedBox(width: 12),
 
+            //OPTION 2 FORMATTING
             Container(
               width: MediaQuery.of(context).size.width / 5 - 15,
               height: 55,
@@ -122,6 +130,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                   mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    //OPTION TEXT
                     Text(
                       widget.option2,
                       style: TextStyle(
@@ -131,6 +140,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                       ),
                     ),
                     SizedBox(width: 10),
+                    //SOUND ICON
                     Container(
                       padding: EdgeInsets.all(5), // Space around the icon
                       decoration: BoxDecoration(
@@ -152,7 +162,8 @@ class _QuizOptionsState extends State<QuizOptions> {
               scale: 2.25, // Increase or decrease this value as needed
               child: CustomCheckbox(
                 isChecked: isSelected2,
-                isCorrect: widget.correctOption == 2,
+                isCorrect: widget.correctOption == 2, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
+                //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
                 onChanged: (newValue){
                   setState((){
                     isSelected2 = newValue;
@@ -162,6 +173,7 @@ class _QuizOptionsState extends State<QuizOptions> {
             ),
             SizedBox(width: 12),
 
+            //OPTION 3 FORMATTING
             Container(
               width: MediaQuery.of(context).size.width / 5 - 15,
               height: 55,
@@ -185,6 +197,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                   mainAxisSize: MainAxisSize.min, // Ensures the bubble wraps content
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    //OPTION TEXT
                     Text(
                       widget.option3,
                       style: TextStyle(
@@ -194,6 +207,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                       ),
                     ),
                     SizedBox(width: 10),
+                    //SOUND ICON
                     Container(
                       padding: EdgeInsets.all(5), // Space around the icon
                       decoration: BoxDecoration(
@@ -215,7 +229,8 @@ class _QuizOptionsState extends State<QuizOptions> {
               scale: 2.25, // Increase or decrease this value as needed
               child: CustomCheckbox(
                 isChecked: isSelected3,
-                isCorrect: widget.correctOption == 3,
+                isCorrect: widget.correctOption == 3, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
+                //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
                 onChanged: (newValue){
                   setState((){
                     isSelected3 = newValue;
