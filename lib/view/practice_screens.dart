@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view_model/fetch_cards.dart';
-import 'package:mozambique_app/view/practice/practice_card.dart';
+import 'package:mozambique_app/view/learn_card.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/vocab.dart';
 
@@ -158,7 +158,7 @@ class _PracticeScreensState extends State<PracticeScreens> {
                     spacing: 10,
                     runSpacing: 10,
                     children: _imageButtons.map((imageButton) {
-                      return PracticeCard(imageButton: imageButton);
+                      return LearnCard(imageButton: imageButton);
                     }).toList(),
                   ),
                 ),
