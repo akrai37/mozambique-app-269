@@ -12,7 +12,7 @@ class PracConvo extends StatefulWidget {
 }
 
 class _PracConvoState extends State<PracConvo> {
-  int _visibleMessages = 1; // Start with only 1 message visible
+  int _msgIndex = 1; // Start with only 1 message visible
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -29,12 +29,14 @@ class _PracConvoState extends State<PracConvo> {
     Msg1(msg1: 'Como estás?'),
     Msg2(msg2: 'Estou bem, obrigado!'),
   ];
+  List<Widget> _visibleMessages = [];
 
   //FUNCTION TO SHOW NEXT MESSAGE IN THE ARRAY ABOVE AS WELL AS SCROLLING ANIMATION
   void _revealNextMessage() {
-    if (_visibleMessages < _messages.length) {
+    if (_msgIndex < _messages.length) {
       setState(() {
-        _visibleMessages++; // Show the next message
+        _visibleMessages.add(_messages[_msgIndex]);
+        _msgIndex++; // Show the next message
       });
 
       // Ensure scrolling happens *after* UI updates
@@ -45,6 +47,24 @@ class _PracConvoState extends State<PracConvo> {
           duration: const Duration(milliseconds: 400),
           curve: Curves.easeOut,
         );
+      });
+    }
+  }
+
+  void resetConversation() {
+    setState(() {
+      while(_msgIndex != 1){
+        _msgIndex--;
+        _visibleMessages.removeLast();
+      }
+    });
+  }
+
+  void goBackOneMessage() {
+    if (_msgIndex > 1) {
+      setState(() {
+        _msgIndex--;
+        _visibleMessages.removeLast();
       });
     }
   }
@@ -193,7 +213,7 @@ class _PracConvoState extends State<PracConvo> {
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          for (int i = 0; i < _visibleMessages; i++) _messages[i],
+                                          for (int i = 0; i < _msgIndex; i++) _messages[i],
                                           const SizedBox(height: 10),
                                         ],
                                       ),
@@ -205,10 +225,40 @@ class _PracConvoState extends State<PracConvo> {
                           ),
                         ),
                         SizedBox(width: MediaQuery.of(context).size.width / 20 - 15),
-                        //SECTION IMAGE
+                        //SECTION IMAGE AND BUTTONS
                         Column(
                           children: [
-                            SizedBox(height: MediaQuery.of(context).size.height / 6 - 15),
+                            SizedBox(height: 20),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children:[
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 6 - 15,
+                                  child: ElevatedButton(
+                                    onPressed: _msgIndex > 1 ? goBackOneMessage : null,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.orange, 
+                                      foregroundColor: Colors.white,
+                                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                                    ),
+                                    child: Text('Voltar', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                                SizedBox(width: 10),
+                                Container(
+                                  width: MediaQuery.of(context).size.width / 6 - 15,
+                                  child: ElevatedButton(
+                                    onPressed: _msgIndex > 1 ? resetConversation : null,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Color(0xFFE84C3D), 
+                                      foregroundColor: Colors.white,
+                                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                                    ),
+                                    child: Text('Reiniciar', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                                  ),
+                                ),
+                              ],
+                            ),
                             Image(
                               image: AssetImage('assets/images/shop-temp.png'),
                               width: MediaQuery.of(context).size.width / 2.5 - 15,
@@ -219,13 +269,13 @@ class _PracConvoState extends State<PracConvo> {
                             Container(
                               width: MediaQuery.of(context).size.width / 3 - 15,
                               child: ElevatedButton(
-                                onPressed: _visibleMessages < _messages.length ? _revealNextMessage : null,
+                                onPressed: _msgIndex < _messages.length ? _revealNextMessage : null,
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(0xFFE84C3D),
+                                  backgroundColor: Colors.teal,
                                   foregroundColor: Colors.white,
                                   padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                                 ),
-                                child: Text(_visibleMessages == _messages.length ? 'Terminado' : 'Próximo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                                child: Text(_msgIndex == _messages.length ? 'Terminado' : 'Próximo', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                               )
                             ),
                           ],
