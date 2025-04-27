@@ -1,0 +1,39 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "mozambique-app",
+          "appId": "1:465520899025:android:b01ce8b15cf74b342926f0",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "mozambique-app",
+          "configurations": {
+            "android": "1:465520899025:android:b01ce8b15cf74b342926f0",
+            "ios": "1:465520899025:ios:b8f5ffa30553063d2926f0",
+            "macos": "1:465520899025:ios:b8f5ffa30553063d2926f0",
+            "web": "1:465520899025:web:21db1594d7d0b40c2926f0",
+            "windows": "1:465520899025:web:a9f6da9f490e78a62926f0"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

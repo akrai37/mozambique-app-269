@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:mozambique_app/model/home_word.dart';
+import 'package:mozambique_app/view/learn_screens.dart';
+
 class HomeCard extends StatelessWidget {
-  final String icon;
-  final String title;
+  final HomeWord homeWord;
 
   const HomeCard({
     super.key,
-    required this.icon,
-    required this.title,
+    required this.homeWord,
   });
 
   @override
@@ -15,33 +16,47 @@ class HomeCard extends StatelessWidget {
     return SizedBox(
       height: 300,
       width: 300,
-      child: Container(
-        decoration: BoxDecoration(
+      child: Material(
+        color: const Color(0xFFECF0F1),
+        borderRadius: BorderRadius.circular(5),
+        child: InkWell(
           borderRadius: BorderRadius.circular(5),
-          color: const Color(0xFFECF0F1),
-        ),
-        child: Column(
-          children: [
-            // Image(
-            //   image: AssetImage('assets/images/temp.png'),
-            //   width: 100,
-            //   height: 100,
-            // ),
-            Text(
-              icon,
-              style: TextStyle(
-                fontSize: 150,
-                fontWeight: FontWeight.bold,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LearnScreens(
+                  title: homeWord.portuguese, 
+                  tag: homeWord.categoryName,
+                ),
               ),
-            ),
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+            );
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: homeWord.imageBytes.isNotEmpty
+                  ? Image.memory(
+                      homeWord.imageBytes,
+                      height: 200,
+                      width: 200,
+                    )
+                  : const Icon(
+                      Icons.error,
+                      size: 200,
+                    ),
               ),
-            ),
-          ],
+              Text(
+                homeWord.portuguese,
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
