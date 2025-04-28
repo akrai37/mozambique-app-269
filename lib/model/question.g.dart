@@ -17,25 +17,28 @@ class QuestionAdapter extends TypeAdapter<Question> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Question(
-      id: fields[0] as String,
-      questionText: fields[1] as String,
-      categoryName: fields[2] as String,
-      audioPath: fields[3] as String?,
+      questionText: fields[0] as String,
+      categoryName: fields[1] as String,
+      audioPath: fields[2] as String?,
+      responses: (fields[3] as List).cast<Response>(),
+      audioBytes: fields[4] as Uint8List,
     );
   }
 
   @override
   void write(BinaryWriter writer, Question obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.id)
-      ..writeByte(1)
       ..write(obj.questionText)
-      ..writeByte(2)
+      ..writeByte(1)
       ..write(obj.categoryName)
+      ..writeByte(2)
+      ..write(obj.audioPath)
       ..writeByte(3)
-      ..write(obj.audioPath);
+      ..write(obj.responses)
+      ..writeByte(4)
+      ..write(obj.audioBytes);
   }
 
   @override
@@ -61,9 +64,9 @@ class ResponseAdapter extends TypeAdapter<Response> {
     };
     return Response(
       responseText: fields[0] as String,
-      questionId: fields[1] as String,
-      audioPath: fields[2] as String?,
-      emotion: fields[3] as String,
+      audioPath: fields[1] as String?,
+      emotion: fields[2] as String,
+      audioBytes: fields[3] as Uint8List,
     );
   }
 
@@ -74,11 +77,11 @@ class ResponseAdapter extends TypeAdapter<Response> {
       ..writeByte(0)
       ..write(obj.responseText)
       ..writeByte(1)
-      ..write(obj.questionId)
-      ..writeByte(2)
       ..write(obj.audioPath)
+      ..writeByte(2)
+      ..write(obj.emotion)
       ..writeByte(3)
-      ..write(obj.emotion);
+      ..write(obj.audioBytes);
   }
 
   @override
