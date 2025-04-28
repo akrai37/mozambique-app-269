@@ -76,16 +76,23 @@ class _QuizState extends State<Quiz> {
                         ),
                       ),
                     ),
-                    //PRACTICE BUTTON
                     child: const Text(
-                      'Practice',
+                      'Prática',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
-                  )
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.info_outline,
+                      color: Colors.grey,
+                    ),
+                    iconSize: 50,
+                    onPressed: null,
+                  ),
                 ],
               ),
             ),
