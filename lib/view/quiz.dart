@@ -29,6 +29,15 @@ class _QuizState extends State<Quiz> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 10,
                 children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Color(0xFF95A5A5),
+                    ),
+                  ),
                   //DIFF EDUCATION LOGO
                   const Text(
                     'DIFF EDUCATION',
@@ -120,7 +129,19 @@ class _QuizState extends State<Quiz> {
                                     QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Eyes.png', isFirst: false),
                                     QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho", correctOption: 3, isLast: false),
                                     QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Face/Mouth.png', isFirst: false),
-                                    QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz", correctOption: 1, isLast: true)
+                                    QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz", correctOption: 1, isLast: true),
+                                    // QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Body/Group 49.png', isFirst: true),
+                                    // QuizOptions(option1: "Boca", option2: "Cabelo", option3: "Olho", correctOption: 2, isLast: false),
+                                    // QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Body/Group 50.png', isFirst: false),
+                                    // QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo", correctOption: 1, isLast: false),
+                                    // QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Body/Group 51.png', isFirst: false),
+                                    // QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho", correctOption: 3, isLast: false),
+                                    // QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Body/Group 52.png', isFirst: false),
+                                    // QuizOptions(option1: "Nariz", option2: "Boca", option3: "Cabelo", correctOption: 1, isLast: false),
+                                    // QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Body/Group 53.png', isFirst: false),
+                                    // QuizOptions(option1: "Cabelo", option2: "Nariz", option3: "Olho", correctOption: 3, isLast: false),
+                                    // QuizQuestion(quizQ: "O que é isso?", promptImage: 'assets/images/Prac-Body/Group 54.png', isFirst: false),
+                                    // QuizOptions(option1: "Boca", option2: "Olho", option3: "Nariz", correctOption: 1, isLast: true)
                                   ],
                                 ),
                               ),
