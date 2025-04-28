@@ -260,7 +260,7 @@ class _PracConvoState extends State<PracConvo> {
                               ],
                             ),
                             Image(
-                              image: AssetImage('assets/images/shop-temp.png'),
+                              image: AssetImage('assets/images/Practice/PersonalInteractions.png'),
                               width: MediaQuery.of(context).size.width / 2.5 - 15,
                               height: MediaQuery.of(context).size.width / 2.5 - 15,
                             ),
