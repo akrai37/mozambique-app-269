@@ -44,11 +44,10 @@ void main() async{
   // MAKE SURE TO OPEN AS List NOT AS List<VocabWord>
   await Hive.openBox<List>('vocab_words'); // storing vocab words as a list
   await Hive.openBox<List>('home_words');
-  await Hive.openBox<Question>('questions');
-  await Hive.openBox<Response>('responses');
-  await Hive.openBox<QuizQuestion>('quiz_questions');
-  await Hive.openBox<QuizAnswer>('quiz_answers');
-  await Hive.openBox<Conversation>('conversations');
+  await Hive.openBox<List>('questions');
+  await Hive.openBox<List>('quiz_questions');
+  await Hive.openBox<List>('quiz_answers');
+  await Hive.openBox<List>('conversations');
 
   runApp(const MyApp());
 }

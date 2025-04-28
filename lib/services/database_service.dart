@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:mozambique_app/model/home_word.dart';
+import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/vocab.dart';
 import 'package:mozambique_app/view/no_data_screen.dart';
 
@@ -15,6 +17,7 @@ class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Box<List> _homeWordBox = Hive.box('home_words'); // Opened as List, not List<HomeWord>
   final Box<List> _vocabWordBox = Hive.box('vocab_words'); // Opened as List, not List<VocabWord>
+  final Box<List> _questionBox = Hive.box('questions');
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
@@ -80,7 +83,7 @@ class DatabaseService {
 
       
       if (context != null) { 
-        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty) { // If there's no data, show NoDataScreen
+        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty && _questionBox.isEmpty) { // If there's no data, show NoDataScreen
           Navigator.pushReplacement( // Navigate to NoDataScreen and remove all previous routes
             context,
             MaterialPageRoute(
@@ -97,6 +100,7 @@ class DatabaseService {
 
     await _syncHomeWords();
     await _syncVocabWords();
+    await _syncQuestionResponse();
 
     print("Data synced from Firestore to Hive.");
 
@@ -176,8 +180,50 @@ class DatabaseService {
     }
   }
 
-  // Fetch data from Hive
+  Future<void> _syncQuestionResponse() async {
+    try {
+      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('learnConvo').get();
 
+      if (snapshot.exists) {
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      
+        for (String category in data.keys) {
+          List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
+            Uint8List audioBytes = await(fetchMedia(item['audioPath']));
+
+            List<Response> responses = []; // Responses list for each question
+            for(var j = 0; j < item['responses'].length; j++) {
+              Uint8List audioBytesRes = await(fetchMedia(item['responses'][j]['audioPath']));
+              
+              Response response = Response(
+                responseText: item['responses'][j]['responseText'],
+                audioPath: item['responses'][j]['audioPath'],
+                emotion: item['responses'][j]['emotion'],
+                audioBytes: audioBytesRes
+              );
+
+              responses.add(response);
+            }
+
+            return Question(
+              categoryName: category,
+              questionText: item['questionText'],
+              audioPath: item['audioPath'],
+              responses: responses,
+              audioBytes: audioBytes
+            );
+          }).toList());
+          
+          //Store the data in Hive
+          await _questionBox.put(category, questions.cast<dynamic>());
+        }
+      }
+    } catch (err) {
+      print('Error syncing data: $err');
+    }
+  }
+
+// ------------- FETCHING DATA FROM HIVE -----------//
   List<HomeWord>? getHomeWords() {
     List<dynamic>? rawList = _homeWordBox.get('home_cards');
 
@@ -244,4 +290,43 @@ class DatabaseService {
       }
     }
   }
+
+  List<Question>? getQuestion(String category) {
+    List<dynamic>? rawList = _questionBox.get(category);
+
+    if (rawList != null) {
+      return rawList.cast<Question>(); // explicitly cast to List<VocabWord>
+    }
+
+    return null; // no data found for the category
+  }
+
+  void printAllQuestions() {
+      List<String> keys = _questionBox.keys.cast<String>().toList();
+      log("printing questions--");
+      log('${_questionBox.isEmpty}');
+
+      for (String key in keys) {
+        log(key);
+        List<dynamic>? questions = _questionBox.get(key);
+
+        if (questions != null) {
+          List<Question> questionS = questions.cast<Question>();
+
+          log('Category: $key');
+
+          for (Question q in questionS) {
+            log('text: ${q.questionText}, AudioPath: ${q.audioPath}');
+            
+            for (Response r in q.responses){
+              log('Response - text: ${r.responseText}, AudioPath: ${r.audioPath}, emotion: ${r.emotion}');
+            }
+          }
+        }
+      }
+    }
 }
+
+
+
+
