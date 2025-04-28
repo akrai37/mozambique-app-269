@@ -93,6 +93,15 @@ class _PracConvoState extends State<PracConvo> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 10,
                 children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new_rounded,
+                      color: Color(0xFF95A5A5),
+                    ),
+                  ),
                   //DIFF EDUCATION LOGO
                   const Text(
                     'DIFF EDUCATION',
@@ -131,16 +140,23 @@ class _PracConvoState extends State<PracConvo> {
                         ),
                       ),
                     ),
-                    //PRACTICE BUTTON
                     child: const Text(
-                      'Practice',
+                      'Prática',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2D3E50),
                       ),
                     ),
-                  )
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.info_outline,
+                      color: Colors.grey,
+                    ),
+                    iconSize: 50,
+                    onPressed: null,
+                  ),
                 ],
               ),
             ),
