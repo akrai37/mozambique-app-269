@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class Msg2 extends StatelessWidget {
   final String msg2;
-  const Msg2({required this.msg2, super.key});
+  final bool isLast;
+  const Msg2({required this.msg2, required this.isLast, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,12 @@ class Msg2 extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFFECF0F1),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(0),
+            topRight: Radius.circular(0),
+            bottomLeft: isLast ? Radius.circular(12) : Radius.circular(0),
+            bottomRight: isLast ? Radius.circular(12) : Radius.circular(0),
+          ),
         ),
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 20),
