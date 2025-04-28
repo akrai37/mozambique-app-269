@@ -135,7 +135,7 @@ class _PracConvoState extends State<PracConvo> {
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5),
                           side: const BorderSide(
-                            color: Color(0xFF2D3E50),
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -145,7 +145,7 @@ class _PracConvoState extends State<PracConvo> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF2D3E50),
+                        color: Colors.white,
                       ),
                     ),
                   ),
