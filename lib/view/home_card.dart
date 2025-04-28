@@ -23,7 +23,7 @@ class HomeCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(5),
           onTap: () {
-            if (homeWord.type == "cards"){
+            if (homeWord.type == "cards") { // If the type is "cards", navigate to LearnScreens
                 Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -33,7 +33,7 @@ class HomeCard extends StatelessWidget {
                   ),
                 ),
               );
-            } else{
+            } else { // If the type is not "cards", navigate to LearnConvo
               Navigator.push(
               context,
               MaterialPageRoute(

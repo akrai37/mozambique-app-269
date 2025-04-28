@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view/info_screen.dart';
-import 'package:mozambique_app/services/database_service.dart';
 
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
@@ -89,10 +88,7 @@ class _NavbarState extends State<Navbar> {
             ),
           ),
           TextButton(
-            onPressed: () {
-              DatabaseService db = DatabaseService();
-              db.printAllQuestions();
-            },
+            onPressed: () {},
             style: ButtonStyle(
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(

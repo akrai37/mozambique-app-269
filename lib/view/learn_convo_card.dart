@@ -1,15 +1,13 @@
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:mozambique_app/model/question.dart';
 
 class LearnConvoCard extends StatefulWidget {
-  final String greeting;
-  final String response;
-  final Uint8List qaudio;
-  final Uint8List raudio;
+  final String greeting; // The greeting text to be displayed on the card
+  final String response; // The response text to be displayed on the card
+  final Uint8List qaudio; // The audio data for the greeting
+  final Uint8List raudio; // The audio data for the response
 
   const LearnConvoCard({
     super.key,
@@ -24,12 +22,13 @@ class LearnConvoCard extends StatefulWidget {
 }
 
 class _LearnConvoCardState extends State<LearnConvoCard> {
-  final AudioPlayer _qaudioPlayer = AudioPlayer();
-  final AudioPlayer _raudioPlayer = AudioPlayer();
+  final AudioPlayer _qaudioPlayer = AudioPlayer(); // Audio player for question audio
+  final AudioPlayer _raudioPlayer = AudioPlayer(); // Audio player for response audio
 
   @override
   void initState() {
     super.initState();
+
     _qaudioPlayer.setSourceBytes(widget.qaudio); // Set the audio source to the byte data
     _qaudioPlayer.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
     _qaudioPlayer.setVolume(1.0); // Set the volume to maximum
@@ -146,19 +145,20 @@ class _LearnConvoCardState extends State<LearnConvoCard> {
                             ),
                           ),
                         SizedBox(width: 5), // Spacing between text and icon
+
                         // Speaker Icon
-                          Container(
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: const Color(0xFF969FA7),
-                              ),
-                              padding: const EdgeInsets.all(5),
-                              child: const Icon(
-                                Icons.volume_up,
-                                color: Color(0xFF2D3E50),
-                                size: 24,
-                              ),
-                            )
+                        Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: const Color(0xFF969FA7),
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: const Icon(
+                            Icons.volume_up,
+                            color: Color(0xFF2D3E50),
+                            size: 24,
+                          ),
+                        )
                       ],
                     ),
                   ),

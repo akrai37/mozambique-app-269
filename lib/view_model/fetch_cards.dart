@@ -29,7 +29,6 @@ Future<List<VocabWord>> fetchVocabCards(String category) async {
   return dbService.getVocabWords(category) ?? [];
 }
 
-//fetchQuestionresponse
 Future<List<Question>> fetchQuestionResponse(String category) async {
   final DatabaseService dbService = DatabaseService();
 

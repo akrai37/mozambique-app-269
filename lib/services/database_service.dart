@@ -181,21 +181,18 @@ class DatabaseService {
   }
 
   Future<void> _syncQuestionResponse() async {
-    try{
+    try {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('learnConvo').get();
-      if(snapshot.exists){
+
+      if (snapshot.exists) {
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       
         for (String category in data.keys) {
-          //log(category); //should be requests + greetings
           List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
             Uint8List audioBytes = await(fetchMedia(item['audioPath']));
-            log('${audioBytes}');
-            //make response objects
-            List<Response> responses=[];
-            //log("num response: ${item['responses'].length}");
-            for(var j = 0; j < item['responses'].length; j++){
-              //log(item['responses'][j]);
+
+            List<Response> responses = []; // Responses list for each question
+            for(var j = 0; j < item['responses'].length; j++) {
               Uint8List audioBytesRes = await(fetchMedia(item['responses'][j]['audioPath']));
               
               Response response = Response(
@@ -204,9 +201,10 @@ class DatabaseService {
                 emotion: item['responses'][j]['emotion'],
                 audioBytes: audioBytesRes
               );
-              //log(response.responseText);
+
               responses.add(response);
-            };
+            }
+
             return Question(
               categoryName: category,
               questionText: item['questionText'],
@@ -307,6 +305,7 @@ class DatabaseService {
       List<String> keys = _questionBox.keys.cast<String>().toList();
       log("printing questions--");
       log('${_questionBox.isEmpty}');
+
       for (String key in keys) {
         log(key);
         List<dynamic>? questions = _questionBox.get(key);
@@ -315,8 +314,10 @@ class DatabaseService {
           List<Question> questionS = questions.cast<Question>();
 
           log('Category: $key');
+
           for (Question q in questionS) {
             log('text: ${q.questionText}, AudioPath: ${q.audioPath}');
+            
             for (Response r in q.responses){
               log('Response - text: ${r.responseText}, AudioPath: ${r.audioPath}, emotion: ${r.emotion}');
             }
