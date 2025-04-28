@@ -191,7 +191,7 @@ class _PracConvoState extends State<PracConvo> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: MediaQuery.of(context).size.width / 8 - 25),
+                                  SizedBox(width: MediaQuery.of(context).size.width / 8 - 35),
                                   Container(
                                     width: MediaQuery.of(context).size.width / 8.5 - 15,
                                     child: ElevatedButton(
@@ -329,6 +329,7 @@ class _PracConvoState extends State<PracConvo> {
                 ],
               ),
             ),
+            SizedBox(height: 20),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
