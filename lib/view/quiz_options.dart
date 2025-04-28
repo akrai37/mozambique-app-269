@@ -8,12 +8,14 @@ class QuizOptions extends StatefulWidget {
   final String option2;
   final String option3;
   final int correctOption;
+  final bool isLast;
 
   const QuizOptions({
     required this.option1,
     required this.option2,
     required this.option3,
     required this.correctOption,
+    required this.isLast,
     super.key,
   });
 
@@ -35,6 +37,12 @@ class _QuizOptionsState extends State<QuizOptions> {
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFFECF0F1),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(0),
+            topRight: Radius.circular(0),
+            bottomLeft: widget.isLast ? Radius.circular(12) : Radius.circular(0),
+            bottomRight: widget.isLast ? Radius.circular(12) : Radius.circular(0),
+          ),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center, // Ensures content is aligned to the left

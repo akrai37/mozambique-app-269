@@ -5,7 +5,8 @@ class QuizQuestion extends StatelessWidget {
   //DICTATES WHAT THE WIDGET TAKES OR WHAT IS REQUIRED TO MAKE THE QUIZ QUESTION
   final String quizQ;
   final String promptImage;
-  const QuizQuestion({required this.quizQ, required this.promptImage, super.key});
+  final bool isFirst;
+  const QuizQuestion({required this.quizQ, required this.promptImage, required this.isFirst, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,12 @@ class QuizQuestion extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: const Color(0xFFECF0F1),
+          borderRadius: BorderRadius.only(
+            topLeft: isFirst ? Radius.circular(12) : Radius.circular(0),
+            topRight: isFirst ? Radius.circular(12) : Radius.circular(0),
+            bottomLeft: Radius.circular(0),
+            bottomRight: Radius.circular(0),
+          ),
         ),
         child: Column(
           //FORMAT OF OVERALL QUESTION
