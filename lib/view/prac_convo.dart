@@ -196,15 +196,32 @@ class _PracConvoState extends State<PracConvo> {
                                     width: MediaQuery.of(context).size.width / 8.5 - 15,
                                     child: ElevatedButton(
                                       onPressed: _msgIndex > 1 ? resetConversation : null,
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent, 
-                                        foregroundColor: Colors.white,
-                                        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                        side: _msgIndex > 1 ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF969FA7), width: 1.25),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(12),
+                                      style: ButtonStyle(
+                                        foregroundColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                                          if(states.contains(WidgetState.disabled)) {
+                                            return Color(0xFF95A5A5);
+                                          }
+                                          return Colors.white;
+                                        }),
+                                        backgroundColor: WidgetStateProperty.all(Colors.transparent),
+                                        padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 15, vertical: 10)),
+                                        side: WidgetStateProperty.all(_msgIndex > 1 ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF95A5A5), width: 1.25)),
+                                        shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(12)
+                                          )
                                         ),
+                                        elevation: WidgetStateProperty.all(0),
                                       ),
+                                      // ElevatedButton.styleFrom(
+                                      //   backgroundColor: Colors.transparent, 
+                                      //   foregroundColor: Colors.white,
+                                      //   padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                      //   side: _msgIndex > 1 ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF969FA7), width: 1.25),
+                                      //   shape: RoundedRectangleBorder(
+                                      //     borderRadius: BorderRadius.circular(12),
+                                      //   ),
+                                      // ),
                                       child: Text('Reiniciar ⟲', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                                     ),
                                   ),
@@ -275,14 +292,22 @@ class _PracConvoState extends State<PracConvo> {
                                     width: MediaQuery.of(context).size.width / 8 - 15,
                                     child: ElevatedButton(
                                       onPressed: _msgIndex > 1 ? goBackOneMessage : null,
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent, 
-                                        foregroundColor: Colors.white,
-                                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                                        side: _msgIndex > 1 ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF969FA7), width: 1.25),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(12),
+                                      style: ButtonStyle(
+                                        foregroundColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                                          if(states.contains(WidgetState.disabled)) {
+                                            return Color(0xFF95A5A5);
+                                          }
+                                          return Colors.white;
+                                        }),
+                                        backgroundColor: WidgetStateProperty.all(Colors.transparent),
+                                        padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 15, vertical: 10)),
+                                        side: WidgetStateProperty.all(_msgIndex > 1 ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF95A5A5), width: 1.25)),
+                                        shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(12)
+                                          )
                                         ),
+                                        elevation: WidgetStateProperty.all(0),
                                       ),
                                       child: Text('← Voltar', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                                     ),
@@ -293,14 +318,22 @@ class _PracConvoState extends State<PracConvo> {
                                     width: MediaQuery.of(context).size.width / 8 - 15,
                                     child: ElevatedButton(
                                       onPressed: _msgIndex < _messages.length ? _revealNextMessage : null,
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.transparent,
-                                        foregroundColor: Colors.white,
-                                        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                                        side: _msgIndex != _messages.length ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF969FA7), width: 1.25),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(12),
+                                      style: ButtonStyle(
+                                        foregroundColor: WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+                                          if(states.contains(WidgetState.disabled)) {
+                                            return Color(0xFF95A5A5);
+                                          }
+                                          return Colors.white;
+                                        }),
+                                        backgroundColor: WidgetStateProperty.all(Colors.transparent),
+                                        padding: WidgetStateProperty.all(EdgeInsets.symmetric(horizontal: 15, vertical: 10)),
+                                        side: WidgetStateProperty.all(_msgIndex != _messages.length ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF95A5A5), width: 1.25)),
+                                        shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(12)
+                                          )
                                         ),
+                                        elevation: WidgetStateProperty.all(0),
                                       ),
                                       child: Text(_msgIndex == _messages.length ? 'Terminado' : 'Próximo →', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                                     )
