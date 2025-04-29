@@ -1,90 +1,121 @@
 {
     "requests": [
         {
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Requests.png"
+        },
+        {
             "msgText": "Olá, pode me ajudar?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM1.mp3"
         },
         {
             "msgText": "Claro, com prazer!",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM2.mp3"
         },
         {
             "msgText": "Quanto custa essa coisa aqui?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM3.mp3"
         },
         {
             "msgText": "Essa coisa custa dez meticais.",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM4.mp3"
         },
         {
             "msgText": "Desculpe não entendi, pode repetir, por favor?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM5.mp3"
         },
         {
             "msgText": "Sim! Essa coisa custa dez meticais.",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM6.mp3"
         },
         {
-            "msgText": "Obrigado",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "msgText": "Obrigado.",
+            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsM7.mp3"
+        }
+    ],
+    "Greetings":[
+        {
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Greetings.png"
+        },
+        {
+            "msgText": "Olá.",
+            "audioPath":"https://mozambique-app.web.app/audio/greetings/greetingsM1.mp3"
+        },
+        {
+            "msgText": "Olá, como vai?",
+            "audioPath":"https://mozambique-app.web.app/audio/greetings/greetingsM2.mp3"
+        },
+        {
+            "msgText": "Estou bem, obrigado. E você?",
+            "audioPath":"https://mozambique-app.web.app/audio/greetings/greetingsM3.mp3"
+        },
+        {
+            "msgText": "Estou ótimo. Bem, até logo!",
+            "audioPath":"https://mozambique-app.web.app/audio/greetings/greetingsM4.mp3"
+        },
+        {
+            "msgText": "Adeus.",
+            "audioPath":"https://mozambique-app.web.app/audio/greetings/greetingsM5.mp3"
         }
     ],
     "InteraçõesPessoais":[
         {
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Personal Interactions.png"
+        },
+        {
             "msgText": "Olá, qual é o seu nome?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM1.mp3"
         },
         {
             "msgText": "Olá, meu nome é José",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM2.mp3"
         },
         {
             "msgText": "Prazer em conhecê-lo, José, sou Mária.",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM3.mp3"
         },
         {
             "msgText": "Prazer Mária, onde você mora?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM4.mp3"
         },
         {
-            "msgText": "Eu moro em Maputo. ",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "msgText": "Eu moro em Maputo.",
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM5.mp3"
         },
         {
             "msgText": "E aí, o que você faz?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM6.mp3"
         },
         {
             "msgText": "Eu trabalho como funcionária do hotel.",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM7.mp3"
         },
         {
             "msgText": "Por isso, você fala inglês?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM8.mp3"
         },
         {
             "msgText": "Sim, eu falo um pouco.",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM9.mp3"
         },
         {
             "msgText": "Prazer Mária, onde você mora?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM4.mp3"
         },
         {
-            "msgText": "Eu moro em Maputo. ",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "msgText": "Eu moro em Maputo.",
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM5.mp3"
         },
         {
-            "msgText": "E por quê você está aqui em, Matola? Você tem família aqui? ",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "msgText": "E por quê você está aqui em, Matola? Você tem família aqui?",
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM11.mp3"
         },
         {
             "msgText": "Sim, eu tenho tios que moram aqui e eu estou visitando. E você?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM12.mp3"
         },
         {
             "msgText": "Não, eu estou sozinho.",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3"
+            "audioPath":"https://mozambique-app.web.app/audio/personalInteractions/personalInteractionsM13.mp3"
         }
     ]
 }
