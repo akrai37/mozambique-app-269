@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
+import 'package:mozambique_app/view/home_screen.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mozambique_app/firebase_options.dart';
 
 import 'package:mozambique_app/view/prac_convo.dart';
-import 'package:mozambique_app/model/category.dart';
 import 'package:mozambique_app/model/conversation.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
@@ -30,7 +30,6 @@ void main() async{
   Hive.init(appDocumentDirectory.path);
 
   // Register Hive Adapters
-  Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(VocabWordAdapter());
   Hive.registerAdapter(HomeWordAdapter());
   Hive.registerAdapter(QuestionAdapter());
@@ -38,9 +37,9 @@ void main() async{
   Hive.registerAdapter(QuizQuestionAdapter());
   Hive.registerAdapter(QuizAnswerAdapter());
   Hive.registerAdapter(ConversationAdapter());
+  Hive.registerAdapter(ConvoLineAdapter());
 
   // Open Hive Boxes (key-value store/container)
-  await Hive.openBox<Category>('categories');
   // MAKE SURE TO OPEN AS List NOT AS List<VocabWord>
   await Hive.openBox<List>('vocab_words'); // storing vocab words as a list
   await Hive.openBox<List>('home_words');
@@ -99,6 +98,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return PracConvo();
+    return HomeScreen();
   }
 }
