@@ -57,7 +57,7 @@
             "audioPath":"https://mozambique-app.web.app/audio/greetings/greetingsM5.mp3"
         }
     ],
-    "InteraçõesPessoais":[
+    "personalInteractions":[
         {
             "imagePath": "https://mozambique-app.web.app/images/Practice/Personal Interactions.png"
         },
