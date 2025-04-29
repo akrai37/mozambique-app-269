@@ -234,11 +234,12 @@ class DatabaseService {
 
       if (snapshot.exists) {
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+        for (String category in data.keys) {
         List<Conversation> convos = [];
         List<ConvoLine> lines = [];
-        for (String category in data.keys) {
          // log(data[category][0]["imagePath"]);
           String imagePath = data[category][0]["imagePath"];
+          //log(imagePath);
           Uint8List imageBytes = await(fetchMedia(imagePath));
           for (int i = 0; i < data[category].length; i++ ){
             if(i == 0){
@@ -259,6 +260,7 @@ class DatabaseService {
           );
           //Store the data in Hive
           await _convoBox.put(category, convos);
+          printConvo(category);
         }
       }
     } catch (err) {
@@ -378,7 +380,16 @@ class DatabaseService {
 
     return null; // no data found for the category
   }
-
+  void printConvo(String category){
+    List<Conversation>? convo = getConvo(category); 
+    if (convo != null) {
+      log('Category: category');
+      log('Image: ${convo[0].imagePath}');
+      for (ConvoLine l in convo[0].conversationText) {
+        log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
+      }
+    }
+  }
   void printConvos(){
     List<String> keys = _convoBox.keys.cast<String>().toList();
       log("printing practice conversations--");

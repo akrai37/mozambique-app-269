@@ -48,6 +48,7 @@ Future<List<Conversation>> fetchPracConvo(String category) async{
 
   // Load from Hive first
   List<Conversation>? localData = dbService.getConvo(category);
+  dbService.printConvo(category);
 
   if (localData != null) return localData;
 
