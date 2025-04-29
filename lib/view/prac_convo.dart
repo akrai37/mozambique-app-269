@@ -73,6 +73,7 @@ class _PracConvoState extends State<PracConvo> {
       //preload image
       for(Conversation a in _convos){
         await precacheImage(MemoryImage(a.imageBytes), context);
+        imageBytes = a.imageBytes;
       }
       _makeMsgWidgets();
     } catch (error) {
@@ -133,6 +134,13 @@ class _PracConvoState extends State<PracConvo> {
       body: FutureBuilder<void>(
         future: _loadingFuture,
         builder: (context, snapshot){
+          if (snapshot.connectionState == ConnectionState.waiting) {
+
+            // Show a loading indicator while waiting for images to load
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          }
           return Container(
             width: double.infinity,
             height: double.infinity,
@@ -329,7 +337,7 @@ class _PracConvoState extends State<PracConvo> {
                             children: [
                               SizedBox(height: 115),
                               Image(
-                                image: AssetImage('assets/images/Practice/PersonalInteractions.png'),
+                                image: MemoryImage(imageBytes),
                                 width: MediaQuery.of(context).size.width / 2.5 - 15,
                                 height: MediaQuery.of(context).size.width / 2.5 - 15,
                               ),
