@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 
 class QuizQuestion extends StatelessWidget {
   //DICTATES WHAT THE WIDGET TAKES OR WHAT IS REQUIRED TO MAKE THE QUIZ QUESTION
-  final String quizQ;
+  final String question;
   final String promptImage;
-  final bool isFirst;
-  const QuizQuestion({required this.quizQ, required this.promptImage, required this.isFirst, super.key});
+  final bool isFirst; // To determine if this is the first question in the list
+
+  const QuizQuestion({
+    super.key,
+    required this.question,
+    required this.promptImage,
+    this.isFirst = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,7 @@ class QuizQuestion extends StatelessWidget {
                 children: [
                   //QUESTION PROMPT
                   Text(
-                    quizQ, //CHANGE QUESTION TEXT HERE
+                    question, //CHANGE QUESTION TEXT HERE
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -94,8 +100,8 @@ class QuizQuestion extends StatelessWidget {
               ),
               margin: EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.center,
-              child:Image(
-                image: AssetImage(promptImage), //CHANGE IMAGE HERE
+              child: Image(
+                image: AssetImage(promptImage),
                 width: 275,
                 height: 275,
               ),

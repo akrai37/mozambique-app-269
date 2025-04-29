@@ -7,16 +7,16 @@ class QuizOptions extends StatefulWidget {
   final String option1;
   final String option2;
   final String option3;
-  final int correctOption;
+  final int correctOption; // Correct option number (1, 2, or 3)
   final bool isLast;
 
   const QuizOptions({
+    super.key,
     required this.option1,
     required this.option2,
     required this.option3,
     required this.correctOption,
-    required this.isLast,
-    super.key,
+    this.isLast = false,
   });
 
   @override
