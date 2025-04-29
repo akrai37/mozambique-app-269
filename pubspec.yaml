@@ -71,12 +71,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/Prac-Body/Group 49.png
-    - assets/images/Prac-Body/Group 50.png
-    - assets/images/Prac-Body/Group 51.png
-    - assets/images/Prac-Body/Group 52.png
-    - assets/images/Prac-Body/Group 53.png
-    - assets/images/Prac-Body/Group 54.png
+    - assets/images/Prac-Body/Abdomen.png
+    - assets/images/Prac-Body/Arm.png
+    - assets/images/Prac-Body/Chest.png
+    - assets/images/Prac-Body/Foot.png
+    - assets/images/Prac-Body/Hand.png
+    - assets/images/Prac-Body/Leg.png
 
     - assets/images/Prac-Face/Eyes.png
     - assets/images/Prac-Face/Head.png
