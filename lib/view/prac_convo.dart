@@ -25,7 +25,7 @@ class PracConvo extends StatefulWidget {
 }
 
 class _PracConvoState extends State<PracConvo> {
-  int _msgIndex = 0; // Start with only 1 message visible
+  int _msgIndex = 1; // Start with only 1 message visible
   final ScrollController _scrollController = ScrollController();
   late Future<void> _loadingFuture;
   late List<Conversation> _convos =[];
