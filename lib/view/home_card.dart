@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/learn_convo.dart';
 import 'package:mozambique_app/view/learn_screens.dart';
+import 'package:mozambique_app/view/prac_convo.dart';
 
 class HomeCard extends StatelessWidget {
   final HomeWord homeWord;
+  final String type;
 
   const HomeCard({
     super.key,
-    required this.homeWord,
+    required this.homeWord, required this.type,
   });
 
   @override
@@ -37,10 +39,10 @@ class HomeCard extends StatelessWidget {
               Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => LearnConvo(
+                builder: (context) => type == 'learn'? LearnConvo(
                   title: homeWord.portuguese, 
                   tag: homeWord.categoryName,
-                ),
+                ) : PracConvo(title: homeWord.portuguese, tag: homeWord.categoryName),
               ),
             );
             }

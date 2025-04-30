@@ -100,6 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     //return PracConvo(title: "Saudações", tag: "Greetings");
     //return PracConvo(title: "Pedidos", tag: "requests");
-    return PracConvo(title: "Interações Pessoais", tag: "personalInteractions");
+    //return PracConvo(title: "Interações Pessoais", tag: "personalInteractions");
+    return HomeScreen();
   }
 }

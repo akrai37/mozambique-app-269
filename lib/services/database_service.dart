@@ -380,13 +380,18 @@ class DatabaseService {
 
     return null; // no data found for the category
   }
+
+  bool hasCategoryPractice(String category){
+    return _convoBox.containsKey(category); //when practice quiz implemented, add check for quiz
+  }
+
   void printConvo(String category){
     List<Conversation>? convo = getConvo(category); 
     if (convo != null) {
       log('Category: category');
       log('Image: ${convo[0].imagePath}');
       for (ConvoLine l in convo[0].conversationText) {
-        log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
+        log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
       }
     }
   }
@@ -404,7 +409,7 @@ class DatabaseService {
           log('Category: $key');
           log('Image: ${convo[0].imagePath}');
           for (ConvoLine l in convo[0].conversationText) {
-            log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
+            log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
           }
         }
       }

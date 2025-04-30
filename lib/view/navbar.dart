@@ -90,7 +90,7 @@ class _NavbarState extends State<Navbar> {
               }
             ),
           ),
-          TextButton( // Using as Update/Sync button (for now)
+          TextButton( 
             onPressed: () {
               Navigator.pushReplacement(
                 context,

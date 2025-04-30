@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
@@ -24,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
   List<HomeWord> _filteredHomeWords = [];
+  List<HomeWord> _practiceCategories = [];
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
@@ -38,8 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
     // Load home words from Hive
     _homeWords = await fetchHomeCards();
 
-    _filteredHomeWords = _homeWords; // Initialize filtered words with all words
-
+    
+    await _checkPractice();
+    _type == 'learn'? _filteredHomeWords = _homeWords: _filteredHomeWords = _practiceCategories; // Initialize filtered words with all words
     // Preload images
     for (HomeWord homeWord in _homeWords) {
       await precacheImage(MemoryImage(homeWord.imageBytes), context);
@@ -67,6 +71,16 @@ class _HomeScreenState extends State<HomeScreen> {
         }).toList();
       });
     }
+  }
+
+  Future<void> _checkPractice() async{
+    for(HomeWord h in _homeWords){
+      if (await _databaseService.hasCategoryPractice(h.categoryName)){
+        _practiceCategories.add(h);
+        log(h.categoryName);
+      }
+    }
+    //_databaseService.printConvos();
   }
 
   @override
@@ -123,6 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return HomeCard(
                           key: ValueKey(homeWord.portuguese), // Use a unique key for each card
                           homeWord: homeWord,
+                          type: _type
                         );
                     }).toList(),
                   ),
