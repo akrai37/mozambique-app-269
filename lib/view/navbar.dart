@@ -6,8 +6,8 @@ class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
   final VoidCallback? onSync; // When the sync button is pressed
   final bool isHomeScreen; // To check if the user is on the HomeScreen
-  final bool isInfoScreen;
-  final bool isPractice; // To check if the user is on the InfoScreen
+  final bool isInfoScreen; // To check if the user is on the InfoScreen
+  final bool isPractice;
   
   const Navbar({
     super.key,

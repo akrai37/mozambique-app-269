@@ -86,6 +86,7 @@ class _InfoScreenState extends State<InfoScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           Navbar(
+            isPractice: false,
             onSearchChanged: (temp) {},
             isInfoScreen: true, // Pass the isInfoScreen flag to Navbar,
           ),
