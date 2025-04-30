@@ -90,7 +90,7 @@ class _LearnScreensState extends State<LearnScreens> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(onSearchChanged: _onSearchChanged),
+              Navbar(isPractice: false, onSearchChanged: _onSearchChanged),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                 child: Row(

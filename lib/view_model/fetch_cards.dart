@@ -1,5 +1,6 @@
 import 'package:mozambique_app/model/conversation.dart';
 import 'package:mozambique_app/model/question.dart';
+import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';
@@ -17,6 +18,7 @@ Future<List<HomeWord>> fetchHomeCards({String type = 'learn'}) async {
   return dbService.getHomeWords() ?? [];
 }
 
+// Fetch Vocab cards from Hive or Firestore using the category
 Future<List<VocabWord>> fetchVocabCards(String category) async {
   final DatabaseService dbService = DatabaseService();
 
@@ -30,6 +32,7 @@ Future<List<VocabWord>> fetchVocabCards(String category) async {
   return dbService.getVocabWords(category) ?? [];
 }
 
+// Fetch Learn conversations from Hive or Firestore using the category
 Future<List<Question>> fetchQuestionResponse(String category) async {
   final DatabaseService dbService = DatabaseService();
 
@@ -43,7 +46,7 @@ Future<List<Question>> fetchQuestionResponse(String category) async {
   return dbService.getQuestion(category) ?? [];
 }
 
-Future<List<Conversation>> fetchPracConvo(String category) async{
+Future<List<Conversation>> fetchPracConvo(String category) async {
   final DatabaseService dbService = DatabaseService();
 
   // Load from Hive first
@@ -55,6 +58,20 @@ Future<List<Conversation>> fetchPracConvo(String category) async{
   // If Hive data is not available, fetch from Firestore
   await dbService.syncContent();
   return dbService.getConvo(category) ?? [];
+}
+
+// Fetch Practice Quiz questions from Hive or Firestore using the category
+Future<List<QuizQuestion>> fetchQuizQuestions(String category) async {
+  final DatabaseService dbService = DatabaseService();
+
+  // Load from Hive first
+  List<QuizQuestion>? localData = dbService.getQuizQuestions(category);
+
+  if (localData != null && localData.isNotEmpty) return localData;
+
+  // If Hive data is not available, fetch from Firestore
+  await dbService.syncContent();
+  return dbService.getQuizQuestions(category) ?? [];
 }
 
 /*

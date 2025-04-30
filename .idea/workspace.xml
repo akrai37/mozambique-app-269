@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="68ccd67b-4981-47e6-b77b-a8bac5d076cb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/info_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/info_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/learn_convo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/learn_convo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/learn_screens.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/learn_screens.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/navbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/navbar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/view/prac_convo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/prac_convo.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mozambique_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/mozambique_app/pubspec.yaml" afterDir="false" />
     </list>

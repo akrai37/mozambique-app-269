@@ -101,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
                 Navbar(
+                  isPractice: false,
                   onSearchChanged: _onSearchChanged,
                   isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
                   isLearnScreen: _type == 'learn',

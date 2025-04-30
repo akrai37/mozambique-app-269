@@ -1,33 +1,37 @@
 //DART FILE FOR LEFT SIDE MESSAGES WIDGET
-import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:mozambique_app/model/conversation.dart';
 
 class Msg1 extends StatefulWidget {
-  final String msg1;
+  final ConvoLine line;
   final bool isLast;
-  final Uint8List audio;
-  // final VoidCallback onTap;
 
-  // const Msg1({required this.msg1, required this.onTap, Key? key}) : super(key: key);
   const Msg1({
-    required this.msg1, 
-    required this.isLast, 
-    required this.audio,
-    super.key});
+    super.key,
+    required this.line,
+    this.isLast = false, 
+  });
 
   @override
   State<Msg1> createState() => _Msg1State();
 }
 
 class _Msg1State extends State<Msg1> {
+  late ConvoLine _line;
   final AudioPlayer _audioPlayer = AudioPlayer(); // Audio player for question audio
   @override
   void initState() {
     super.initState();
 
-    _audioPlayer.setSourceBytes(widget.audio); // Set the audio source to the byte data
+    _line = widget.line;
+
+    if (_audioPlayer.audioCache.prefix != '') { // Clear prefix 
+      _audioPlayer.audioCache.prefix = '';
+    }
+
+    _audioPlayer.setSourceBytes(_line.audioBytes); // Set the audio source to the byte data
     _audioPlayer.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
     _audioPlayer.setVolume(1.0); // Set the volume to maximum
   }
@@ -77,7 +81,7 @@ class _Msg1State extends State<Msg1> {
                   children: [
                     //MESSAGE TEXT
                     Text(
-                      widget.msg1,
+                      _line.convoText,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

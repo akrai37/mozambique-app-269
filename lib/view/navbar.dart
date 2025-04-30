@@ -9,10 +9,12 @@ class Navbar extends StatefulWidget {
   final bool isHomeScreen; // To check if the user is on the HomeScreen
   final bool isLearnScreen; // To check if the user is on the LearnScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
+  final bool isPractice; // To check if the user is on a practice screen (dark mode)
   
   const Navbar({
     super.key,
     required this.onSearchChanged,
+    required this.isPractice,
     this.onSync,
     this.isHomeScreen = false,
     this.isLearnScreen = true,
@@ -41,9 +43,9 @@ class _NavbarState extends State<Navbar> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.black,
+                    color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
               const Text(
@@ -58,23 +60,23 @@ class _NavbarState extends State<Navbar> {
           ),
           Expanded( // ensures the TextField takes up the remaining space
             child: TextField(
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 hintText: 'Procurar...',
                 hintStyle: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF95A5A5),
+                  color: widget.isPractice ? Colors.white : Color(0xFF95A5A5),
                 ),
                 prefixIcon: Icon(
                   Icons.search,
-                  color: Color(0xFF95A5A5),
+                  color: widget.isPractice ? Colors.white : Color(0xFF95A5A5),
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
-                fillColor: Color(0xFFECF0F1),
+                fillColor: widget.isPractice ? Color(0xFF969FA7) : Color(0xFFECF0F1),
               ),
               style: const TextStyle(
                 fontSize: 20,
@@ -101,25 +103,25 @@ class _NavbarState extends State<Navbar> {
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
-                  side: const BorderSide(
-                    color: Color(0xFF2D3E50),
+                  side: BorderSide(
+                    color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
               ),
             ),
-            child: const Text(
+            child: Text(
               'Prática',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF2D3E50),
+                color: widget.isPractice ? Colors.white : Colors.black,
               ),
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: widget.isInfoScreen ? Colors.grey : Colors.black,
+              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Colors.black),
             ),
             iconSize: 50,
             onPressed: widget.isInfoScreen
