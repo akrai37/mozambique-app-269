@@ -8,7 +8,7 @@ class Navbar extends StatefulWidget {
   final bool isHomeScreen; // To check if the user is on the HomeScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
   final bool isPractice;
-
+  
   const Navbar({
     super.key,
     required this.onSearchChanged,
