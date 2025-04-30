@@ -40,9 +40,9 @@ class _NavbarState extends State<Navbar> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.black,
+                    color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
               const Text(
@@ -96,7 +96,7 @@ class _NavbarState extends State<Navbar> {
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                   side: BorderSide(
-                    color: widget.isPractice ? Color(0xFF95A5A5) : Color(0xFF2D3E50),
+                    color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
               ),
@@ -106,14 +106,14 @@ class _NavbarState extends State<Navbar> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: widget.isPractice ? Color(0xFF95A5A5) : Color(0xFF2D3E50),
+                color: widget.isPractice ? Colors.white : Colors.black,
               ),
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Color(0xFF95A5A5) : Color(0xFF2D3E50)),
+              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Colors.black),
             ),
             iconSize: 50,
             onPressed: widget.isInfoScreen
