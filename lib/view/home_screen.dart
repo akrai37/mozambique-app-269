@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
@@ -7,23 +9,31 @@ import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/navbar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final String type;
+
+  const HomeScreen({
+    super.key,
+    this.type = 'learn', // Default type is 'learn'
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late String _type;
   final DatabaseService _databaseService = DatabaseService();
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
   List<HomeWord> _filteredHomeWords = [];
+  List<HomeWord> _practiceCategories = []; // List to hold practice categories
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
   void initState() {
     super.initState();
 
+    _type = widget.type;
     _loadingFuture = _loadContent();
   }
 
@@ -31,8 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
     // Load home words from Hive
     _homeWords = await fetchHomeCards();
 
-    _filteredHomeWords = _homeWords; // Initialize filtered words with all words
-
+    
+    await _checkPractice();
+    _filteredHomeWords = _type == 'learn' ?  _homeWords : _practiceCategories; // Initialize filtered words with all words
     // Preload images
     for (HomeWord homeWord in _homeWords) {
       await precacheImage(MemoryImage(homeWord.imageBytes), context);
@@ -62,6 +73,16 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  Future<void> _checkPractice() async {
+    for (HomeWord homeWord in _homeWords) {
+      if (await _databaseService.hasCategoryPractice(homeWord.categoryName)) {
+        _practiceCategories.add(homeWord);
+        log(homeWord.categoryName);
+      }
+    }
+    //_databaseService.printConvos();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,52 +97,57 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           // Once the images are loaded, build the UI
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-                Navbar(
-                  isPractice: false,
-                  onSearchChanged: _onSearchChanged,
-                  isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
-                  onSync: () async {
-                    await _loadContent();
-
-                    setState(() {}); // Force a rebuild
-                  }
-                ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
-                  children: [
-                    const Text(
-                      'Olá!',
-                      style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF2D3E50),
+          return Container(
+            color: _type == 'learn' ? Colors.white : Color.fromRGBO(53, 64, 79, 1),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                  Navbar(
+                    onSearchChanged: _onSearchChanged,
+                    isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
+                    isLearnScreen: _type == 'learn',
+                    isPractice: _type != 'learn',
+                    onSync: () async {
+                      await _loadContent();
+            
+                      setState(() {}); // Force a rebuild
+                    }
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
+                    children: [
+                      Text(
+                        _type == 'learn' ? 'Olá!' : 'Prática!',
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: _type == 'learn' ? Color(0xFF2D3E50) : Colors.white,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
-                child: SingleChildScrollView(
-                  child: Wrap( // replaces Row so that the children wrap to the next line if they don't fit
-                    direction: Axis.horizontal,
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: _filteredHomeWords.map((homeWord) {
-                        return HomeCard(
-                          key: ValueKey(homeWord.portuguese), // Use a unique key for each card
-                          homeWord: homeWord,
-                        );
-                    }).toList(),
+                    ],
                   ),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
+                  child: SingleChildScrollView(
+                    child: Wrap( // replaces Row so that the children wrap to the next line if they don't fit
+                      direction: Axis.horizontal,
+                      spacing: 10,
+                      runSpacing: 10,
+                      children: _filteredHomeWords.map((homeWord) {
+                          return HomeCard(
+                            key: ValueKey(homeWord.portuguese), // Use a unique key for each card
+                            homeWord: homeWord,
+                            type: _type
+                          );
+                      }).toList(),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
         }
       ),

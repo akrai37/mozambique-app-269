@@ -23,13 +23,14 @@ class HomeWordAdapter extends TypeAdapter<HomeWord> {
       imageBytes: fields[3] as Uint8List,
       imagePath: fields[4] as String,
       type: fields[5] as String,
+      hasPractice: fields[6] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, HomeWord obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.word)
       ..writeByte(1)
@@ -41,7 +42,9 @@ class HomeWordAdapter extends TypeAdapter<HomeWord> {
       ..writeByte(4)
       ..write(obj.imagePath)
       ..writeByte(5)
-      ..write(obj.type);
+      ..write(obj.type)
+      ..writeByte(6)
+      ..write(obj.hasPractice);
   }
 
   @override

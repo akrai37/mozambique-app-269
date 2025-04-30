@@ -26,7 +26,7 @@ class DatabaseService {
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
-    if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty) {
+    if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty || _convoBox.isEmpty) {
       print("Hive database is empty. Syncing with Firestore...");
       await syncContent(context: context);
     } else {
@@ -111,7 +111,6 @@ class DatabaseService {
     await _syncQuizQuestions();
     await _syncPracConvo();
 
-    //printConvos();
     print("Data synced from Firestore to Hive.");
 
     return true; // Sync successful
@@ -451,6 +450,18 @@ class DatabaseService {
     return null; // no data found for the category
   }
 
+  bool hasCategoryPractice(String category) { // Check if the category exists in either the Practice quiz or conversation boxes
+    return _quizQuestionBox.containsKey(category) || _convoBox.containsKey(category);
+  }
+
+  bool hasCategoryPracticeConvo(String category) { // Check if the category exists in the Practice conversation box
+    return _convoBox.containsKey(category);
+  }
+
+  bool hasCategoryPracticeQuiz(String category) { // Check if the category exists in the Practice quiz box
+    return _quizQuestionBox.containsKey(category);
+  }
+
   // Fetch Practice Quiz questions from Hive using a specified category
   List<QuizQuestion>? getQuizQuestions(String category) {
     List<dynamic>? rawList = _quizQuestionBox.get(category);
@@ -470,7 +481,7 @@ class DatabaseService {
       log('Category: category');
       log('Image: ${convo[0].imagePath}');
       for (ConvoLine l in convo[0].conversationText) {
-        log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
+        log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
       }
     }
   }
@@ -491,7 +502,7 @@ class DatabaseService {
         log('Category: $key');
         log('Image: ${convo[0].imagePath}');
         for (ConvoLine l in convo[0].conversationText) {
-          log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
+          log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
         }
       }
     }

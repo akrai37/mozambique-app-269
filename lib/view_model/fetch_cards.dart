@@ -5,8 +5,7 @@ import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/vocab.dart';
 
-// Fetch Home cards from Hive or Firestore
-Future<List<HomeWord>> fetchHomeCards() async {
+Future<List<HomeWord>> fetchHomeCards({String type = 'learn'}) async {
   final DatabaseService dbService = DatabaseService();
 
   // Load from Hive first

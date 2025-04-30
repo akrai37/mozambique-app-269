@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view/info_screen.dart';
+import 'package:mozambique_app/view/home_screen.dart';
 
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
   final VoidCallback? onSync; // When the sync button is pressed
   final bool isHomeScreen; // To check if the user is on the HomeScreen
+  final bool isLearnScreen; // To check if the user is on the LearnScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
   final bool isPractice; // To check if the user is on a practice screen (dark mode)
   
@@ -15,6 +17,7 @@ class Navbar extends StatefulWidget {
     required this.isPractice,
     this.onSync,
     this.isHomeScreen = false,
+    this.isLearnScreen = true,
     this.isInfoScreen = false,
   });
 
@@ -89,14 +92,19 @@ class _NavbarState extends State<Navbar> {
               }
             ),
           ),
-          TextButton(
-            onPressed: () {},
+          TextButton( 
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => HomeScreen(type: widget.isLearnScreen ? 'practice' : 'learn')),
+              );
+            },
             style: ButtonStyle(
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                   side: BorderSide(
-                    color: widget.isPractice ? Colors.white : Colors.black,
+                    color: widget.isPractice ? Colors.white : Color(0xFF2D3E50),
                   ),
                 ),
               ),
@@ -106,14 +114,14 @@ class _NavbarState extends State<Navbar> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: widget.isPractice ? Colors.white : Colors.black,
+                color: widget.isPractice ? Colors.white : Color(0xFF2D3E50),
               ),
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Colors.black),
+              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Color(0xFF2D3E50)),
             ),
             iconSize: 50,
             onPressed: widget.isInfoScreen

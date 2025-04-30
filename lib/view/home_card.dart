@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/learn_convo.dart';
 import 'package:mozambique_app/view/learn_screens.dart';
+import 'package:mozambique_app/view/practice_convo.dart';
+import 'package:mozambique_app/view/quiz_screen.dart';
 
 class HomeCard extends StatelessWidget {
   final HomeWord homeWord;
+  final String type;
 
   const HomeCard({
     super.key,
-    required this.homeWord,
+    required this.homeWord, 
+    required this.type,
   });
 
   @override
@@ -23,28 +27,51 @@ class HomeCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(5),
           onTap: () {
-            if (homeWord.type == "cards") { // If the type is "cards", navigate to LearnScreens
+            if (type == 'learn') { // If the type is "learn", navigate to LearnScreens
+              if (homeWord.type == 'cards') { // If the type is "cards", navigate to LearnScreens
                 Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LearnScreens(
-                    title: homeWord.portuguese, 
-                    tag: homeWord.categoryName,
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LearnScreens(
+                      title: homeWord.portuguese, 
+                      tag: homeWord.categoryName,
+                    ),
                   ),
-                ),
-              );
-            } else { // If the type is not "cards", navigate to LearnConvo
-              Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LearnConvo(
-                  title: homeWord.portuguese, 
-                  tag: homeWord.categoryName,
-                ),
-              ),
-            );
+                );
+              } else if (homeWord.type == 'conversation') { // If the type is "conversation", navigate to LearnConvo
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LearnConvo(
+                      title: homeWord.portuguese,
+                      tag: homeWord.categoryName,
+                    ),
+                  ),
+                );
+              }
+            } else if (type == 'practice') { // If the type is "practice", navigate to PracticeConvo
+              if (homeWord.type == 'conversation') { // If the type is "conversation", navigate to PracticeConvo
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PracticeConvo(
+                      title: homeWord.portuguese,
+                      tag: homeWord.categoryName,
+                    ),
+                  ),
+                );
+              } else { // If the type is not "conversation", navigate to LearnScreens
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QuizScreen(
+                      title: homeWord.portuguese, 
+                      tag: homeWord.categoryName,
+                    ),
+                  ),
+                );
+              }
             }
-            
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -65,6 +92,7 @@ class HomeCard extends StatelessWidget {
               Text(
                 homeWord.portuguese,
                 style: TextStyle(
+                  color: const Color(0xFF2D3E50),
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
