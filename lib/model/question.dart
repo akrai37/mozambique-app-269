@@ -1,22 +1,28 @@
+import 'dart:typed_data';
+
 import 'package:hive/hive.dart';
 
 part 'question.g.dart';
 
 @HiveType(typeId: 2)
 class Question {
-  @HiveField(0)
-  String id;
 
-  @HiveField(1)
+  @HiveField(0)
   String questionText;
 
-  @HiveField(2)
+  @HiveField(1)
   String categoryName;
 
-  @HiveField(3)
+  @HiveField(2)
   String? audioPath;
 
-  Question( {required this.id, required this.questionText, required this.categoryName, required this.audioPath});
+  @HiveField(3)
+  List<Response> responses;
+
+   @HiveField(4)
+  Uint8List audioBytes;
+
+  Question( {required this.questionText, required this.categoryName, required this.audioPath, required this.responses, required this.audioBytes});
 }
 
 @HiveType(typeId: 3)
@@ -25,13 +31,13 @@ class Response {
   String responseText;
 
   @HiveField(1)
-  String questionId; //foreign key
-
-  @HiveField(2)
   String? audioPath;
 
-  @HiveField(3)
+  @HiveField(2)
   String emotion;
 
-  Response( {required this.responseText, required this.questionId, required this.audioPath, required this.emotion});
+   @HiveField(3)
+  Uint8List audioBytes;
+
+  Response( {required this.responseText, required this.audioPath, required this.emotion, required this.audioBytes});
 }

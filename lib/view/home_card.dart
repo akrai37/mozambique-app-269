@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/model/home_word.dart';
+import 'package:mozambique_app/view/learn_convo.dart';
 import 'package:mozambique_app/view/learn_screens.dart';
 
 class HomeCard extends StatelessWidget {
@@ -22,15 +23,28 @@ class HomeCard extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(5),
           onTap: () {
-            Navigator.push(
+            if (homeWord.type == "cards") { // If the type is "cards", navigate to LearnScreens
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LearnScreens(
+                    title: homeWord.portuguese, 
+                    tag: homeWord.categoryName,
+                  ),
+                ),
+              );
+            } else { // If the type is not "cards", navigate to LearnConvo
+              Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => LearnScreens(
+                builder: (context) => LearnConvo(
                   title: homeWord.portuguese, 
                   tag: homeWord.categoryName,
                 ),
               ),
             );
+            }
+            
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

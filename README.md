@@ -36,10 +36,11 @@ There are 2 important steps that are needed to allow the app to fetch from Fires
 
 ### Steps For Adding New Media
 1. Add images/audio to their respective folder inside `public/`
-2. On Firestore, add a new image/audio object
-3. Add the property `imagePath`/`audioPath` to it and give it a value of the hosted website's link appended by the media file's relative path from `public/` (i.e. `https://mozambique-app.web.app/images/body/Abdomen.png`)
-4. (Optional) Use a script (e.g. `convertBase64ToJSON.js`, `JSON2Firestore.js`) to add the media file to the object's `imageBase64`/`audioBase64` property
-5. Sync in the app, and everything should be updated!
+2. Run `firebase deploy` to host the new media files online
+3. On Firestore, add a new image/audio object
+4. Add the property `imagePath`/`audioPath` to it and give it a value of the hosted website's link appended by the media file's relative path from `public/` (i.e. `https://mozambique-app.web.app/images/body/Abdomen.png`)
+5. (Optional) Use a script (e.g. `convertBase64ToJSON.js`, `JSON2Firestore.js`) to add the media file to the object's `imageBase64`/`audioBase64` property
+6. Sync in the app, and everything should be updated!
 
 ## Scripts
 ### Installing Necessary Libraries
