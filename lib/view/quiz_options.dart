@@ -295,4 +295,14 @@ class _QuizOptionsState extends State<QuizOptions> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // Dispose of the audio players when the widget is removed from the widget tree
+    _audioPlayer1.dispose();
+    _audioPlayer2.dispose();
+    _audioPlayer3.dispose();
+
+    super.dispose();
+  }
 }

@@ -143,4 +143,11 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose(); // Dispose of the audio player when the widget is removed from the tree
+    
+    super.dispose();
+  }
 }

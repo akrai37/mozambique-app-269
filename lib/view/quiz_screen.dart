@@ -1,7 +1,6 @@
 //MAIN DART PAGE THAT CALLS ALL OTHER WIDGETS AND PUTS IT TOGETHER ON THE PAGE
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/quiz.dart';
-import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/view/quiz_options.dart';
 import 'package:mozambique_app/view/quiz_question_widget.dart';
@@ -22,7 +21,6 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  final DatabaseService _databaseService = DatabaseService();
   late List<QuizQuestion> _quizQuestions = [];
   late Future<void> _loadingFuture;
 
