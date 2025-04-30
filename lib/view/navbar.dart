@@ -40,9 +40,9 @@ class _NavbarState extends State<Navbar> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios_new_rounded,
-                    color: Colors.black,
+                    color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
               const Text(
