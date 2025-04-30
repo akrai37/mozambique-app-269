@@ -6,7 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:mozambique_app/firebase_options.dart';
 
 import 'package:mozambique_app/view/home_screen.dart';
-import 'package:mozambique_app/model/category.dart';
 import 'package:mozambique_app/model/conversation.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
@@ -30,7 +29,6 @@ void main() async{
   Hive.init(appDocumentDirectory.path);
 
   // Register Hive Adapters
-  Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(VocabWordAdapter());
   Hive.registerAdapter(HomeWordAdapter());
   Hive.registerAdapter(QuestionAdapter());
@@ -38,9 +36,9 @@ void main() async{
   Hive.registerAdapter(QuizQuestionAdapter());
   Hive.registerAdapter(QuizAnswerAdapter());
   Hive.registerAdapter(ConversationAdapter());
+  Hive.registerAdapter(ConvoLineAdapter());
 
   // Open Hive Boxes (key-value store/container)
-  await Hive.openBox<Category>('categories');
   // MAKE SURE TO OPEN AS List NOT AS List<VocabWord>
   await Hive.openBox<List>('vocab_words'); // storing vocab words as a list
   await Hive.openBox<List>('home_words');

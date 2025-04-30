@@ -1,3 +1,4 @@
+import 'package:mozambique_app/model/conversation.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/services/database_service.dart';
@@ -44,6 +45,20 @@ Future<List<Question>> fetchQuestionResponse(String category) async {
   // If Hive data is not available, fetch from Firestore
   await dbService.syncContent();
   return dbService.getQuestion(category) ?? [];
+}
+
+Future<List<Conversation>> fetchPracConvo(String category) async {
+  final DatabaseService dbService = DatabaseService();
+
+  // Load from Hive first
+  List<Conversation>? localData = dbService.getConvo(category);
+  //dbService.printConvo(category);
+
+  if (localData != null) return localData;
+
+  // If Hive data is not available, fetch from Firestore
+  await dbService.syncContent();
+  return dbService.getConvo(category) ?? [];
 }
 
 // Fetch Practice Quiz questions from Hive or Firestore using the category
