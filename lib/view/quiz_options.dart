@@ -1,13 +1,14 @@
 //DART FILE TO FORMAT THE QUIZ OPTIONS
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/view/quiz_checkbox.dart';
 
 class QuizOptions extends StatefulWidget {
   //DICTATES WHAT THE WIDGET TAKES IN TO MAKE OPTIONS
-  final String option1;
-  final String option2;
-  final String option3;
-  final int correctOption; // Correct option number (1, 2, or 3)
+  final QuizAnswer option1;
+  final QuizAnswer option2;
+  final QuizAnswer option3;
   final bool isLast;
 
   const QuizOptions({
@@ -15,7 +16,6 @@ class QuizOptions extends StatefulWidget {
     required this.option1,
     required this.option2,
     required this.option3,
-    required this.correctOption,
     this.isLast = false,
   });
 
@@ -28,6 +28,34 @@ class _QuizOptionsState extends State<QuizOptions> {
   bool isSelected1 = false;
   bool isSelected2 = false;
   bool isSelected3 = false;
+
+  late QuizAnswer _option1;
+  late QuizAnswer _option2;
+  late QuizAnswer _option3;
+  final AudioPlayer _audioPlayer1 = AudioPlayer();
+  final AudioPlayer _audioPlayer2 = AudioPlayer();
+  final AudioPlayer _audioPlayer3 = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    
+    _option1 = widget.option1;
+    _option2 = widget.option2;
+    _option3 = widget.option3;
+
+    _audioPlayer1.setSourceBytes(_option1.audioBytes); // Set the audio source to the byte data
+    _audioPlayer1.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
+    _audioPlayer1.setVolume(1.0); // Set the volume to maximum
+
+    _audioPlayer2.setSourceBytes(_option2.audioBytes); // Set the audio source to the byte data
+    _audioPlayer2.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
+    _audioPlayer2.setVolume(1.0); // Set the volume to maximum
+    
+    _audioPlayer3.setSourceBytes(_option3.audioBytes); // Set the audio source to the byte data
+    _audioPlayer3.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
+    _audioPlayer3.setVolume(1.0); // Set the volume to maximum
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +101,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                   children: [
                     //OPTION TEXT
                     Text(
-                      widget.option1,
+                      _option1.answerText,
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -88,10 +116,15 @@ class _QuizOptionsState extends State<QuizOptions> {
                         color: Colors.white, // White circular background
                         shape: BoxShape.circle, 
                       ),
-                      child: const Icon(
-                        Icons.volume_up,
-                        color: Color(0xFF2D3E50),
-                        size: 24,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.volume_up,
+                          color: Color(0xFF2D3E50),
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          _audioPlayer1.resume(); // Play the audio when the icon is tapped
+                        },
                       ),
                     ), // Spacing between text and icon
                   ],
@@ -103,7 +136,7 @@ class _QuizOptionsState extends State<QuizOptions> {
               scale: 2.25, // Increase or decrease this value as needed
               child: CustomCheckbox(
                 isChecked: isSelected1,
-                isCorrect: widget.correctOption == 1, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
+                isCorrect: _option1.isCorrect, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
                 //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
                 onChanged: (newValue){
                   setState((){
@@ -140,7 +173,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                   children: [
                     //OPTION TEXT
                     Text(
-                      widget.option2,
+                      _option2.answerText,
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -155,10 +188,15 @@ class _QuizOptionsState extends State<QuizOptions> {
                         color: Colors.white, // White circular background
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
-                        Icons.volume_up,
-                        color: Color(0xFF2D3E50),
-                        size: 24,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.volume_up,
+                          color: Color(0xFF2D3E50),
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          _audioPlayer2.resume(); // Play the audio when the icon is tapped
+                        },
                       ),
                     ), // Spacing between text and icon
                   ],
@@ -170,7 +208,7 @@ class _QuizOptionsState extends State<QuizOptions> {
               scale: 2.25, // Increase or decrease this value as needed
               child: CustomCheckbox(
                 isChecked: isSelected2,
-                isCorrect: widget.correctOption == 2, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
+                isCorrect: _option2.isCorrect, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
                 //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
                 onChanged: (newValue){
                   setState((){
@@ -207,7 +245,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                   children: [
                     //OPTION TEXT
                     Text(
-                      widget.option3,
+                      _option3.answerText,
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
@@ -222,10 +260,15 @@ class _QuizOptionsState extends State<QuizOptions> {
                         color: Colors.white, // White circular background
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
-                        Icons.volume_up,
-                        color: Color(0xFF2D3E50),
-                        size: 24,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.volume_up,
+                          color: Color(0xFF2D3E50),
+                          size: 24,
+                        ),
+                        onPressed: () {
+                          _audioPlayer3.resume(); // Play the audio when the icon is tapped
+                        },
                       ),
                     ), // Spacing between text and icon
                   ],
@@ -237,7 +280,7 @@ class _QuizOptionsState extends State<QuizOptions> {
               scale: 2.25, // Increase or decrease this value as needed
               child: CustomCheckbox(
                 isChecked: isSelected3,
-                isCorrect: widget.correctOption == 3, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
+                isCorrect: _option3.isCorrect, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
                 //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
                 onChanged: (newValue){
                   setState((){

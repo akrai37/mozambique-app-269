@@ -18,23 +18,29 @@ class QuizQuestionAdapter extends TypeAdapter<QuizQuestion> {
     };
     return QuizQuestion(
       questionText: fields[0] as String,
-      imagePath: fields[1] as String,
-      audioPath: fields[2] as String,
-      answers: (fields[3] as List).cast<QuizAnswer>(),
+      imageBytes: fields[1] as Uint8List,
+      audioBytes: fields[2] as Uint8List,
+      imagePath: fields[3] as String,
+      audioPath: fields[4] as String,
+      answers: (fields[5] as List).cast<QuizAnswer>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, QuizQuestion obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.questionText)
       ..writeByte(1)
-      ..write(obj.imagePath)
+      ..write(obj.imageBytes)
       ..writeByte(2)
-      ..write(obj.audioPath)
+      ..write(obj.audioBytes)
       ..writeByte(3)
+      ..write(obj.imagePath)
+      ..writeByte(4)
+      ..write(obj.audioPath)
+      ..writeByte(5)
       ..write(obj.answers);
   }
 
@@ -63,19 +69,22 @@ class QuizAnswerAdapter extends TypeAdapter<QuizAnswer> {
       answerText: fields[0] as String,
       isCorrect: fields[1] as bool,
       audioPath: fields[2] as String,
+      audioBytes: fields[3] as Uint8List,
     );
   }
 
   @override
   void write(BinaryWriter writer, QuizAnswer obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.answerText)
       ..writeByte(1)
       ..write(obj.isCorrect)
       ..writeByte(2)
-      ..write(obj.audioPath);
+      ..write(obj.audioPath)
+      ..writeByte(3)
+      ..write(obj.audioBytes);
   }
 
   @override

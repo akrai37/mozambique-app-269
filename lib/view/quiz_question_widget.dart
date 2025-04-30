@@ -1,18 +1,40 @@
 //DART FILE THAT FORMATS ALL THE QUESTIONS
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:mozambique_app/model/quiz.dart';
 
-class QuizQuestion extends StatelessWidget {
+class QuizQuestionWidget extends StatefulWidget {
   //DICTATES WHAT THE WIDGET TAKES OR WHAT IS REQUIRED TO MAKE THE QUIZ QUESTION
-  final String question;
-  final String promptImage;
+  final QuizQuestion question;
   final bool isFirst; // To determine if this is the first question in the list
 
-  const QuizQuestion({
+  const QuizQuestionWidget({
     super.key,
     required this.question,
-    required this.promptImage,
     this.isFirst = false,
   });
+
+  @override
+  State<QuizQuestionWidget> createState() => _QuizQuestionWidgetState();
+}
+
+class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
+  late QuizQuestion _question;
+  final AudioPlayer _audioPlayer = AudioPlayer();
+
+  @override
+  void initState() {
+    super.initState();
+    _question = widget.question;
+
+    if (_audioPlayer.audioCache.prefix != '') { // Clear prefix 
+      _audioPlayer.audioCache.prefix = '';
+    }
+
+    _audioPlayer.setSourceBytes(_question.audioBytes); // Set the audio source to the byte data
+    _audioPlayer.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
+    _audioPlayer.setVolume(1.0); // Set the volume to maximum
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +45,8 @@ class QuizQuestion extends StatelessWidget {
         decoration: BoxDecoration(
           color: const Color(0xFFECF0F1),
           borderRadius: BorderRadius.only(
-            topLeft: isFirst ? Radius.circular(12) : Radius.circular(0),
-            topRight: isFirst ? Radius.circular(12) : Radius.circular(0),
+            topLeft: widget.isFirst ? Radius.circular(12) : Radius.circular(0),
+            topRight: widget.isFirst ? Radius.circular(12) : Radius.circular(0),
             bottomLeft: Radius.circular(0),
             bottomRight: Radius.circular(0),
           ),
@@ -56,7 +78,7 @@ class QuizQuestion extends StatelessWidget {
                 children: [
                   //QUESTION PROMPT
                   Text(
-                    question, //CHANGE QUESTION TEXT HERE
+                    _question.questionText, //CHANGE QUESTION TEXT HERE
                     style: TextStyle(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -71,10 +93,15 @@ class QuizQuestion extends StatelessWidget {
                       color: Colors.white, // White circular background
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(
-                      Icons.volume_up,
-                      color: Color(0xFF2D3E50),
-                      size: 24,
+                    child: IconButton(
+                      icon: const Icon(
+                        Icons.volume_up,
+                        color: Color(0xFF2D3E50),
+                        size: 24,
+                      ),
+                      onPressed: () {
+                        _audioPlayer.resume(); // Play the audio when the icon is pressed
+                      },
                     ),
                   ),
                 ]
@@ -100,11 +127,16 @@ class QuizQuestion extends StatelessWidget {
               ),
               margin: EdgeInsets.symmetric(horizontal: 20),
               alignment: Alignment.center,
-              child: Image(
-                image: AssetImage(promptImage),
-                width: 275,
-                height: 275,
-              ),
+              child: _question.imageBytes.isNotEmpty
+                ? Image.memory(
+                    _question.imageBytes,
+                    height: 275,
+                    width: 275,
+                  )
+                : const Icon(
+                    Icons.error,
+                    size: 275,
+                  ),
             ),
           ],
         ),
