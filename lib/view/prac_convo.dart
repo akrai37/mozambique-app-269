@@ -128,7 +128,7 @@ class _PracConvoState extends State<PracConvo> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // 5% of screen width
     return Scaffold(
       backgroundColor: Color.fromRGBO(53, 64, 79, 255),
       body: FutureBuilder<void>(
@@ -168,15 +168,19 @@ class _PracConvoState extends State<PracConvo> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
+                                      width: MediaQuery.of(context).size.width / 3.5 - 5,
                                       //margin: EdgeInsets.symmetric(vertical: 0),
-                                      child: Text(
-                                        widget.title,
-                                        style: const TextStyle(
-                                          fontSize: 80,
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xFFECF0F1),
+                                      child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                          widget.title,
+                                          style: TextStyle(
+                                            fontSize: 80,
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFFECF0F1),
+                                          ),
                                         ),
-                                      ),
+                                      )
                                     ),
                                     SizedBox(width: MediaQuery.of(context).size.width / 8 - 35),
                                     Container(
@@ -200,20 +204,15 @@ class _PracConvoState extends State<PracConvo> {
                                           ),
                                           elevation: WidgetStateProperty.all(0),
                                         ),
-                                        // ElevatedButton.styleFrom(
-                                        //   backgroundColor: Colors.transparent, 
-                                        //   foregroundColor: Colors.white,
-                                        //   padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                        //   side: _msgIndex > 1 ? BorderSide(color: Colors.white, width: 2.5) : BorderSide(color: Color(0xFF969FA7), width: 1.25),
-                                        //   shape: RoundedRectangleBorder(
-                                        //     borderRadius: BorderRadius.circular(12),
-                                        //   ),
-                                        // ),
-                                        child: Text('Reiniciar ⟲', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text('Reiniciar ⟲', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                        ),
                                       ),
                                     ),
                                   ],
                                 ),
+                                SizedBox(height: 20),
                                 //CONVERSATION HEADER WITH PERSON ICONS
                                 Container(
                                   height: 120,
@@ -296,7 +295,10 @@ class _PracConvoState extends State<PracConvo> {
                                           ),
                                           elevation: WidgetStateProperty.all(0),
                                         ),
-                                        child: Text('← Voltar', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text('← Voltar', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                                        ),
                                       ),
                                     ),
                                     SizedBox(width: MediaQuery.of(context).size.width / 10 - 15),
@@ -322,7 +324,10 @@ class _PracConvoState extends State<PracConvo> {
                                           ),
                                           elevation: WidgetStateProperty.all(0),
                                         ),
-                                        child: Text(_msgIndex == _messages.length ? 'Terminado' : 'Próximo →', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                                        child: FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(_msgIndex == _messages.length ? 'Terminado' : 'Próximo →', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                                        ),
                                       )
                                     ),
                                   ],
@@ -335,7 +340,7 @@ class _PracConvoState extends State<PracConvo> {
                           //SECTION IMAGE AND BUTTONS
                           Column(
                             children: [
-                              SizedBox(height: 115),
+                              SizedBox(height: MediaQuery.of(context).size.height / 16),
                               Image(
                                 image: MemoryImage(imageBytes),
                                 width: MediaQuery.of(context).size.width / 2.5 - 15,
