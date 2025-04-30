@@ -61,7 +61,7 @@ class _LearnConvoState extends State<LearnConvo> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(onSearchChanged: (test){}),
+              Navbar(isPractice: false, onSearchChanged: (test){}),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
                 child: Column(
