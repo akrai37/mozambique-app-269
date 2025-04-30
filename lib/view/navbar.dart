@@ -104,7 +104,7 @@ class _NavbarState extends State<Navbar> {
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                   side: BorderSide(
-                    color: widget.isPractice ? Colors.white : Colors.black,
+                    color: widget.isPractice ? Colors.white : Color(0xFF2D3E50),
                   ),
                 ),
               ),
@@ -114,14 +114,14 @@ class _NavbarState extends State<Navbar> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: widget.isPractice ? Colors.white : Colors.black,
+                color: widget.isPractice ? Colors.white : Color(0xFF2D3E50),
               ),
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Colors.black),
+              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Color(0xFF2D3E50)),
             ),
             iconSize: 50,
             onPressed: widget.isInfoScreen

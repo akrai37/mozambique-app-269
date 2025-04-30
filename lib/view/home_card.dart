@@ -73,6 +73,7 @@ class HomeCard extends StatelessWidget {
               Text(
                 homeWord.portuguese,
                 style: TextStyle(
+                  color: const Color(0xFF2D3E50),
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
                 ),
