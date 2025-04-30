@@ -386,7 +386,7 @@ class DatabaseService {
       log('Category: category');
       log('Image: ${convo[0].imagePath}');
       for (ConvoLine l in convo[0].conversationText) {
-        log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
+        log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
       }
     }
   }
@@ -404,7 +404,7 @@ class DatabaseService {
           log('Category: $key');
           log('Image: ${convo[0].imagePath}');
           for (ConvoLine l in convo[0].conversationText) {
-            log('text: ${l.convoText}, AudioPath: ${l.audioPath}');
+            log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
           }
         }
       }

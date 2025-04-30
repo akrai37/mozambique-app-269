@@ -46,15 +46,15 @@ class _PracConvoState extends State<PracConvo> {
     for(int i = 0; i < _lines.length; i++){
       if(i % 2 == 0){
         if(i == _lines.length-1){
-          _messages.add(Msg1(msg1: _lines[i].convoText, isLast: true));
+          _messages.add(Msg1(msg1: _lines[i].convoText, isLast: true, audio: _lines[i].audioBytes));
         }else{
-          _messages.add(Msg1(msg1: _lines[i].convoText, isLast: true));
+          _messages.add(Msg1(msg1: _lines[i].convoText, isLast: false, audio: _lines[i].audioBytes));
         }
       }else{
         if(i == _lines.length-1){
-          _messages.add(Msg2(msg2: _lines[i].convoText, isLast: true));
+          _messages.add(Msg2(msg2: _lines[i].convoText, isLast: true, audio: _lines[i].audioBytes));
         }else{
-          _messages.add(Msg2(msg2: _lines[i].convoText, isLast: true));
+          _messages.add(Msg2(msg2: _lines[i].convoText, isLast: false, audio: _lines[i].audioBytes));
         }
       }
     }
@@ -67,7 +67,7 @@ class _PracConvoState extends State<PracConvo> {
       _convos = await fetchPracConvo(widget.tag);
       _lines = _convos[0].conversationText;
 
-      log(_lines[0].convoText);
+      //log(_lines[0].convoText);
 
 
       //preload image
