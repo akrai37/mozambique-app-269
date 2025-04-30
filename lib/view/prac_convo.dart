@@ -148,7 +148,7 @@ class _PracConvoState extends State<PracConvo> {
             child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(onSearchChanged: (test){}),
+              Navbar(isPractice: true, onSearchChanged: (test){}),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left

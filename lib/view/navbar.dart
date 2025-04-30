@@ -7,10 +7,12 @@ class Navbar extends StatefulWidget {
   final VoidCallback? onSync; // When the sync button is pressed
   final bool isHomeScreen; // To check if the user is on the HomeScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
-  
+  final bool isPractice;
+
   const Navbar({
     super.key,
     required this.onSearchChanged,
+    required this.isPractice,
     this.onSync,
     this.isHomeScreen = false,
     this.isInfoScreen = false,
@@ -93,25 +95,25 @@ class _NavbarState extends State<Navbar> {
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
-                  side: const BorderSide(
-                    color: Color(0xFF2D3E50),
+                  side: BorderSide(
+                    color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
               ),
             ),
-            child: const Text(
+            child: Text(
               'Prática',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Color(0xFF2D3E50),
+                color: widget.isPractice ? Colors.white : Colors.black,
               ),
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: widget.isInfoScreen ? Colors.grey : Colors.black,
+              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Colors.white : Colors.black)
             ),
             iconSize: 50,
             onPressed: widget.isInfoScreen
