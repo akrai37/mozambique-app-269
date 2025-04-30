@@ -1,5 +1,4 @@
 //MAIN DART FILE FOR PRACTICE CONVO PAGE
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -31,9 +30,8 @@ class _PracConvoState extends State<PracConvo> {
   late List<Conversation> _convos =[];
   late List<ConvoLine> _lines = [];
   late Uint8List imageBytes = Uint8List(0);
-  List<Widget> _messages = [
-  ];
-  List<Widget> _visibleMessages = [];
+  final List<Widget> _messages = [];
+  final List<Widget> _visibleMessages = [];
 
   @override
   void initState() {
@@ -43,23 +41,22 @@ class _PracConvoState extends State<PracConvo> {
   }
 
     void _makeMsgWidgets() {
-    for(int i = 0; i < _lines.length; i++){
-      if(i % 2 == 0){
-        if(i == _lines.length-1){
-          _messages.add(Msg1(msg1: _lines[i].convoText, isLast: true, audio: _lines[i].audioBytes));
-        }else{
-          _messages.add(Msg1(msg1: _lines[i].convoText, isLast: false, audio: _lines[i].audioBytes));
+    for (int i = 0; i < _lines.length; i++) {
+      if (i % 2 == 0) {
+        if (i == _lines.length - 1) {
+          _messages.add(Msg1(line: _lines[i], isLast: true));
+        } else {
+          _messages.add(Msg1(line: _lines[i]));
         }
-      }else{
-        if(i == _lines.length-1){
-          _messages.add(Msg2(msg2: _lines[i].convoText, isLast: true, audio: _lines[i].audioBytes));
-        }else{
-          _messages.add(Msg2(msg2: _lines[i].convoText, isLast: false, audio: _lines[i].audioBytes));
+      } else {
+        if(i == _lines.length-1) {
+          _messages.add(Msg2(line: _lines[i], isLast: true));
+        } else {
+          _messages.add(Msg2(line: _lines[i]));
         }
       }
     }
   }
-
 
   Future<void> _loadContent() async {
     // This fetches from the local Hive database
@@ -67,22 +64,18 @@ class _PracConvoState extends State<PracConvo> {
       _convos = await fetchPracConvo(widget.tag);
       _lines = _convos[0].conversationText;
 
-      //log(_lines[0].convoText);
-
-
       //preload image
-      for(Conversation a in _convos){
+      for (Conversation a in _convos) {
         await precacheImage(MemoryImage(a.imageBytes), context);
         imageBytes = a.imageBytes;
       }
+
       _makeMsgWidgets();
     } catch (error) {
       print("Error loading data from Hive: $error");
     }
   }
   
-
-
   //FUNCTION TO SHOW NEXT MESSAGE IN THE ARRAY ABOVE AS WELL AS SCROLLING ANIMATION
   void _revealNextMessage() {
     if (_msgIndex < _messages.length) {
@@ -105,7 +98,7 @@ class _PracConvoState extends State<PracConvo> {
 
   void resetConversation() {
     setState(() {
-      while(_msgIndex != 1){
+      while (_msgIndex != 1) {
         _msgIndex--;
         _visibleMessages.removeLast();
       }
@@ -122,7 +115,7 @@ class _PracConvoState extends State<PracConvo> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _scrollController.dispose();
     super.dispose();
   }
@@ -148,7 +141,7 @@ class _PracConvoState extends State<PracConvo> {
             child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Navbar(isPractice: true, onSearchChanged: (test){}),
+              Navbar(isPractice: true, onSearchChanged: (test) {}),
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left
@@ -355,7 +348,6 @@ class _PracConvoState extends State<PracConvo> {
                 ),
               ),
               SizedBox(height: 20),
-            
             ],
                     ),
           );

@@ -241,10 +241,8 @@ class DatabaseService {
           String imagePath = data[category][0]["imagePath"];
           //log(imagePath);
           Uint8List imageBytes = await(fetchMedia(imagePath));
-          for (int i = 0; i < data[category].length; i++ ){
-            if(i == 0){
-              continue;
-            }
+          for (int i = 0; i < data[category].length; i++ ) {
+            if (i == 0) continue; // Skip the first item as it is the image path
             //log(data[category][i]["msgText"]);
             lines.add(ConvoLine(
               convoText: data[category][i]["msgText"], 
