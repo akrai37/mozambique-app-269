@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
   List<HomeWord> _filteredHomeWords = [];
-  List<HomeWord> _practiceCategories = [];
+  List<HomeWord> _practiceCategories = []; // List to hold practice categories
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     
     await _checkPractice();
-    _type == 'learn'? _filteredHomeWords = _homeWords: _filteredHomeWords = _practiceCategories; // Initialize filtered words with all words
+    _filteredHomeWords = _type == 'learn' ?  _homeWords : _practiceCategories; // Initialize filtered words with all words
     // Preload images
     for (HomeWord homeWord in _homeWords) {
       await precacheImage(MemoryImage(homeWord.imageBytes), context);
@@ -73,11 +73,11 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future<void> _checkPractice() async{
-    for(HomeWord h in _homeWords){
-      if (await _databaseService.hasCategoryPractice(h.categoryName)){
-        _practiceCategories.add(h);
-        log(h.categoryName);
+  Future<void> _checkPractice() async {
+    for (HomeWord homeWord in _homeWords) {
+      if (await _databaseService.hasCategoryPractice(homeWord.categoryName)) {
+        _practiceCategories.add(homeWord);
+        log(homeWord.categoryName);
       }
     }
     //_databaseService.printConvos();

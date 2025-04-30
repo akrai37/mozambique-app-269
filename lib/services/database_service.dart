@@ -381,7 +381,7 @@ class DatabaseService {
     return null; // no data found for the category
   }
 
-  bool hasCategoryPractice(String category){
+  bool hasCategoryPractice(String category) {
     return _convoBox.containsKey(category); //when practice quiz implemented, add check for quiz
   }
 

@@ -11,7 +11,8 @@ class HomeCard extends StatelessWidget {
 
   const HomeCard({
     super.key,
-    required this.homeWord, required this.type,
+    required this.homeWord, 
+    required this.type,
   });
 
   @override
@@ -35,15 +36,20 @@ class HomeCard extends StatelessWidget {
                   ),
                 ),
               );
-            } else { // If the type is not "cards", navigate to LearnConvo
+            } else { // If the type is not "cards", navigate to LearnConvo or PracConvo
               Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => type == 'learn'? LearnConvo(
-                  title: homeWord.portuguese, 
-                  tag: homeWord.categoryName,
-                ) : PracConvo(title: homeWord.portuguese, tag: homeWord.categoryName),
-              ),
+                  builder: (context) => type == 'learn'
+                    ? LearnConvo(
+                      title: homeWord.portuguese,
+                      tag: homeWord.categoryName,
+                    )
+                    : PracConvo(
+                      title: homeWord.portuguese,
+                      tag: homeWord.categoryName,
+                    ),
+                ),
             );
             }
             
