@@ -274,9 +274,31 @@
             "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
             "answers": [
                 {
-                    "answerText": "Dedo",
+                    "answerText": "Mão",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Finger.mp3"
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Hand.mp3"
+                },
+                {
+                    "answerText": "Abdômen",
+                    "isCorrect": true,
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Abdomen.mp3"
+                },
+                {
+                    "answerText": "Peito",
+                    "isCorrect": false,
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Chest.mp3"
+                }
+            ]
+        },
+        {
+            "questionText": "O que é isso?",
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2049.png",
+            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "answers": [
+                {
+                    "answerText": "Abdômen",
+                    "isCorrect": false,
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Abdomen.mp3"
                 },
                 {
                     "answerText": "Perna",
@@ -292,7 +314,7 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2049.png",
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2050.png",
             "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
             "answers": [
                 {
@@ -306,15 +328,15 @@
                     "audioPath": "https://mozambique-app.web.app/audio/body/Foot.mp3"
                 },
                 {
-                    "answerText": "Dedo",
+                    "answerText": "Abdômen",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Finger.mp3"
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Abdomen.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2049.png",
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2051.png",
             "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
             "answers": [
                 {
@@ -336,7 +358,29 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2049.png",
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2051.png",
+            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "answers": [
+                {
+                    "answerText": "Peito",
+                    "isCorrect": true,
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Chest.mp3"
+                },
+                {
+                    "answerText": "Pé",
+                    "isCorrect": false,
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Foot.mp3"
+                },
+                {
+                    "answerText": "Braço",
+                    "isCorrect": false,
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Arm.mp3"
+                }
+            ]
+        },
+        {
+            "questionText": "O que é isso?",
+            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2052.png",
             "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
             "answers": [
                 {
@@ -345,9 +389,9 @@
                     "audioPath": "https://mozambique-app.web.app/audio/body/Hand.mp3"
                 },
                 {
-                    "answerText": "Dedo",
+                    "answerText": "Peito",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Finger.mp3"
+                    "audioPath": "https://mozambique-app.web.app/audio/body/Chest.mp3"
                 },
                 {
                     "answerText": "Pé",
