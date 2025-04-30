@@ -1,5 +1,4 @@
 //DART FILE FOR RIGHT SIDE MESSAGE WIDGET
-import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';

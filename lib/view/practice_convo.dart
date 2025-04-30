@@ -9,10 +9,10 @@ import 'package:mozambique_app/view/p2_msg.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 
 //may need to change depending on how routing works
-class PracConvo extends StatefulWidget {
+class PracticeConvo extends StatefulWidget {
   final String title;
   final String tag;
-  const PracConvo({
+  const PracticeConvo({
     super.key,
     required this.title,
     required this.tag
@@ -20,10 +20,10 @@ class PracConvo extends StatefulWidget {
 
 
   @override
-  State<PracConvo> createState() => _PracConvoState();
+  State<PracticeConvo> createState() => _PracticeConvoState();
 }
 
-class _PracConvoState extends State<PracConvo> {
+class _PracticeConvoState extends State<PracticeConvo> {
   int _msgIndex = 1; // Start with only 1 message visible
   final ScrollController _scrollController = ScrollController();
   late Future<void> _loadingFuture;

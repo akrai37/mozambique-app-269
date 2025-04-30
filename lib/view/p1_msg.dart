@@ -1,5 +1,4 @@
 //DART FILE FOR LEFT SIDE MESSAGES WIDGET
-import 'dart:typed_data';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import 'package:mozambique_app/model/conversation.dart';
 class Msg1 extends StatefulWidget {
   final ConvoLine line;
   final bool isLast;
-  // final VoidCallback onTap;
 
   const Msg1({
     super.key,
