@@ -454,6 +454,14 @@ class DatabaseService {
     return _quizQuestionBox.containsKey(category) || _convoBox.containsKey(category);
   }
 
+  bool hasCategoryPracticeConvo(String category) { // Check if the category exists in the Practice conversation box
+    return _convoBox.containsKey(category);
+  }
+
+  bool hasCategoryPracticeQuiz(String category) { // Check if the category exists in the Practice quiz box
+    return _quizQuestionBox.containsKey(category);
+  }
+
   // Fetch Practice Quiz questions from Hive using a specified category
   List<QuizQuestion>? getQuizQuestions(String category) {
     List<dynamic>? rawList = _quizQuestionBox.get(category);
