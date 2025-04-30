@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
+import 'package:mozambique_app/model/conversation.dart';
 
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
@@ -18,6 +20,7 @@ class DatabaseService {
   final Box<List> _homeWordBox = Hive.box('home_words'); // Opened as List, not List<HomeWord>
   final Box<List> _vocabWordBox = Hive.box('vocab_words'); // Opened as List, not List<VocabWord>
   final Box<List> _questionBox = Hive.box('questions');
+  final Box<List> _convoBox = Hive.box('conversations');
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
@@ -101,7 +104,9 @@ class DatabaseService {
     await _syncHomeWords();
     await _syncVocabWords();
     await _syncQuestionResponse();
+    await _syncPracConvo();
 
+    //printConvos();
     print("Data synced from Firestore to Hive.");
 
     return true; // Sync successful
@@ -223,6 +228,46 @@ class DatabaseService {
     }
   }
 
+ Future<void> _syncPracConvo() async {
+    try {
+      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('pracConvo').get();
+
+      if (snapshot.exists) {
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+        for (String category in data.keys) {
+        List<Conversation> convos = [];
+        List<ConvoLine> lines = [];
+         // log(data[category][0]["imagePath"]);
+          String imagePath = data[category][0]["imagePath"];
+          //log(imagePath);
+          Uint8List imageBytes = await(fetchMedia(imagePath));
+          for (int i = 0; i < data[category].length; i++ ){
+            if(i == 0){
+              continue;
+            }
+            //log(data[category][i]["msgText"]);
+            lines.add(ConvoLine(
+              convoText: data[category][i]["msgText"], 
+              audioPath: data[category][i]["audioPath"], 
+              audioBytes: await(fetchMedia(data[category][i]["audioPath"])))
+            );
+          }
+          convos.add(Conversation(
+            categoryName: category, 
+            conversationText: lines, 
+            imagePath: imagePath, 
+            imageBytes: imageBytes)
+          );
+          //Store the data in Hive
+          await _convoBox.put(category, convos);
+          printConvo(category);
+        }
+      }
+    } catch (err) {
+      print('Error syncing data: $err');
+    }
+  }
+
 // ------------- FETCHING DATA FROM HIVE -----------//
   List<HomeWord>? getHomeWords() {
     List<dynamic>? rawList = _homeWordBox.get('home_cards');
@@ -325,6 +370,45 @@ class DatabaseService {
         }
       }
     }
+
+  List<Conversation>? getConvo(String category) {
+    List<dynamic>? rawList = _convoBox.get(category);
+
+    if (rawList != null) {
+      return rawList.cast<Conversation>();
+    }
+
+    return null; // no data found for the category
+  }
+  void printConvo(String category){
+    List<Conversation>? convo = getConvo(category); 
+    if (convo != null) {
+      log('Category: category');
+      log('Image: ${convo[0].imagePath}');
+      for (ConvoLine l in convo[0].conversationText) {
+        log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
+      }
+    }
+  }
+  void printConvos(){
+    List<String> keys = _convoBox.keys.cast<String>().toList();
+      log("printing practice conversations--");
+      log('is empty? ${_convoBox.isEmpty}');
+
+      for (String key in keys) {
+        log(key);
+        List<dynamic>? convoList = _convoBox.get(key);
+
+        if (convoList != null) {
+          List<Conversation> convo = convoList.cast<Conversation>(); 
+          log('Category: $key');
+          log('Image: ${convo[0].imagePath}');
+          for (ConvoLine l in convo[0].conversationText) {
+            log('text: ${l.convoText}, AudioPath: ${l.audioPath}, AudioBytes: ${l.audioBytes}');
+          }
+        }
+      }
+  }
 }
 
 
