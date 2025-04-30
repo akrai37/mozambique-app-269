@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/learn_convo.dart';
 import 'package:mozambique_app/view/learn_screens.dart';
-import 'package:mozambique_app/view/prac_convo.dart';
+import 'package:mozambique_app/view/practice_convo.dart';
 
 class HomeCard extends StatelessWidget {
   final HomeWord homeWord;
@@ -45,7 +45,7 @@ class HomeCard extends StatelessWidget {
                       title: homeWord.portuguese,
                       tag: homeWord.categoryName,
                     )
-                    : PracConvo(
+                    : PracticeConvo(
                       title: homeWord.portuguese,
                       tag: homeWord.categoryName,
                     ),

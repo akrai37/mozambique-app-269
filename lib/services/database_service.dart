@@ -26,7 +26,7 @@ class DatabaseService {
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
-    if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty) {
+    if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty || _convoBox.isEmpty) {
       print("Hive database is empty. Syncing with Firestore...");
       await syncContent(context: context);
     } else {
@@ -111,7 +111,6 @@ class DatabaseService {
     await _syncQuizQuestions();
     await _syncPracConvo();
 
-    //printConvos();
     print("Data synced from Firestore to Hive.");
 
     return true; // Sync successful
@@ -451,8 +450,8 @@ class DatabaseService {
     return null; // no data found for the category
   }
 
-  bool hasCategoryPractice(String category) {
-    return _convoBox.containsKey(category); //when practice quiz implemented, add check for quiz
+  bool hasCategoryPractice(String category) { // Check if the category exists in either the Practice quiz or conversation boxes
+    return _quizQuestionBox.containsKey(category) || _convoBox.containsKey(category);
   }
 
   // Fetch Practice Quiz questions from Hive using a specified category
