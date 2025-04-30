@@ -11,7 +11,6 @@ This offline-first Flutter application uses Hive to store its data locally, and 
 `lib/repositories/`: The functions that update/retrieve the Hive data directly
 
 `lib/scripts/`: The scripts used to easily perform tasks at once (Check **Scripts** section for instructions)
-- `convertBase64ToJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
 - `convertToBase64inJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
 - `JSON2Firestore.js`: Uploads the JSON files to Firestore
 - `mozambique-fy.js`: Converts the spreadsheet to JSON files

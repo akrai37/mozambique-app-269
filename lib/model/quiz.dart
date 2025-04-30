@@ -1,3 +1,4 @@
+import 'dart:typed_data';
 import 'package:hive/hive.dart';
 
 part 'quiz.g.dart';//name of file that will be generated
@@ -6,27 +7,51 @@ part 'quiz.g.dart';//name of file that will be generated
 @HiveType(typeId: 4)
 class QuizQuestion extends HiveObject{
   @HiveField(0)
-  int id;
+  final String questionText;
+
+  @HiveField(1)
+  final Uint8List imageBytes;
 
   @HiveField(2)
-  String questionText;
+  final Uint8List audioBytes;
 
   @HiveField(3)
-  String? audioPath;
+  final String imagePath;
 
-  QuizQuestion({required this.id, required this.questionText, required this.audioPath});
+  @HiveField(4)
+  final String audioPath;
+
+  @HiveField(5)
+  final List<QuizAnswer> answers;
+
+  QuizQuestion({
+    required this.questionText,
+    required this.imageBytes,
+    required this.audioBytes,
+    required this.imagePath,
+    required this.audioPath,
+    required this.answers,
+  });
 }
 
 @HiveType(typeId: 5)
 class QuizAnswer extends HiveObject{
   @HiveField(0)
-  int quizQuestionId;  // Foreign key reference to QuizQuestion
-
-  @HiveField(1)
   String answerText;
 
-  @HiveField(2)
+  @HiveField(1)
   bool isCorrect;
 
-  QuizAnswer({required this.quizQuestionId, required this.answerText, required this.isCorrect} );
+  @HiveField(2)
+  final String audioPath;
+
+  @HiveField(3)
+  final Uint8List audioBytes;
+
+  QuizAnswer({
+    required this.answerText,
+    required this.isCorrect,
+    required this.audioPath,
+    required this.audioBytes,
+  });
 }

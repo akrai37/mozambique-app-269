@@ -34,7 +34,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  flutter_svg: ^2.0.17
   audioplayers: ^6.4.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0
@@ -54,8 +53,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  
   hive_generator: ^2.0.0  # For code generation
   build_runner: ^2.4.6    # Runs code generation
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -69,12 +70,21 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/images/bigSmile.png
-  - assets/images/smile.png
-  - assets/images/NavyPerson.png
-  - assets/images/GrayPerson.png
-  - assets/images/Practice/PersonalInteractions.png
-  - assets/images/Practice/Requests.png
+    - assets/images/Prac-Body/Abdomen.png
+    - assets/images/Prac-Body/Arm.png
+    - assets/images/Prac-Body/Chest.png
+    - assets/images/Prac-Body/Foot.png
+    - assets/images/Prac-Body/Hand.png
+    - assets/images/Prac-Body/Leg.png
+
+    - assets/images/Prac-Face/Eyes.png
+    - assets/images/Prac-Face/Head.png
+    - assets/images/Prac-Face/Mouth.png
+    - assets/images/Prac-Face/Nose.png
+    - assets/images/GrayPerson.png
+    - assets/images/NavyPerson.png
+    - assets/images/smile.png
+    - assets/images/bigSmile.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
