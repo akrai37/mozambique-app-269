@@ -73,38 +73,38 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
                   bottomRight: Radius.circular(0),
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  //QUESTION PROMPT
-                  Text(
-                    _question.questionText, //CHANGE QUESTION TEXT HERE
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF2D3E50),
+              child: InkWell(
+                onTap: () {
+                  _audioPlayer.resume(); // Play the audio when the question bar is tapped
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //QUESTION PROMPT
+                    Text(
+                      _question.questionText, //CHANGE QUESTION TEXT HERE
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFF2D3E50),
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 10), //SPACING BETWEEN QUESTION PROMPT AND SOUND ICON
-                  //SOUND ICON
-                  Container(
-                    padding: EdgeInsets.all(5), // Space around the icon
-                    decoration: BoxDecoration(
-                      color: Colors.white, // White circular background
-                      shape: BoxShape.circle,
-                    ),
-                    child: IconButton(
-                      icon: const Icon(
+                    SizedBox(width: 10), //SPACING BETWEEN QUESTION PROMPT AND SOUND ICON
+                    //SOUND ICON
+                    Container(
+                      padding: EdgeInsets.all(5), // Space around the icon
+                      decoration: BoxDecoration(
+                        color: Colors.white, // White circular background
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
                         Icons.volume_up,
                         color: Color(0xFF2D3E50),
                         size: 24,
                       ),
-                      onPressed: () {
-                        _audioPlayer.resume(); // Play the audio when the icon is pressed
-                      },
                     ),
-                  ),
-                ]
+                  ]
+                ),
               ),
             ),
 
