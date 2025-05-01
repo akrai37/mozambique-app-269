@@ -26,7 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
   List<HomeWord> _filteredHomeWords = [];
-  List<HomeWord> _practiceCategories = []; // List to hold practice categories
+  final List<HomeWord> _practiceCategories = []; // List to hold practice categories
+  final List<HomeWord> _toRemove = []; //List to remove categories from learn home page
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
@@ -41,13 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
     // Load home words from Hive
     _homeWords = await fetchHomeCards();
 
-    
-    await _checkPractice();
-    _filteredHomeWords = _type == 'learn' ?  _homeWords : _practiceCategories; // Initialize filtered words with all words
     // Preload images
     for (HomeWord homeWord in _homeWords) {
       await precacheImage(MemoryImage(homeWord.imageBytes), context);
     }
+
+    await _checkPractice();
+    
+    _filteredHomeWords = _type == 'learn' ?  _homeWords : _practiceCategories; // Initialize filtered words with all words
+
+    // for(HomeWord homeWord in _toRemove){ //remove categories from learn page that do not have a learn exercise
+    // _filteredHomeWords.remove(homeWord);
+    // // _practiceCategories.add(homeWord);//ensure in practice if not learn
+    // }
 
     // Load all vocab words from Hive (for search functionality)
     await _loadAllVocabWords();
@@ -75,11 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _checkPractice() async {
     for (HomeWord homeWord in _homeWords) {
-      if (await _databaseService.hasCategoryPractice(homeWord.categoryName)) {
+      if (_databaseService.hasCategoryPractice(homeWord.categoryName)) {
         _practiceCategories.add(homeWord);
       }
+      if(!(_databaseService.hasCategoryLearn(homeWord.categoryName))){
+         _toRemove.add(homeWord);
+      }
     }
+    //_databaseService.printConvo("personal_interactions");
     //_databaseService.printConvos();
+
   }
 
   @override

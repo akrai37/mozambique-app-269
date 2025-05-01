@@ -440,6 +440,9 @@ class DatabaseService {
     return null; // no data found for the category
   }
 
+  bool hasCategoryLearn(String category){
+    return _vocabWordBox.containsKey(category) || _questionBox.containsKey(category);
+  }
   bool hasCategoryPractice(String category) { // Check if the category exists in either the Practice quiz or conversation boxes
     return _quizQuestionBox.containsKey(category) || _convoBox.containsKey(category);
   }
