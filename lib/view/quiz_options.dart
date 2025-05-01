@@ -65,12 +65,14 @@ class _QuizOptionsState extends State<QuizOptions> {
           ),
         ),
         child: Row(
+          spacing: 48, // Spacing between options
           mainAxisAlignment: MainAxisAlignment.center, // Ensures content is aligned to the left
           children: _options.asMap().entries.map((entry) {
             int i = entry.key;
             QuizAnswer option = entry.value;
 
             return Row(
+              spacing: 12, // Spacing between option and checkbox
               children: [
                 InkWell(
                   onTap: () {
@@ -103,31 +105,23 @@ class _QuizOptionsState extends State<QuizOptions> {
                           Text(
                             option.answerText,
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 35,
                               fontWeight: FontWeight.bold,
                               color: const Color(0xFFECF0F1),
                             ),
                           ),
                           SizedBox(width: 10),
                           //SOUND ICON
-                          Container(
-                            padding: EdgeInsets.all(5), // Space around the icon
-                            decoration: BoxDecoration(
-                              color: Colors.white, // White circular background
-                              shape: BoxShape.circle, 
-                            ),
-                            child: const Icon(
-                              Icons.volume_up,
-                              color: Color(0xFF2D3E50),
-                              size: 24,
-                            ),
+                          const Icon(
+                            Icons.volume_up,
+                            color: Colors.white,
+                            size: 44,
                           ), // Spacing between text and icon
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(width: 12),
                 Transform.scale(
                   scale: 2.25, // Increase or decrease this value as needed
                   child: CustomCheckbox(
@@ -141,7 +135,6 @@ class _QuizOptionsState extends State<QuizOptions> {
                     },
                   )
                 ),
-                SizedBox(width: 12),
               ],
             );
           }).toList(),

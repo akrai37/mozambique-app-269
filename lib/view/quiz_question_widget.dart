@@ -91,17 +91,10 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
                     ),
                     SizedBox(width: 10), //SPACING BETWEEN QUESTION PROMPT AND SOUND ICON
                     //SOUND ICON
-                    Container(
-                      padding: EdgeInsets.all(5), // Space around the icon
-                      decoration: BoxDecoration(
-                        color: Colors.white, // White circular background
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.volume_up,
-                        color: Color(0xFF2D3E50),
-                        size: 24,
-                      ),
+                    const Icon(
+                      Icons.volume_up,
+                      color: Color(0xFF2D3E50),
+                      size: 44,
                     ),
                   ]
                 ),

@@ -90,18 +90,11 @@ class _Msg1State extends State<Msg1> {
                     ),
                     SizedBox(width: 10),
                     //SOUND ICON
-                    Container(
-                        padding: EdgeInsets.all(5), // Space around the icon
-                        decoration: BoxDecoration(
-                          color: Colors.white, // White circular background
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.volume_up,
-                          color: Color(0xFF2D3E50),
-                          size: 24,
-                        ),
-                      ), // Spacing between text and icon
+                    const Icon(
+                      Icons.volume_up,
+                      color: Colors.white,
+                      size: 24,
+                    ), // Spacing between text and icon
                   ],
                 ),
               ),
