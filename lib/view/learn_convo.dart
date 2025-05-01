@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/view/learn_convo_card.dart';
@@ -36,7 +38,7 @@ class _LearnConvoState extends State<LearnConvo> {
       _questionList = await fetchQuestionResponse(widget.tag);
       _filteredQuestions = _questionList;
     } catch (error) {
-      print("Error loading data from Hive: $error");
+      log("Error loading data from Hive: $error");
     }
   }
 

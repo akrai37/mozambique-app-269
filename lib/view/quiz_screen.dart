@@ -1,4 +1,6 @@
 //MAIN DART PAGE THAT CALLS ALL OTHER WIDGETS AND PUTS IT TOGETHER ON THE PAGE
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/view/navbar.dart';
@@ -39,7 +41,7 @@ class _QuizScreenState extends State<QuizScreen> {
         await precacheImage(MemoryImage(question.imageBytes), context);
       }
     } catch (error) {
-      print("Error loading data from Hive: $error");
+      log("Error loading data from Hive: $error");
     }
   }
 

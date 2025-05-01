@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/view_model/fetch_cards.dart';
@@ -43,7 +45,7 @@ class _PracticeScreensState extends State<PracticeScreens> {
         await precacheImage(AssetImage(imageButton.img), context);
       }
     } catch (error) {
-      print("Error loading JSON data: $error");
+      log("Error loading JSON data: $error");
     }
     */
 
@@ -58,7 +60,7 @@ class _PracticeScreensState extends State<PracticeScreens> {
         }
       }
     } catch (error) {
-      print("Error loading data from Hive: $error");
+      log("Error loading data from Hive: $error");
     }
   }
 

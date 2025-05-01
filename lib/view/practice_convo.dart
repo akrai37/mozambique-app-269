@@ -1,4 +1,5 @@
 //MAIN DART FILE FOR PRACTICE CONVO PAGE
+import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -72,7 +73,7 @@ class _PracticeConvoState extends State<PracticeConvo> {
 
       _makeMsgWidgets();
     } catch (error) {
-      print("Error loading data from Hive: $error");
+      log("Error loading data from Hive: $error");
     }
   }
   

@@ -86,7 +86,7 @@ Future<List<VocabWord>> fetchJSONVocabCards(String category) async {
     return List<VocabWord>.from(cards.map((item) => VocabWord.fromJson(item)));
 
   } catch (error) {
-    print("Error loading JSON data: $error");
+    log("Error loading JSON data: $error");
 
     return []; // Return an empty list in case of error
   }
