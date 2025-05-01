@@ -48,12 +48,22 @@ class _NavbarState extends State<Navbar> {
                     color: widget.isPractice ? Colors.white : Colors.black,
                   ),
                 ),
-              const Text(
-                'DIFF EDUCATION',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFFE84C3D),
+              TextButton( // Go to home Learn Screen when the DIFF EDUCATION button is pressed
+                onPressed: widget.isHomeScreen && widget.isLearnScreen
+                  ? null
+                  : () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen(type: 'learn')),
+                    );
+                  },
+                child: const Text(
+                  'DIFF EDUCATION',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFE84C3D),
+                  ),
                 ),
               ),
             ],
@@ -93,12 +103,14 @@ class _NavbarState extends State<Navbar> {
             ),
           ),
           TextButton( 
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => HomeScreen(type: widget.isLearnScreen ? 'practice' : 'learn')),
-              );
-            },
+            onPressed: widget.isLearnScreen
+              ? () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen(type: widget.isLearnScreen ? 'practice' : 'learn')),
+                );
+              }
+              : null,
             style: ButtonStyle(
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(

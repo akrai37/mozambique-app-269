@@ -77,7 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
     for (HomeWord homeWord in _homeWords) {
       if (await _databaseService.hasCategoryPractice(homeWord.categoryName)) {
         _practiceCategories.add(homeWord);
-        log(homeWord.categoryName);
       }
     }
     //_databaseService.printConvos();

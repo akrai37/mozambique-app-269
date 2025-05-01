@@ -27,10 +27,10 @@ class DatabaseService {
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
     if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty || _convoBox.isEmpty) {
-      print("Hive database is empty. Syncing with Firestore...");
+      log("Hive database is empty. Syncing with Firestore...");
       await syncContent(context: context);
     } else {
-      print("Hive database has data. No need to sync.");
+      log("Hive database has data. No need to sync.");
     }
   }
 
@@ -86,7 +86,7 @@ class DatabaseService {
     bool isConnected = await checkInternetConnection();
 
     if (!isConnected) {
-      print("No internet connection. Cannot sync data.");
+      log("No internet connection. Cannot sync data.");
 
       
       if (context != null) { 
@@ -111,7 +111,7 @@ class DatabaseService {
     await _syncQuizQuestions();
     await _syncPracConvo();
 
-    print("Data synced from Firestore to Hive.");
+    log("Data synced from Firestore to Hive.");
 
     return true; // Sync successful
   }
@@ -145,7 +145,7 @@ class DatabaseService {
         await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
       }
     } catch (err) {
-      print('Error syncing data: $err');
+      log('Error syncing data: $err');
     }
   }
 
@@ -187,7 +187,7 @@ class DatabaseService {
         }
       }
     } catch (err) {
-      print('Error syncing data: $err');
+      log('Error syncing data: $err');
     }
   }
 
@@ -231,7 +231,7 @@ class DatabaseService {
         }
       }
     } catch (err) {
-      print('Error syncing data: $err');
+      log('Error syncing data: $err');
     }
   }
 
@@ -243,34 +243,34 @@ class DatabaseService {
       if (snapshot.exists) {
         Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
         for (String category in data.keys) {
-        List<Conversation> convos = [];
-        List<ConvoLine> lines = [];
-         // log(data[category][0]["imagePath"]);
+          List<Conversation> convos = [];
+          List<ConvoLine> lines = [];
           String imagePath = data[category][0]["imagePath"];
-          //log(imagePath);
           Uint8List imageBytes = await(fetchMedia(imagePath));
-          for (int i = 0; i < data[category].length; i++ ) {
+
+          for (int i = 0; i < data[category].length; i++) {
             if (i == 0) continue; // Skip the first item as it is the image path
-            //log(data[category][i]["msgText"]);
+
             lines.add(ConvoLine(
               convoText: data[category][i]["msgText"], 
               audioPath: data[category][i]["audioPath"], 
               audioBytes: await(fetchMedia(data[category][i]["audioPath"])))
             );
           }
+
           convos.add(Conversation(
             categoryName: category, 
             conversationText: lines, 
             imagePath: imagePath, 
-            imageBytes: imageBytes)
-          );
+            imageBytes: imageBytes
+          ));
+
           //Store the data in Hive
           await _convoBox.put(category, convos);
-          printConvo(category);
         }
       }
     } catch (err) {
-      print('Error syncing data: $err');
+      log('Error syncing data: $err');
     }
   }
 
@@ -288,16 +288,6 @@ class DatabaseService {
 
             Uint8List qImageBytes = await(fetchMedia(item['imagePath']));
             Uint8List qAudioBytes = await(fetchMedia(item['audioPath']));
-
-            // for(var j = 0; j < item['answers'].length; j++) {
-            //   QuizAnswer answer = QuizAnswer(
-            //     answerText: item['answers'][j]['answerText'],
-            //     isCorrect: item['answers'][j]['isCorrect'],
-            //     audioPath: item['answers'][j]['audioPath']
-            //   );
-
-            //   answers.add(answer);
-            // }
 
             answers = await Future.wait(item['answers'].map<Future<QuizAnswer>>((answerItem) async {
               Uint8List ansAudioBytes = await(fetchMedia(answerItem['audioPath']));
@@ -325,7 +315,7 @@ class DatabaseService {
         }
       }
     } catch (err) {
-      print('Error syncing data: $err');
+      log('Error syncing data: $err');
     }
   }
 
@@ -394,9 +384,9 @@ class DatabaseService {
       if (words != null) {
         List<VocabWord> vocabWords = words.cast<VocabWord>(); // Cast to List<VocabWord>
 
-        print('Category: $key');
+        log('Category: $key');
         for (VocabWord word in vocabWords) {
-          print('Word: ${word.word}, Portuguese: ${word.portuguese}, ImageBytes: ${word.imageBytes}');
+          log('Word: ${word.word}, Portuguese: ${word.portuguese}, ImageBytes: ${word.imageBytes}');
         }
       }
     }
@@ -517,11 +507,11 @@ class DatabaseService {
       if (questions != null) {
         List<QuizQuestion> quizQuestions = questions.cast<QuizQuestion>(); // Cast to List<QuizQuestion>
 
-        print('Category: $key');
+        log('Category: $key');
         for (QuizQuestion q in quizQuestions) {
-          print('Question: ${q.questionText}, ImagePath: ${q.imagePath}');
+          log('Question: ${q.questionText}, ImagePath: ${q.imagePath}');
           for (QuizAnswer a in q.answers) {
-            print('Answer - text: ${a.answerText}, isCorrect: ${a.isCorrect}, AudioPath: ${a.audioPath}');
+            log('Answer - text: ${a.answerText}, isCorrect: ${a.isCorrect}, AudioPath: ${a.audioPath}');
           }
         }
       }
