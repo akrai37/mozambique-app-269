@@ -6,12 +6,11 @@ A new Flutter project.
 This offline-first Flutter application uses Hive to store its data locally, and Firestore to sync updates.
 
 `lib/model/`: The blueprints for Hive objects (ie. category, vocab, q&a, quiz, conversation)
-- To generate the *.g.dart files, run ```dart run build_runner build --delete-conflicting-outputs``` in terminal (if fields not updating in generated files, mark each field as required in constructor)
+- To generate the *.g.dart files, run ```dart run build_runner build --delete-conflicting-outputs``` in terminal in root directory (if fields not updating in generated files, mark each field as required in constructor)
 
 `lib/repositories/`: The functions that update/retrieve the Hive data directly
 
 `lib/scripts/`: The scripts used to easily perform tasks at once (Check **Scripts** section for instructions)
-- `convertBase64ToJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
 - `convertToBase64inJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
 - `JSON2Firestore.js`: Uploads the JSON files to Firestore
 - `mozambique-fy.js`: Converts the spreadsheet to JSON files
