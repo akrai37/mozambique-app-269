@@ -51,10 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
     
     _filteredHomeWords = _type == 'learn' ?  _homeWords : _practiceCategories; // Initialize filtered words with all words
 
-    // for(HomeWord homeWord in _toRemove){ //remove categories from learn page that do not have a learn exercise
-    // _filteredHomeWords.remove(homeWord);
-    // // _practiceCategories.add(homeWord);//ensure in practice if not learn
-    // }
+    if(_type == 'learn'){
+      for(HomeWord homeWord in _toRemove){ //remove categories from learn page that do not have a learn exercise
+         _filteredHomeWords.remove(homeWord);
+     }
+    }
 
     // Load all vocab words from Hive (for search functionality)
     await _loadAllVocabWords();
@@ -83,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _checkPractice() async {
     for (HomeWord homeWord in _homeWords) {
       if (_databaseService.hasCategoryPractice(homeWord.categoryName)) {
-        _practiceCategories.add(homeWord);
+        _practiceCategories.add(HomeWord(word: homeWord.word, portuguese: homeWord.portuguese, categoryName: homeWord.categoryName, imageBytes: homeWord.imageBytes, imagePath: homeWord.imagePath, type: homeWord.type));
       }
       if(!(_databaseService.hasCategoryLearn(homeWord.categoryName))){
          _toRemove.add(homeWord);
