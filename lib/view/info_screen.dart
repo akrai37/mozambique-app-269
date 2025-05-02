@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view/navbar.dart';
+import 'package:mozambique_app/view/logos.dart';
+
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
@@ -86,90 +88,91 @@ class _InfoScreenState extends State<InfoScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-          Navbar(
-            isPractice: false,
-            onSearchChanged: (temp) {},
-            isInfoScreen: true, // Pass the isInfoScreen flag to Navbar,
-          ),
+            Navbar(
+              isPractice: false,
+              onSearchChanged: (temp) {},
+              isInfoScreen: true, // Pass the isInfoScreen flag to Navbar,
+            ),
             Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
-                    children: [
-                      const Text(
-                        'Informação',
-                        style: TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF2D3E50),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.all(20.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 10),
-      
-                        // Key Features List
-                        ..._infoList.map((paragraph) {
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: RichText(
-                              text: TextSpan(
-                                text: paragraph,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Color(0xFF2D3E50),
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                        SizedBox(height: 20),
-      
-                        // For Moderators: [Sync Button]
-                        Row(
-                          children: [
-                            Text(
-                              'Para moderadores:',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF2D3E50),
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            TextButton( // border radius 5px
-                              onPressed: _onSyncButtonPressed,
-                              style: TextButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5), // border radius 5px
-                                  side: BorderSide(color: Color(0xFF2D3E50), width: 2),
-                                ),
-                                backgroundColor: Color(0xFFECF0F1),
-                              ),
-                              child: Text(
-                                'Atualizar aplicativo',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xFF2D3E50),
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
+              padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center, // aligns the children to the start (left) of the row
+                children: [
+                  const Text(
+                    'Informação',
+                    style: TextStyle(
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFF2D3E50),
                     ),
                   ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+  
+                    // Key Features List
+                    ..._infoList.map((paragraph) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: RichText(
+                          text: TextSpan(
+                            text: paragraph,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF2D3E50),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+                    SizedBox(height: 20),
+  
+                    // For Moderators: [Sync Button]
+                    Row(
+                      children: [
+                        Text(
+                          'Para moderadores:',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF2D3E50),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        TextButton( // border radius 5px
+                          onPressed: _onSyncButtonPressed,
+                          style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5), // border radius 5px
+                              side: BorderSide(color: Color(0xFF2D3E50), width: 2),
+                            ),
+                            backgroundColor: Color(0xFFECF0F1),
+                          ),
+                          child: Text(
+                            'Atualizar aplicativo',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF2D3E50),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
                 ),
+              ),
+            ),
+            Logos(),
           ],
         )
       ),
