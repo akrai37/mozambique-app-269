@@ -6,7 +6,8 @@ class Logos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 30,
       children: const [
         Image(
           image: AssetImage('assets/images/logos/scu.png'),
