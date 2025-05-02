@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
@@ -24,8 +26,8 @@ class _HomeScreenState extends State<HomeScreen> {
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
   late List<HomeWord> _filteredHomeWords = [];
-  late List<HomeWord> _practiceCategories = []; // List to hold practice categories
-  late List<HomeWord> _toRemove = []; //List to remove categories from learn home page
+  final List<HomeWord> _practiceCategories = []; // List to hold Practice categories
+  final List<HomeWord> _toRemove = []; // List to remove categories from Learn home page
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
@@ -46,16 +48,13 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     await _checkPractice();
-    
-    _filteredHomeWords = _type == 'learn' ?  _homeWords.where((homeWord) {
-        for (HomeWord practiceCat in _toRemove){
-          return (practiceCat.categoryName != homeWord.categoryName); //dont return if its something we're trying to move
-        }
-        return true;
-        }).toList() : _practiceCategories; // Initialize filtered words with all words
 
     // Load all vocab words from Hive (for search functionality)
     await _loadAllVocabWords();
+    
+    _filteredHomeWords = _type == 'learn' 
+      ? _homeWords.where((homeWord) => _toRemove.every((practiceCat) => practiceCat.categoryName != homeWord.categoryName)).toList() // Check if the category is not in _toRemove
+      : _practiceCategories; // Initialize filtered words with all words
   }
 
   Future<void> _loadAllVocabWords() async {
@@ -63,60 +62,45 @@ class _HomeScreenState extends State<HomeScreen> {
     _vocabWordsMap = _databaseService.getAllPortugueseWords(); // Fetch all Portuguese vocab words
   }
 
+  // Handles search text changes
   void _onSearchChanged(String searchText) {
-    if (searchText.isEmpty) {
-      if(widget.type == 'learn'){
-          setState(() {
-          _filteredHomeWords = _homeWords.where((homeWord) {
-          for (HomeWord practiceCat in _toRemove){
-            return (practiceCat.categoryName != homeWord.categoryName); //dont return if its something we're trying to move
-          }
-          return true;
-          }).toList(); // Reset to all words if search is empty
-        });
-      }
-      else{
-        setState(() {
-          _filteredHomeWords = _practiceCategories;
-        });
-      }
-      
-    } else {
-      if(widget.type == 'learn'){
-      setState(() {
-        _filteredHomeWords = _homeWords.where((homeWord) {
-        for (HomeWord practiceCat in _toRemove){
-            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) && practiceCat.categoryName != homeWord.categoryName ||
-                 _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
-           //dont return if its something we're trying to move
+    setState(() {
+      if (searchText.isEmpty) {
+        if (widget.type == 'learn') {
+          _filteredHomeWords = _homeWords.where((homeWord) => _toRemove.every((practiceCat) => practiceCat.categoryName != homeWord.categoryName)).toList(); // Reset to all words if search is empty
+        } else {
+          _filteredHomeWords = _practiceCategories; // Reset to all practice categories if search is empty
         }
-        return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
-          _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
-        }).toList();
-        });
-      }else{
-        setState(() {
-          _filteredHomeWords = _practiceCategories.where((homeWord){
-            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
-          _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
+      } else {
+        if (widget.type == 'learn') {
+          _filteredHomeWords = _homeWords.where((homeWord) {
+            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) && // Check if the Home card contains the search text
+              _toRemove.any((practiceCat) => practiceCat.categoryName != homeWord.categoryName) || // Check if the category is not in _toRemove
+              _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true; // Check if the vocab words in the category contain the search text
           }).toList();
-        });
+        } else {
+          _filteredHomeWords = _practiceCategories.where((homeWord) {
+            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) || // Check if the Home card contains the search text
+              _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true; // Check if the vocab words in the category contain the search text
+          }).toList();
+        }
       }
-    }
+    });
   }
 
+  // Fills _practiceCategories and _toRemove lists based on the categories in _homeWords
   Future<void> _checkPractice() async {
     for (HomeWord homeWord in _homeWords) {
+      // Check if the category has practice words and add to _practiceCategories
       if (_databaseService.hasCategoryPractice(homeWord.categoryName)) {
         _practiceCategories.add(homeWord);
       }
-      if(!(_databaseService.hasCategoryLearn(homeWord.categoryName))){
-         _toRemove.add(homeWord);
+
+      // Check if the category does not have a Learn screen and add to _toRemove
+      if (!(_databaseService.hasCategoryLearn(homeWord.categoryName))) {
+        _toRemove.add(homeWord);
       }
     }
-    //_databaseService.printConvo("personal_interactions");
-    //_databaseService.printConvos();
-
   }
 
   @override
