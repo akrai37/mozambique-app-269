@@ -11,15 +11,16 @@ class NoDataScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // Title
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+            padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 40.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
+              mainAxisAlignment: MainAxisAlignment.center, // center the text horizontally
               children: [
                 const Text(
                   'Vamos Começar',
                   style: TextStyle(
-                    fontSize: 50,
+                    fontSize: 100,
                     fontWeight: FontWeight.bold,
                     color: Color(0xFF2D3E50),
                   ),
@@ -27,15 +28,14 @@ class NoDataScreen extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
+
+          // Text
+          Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10),
-                  
                   Padding(
                     padding: const EdgeInsets.only(bottom: 10),
                     child: Text(
@@ -44,16 +44,16 @@ class NoDataScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black54,
+                        color: Color(0xFF2D3E50),
                       ),
                     ),
                   ),
-
-                  SizedBox(height: 20),
                 ],
               ),
             ),
           ),
+
+          // Logos
           Logos(),
         ],
       ),
