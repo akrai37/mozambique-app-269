@@ -57,6 +57,7 @@ class _LearnConvoState extends State<LearnConvo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: FutureBuilder<void>(
         future: _loadingFuture,
         builder: (context, snapshot){

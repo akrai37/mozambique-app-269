@@ -77,6 +77,7 @@ class _LearnScreensState extends State<LearnScreens> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: FutureBuilder<void>(
         future: _loadingFuture,
         builder: (context, snapshot) {

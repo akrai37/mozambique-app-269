@@ -82,6 +82,7 @@ class _InfoScreenState extends State<InfoScreen> {
         }
       },
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
