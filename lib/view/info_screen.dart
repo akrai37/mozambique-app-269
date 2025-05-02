@@ -101,7 +101,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
                 children: [
                   const Text(
-                    'Informação',
+                    'Information',
                     style: TextStyle(
                       fontSize: 100,
                       fontWeight: FontWeight.bold,

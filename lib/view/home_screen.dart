@@ -136,7 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
                   children: [
                     Text(
-                      _type == 'learn' ? 'Olá!' : 'Prática!',
+                      _type == 'learn' ? 'Aprender' : 'Prática',
                       style: TextStyle(
                         fontSize: 100,
                         fontWeight: FontWeight.bold,
