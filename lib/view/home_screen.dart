@@ -25,9 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
   final DatabaseService _databaseService = DatabaseService();
   late List<HomeWord> _homeWords = [];
   late Future<void> _loadingFuture;
-  List<HomeWord> _filteredHomeWords = [];
-  final List<HomeWord> _practiceCategories = []; // List to hold practice categories
-  final List<HomeWord> _toRemove = []; //List to remove categories from learn home page
+  late List<HomeWord> _filteredHomeWords = [];
+  late List<HomeWord> _practiceCategories = []; // List to hold practice categories
+  late List<HomeWord> _toRemove = []; //List to remove categories from learn home page
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
 
   @override
@@ -49,13 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     await _checkPractice();
     
-    _filteredHomeWords = _type == 'learn' ?  _homeWords : _practiceCategories; // Initialize filtered words with all words
-
-    if(_type == 'learn'){
-      for(HomeWord homeWord in _toRemove){ //remove categories from learn page that do not have a learn exercise
-         _filteredHomeWords.remove(homeWord);
-     }
-    }
+    _filteredHomeWords = _type == 'learn' ?  _homeWords.where((homeWord) {
+        for (HomeWord practiceCat in _toRemove){
+          return (practiceCat.categoryName != homeWord.categoryName); //dont return if its something we're trying to move
+        }
+        return true;
+        }).toList() : _practiceCategories; // Initialize filtered words with all words
 
     // Load all vocab words from Hive (for search functionality)
     await _loadAllVocabWords();
@@ -69,13 +68,23 @@ class _HomeScreenState extends State<HomeScreen> {
   void _onSearchChanged(String searchText) {
     if (searchText.isEmpty) {
       setState(() {
-        _filteredHomeWords = _homeWords; // Reset to all words if search is empty
+        _filteredHomeWords = _homeWords.where((homeWord) {
+        for (HomeWord practiceCat in _toRemove){
+          return (practiceCat.categoryName != homeWord.categoryName); //dont return if its something we're trying to move
+        }
+        return true;
+        }).toList(); // Reset to all words if search is empty
       });
     } else {
       setState(() {
         _filteredHomeWords = _homeWords.where((homeWord) {
-          return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
+        for (HomeWord practiceCat in _toRemove){
+            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) && practiceCat.categoryName != homeWord.categoryName ||
                  _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
+           //dont return if its something we're trying to move
+        }
+        return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
+          _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
         }).toList();
       });
     }
@@ -84,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _checkPractice() async {
     for (HomeWord homeWord in _homeWords) {
       if (_databaseService.hasCategoryPractice(homeWord.categoryName)) {
-        _practiceCategories.add(HomeWord(word: homeWord.word, portuguese: homeWord.portuguese, categoryName: homeWord.categoryName, imageBytes: homeWord.imageBytes, imagePath: homeWord.imagePath, type: homeWord.type));
+        _practiceCategories.add(homeWord);
       }
       if(!(_databaseService.hasCategoryLearn(homeWord.categoryName))){
          _toRemove.add(homeWord);
