@@ -67,15 +67,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _onSearchChanged(String searchText) {
     if (searchText.isEmpty) {
-      setState(() {
-        _filteredHomeWords = _homeWords.where((homeWord) {
-        for (HomeWord practiceCat in _toRemove){
-          return (practiceCat.categoryName != homeWord.categoryName); //dont return if its something we're trying to move
-        }
-        return true;
-        }).toList(); // Reset to all words if search is empty
-      });
+      if(widget.type == 'learn'){
+          setState(() {
+          _filteredHomeWords = _homeWords.where((homeWord) {
+          for (HomeWord practiceCat in _toRemove){
+            return (practiceCat.categoryName != homeWord.categoryName); //dont return if its something we're trying to move
+          }
+          return true;
+          }).toList(); // Reset to all words if search is empty
+        });
+      }
+      else{
+        setState(() {
+          _filteredHomeWords = _practiceCategories;
+        });
+      }
+      
     } else {
+      if(widget.type == 'learn'){
       setState(() {
         _filteredHomeWords = _homeWords.where((homeWord) {
         for (HomeWord practiceCat in _toRemove){
@@ -86,7 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
         return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
           _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
         }).toList();
-      });
+        });
+      }else{
+        setState(() {
+          _filteredHomeWords = _practiceCategories.where((homeWord){
+            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) ||
+          _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true;
+          }).toList();
+        });
+      }
     }
   }
 
