@@ -168,7 +168,7 @@ class _LearnConvoState extends State<LearnConvo> {
                       /// First Column (List of Messages)
                       Expanded(
                         child: Column(
-                          spacing: 50,
+                          spacing: 15,
                           children: _filteredQuestions.map((question){
                             return LearnConvoCard(
                               greeting: question.questionText, 
@@ -182,7 +182,7 @@ class _LearnConvoState extends State<LearnConvo> {
                       /// Second Column (List of Messages)
                       Expanded(
                         child: Column(
-                          spacing: 50,
+                          spacing: 15,
                           children: _filteredQuestions.map((question){
                             return LearnConvoCard(
                               greeting: question.questionText, 
