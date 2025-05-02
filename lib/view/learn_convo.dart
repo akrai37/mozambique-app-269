@@ -66,7 +66,7 @@ class _LearnConvoState extends State<LearnConvo> {
             children: [
               Navbar(isPractice: false, onSearchChanged: (test){}),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
                 child: Column(
                   children: [
                     //PAGE TITLE
@@ -100,31 +100,38 @@ class _LearnConvoState extends State<LearnConvo> {
                           ]
                         ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Image(
-                              image: AssetImage('assets/images/NavyPerson.png'),
-                              width: 100,
-                              height: 100,
+                            Row(
+                              children: [
+                                Image(
+                                  image: AssetImage('assets/images/NavyPerson.png'),
+                                  width: 100,
+                                  height: 100,
+                                ),
+                                SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
+                                Image(
+                                  image: AssetImage('assets/images/GrayPerson.png'),
+                                  width: 100,
+                                  height: 100,
+                                ),
+                              ],
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
-                            Image(
-                              image: AssetImage('assets/images/GrayPerson.png'),
-                              width: 100,
-                              height: 100,
+                            Row(
+                              children: [
+                                Image(
+                                  image: AssetImage('assets/images/NavyPerson.png'),
+                                  width: 100,
+                                  height: 100,
+                                ),
+                                SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
+                                Image(
+                                  image: AssetImage('assets/images/GrayPerson.png'),
+                                  width: 100,
+                                  height: 100,
+                                ),
+                              ],
                             ),
-                            SizedBox(width: MediaQuery.of(context).size.width / 10 - 15),
-                            Image(
-                              image: AssetImage('assets/images/NavyPerson.png'),
-                              width: 100,
-                              height: 100,
-                            ),
-                            SizedBox(width: MediaQuery.of(context).size.width / 5 - 15),
-                            Image(
-                              image: AssetImage('assets/images/GrayPerson.png'),
-                              width: 100,
-                              height: 100,
-                            ),
-                            SizedBox(height: 15),
                           ]
                         ),
                       ]

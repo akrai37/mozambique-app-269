@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
@@ -139,26 +137,26 @@ class _HomeScreenState extends State<HomeScreen> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-                Navbar(
-                  onSearchChanged: _onSearchChanged,
-                  isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
-                  isLearnScreen: _type == 'learn',
-                  isPractice: _type != 'learn',
-                  onSync: () async {
-                    await _loadContent();
-          
-                    setState(() {}); // Force a rebuild
-                  }
-                ),
+              Navbar(
+                onSearchChanged: _onSearchChanged,
+                isHomeScreen: true, // Pass the isHomeScreen flag to Navbar
+                isLearnScreen: _type == 'learn',
+                isPractice: _type != 'learn',
+                onSync: () async {
+                  await _loadContent();
+        
+                  setState(() {}); // Force a rebuild
+                }
+              ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
                   children: [
                     Text(
                       _type == 'learn' ? 'Olá!' : 'Prática!',
                       style: TextStyle(
-                        fontSize: 50,
+                        fontSize: 100,
                         fontWeight: FontWeight.bold,
                         color: _type == 'learn' ? Color(0xFF2D3E50) : Colors.white,
                       ),
@@ -166,20 +164,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
+              Expanded(
                 child: SingleChildScrollView(
-                  child: Wrap( // replaces Row so that the children wrap to the next line if they don't fit
-                    direction: Axis.horizontal,
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: _filteredHomeWords.map((homeWord) {
-                        return HomeCard(
-                          key: ValueKey(homeWord.portuguese), // Use a unique key for each card
-                          homeWord: homeWord,
-                          type: _type
-                        );
-                    }).toList(),
+                  scrollDirection: Axis.vertical, // Enables vertical scrolling
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Wrap( // replaces Row so that the children wrap to the next line if they don't fit
+                      direction: Axis.horizontal,
+                      spacing: 10,
+                      runSpacing: 10,
+                      children: _filteredHomeWords.map((homeWord) {
+                          return HomeCard(
+                            key: ValueKey(homeWord.portuguese), // Use a unique key for each card
+                            homeWord: homeWord,
+                            type: _type
+                          );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ),

@@ -95,14 +95,14 @@ class _LearnScreensState extends State<LearnScreens> {
             children: [
               Navbar(isPractice: false, onSearchChanged: _onSearchChanged),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 90.0, vertical: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
                   children: [
                     Text(
                       widget.title,
                       style: const TextStyle(
-                        fontSize: 50,
+                        fontSize: 100,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF2D3E50),
                       ),
@@ -110,19 +110,22 @@ class _LearnScreensState extends State<LearnScreens> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 200, // height of the screen minus the height of the AppBar
+              Expanded(
                 child: SingleChildScrollView(
-                  child: Wrap( // replaces Row so that the children wrap to the next line if they don't fit
-                    direction: Axis.horizontal,
-                    spacing: 10,
-                    runSpacing: 10,
-                    children: _filteredImageButtons.map((imageButton) {
-                      return LearnCard(
-                          key: ValueKey(imageButton.portuguese), // Use a unique key for each card
-                          imageButton: imageButton,
-                        );
-                    }).toList(),
+                  scrollDirection: Axis.vertical, // Enables vertical scrolling
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Wrap( // replaces Row so that the children wrap to the next line if they don't fit
+                      direction: Axis.horizontal,
+                      spacing: 10,
+                      runSpacing: 10,
+                      children: _filteredImageButtons.map((imageButton) {
+                        return LearnCard(
+                            key: ValueKey(imageButton.portuguese), // Use a unique key for each card
+                            imageButton: imageButton,
+                          );
+                      }).toList(),
+                    ),
                   ),
                 ),
               ),
