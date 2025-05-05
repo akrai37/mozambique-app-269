@@ -2,6 +2,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/quiz.dart';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 
 class QuizQuestionWidget extends StatefulWidget {
   //DICTATES WHAT THE WIDGET TAKES OR WHAT IS REQUIRED TO MAKE THE QUIZ QUESTION
@@ -21,6 +23,7 @@ class QuizQuestionWidget extends StatefulWidget {
 class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
   late QuizQuestion _question;
   final AudioPlayer _audioPlayer = AudioPlayer();
+  double _displayWidth = 275;
 
   @override
   void initState() {
@@ -34,6 +37,17 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
     _audioPlayer.setSourceBytes(_question.audioBytes); // Set the audio source to the byte data
     _audioPlayer.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
     _audioPlayer.setVolume(1.0); // Set the volume to maximum
+    _setImageSize(_question.imageBytes);
+  }
+
+  Future<void> _setImageSize(Uint8List bytes) async {
+    final codec = await ui.instantiateImageCodec(bytes);
+    final frame = await codec.getNextFrame();
+    final image = frame.image;
+
+    setState(() {
+      _displayWidth = image.width > 600 ? 775 : 275; // adjust as needed
+    });
   }
 
   @override
@@ -124,7 +138,7 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
                 ? Image.memory(
                     _question.imageBytes,
                     height: 275,
-                    width: 275,
+                    width: _displayWidth,
                   )
                 : const Icon(
                     Icons.error,

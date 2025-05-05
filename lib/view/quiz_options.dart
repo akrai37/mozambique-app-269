@@ -65,7 +65,7 @@ class _QuizOptionsState extends State<QuizOptions> {
           ),
         ),
         child: Row(
-          spacing: 48, // Spacing between options
+          //spacing: 48, // Spacing between options
           mainAxisAlignment: MainAxisAlignment.center, // Ensures content is aligned to the left
           children: _options.asMap().entries.map((entry) {
             int i = entry.key;
@@ -135,6 +135,7 @@ class _QuizOptionsState extends State<QuizOptions> {
                     },
                   )
                 ),
+                SizedBox(width: 20),
               ],
             );
           }).toList(),
