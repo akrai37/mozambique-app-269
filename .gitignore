@@ -72,3 +72,4 @@ windows/flutter/generated_plugins.cmake
 mozambique-app-firebase-adminsdk-fbsvc-0cf2fbafbe.json
 /lib/scripts/node_modules
 /.firebase
+/.vscode
