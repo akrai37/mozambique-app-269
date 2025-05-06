@@ -14,7 +14,7 @@ import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
-import 'package:mozambique_app/view/no_data_screen.dart';
+import 'package:mozambique_app/view/no_connection_screen.dart';
 
 class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -61,25 +61,6 @@ class DatabaseService {
     }
   }
 
-  // Show alert dialog for no internet connection
-  void _showNoConnectionAlert(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('No Internet Connection'),
-          content: const Text('Please check your internet connection and try again.'),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('OK'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
   // Sync content from Firestore to Hive
   Future<bool> syncContent({BuildContext? context}) async {
     // Check internet connection
@@ -90,16 +71,14 @@ class DatabaseService {
 
       
       if (context != null) { 
-        if (_homeWordBox.isEmpty && _vocabWordBox.isEmpty && _questionBox.isEmpty && _quizQuestionBox.isEmpty) { // If there's no data, show NoDataScreen
-          Navigator.pushReplacement( // Navigate to NoDataScreen and remove all previous routes
-            context,
-            MaterialPageRoute(
-              builder: (context) => const NoDataScreen(),
+        Navigator.push( // Navigate to NoConnectionScreen
+          context,
+          MaterialPageRoute(
+            builder: (context) => NoConnectionScreen( // Check if there's content in Hive
+              hasContent: !(_homeWordBox.isEmpty && _vocabWordBox.isEmpty && _questionBox.isEmpty && _quizQuestionBox.isEmpty),
             ),
-          );
-        } else { // Only show alert if data is already present in Hive
-          _showNoConnectionAlert(context);
-        }
+          ),
+        );
       }
 
       return false; // No internet connection
