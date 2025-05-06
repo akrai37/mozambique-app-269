@@ -65,35 +65,46 @@ class _LearnCardState extends State<LearnCard> {
                             size: 267,
                           ),
                     ),
-                    Text(
-                      _imageButton.portuguese,
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Center(
+                            child: Text(
+                              _imageButton.portuguese,
+                              style: const TextStyle(
+                                fontSize: 28,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                          
+                          // Speaker Icon
+                          Positioned(
+                            right: 0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Color(0xFF2D3E50),
+                              ),
+                              padding: const EdgeInsets.all(8.0),
+                              margin: const EdgeInsets.only(left: 8.0),
+                              child: const Icon(
+                                Icons.volume_up,
+                                color: Colors.white,
+                                size: 24,
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
               ),
-                  
-              // Speaker Icon
-              Positioned(
-                bottom: 8,
-                right: 8,
-                child: Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xFF2D3E50),
-                  ),
-                  padding: const EdgeInsets.all(10),
-                  child: const Icon(
-                    Icons.volume_up,
-                    color: Colors.white,
-                    size: 24,
-                  ),
-                )
-              )
             ],
           ),
         ),
