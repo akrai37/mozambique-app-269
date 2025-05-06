@@ -37,8 +37,8 @@ class _LearnCardState extends State<LearnCard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
-      width: 300,
+      height: 400,
+      width: 400,
       child: Material(
         color: const Color(0xFFECF0F1),
         borderRadius: BorderRadius.circular(5),
@@ -57,12 +57,12 @@ class _LearnCardState extends State<LearnCard> {
                       child: _imageButton.imageBytes.isNotEmpty
                         ? Image.memory(
                             _imageButton.imageBytes,
-                            height: 200,
-                            width: 200,
+                            height: 267,
+                            width: 267,
                           )
                         : const Icon(
                             Icons.error,
-                            size: 200,
+                            size: 267,
                           ),
                     ),
                     Text(
