@@ -34,19 +34,6 @@ class _LearnScreensState extends State<LearnScreens> {
   }
 
   Future<void> _loadContent() async {
-    /* // This fetches from the local JSON file
-    try {
-      _imageButtons = await fetchJSONVocabCards(widget.tag);
-
-      // Preload images
-      for (var imageButton in _imageButtons) {
-        await precacheImage(AssetImage(imageButton.img), context);
-      }
-    } catch (error) {
-      log("Error loading JSON data: $error");
-    }
-    */
-
     // This fetches from the local Hive database
     try {
       _imageButtons = await fetchVocabCards(widget.tag);
