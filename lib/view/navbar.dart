@@ -133,7 +133,7 @@ class _NavbarState extends State<Navbar> {
           IconButton(
             icon: Icon(
               Icons.info_outline,
-              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Color(0xFFECF0F1) : Color(0xFF95A5A5)),
+              color: widget.isInfoScreen ? Colors.grey : (widget.isPractice ? Color(0xFF969FA7) : Color(0xFF95A5A5)),
             ),
             iconSize: 50,
             onPressed: widget.isInfoScreen
