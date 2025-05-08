@@ -62,13 +62,15 @@ class DatabaseService {
   }
 
   // Sync content from Firestore to Hive
-  Future<bool> syncContent({BuildContext? context}) async {
+  Future<bool> syncContent({
+    BuildContext? context,
+    void Function(double progress)? onProgress,
+  }) async {
     // Check internet connection
     bool isConnected = await checkInternetConnection();
 
     if (!isConnected) {
       log("No internet connection. Cannot sync data.");
-
       
       if (context != null) { 
         Navigator.push( // Navigate to NoConnectionScreen
@@ -84,217 +86,268 @@ class DatabaseService {
       return false; // No internet connection
     }
 
-    await _syncHomeWords();
-    await _syncVocabWords();
-    await _syncQuestionResponse();
-    await _syncQuizQuestions();
-    await _syncPracConvo();
+    const totalSteps = 5; // Total number of steps in the sync process
+    int completedSteps = 0; // Current step in the sync process
+
+    void onStepCompleted() {
+      completedSteps++;
+      onProgress?.call(completedSteps / totalSteps); // Update progress after each step
+    }
+
+    await Future.wait([
+      _syncHomeWords(onStepCompleted),
+      _syncVocabWords(onStepCompleted),
+      _syncQuestionResponse(onStepCompleted),
+      _syncQuizQuestions(onStepCompleted),
+      _syncPracConvo(onStepCompleted),
+    ]);
 
     log("Data synced from Firestore to Hive.");
-
     return true; // Sync successful
   }
 
   // Sync Home cards from Firestore to Hive
-  Future<void> _syncHomeWords() async {
+  Future<void> _syncHomeWords(void Function() onStepCompleted) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('home').get();
 
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (!snapshot.exists) return; // If the document doesn't exist
 
-        List<HomeWord> homeWords = await Future.wait(data['home_cards'].map<Future<HomeWord>>((item) async {
-          if (item['imageBase64'] != null) {
-            // Decode base64 image if available
-            item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
-          }
-          Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
-          return HomeWord(
-            word: item['word'],
-            portuguese: item['portuguese'],
-            categoryName: item['categoryName'],
-            imageBytes: imageBytes,
-            imagePath: item['imagePath'],
-            type: item['type'],
-          );
-        }).toList());
+      // Map each item to futures
+      List<Future<HomeWord>> homeWordFutures = (data['home_cards'] as List).map<Future<HomeWord>>((item) async {
+        // Clean base64 strings if available
+        String? base64Image = item['imageBase64']?.replaceAll(RegExp(r'^data.*,'), '');
 
-        // Store the data in Hive
-        await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
-      }
+        // Set up image futures in parallel
+        Future<Uint8List> imageFuture = base64Image != null
+          ? Future.value(base64Decode(base64Image))
+          : fetchMedia(item['imagePath']);
+
+        // Await the image future
+        Uint8List imageBytes = await imageFuture;
+
+        return HomeWord(
+          word: item['word'],
+          portuguese: item['portuguese'],
+          categoryName: item['categoryName'],
+          imageBytes: imageBytes,
+          imagePath: item['imagePath'],
+          type: item['type'],
+        );
+      }).toList();
+
+      // Wait for all home words to be fetched
+      List<HomeWord> homeWords = await Future.wait(homeWordFutures);
+
+      // Store the data in Hive
+      await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
     } catch (err) {
       log('Error syncing data: $err');
+    } finally {
+      onStepCompleted(); // Call the completion function after syncing
     }
   }
 
   // Sync Learn vocab cards from Firestore to Hive
-  Future<void> _syncVocabWords() async {
+  Future<void> _syncVocabWords(void Function() onStepCompleted) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('categories').get();
 
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (!snapshot.exists) return; // If the document doesn't exist
 
-        for (String category in data.keys) {
-          List<VocabWord> vocabWords = await Future.wait(data[category].map<Future<VocabWord>>((item) async {
-            if (item['imageBase64'] != null) {
-              // Decode base64 image if available
-              item['imageBase64'] = item['imageBase64'].replaceAll(RegExp(r'^data.*,'), '');
-            }
-            if (item['audioBase64'] != null) {
-              // Decode base64 audio if available
-              item['audioBase64'] = item['audioBase64'].replaceAll(RegExp(r'^data.*,'), '');
-            }
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
-            Uint8List imageBytes = item['imageBase64'] != null ? base64Decode(item['imageBase64']) : await(fetchMedia(item['imagePath']));
-            Uint8List audioBytes = item['audioBase64'] != null ? base64Decode(item['audioBase64']) : await(fetchMedia(item['audioPath']));
+      for (String category in data.keys) {
+        // Map each item to futures
+        List<Future<VocabWord>> vocabWordFutures = (data[category] as List).map<Future<VocabWord>>((item) async {
+          // Clean base64 strings if available
+          String? base64Image = item['imageBase64']?.replaceAll(RegExp(r'^data.*,'), '');
+          String? base64Audio = item['audioBase64']?.replaceAll(RegExp(r'^data.*,'), '');
 
-            return VocabWord(
-              categoryName: item['categoryName'],
-              word: item['word'],
-              portuguese: item['portuguese'],
-              imageBytes: imageBytes,
-              audioBytes: audioBytes,
-              imagePath: item['imagePath'],
-              audioPath: item['audioPath'],
-            );
-          }).toList());
+          // Set up both futures in parallel
+          Future<Uint8List> imageFuture = base64Image != null
+            ? Future.value(base64Decode(base64Image))
+            : fetchMedia(item['imagePath']);
 
-          // Store the data in Hive
-          await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
-        }
+          Future<Uint8List> audioFuture = base64Audio != null
+            ? Future.value(base64Decode(base64Audio))
+            : fetchMedia(item['audioPath']);
+
+          // Await both futures in parallel
+          final results = await Future.wait([imageFuture, audioFuture]);
+          Uint8List imageBytes = results[0];
+          Uint8List audioBytes = results[1];
+
+          return VocabWord(
+            categoryName: item['categoryName'],
+            word: item['word'],
+            portuguese: item['portuguese'],
+            imageBytes: imageBytes,
+            audioBytes: audioBytes,
+            imagePath: item['imagePath'],
+            audioPath: item['audioPath'],
+          );
+        }).toList();
+
+        // Wait for all vocab words to be fetched
+        List<VocabWord> vocabWords = await Future.wait(vocabWordFutures);
+
+        // Store the data in Hive
+        await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
       }
     } catch (err) {
       log('Error syncing data: $err');
+    } finally {
+      onStepCompleted(); // Call the completion function after syncing
     }
   }
 
   // Sync Learn conversations from Firestore to Hive
-  Future<void> _syncQuestionResponse() async {
+  Future<void> _syncQuestionResponse(void Function() onStepCompleted) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('learnConvo').get();
 
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-      
-        for (String category in data.keys) {
-          List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
-            Uint8List audioBytes = await(fetchMedia(item['audioPath']));
+      if (!snapshot.exists) return; // If the document doesn't exist
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+    
+      for (String category in data.keys) {
+        List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
+          Uint8List audioBytes = await(fetchMedia(item['audioPath']));
 
-            List<Response> responses = []; // Responses list for each question
-            for(var j = 0; j < item['responses'].length; j++) {
-              Uint8List audioBytesRes = await(fetchMedia(item['responses'][j]['audioPath']));
-              
-              Response response = Response(
-                responseText: item['responses'][j]['responseText'],
-                audioPath: item['responses'][j]['audioPath'],
-                emotion: item['responses'][j]['emotion'],
-                audioBytes: audioBytesRes
-              );
-
-              responses.add(response);
-            }
-
-            return Question(
-              categoryName: category,
-              questionText: item['questionText'],
-              audioPath: item['audioPath'],
-              responses: responses,
-              audioBytes: audioBytes
+          List<Response> responses = []; // Responses list for each question
+          for(var j = 0; j < item['responses'].length; j++) {
+            Uint8List audioBytesRes = await(fetchMedia(item['responses'][j]['audioPath']));
+            
+            Response response = Response(
+              responseText: item['responses'][j]['responseText'],
+              audioPath: item['responses'][j]['audioPath'],
+              emotion: item['responses'][j]['emotion'],
+              audioBytes: audioBytesRes
             );
-          }).toList());
-          
-          //Store the data in Hive
-          await _questionBox.put(category, questions.cast<dynamic>());
-        }
+
+            responses.add(response);
+          }
+
+          return Question(
+            categoryName: category,
+            questionText: item['questionText'],
+            audioPath: item['audioPath'],
+            responses: responses,
+            audioBytes: audioBytes
+          );
+        }).toList());
+        
+        //Store the data in Hive
+        await _questionBox.put(category, questions.cast<dynamic>());
       }
     } catch (err) {
       log('Error syncing data: $err');
+    } finally {
+      onStepCompleted(); // Call the completion function after syncing
     }
   }
 
   // Sync Practice conversations from Firestore to Hive
-  Future<void> _syncPracConvo() async {
+  Future<void> _syncPracConvo(void Function() onStepCompleted) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('pracConvo').get();
 
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-        for (String category in data.keys) {
-          List<Conversation> convos = [];
-          List<ConvoLine> lines = [];
-          String imagePath = data[category][0]["imagePath"];
-          Uint8List imageBytes = await(fetchMedia(imagePath));
+      if (!snapshot.exists) return; // If the document doesn't exist
 
-          for (int i = 0; i < data[category].length; i++) {
-            if (i == 0) continue; // Skip the first item as it is the image path
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      for (String category in data.keys) {
+        List<Conversation> convos = [];
+        List<ConvoLine> lines = [];
+        String imagePath = data[category][0]["imagePath"];
+        Uint8List imageBytes = await(fetchMedia(imagePath));
 
-            lines.add(ConvoLine(
-              convoText: data[category][i]["msgText"], 
-              audioPath: data[category][i]["audioPath"], 
-              audioBytes: await(fetchMedia(data[category][i]["audioPath"])))
-            );
-          }
+        for (int i = 0; i < data[category].length; i++) {
+          if (i == 0) continue; // Skip the first item as it is the image path
 
-          convos.add(Conversation(
-            categoryName: category, 
-            conversationText: lines, 
-            imagePath: imagePath, 
-            imageBytes: imageBytes
-          ));
-
-          //Store the data in Hive
-          await _convoBox.put(category, convos);
+          lines.add(ConvoLine(
+            convoText: data[category][i]["msgText"], 
+            audioPath: data[category][i]["audioPath"], 
+            audioBytes: await(fetchMedia(data[category][i]["audioPath"])))
+          );
         }
+
+        convos.add(Conversation(
+          categoryName: category, 
+          conversationText: lines, 
+          imagePath: imagePath, 
+          imageBytes: imageBytes
+        ));
+
+        //Store the data in Hive
+        await _convoBox.put(category, convos);
       }
     } catch (err) {
       log('Error syncing data: $err');
+    } finally {
+      onStepCompleted(); // Call the completion function after syncing
     }
   }
 
   // Sync Practice Quiz questions from Firestore to Hive
-  Future<void> _syncQuizQuestions() async {
+  Future<void> _syncQuizQuestions(void Function() onStepCompleted) async {
     try {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('practice_quiz').get();
 
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (!snapshot.exists) return; // If the document doesn't exist
 
-        for (String category in data.keys) {
-          List<QuizQuestion> quizQuestions = await Future.wait(data[category].map<Future<QuizQuestion>>((item) async {
-            List<QuizAnswer> answers = []; // Answers list for each question
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
 
-            Uint8List qImageBytes = await(fetchMedia(item['imagePath']));
-            Uint8List qAudioBytes = await(fetchMedia(item['audioPath']));
+      for (String category in data.keys) {
+        List<Future<QuizQuestion>> quizQuestionFutures = (data[category] as List).map<Future<QuizQuestion>>((item) async {
+          List<Future<QuizAnswer>> answersFutures = []; // Answers list for each question
 
-            answers = await Future.wait(item['answers'].map<Future<QuizAnswer>>((answerItem) async {
-              Uint8List ansAudioBytes = await(fetchMedia(answerItem['audioPath']));
+          Future<Uint8List> qImageFuture = fetchMedia(item['imagePath']);
+          Future<Uint8List> qAudioFuture = fetchMedia(item['audioPath']);
 
-              return QuizAnswer(
-                answerText: answerItem['answerText'],
-                isCorrect: answerItem['isCorrect'],
-                audioPath: answerItem['audioPath'],
-                audioBytes: ansAudioBytes,
-              );
-            }).toList());
+          answersFutures = (item['answers'] as List).map<Future<QuizAnswer>>((answerItem) async {
+            Future<Uint8List> ansAudioFuture = fetchMedia(answerItem['audioPath']);
 
-            return QuizQuestion(
-              questionText: item['questionText'],
-              imageBytes: qImageBytes,
-              audioBytes: qAudioBytes,
-              imagePath: item['imagePath'],
-              audioPath: item['audioPath'],
-              answers: answers
+            // Fetch audio bytes for each answer
+            Uint8List ansAudioBytes = await ansAudioFuture;
+
+            return QuizAnswer(
+              answerText: answerItem['answerText'],
+              isCorrect: answerItem['isCorrect'],
+              audioPath: answerItem['audioPath'],
+              audioBytes: ansAudioBytes,
             );
-          }).toList());
+          }).toList();
 
-          // Store the data in Hive
-          await _quizQuestionBox.put(category, quizQuestions.cast<dynamic>());
-        }
+          // Await both futures in parallel
+          final results = await Future.wait([qImageFuture, qAudioFuture]);
+          Uint8List qImageBytes = results[0];
+          Uint8List qAudioBytes = results[1];
+
+          // Wait for all answers to be fetched
+          List<QuizAnswer> answers = await Future.wait(answersFutures);
+
+          return QuizQuestion(
+            questionText: item['questionText'],
+            imageBytes: qImageBytes,
+            audioBytes: qAudioBytes,
+            imagePath: item['imagePath'],
+            audioPath: item['audioPath'],
+            answers: answers
+          );
+        }).toList();
+
+        // Wait for all quiz questions to be fetched
+        List<QuizQuestion> quizQuestions = await Future.wait(quizQuestionFutures);
+
+        // Store the data in Hive
+        await _quizQuestionBox.put(category, quizQuestions.cast<dynamic>());
       }
     } catch (err) {
       log('Error syncing data: $err');
+    } finally {
+      onStepCompleted(); // Call the completion function after syncing
     }
   }
 
@@ -500,7 +553,3 @@ class DatabaseService {
     }
   }
 }
-
-
-
-

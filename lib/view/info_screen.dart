@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/view/logos.dart';
+import 'package:mozambique_app/view/sync_progress_dialog.dart';
 
 
 class InfoScreen extends StatefulWidget {
@@ -31,11 +32,15 @@ class _InfoScreenState extends State<InfoScreen> {
       return;
     }
 
+    late void Function(double) updateProgress;
+
     // Show loading dialog while syncing
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
+        double progress = 0.0; // Initialize progress variable
+
         return PopScope( // Disable back button while syncing
           canPop: false, // Prevent default behavior of back button
           onPopInvokedWithResult: (didPop, result) {
@@ -48,28 +53,40 @@ class _InfoScreenState extends State<InfoScreen> {
               );
             }
           },
-          child: const AlertDialog(
-            title: Text('Atualizando...'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 20),
-                Text("Baixando dados do servidor..."),
-              ],
-            ),
+          child: StatefulBuilder(
+            builder: (context, setState) {
+              updateProgress = (double value) {
+                setState(() {
+                  progress = value; // Update progress variable
+                });
+              };
+
+              return SyncProgressDialog(progress: progress);
+            }
           ),
         );
       },
     );
 
-    _didSync = await _databaseService.syncContent(context: context);
-    Navigator.of(context).pop(); // Close the dialog after syncing
+    _didSync = await _databaseService.syncContent(
+      context: context,
+      onProgress: (double value) {
+        updateProgress(value); // Update progress in the dialog
+      },
+    );
+
+    // Wait for a second to show the progress bar has completed
+    await Future.delayed(const Duration(seconds: 1));
+
+    // Close the dialog after syncing
+    if (context.mounted) Navigator.of(context).pop();
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Dados atualizados com sucesso!'),
-        duration: Duration(seconds: 4),
+      SnackBar( // Show success or error message based on sync result
+        content: _didSync
+          ? const Text('Dados atualizados com sucesso!')
+          : const Text('Erro ao atualizar os dados!'),
+        duration: const Duration(seconds: 4),
       ),
     );
   }
