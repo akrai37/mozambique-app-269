@@ -60,13 +60,13 @@ class NoConnectionScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+
+                  // Logos
+                  Logos(),
                 ],
               ),
             ),
           ),
-
-          // Logos
-          Logos(),
         ],
       ),
     );
