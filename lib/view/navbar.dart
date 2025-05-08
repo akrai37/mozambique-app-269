@@ -6,6 +6,7 @@ import 'package:mozambique_app/view/home_screen.dart';
 class Navbar extends StatefulWidget {
   final Function(String) onSearchChanged;
   final VoidCallback? onSync; // When the sync button is pressed
+  final VoidCallback? onBack; // When the back button is pressed
   final bool isHomeScreen; // To check if the user is on the HomeScreen
   final bool isLearnScreen; // To check if the user is on the LearnScreen
   final bool isInfoScreen; // To check if the user is on the InfoScreen
@@ -16,6 +17,7 @@ class Navbar extends StatefulWidget {
     required this.onSearchChanged,
     required this.isPractice,
     this.onSync,
+    this.onBack,
     this.isHomeScreen = false,
     this.isLearnScreen = true,
     this.isInfoScreen = false,
@@ -41,7 +43,11 @@ class _NavbarState extends State<Navbar> {
               if (!widget.isHomeScreen) // Only show the back button if not on HomeScreen
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    if (widget.onBack != null) {
+                      widget.onBack!();
+                    } else {
+                      Navigator.pop(context);
+                    }
                   },
                   icon: Icon(
                     Icons.arrow_back_ios_new_rounded,

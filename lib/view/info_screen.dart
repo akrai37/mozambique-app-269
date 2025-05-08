@@ -109,6 +109,9 @@ class _InfoScreenState extends State<InfoScreen> {
               isPractice: false,
               onSearchChanged: (temp) {},
               isInfoScreen: true, // Pass the isInfoScreen flag to Navbar,
+              onBack: () {
+                Navigator.pop(context, _didSync); // Pass the sync status back to the previous screen
+              },
             ),
 
             // Title
