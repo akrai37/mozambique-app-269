@@ -210,34 +210,42 @@ class DatabaseService {
       DocumentSnapshot snapshot = await _firestore.collection('cards').doc('learnConvo').get();
 
       if (!snapshot.exists) return; // If the document doesn't exist
+
       Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     
       for (String category in data.keys) {
-        List<Question> questions = await Future.wait(data[category].map<Future<Question>>((item) async {
-          Uint8List audioBytes = await(fetchMedia(item['audioPath']));
+        List<Future<Question>> questionFutures = (data[category] as List).map<Future<Question>>((item) async {
+          Future<Uint8List> questionAudioFuture = fetchMedia(item['audioPath']);
 
-          List<Response> responses = []; // Responses list for each question
-          for(var j = 0; j < item['responses'].length; j++) {
-            Uint8List audioBytesRes = await(fetchMedia(item['responses'][j]['audioPath']));
-            
-            Response response = Response(
-              responseText: item['responses'][j]['responseText'],
-              audioPath: item['responses'][j]['audioPath'],
-              emotion: item['responses'][j]['emotion'],
-              audioBytes: audioBytesRes
+          // Prepare futures for all responses in parallel
+          List<Future<Response>> responseFutures = (item['responses'] as List).map<Future<Response>>((responseItem) async {
+            Future<Uint8List> responseAudioFuture = fetchMedia(responseItem['audioPath']);
+
+            // Await the audio future for each response
+            Uint8List responseAudioBytes = await responseAudioFuture;
+
+            return Response(
+              responseText: responseItem['responseText'],
+              audioPath: responseItem['audioPath'],
+              emotion: responseItem['emotion'],
+              audioBytes: responseAudioBytes,
             );
+          }).toList();
 
-            responses.add(response);
-          }
+          final results = await Future.wait([questionAudioFuture, ...responseFutures]);
+          final Uint8List questionAudioBytes = results[0] as Uint8List; // Audio bytes for the question
+          final List<Response> responses = results.sublist(1).cast<Response>(); // Responses list
 
           return Question(
             categoryName: category,
             questionText: item['questionText'],
             audioPath: item['audioPath'],
             responses: responses,
-            audioBytes: audioBytes
+            audioBytes: questionAudioBytes
           );
-        }).toList());
+        }).toList();
+
+        final List<Question> questions = await Future.wait(questionFutures);
         
         //Store the data in Hive
         await _questionBox.put(category, questions.cast<dynamic>());
@@ -258,30 +266,35 @@ class DatabaseService {
 
       Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
       for (String category in data.keys) {
-        List<Conversation> convos = [];
-        List<ConvoLine> lines = [];
-        String imagePath = data[category][0]["imagePath"];
-        Uint8List imageBytes = await(fetchMedia(imagePath));
+        final convoData = data[category] as List<dynamic>;
+        if (convoData.isEmpty) continue; // Skip if no data for the category
 
-        for (int i = 0; i < data[category].length; i++) {
-          if (i == 0) continue; // Skip the first item as it is the image path
+        String imagePath = convoData[0]["imagePath"];
+        Future<Uint8List> imageBytesFuture = fetchMedia(imagePath);
 
-          lines.add(ConvoLine(
-            convoText: data[category][i]["msgText"], 
-            audioPath: data[category][i]["audioPath"], 
-            audioBytes: await(fetchMedia(data[category][i]["audioPath"])))
+        List<Future<ConvoLine>> lineFutures = convoData.skip(1).map<Future<ConvoLine>>((lineItem) async {
+          Uint8List audioBytes = await fetchMedia(lineItem["audioPath"]);
+
+          return ConvoLine(
+            convoText: lineItem["msgText"],
+            audioPath: lineItem["audioPath"],
+            audioBytes: audioBytes,
           );
-        }
+        }).toList();
 
-        convos.add(Conversation(
-          categoryName: category, 
-          conversationText: lines, 
-          imagePath: imagePath, 
-          imageBytes: imageBytes
-        ));
+        final results = await Future.wait([imageBytesFuture, ...lineFutures]);
+        final Uint8List imageBytes = results[0] as Uint8List; // Image bytes for the conversation
+        final convoLines = results.sublist(1).cast<ConvoLine>(); // Lines list
+
+        final Conversation conversation = Conversation(
+          categoryName: category,
+          imagePath: imagePath,
+          imageBytes: imageBytes,
+          conversationText: convoLines,
+        );
 
         //Store the data in Hive
-        await _convoBox.put(category, convos);
+        await _convoBox.put(category, [conversation]);
       }
     } catch (err) {
       log('Error syncing data: $err');
