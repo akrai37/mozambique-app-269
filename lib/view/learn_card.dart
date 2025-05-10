@@ -25,10 +25,6 @@ class _LearnCardState extends State<LearnCard> {
 
     _imageButton = widget.imageButton;
 
-    if (_audioPlayer.audioCache.prefix != '') { // Clear prefix 
-      _audioPlayer.audioCache.prefix = '';
-    }
-
     _audioPlayer.setSourceBytes(_imageButton.audioBytes); // Set the audio source to the byte data
     _audioPlayer.setReleaseMode(ReleaseMode.stop); // Stop the audio when finished
     _audioPlayer.setVolume(1.0); // Set the volume to maximum

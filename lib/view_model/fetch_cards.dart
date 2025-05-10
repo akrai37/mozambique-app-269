@@ -73,22 +73,3 @@ Future<List<QuizQuestion>> fetchQuizQuestions(String category) async {
   await dbService.syncContent();
   return dbService.getQuizQuestions(category) ?? [];
 }
-
-/*
-Future<List<VocabWord>> fetchJSONVocabCards(String category) async {
-  try {
-    // Load the JSON file
-    String jsonString = await rootBundle.loadString('assets/json/vocab_words.json');
-    final data = json.decode(jsonString);
-    final cards = data[category];
-
-    // Convert JSON to list of ImageButton objects
-    return List<VocabWord>.from(cards.map((item) => VocabWord.fromJson(item)));
-
-  } catch (error) {
-    log("Error loading JSON data: $error");
-
-    return []; // Return an empty list in case of error
-  }
-}
-*/

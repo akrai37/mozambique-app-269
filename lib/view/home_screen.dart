@@ -21,9 +21,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   late String _type;
   final DatabaseService _databaseService = DatabaseService();
-  late List<HomeWord> _homeWords = [];
-  late Future<void> _loadingFuture;
-  late List<HomeWord> _filteredHomeWords = [];
+  late List<HomeWord> _homeWords = []; // List to hold all Learn words
+  late Future<void> _loadingFuture; // Future to load content
+  late List<HomeWord> _filteredHomeWords = []; // List to hold filtered Home words based on search
   final List<HomeWord> _practiceCategories = []; // List to hold Practice categories
   final List<HomeWord> _toRemove = []; // List to remove categories from Learn home page
   Map<String, List<String>> _vocabWordsMap = {}; // Map to store vocab words by category
@@ -63,13 +63,13 @@ class _HomeScreenState extends State<HomeScreen> {
   // Handles search text changes
   void _onSearchChanged(String searchText) {
     setState(() {
-      if (searchText.isEmpty) {
+      if (searchText.isEmpty) { // If search text is empty, reset the filtered words
         if (widget.type == 'learn') {
           _filteredHomeWords = _homeWords.where((homeWord) => _toRemove.every((practiceCat) => practiceCat.categoryName != homeWord.categoryName)).toList(); // Reset to all words if search is empty
         } else {
           _filteredHomeWords = _practiceCategories; // Reset to all practice categories if search is empty
         }
-      } else {
+      } else { // If search text is not empty, filter the words based on the search text
         if (widget.type == 'learn') {
           _filteredHomeWords = _homeWords.where((homeWord) {
             return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) && // Check if the Home card contains the search text

@@ -32,9 +32,9 @@ class _SyncProgressDialogState extends State<SyncProgressDialog> {
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          TweenAnimationBuilder<double>(
-            tween: Tween<double>(begin: _oldProgress, end: widget.progress),
-            duration: const Duration(milliseconds: 500),
+          TweenAnimationBuilder<double>( // Animate the progress bar
+            tween: Tween<double>(begin: _oldProgress, end: widget.progress), // Use the old progress value as the start
+            duration: const Duration(milliseconds: 500), // Animation duration
             builder: (context, value, _) {
               final String percent = (value * 100).toStringAsFixed(0); // Convert progress to percentage
 

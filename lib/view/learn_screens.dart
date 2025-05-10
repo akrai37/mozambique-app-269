@@ -51,9 +51,9 @@ class _LearnScreensState extends State<LearnScreens> {
 
   void _onSearchChanged(String searchText) {
     setState(() {
-      if (searchText.isEmpty) {
-        _filteredImageButtons = _imageButtons; // Reset to all words if search is empty
-      } else {
+      if (searchText.isEmpty) { // Reset to all words if search is empty
+        _filteredImageButtons = _imageButtons;
+      } else { // Filter the list based on the search text
         _filteredImageButtons = _imageButtons.where((imageButton) {
           return imageButton.portuguese.toLowerCase().contains(searchText.toLowerCase());
         }).toList();

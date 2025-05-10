@@ -42,6 +42,7 @@ class _LearnConvoState extends State<LearnConvo> {
     }
   }
 
+  // TO ADD LATER: SEARCH FUNCTIONALITY
   // void _onSearchChanged(String searchText) {
   //   setState(() {
   //     if (searchText.isEmpty) {
@@ -69,7 +70,7 @@ class _LearnConvoState extends State<LearnConvo> {
                 padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
                 child: Column(
                   children: [
-                    //PAGE TITLE
+                    // Page Title
                     Container(
                           margin: EdgeInsets.symmetric(vertical: 0),
                           alignment: Alignment.topLeft,

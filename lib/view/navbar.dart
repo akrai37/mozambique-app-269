@@ -4,7 +4,7 @@ import 'package:mozambique_app/view/info_screen.dart';
 import 'package:mozambique_app/view/home_screen.dart';
 
 class Navbar extends StatefulWidget {
-  final Function(String) onSearchChanged;
+  final Function(String) onSearchChanged; // Callback function to handle search text changes
   final VoidCallback? onSync; // When the sync button is pressed
   final VoidCallback? onBack; // When the back button is pressed
   final bool isHomeScreen; // To check if the user is on the HomeScreen
@@ -28,7 +28,7 @@ class Navbar extends StatefulWidget {
 }
 
 class _NavbarState extends State<Navbar> {
-  String _searchText = '';
+  String _searchText = ''; // Variable to store the search text
 
   @override
   Widget build(BuildContext context) {
