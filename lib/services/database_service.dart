@@ -109,7 +109,7 @@ class DatabaseService {
   // Sync Home cards from Firestore to Hive
   Future<void> _syncHomeWords(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('home').get();
+      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('home').get();
 
       if (!snapshot.exists) return; // If the document doesn't exist
 
@@ -153,7 +153,7 @@ class DatabaseService {
   // Sync Learn vocab cards from Firestore to Hive
   Future<void> _syncVocabWords(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('categories').get();
+      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('vocab_words').get();
 
       if (!snapshot.exists) return; // If the document doesn't exist
 
@@ -207,7 +207,7 @@ class DatabaseService {
   // Sync Learn conversations from Firestore to Hive
   Future<void> _syncQuestionResponse(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('learnConvo').get();
+      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('learn_convo').get();
 
       if (!snapshot.exists) return; // If the document doesn't exist
 
@@ -260,7 +260,7 @@ class DatabaseService {
   // Sync Practice conversations from Firestore to Hive
   Future<void> _syncPracConvo(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('pracConvo').get();
+      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('practice_convo').get();
 
       if (!snapshot.exists) return; // If the document doesn't exist
 
@@ -306,7 +306,7 @@ class DatabaseService {
   // Sync Practice Quiz questions from Firestore to Hive
   Future<void> _syncQuizQuestions(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('cards').doc('practice_quiz').get();
+      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('practice_quiz').get();
 
       if (!snapshot.exists) return; // If the document doesn't exist
 
