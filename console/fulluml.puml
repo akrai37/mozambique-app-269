@@ -1,0 +1,399 @@
+@startuml
+
+'---------Views---------'
+
+class MyApp{
+    ---
+    + build() : widget, MaterialApp
+}
+
+class MyHomePage{
+    ---
+    + createState() : State<MyHomePage>
+    + initState() : void 
+    + build() : widget, HomeScreen()
+}
+
+class NoConnectionScreen {
+    - hasContent: bool
+    ---
+    + build(): Widget
+}
+
+class HomeScreen {
+    - type: String
+    ---
+    + createState(): State<HomeScreen>
+    ---
+    -type: String
+    -databaseService: DatabaseService
+    -homeWords: List<HomeWord>
+    -loadingFuture: Future<void>
+    -filteredHomeWords: List<HomeWord>
+    -practiceCategories: List<HomeWord>
+    -toRemove: List<HomeWord>
+    -vocabWordsMap: Map<String, List<String>>
+    ---
+    + initState(): void
+    +_loadContent(): void
+    +_loadAllVocabWords(): void
+    +_onSearchChanged(): void
+    +_checkPractice(): void
+    +build(): Widget
+}
+
+'concrete vocab Learn
+class LearnScreens {
+    title: String
+    tag: String
+    ---
+    createState(): State<LearnScreens>
+    ---
+    -imageButtons: List<VocabWord>
+    -filteredImageButtons: List<VocabWord>
+    -loadingFuture: Future<void>
+    +initState(): void
+    +_loadContent(): void
+    +_onSearchChanged(): void
+    +build(): Widget
+}
+
+class LearnCard {
+    imageButton: VocabWord
+    ---
+    createState(): State<LearnCard>
+    ---
+    -imageButton: VocabWord
+    -audioPlayer: AudioPlayer
+    +initState(): void
+    +build(): Widget
+    +dispose(): void
+}
+
+'abstract phrases Learn
+
+class LearnConvo {
+    ---
+    title: String
+    tag: String
+    createState(): State<LearnConvo>
+    ---
+    -questionList: List<Question>
+    -filteredQuestions: List<Question>
+    -loadingFuture: Future<void>
+    +initState(): void
+    +_loadContent(): void
+    +build(): Widget
+}
+
+class LearnConvoCard {
+    greeting: String
+    response: String
+    qaudio: Uint8List
+    raudio: Uint8List
+    ---
+    +createState(): State<LearnConvoCard>
+    ---
+    -qaudioPlayer: AudioPlayer
+    -raudioPlayer: AudioPlayer
+    +initState(): void
+    +build(): Widget
+    +dispose(): void
+}
+
+'Concrete Quiz Practice
+class QuizScreen {
+    title: String
+    tag: String
+    ---
+    createState(): State<QuizScreen>
+    ---
+    -quizQuestions: List<QuizQuestion>
+    -loadingFuture: Future<void>
+    +initState(): void
+    +_loadContent(): void
+    +build(): Widget
+}
+
+class QuizOptions {
+    ---
+    option1: QuizAnswer
+    option2: QuizAnswer
+    option3: QuizAnswer
+    isLast: bool
+    createState(): State<QuizOptions
+    ---
+    isSelected: List<bool>
+    -options: List<QuizAnswer>
+    -audioPlayers: List<AudioPlayer>
+    initState(): void
+    build(): Widget
+    dispose(): void
+}
+class QuizQuestionWidget {
+    ---
+    question: QuizQuestion
+    isFirst: bool
+    ---
+    createState(): State<QuizQuestionWidget
+    ---
+    -question: QuizQuestion
+    -audioPlayer: AudioPlayer
+    -displayWidth: double
+    initState(): void
+    -_setImageSize(): void
+    build(): Widget
+    dispose(): void
+}
+class CustomCheckbox {
+    isChecked: bool
+    onChanged: ValueChanged<bool>
+    isCorrect: bool
+    ---
+    build(): Widget
+}
+
+'conversation practice
+class PracticeConvo {
+    ---
+    title: String
+    tag: String
+    createState(): State<PracticeConvo
+    ---
+    -msgIndex: int
+    -scrollController: ScrollController
+    -loadingFuture: Future<void>
+    -convos: List<Conversation>
+    -lines: List<ConvoLine>
+    imageBytes: Uint8List
+    -messages: List<Widget>
+    -visibleMessages: List<Widget>
+    initState(): void
+    -_makeMsgWidgets(): void
+    -_loadContent(): void
+    -_revealNextMessage(): void
+    resetConversation(): void
+    goBackOneMessage(): void
+    dispose(): void
+    build(): Widget
+}
+
+class Msg1 {
+    ---
+    line: ConvoLine
+    isLast: bool
+    createState(): State<Msg1>
+    ---
+    -line: ConvoLine
+    -audioPlayer: AudioPlayer
+    initState(): void
+    build(): Widget
+    dispose(): void
+}
+class Msg2 {
+    ---
+    line: ConvoLine
+    isLast: bool
+    createState(): State<Msg2>
+    ---
+    -line: ConvoLine
+    -audioPlayer: AudioPlayer
+    initState(): void
+    build(): Widget
+    dispose(): void
+}
+
+'Info page stuff
+class InfoScreen {
+    createState(): State<InfoScreen>
+    ---
+    -infoList: List<String>
+    -databaseService: DatabaseService
+    -didSync: bool
+    -_onSyncButtonPressed(): void
+    build(): Widget
+}
+class Logos {
+    build(): Widget
+}
+class SyncProgressDialog {
+    progress: double
+    createState(): State<SyncProgressDialog>
+    ---
+    -oldProgress: double
+    didUpdateWidget(): void
+    build(): Widget
+}
+
+'all views use navbar
+class Navbar {
+---
+onSearchChanged:  Function(String)
+onSync: VoidCallback?
+onBack: VoidCallback?
+isHomeScreen: bool
+isLearnScreen: bool
+isInfoScreen: bool
+isPractice: bool
+createState(): State<Navbar
+---
+-searchText: String
+build(): Widget
+}
+
+
+'-----viewmodel/services----'
+package "fetch_cards"{}
+class DatabaseService {
+    -firestore: FirebaseFirestore
+    -homeWordBox: Box<List>
+    -vocabWordBox: Box<List>
+    -questionBox: Box<List>
+    -quizQuestionBox: Box<List>
+    -convoBox: Box<List>
+    ---
+    +initializeDatabase(): void
+    +fetchMedia(): Uint8dynamic[0..*]
+    +checkInternetConnection(): bool
+    +syncContent(): bool
+    +_syncHomeWords(): void
+    +_syncVocabWords(): void
+    +_syncQuestionResponse(): void
+    +_syncPracConvo(): void
+    +_syncQuizQuestions(): void
+    +getHomeWords(): HomeWord[0..*]?
+    +getVocabWords(): VocabWord[0..*]?
+    +getAllVocabWords(): Map<String, VocabWord[0..*]
+    +getAllPortugueseWords(): Map<String, String[0..*]
+    +printAllVocabWords(): void
+    +getQuestion(): Question[0..*]?
+    +printAllQuestions(): void
+    +getConvo(): Conversation[0..*]?
+    +hasCategoryLearn(): bool
+    +hasCategoryPractice(): bool
+    +hasCategoryPracticeConvo(): bool
+    +hasCategoryPracticeQuiz(): bool
+    +getQuizQuestions(): QuizQuestion[0..*]?
+    +printConvo(): void
+    +printConvos(): void
+    +printAllQuizQuestions(): void
+}
+
+'----------model---------------
+
+class HomeWord {
+    ---
+    word: String
+    portuguese: String
+    categoryName: String
+    imageBytes: Uint8List
+    imagePath: String
+    type: String
+    hasPractice: bool
+    toJson(): Map<String, dynamic
+}
+
+class VocabWord {
+    ---
+    categoryName: String
+    word: String
+    portuguese: String
+    imageBytes: Uint8List
+    audioBytes: Uint8List
+    imagePath: String
+    audioPath: String
+    toJson(): Map<String, dynamic
+}
+
+class Question {
+    ---
+    questionText: String
+    categoryName: String
+    audioPath: String?
+    responses: List<Response>
+    audioBytes: Uint8List
+}
+class Response {
+    ---
+    responseText: String
+    audioPath: String?
+    emotion: String
+    audioBytes: Uint8List
+}
+
+class Conversation {
+    ---
+    categoryName: String
+    conversationText: List<ConvoLine>
+    imagePath: String
+    imageBytes: Uint8List
+}
+
+class ConvoLine {
+    ---
+    convoText: String
+    audioPath: String?
+    audioBytes: Uint8List
+}
+
+class QuizQuestion {
+    ---
+    questionText: String
+    imageBytes: Uint8List
+    audioBytes: Uint8List
+    imagePath: String
+    audioPath: String
+    answers: List<QuizAnswer>
+}
+class QuizAnswer {
+    ---
+    answerText: String
+    isCorrect: bool
+    audioPath: String
+    audioBytes: Uint8List
+}
+
+'Relationships
+
+MyApp ..> MyHomePage : uses
+MyHomePage ..> HomeScreen : uses
+MyHomePage ..> NoConnectionScreen : uses
+MyHomePage ..> DatabaseService : uses
+
+HomeScreen ..> fetch_cards : uses
+Navbar ..> HomeScreen : uses
+
+LearnScreens ..> fetch_cards : uses
+Navbar ..> LearnScreens : uses
+LearnCard ..> LearnScreens : uses
+
+LearnConvo ..> fetch_cards : uses
+Navbar ..> LearnConvo : uses
+LearnConvoCard ..> LearnConvo
+
+QuizScreen ..> fetch_cards : uses
+Navbar ..> QuizScreen : uses
+QuizOptions ..> QuizScreen
+CustomCheckbox ..> QuizOptions
+QuizQuestionWidget ..> QuizScreen
+
+
+PracticeConvo ..> fetch_cards : uses
+Navbar ..> PracticeConvo : uses
+Msg1 ..> PracticeConvo : uses
+Msg2 ..> PracticeConvo : uses
+
+fetch_cards ..> DatabaseService : uses
+
+InfoScreen ..> DatabaseService : uses
+Logos ..> InfoScreen : uses
+SyncProgressDialog ..> InfoScreen : uses
+
+DatabaseService ..> HomeWord : uses
+DatabaseService ..> VocabWord : uses
+DatabaseService ..> Question : uses
+Question ..> Response : uses
+DatabaseService ..> QuizQuestion : uses
+QuizQuestion ..> QuizAnswer : uses
+DatabaseService ..> Conversation : uses
+Conversation ..>ConvoLine :uses
