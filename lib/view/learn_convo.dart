@@ -66,133 +66,137 @@ class _LearnConvoState extends State<LearnConvo> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Navbar(isPractice: false, onSearchChanged: (test){}),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
-                child: Column(
-                  children: [
-                    // Page Title
-                    Container(
-                          margin: EdgeInsets.symmetric(vertical: 0),
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                              widget.title,
-                              style: TextStyle(
-                                fontSize: 100,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF2D3E50),
-                              ),
-                            ),
-                        ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                Image(
-                                  image: AssetImage('assets/images/bigSmile.png'),
-                                  width: 150,
-                                  height: 150,
-                                ),
-                              ]
-                            ),
-                            Row(
-                              children: [
-                                Row(
-                                  children: [
-                                    Image(
-                                      image: AssetImage('assets/images/NavyPerson.png'),
-                                      width: 100,
-                                      height: 100,
-                                    ),
-                                    SizedBox(width: MediaQuery.of(context).size.width /4 + 40),
-                                    Image(
-                                      image: AssetImage('assets/images/GrayPerson.png'),
-                                      width: 100,
-                                      height: 100,
-                                    ),
-                                  ],
-                                ),
-                              ]
-                            ),
-                          ]
-                        ),
-                        SizedBox(width: 40),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              children: [
-                                Image(
-                                  image: AssetImage('assets/images/smile.png'),
-                                  width: 150,
-                                  height: 150,
-                                ),
-                              ]
-                            ),
-                            Row(
-                              children: [
-                                Row(
-                                  children: [
-                                    Image(
-                                      image: AssetImage('assets/images/NavyPerson.png'),
-                                      width: 100,
-                                      height: 100,
-                                    ),
-                                    SizedBox(width: MediaQuery.of(context).size.width/4+40),
-                                    Image(
-                                      image: AssetImage('assets/images/GrayPerson.png'),
-                                      width: 100,
-                                      height: 100,
-                                    ),
-                                  ],
-                                ),
-                              ]
-                            ),
-                          ]
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-
               Expanded(
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical, // Enables vertical scrolling
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
                     children: [
-                      /// First Column (List of Messages)
-                      Expanded(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
                         child: Column(
-                          spacing: 15,
-                          children: _filteredQuestions.map((question){
-                            return LearnConvoCard(
-                              greeting: question.questionText, 
-                              response: question.responses[1].responseText,
-                              raudio: question.responses[1].audioBytes,
-                              qaudio: question.audioBytes
-                            );
-                          }).toList(),
+                          children: [
+                            // Page Title
+                            Container(
+                                  margin: EdgeInsets.symmetric(vertical: 0),
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                      widget.title,
+                                      style: TextStyle(
+                                        fontSize: 100,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xFF2D3E50),
+                                      ),
+                                    ),
+                                ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Image(
+                                          image: AssetImage('assets/images/bigSmile.png'),
+                                          width: 150,
+                                          height: 150,
+                                        ),
+                                      ]
+                                    ),
+                                    Row(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Image(
+                                              image: AssetImage('assets/images/NavyPerson.png'),
+                                              width: 100,
+                                              height: 100,
+                                            ),
+                                            SizedBox(width: MediaQuery.of(context).size.width /4 + 40),
+                                            Image(
+                                              image: AssetImage('assets/images/GrayPerson.png'),
+                                              width: 100,
+                                              height: 100,
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                                SizedBox(width: 40),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Image(
+                                          image: AssetImage('assets/images/smile.png'),
+                                          width: 150,
+                                          height: 150,
+                                        ),
+                                      ]
+                                    ),
+                                    Row(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Image(
+                                              image: AssetImage('assets/images/NavyPerson.png'),
+                                              width: 100,
+                                              height: 100,
+                                            ),
+                                            SizedBox(width: MediaQuery.of(context).size.width/4+40),
+                                            Image(
+                                              image: AssetImage('assets/images/GrayPerson.png'),
+                                              width: 100,
+                                              height: 100,
+                                            ),
+                                          ],
+                                        ),
+                                      ]
+                                    ),
+                                  ]
+                                )
+                              ],
+                            ),
+                          ],
                         ),
                       ),
-                      /// Second Column (List of Messages)
-                      Expanded(
-                        child: Column(
-                          spacing: 15,
-                          children: _filteredQuestions.map((question){
-                            return LearnConvoCard(
-                              greeting: question.questionText, 
-                              response: question.responses[0].responseText,
-                              raudio: question.responses[0].audioBytes,
-                              qaudio: question.audioBytes
-                            );
-                          }).toList(),
-                        ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          /// First Column (List of Messages)
+                          Expanded(
+                            child: Column(
+                              spacing: 15,
+                              children: _filteredQuestions.map((question){
+                                return LearnConvoCard(
+                                  greeting: question.questionText, 
+                                  response: question.responses[1].responseText,
+                                  raudio: question.responses[1].audioBytes,
+                                  qaudio: question.audioBytes
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                          /// Second Column (List of Messages)
+                          Expanded(
+                            child: Column(
+                              spacing: 15,
+                              children: _filteredQuestions.map((question){
+                                return LearnConvoCard(
+                                  greeting: question.questionText, 
+                                  response: question.responses[0].responseText,
+                                  raudio: question.responses[0].audioBytes,
+                                  qaudio: question.audioBytes
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
