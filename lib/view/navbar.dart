@@ -65,8 +65,8 @@ class _NavbarState extends State<Navbar> {
                   },
                 icon: Image(
                   image: AssetImage('assets/images/logos/diffeducation.png'),
-                  width: 50,
-                  height: 50,
+                  width: 200,
+                  height: 200,
                 ),
               ),
             ],
