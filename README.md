@@ -14,6 +14,7 @@ This offline-first Flutter application uses Hive to store its data locally, and 
 - `convertToBase64inJSON.js`: Converts the media files to base64 strings and adds them to the JSON files
 - `JSON2Firestore.js`: Uploads the JSON files to Firestore
 - `mozambique-fy.js`: Converts the spreadsheet to JSON files
+- `uploadAssetsToStorage.js`: Uploads the media files to Firebase Storage
 - `vocab2audio.js`: Converts the vocab words to audio files using tts2mp3.com API
 
 `lib/services/`: The functions that retrieve from the Firestore data and sync with the Hive data
@@ -69,3 +70,9 @@ There are 2 important steps that are needed to allow the app to fetch from Fires
 2. **Warning**: You may have to add `"type": "module",` in package.json to run this, but try without first
 3. Modify JSON input file paths (`vocabWordsJson` and `homeCardsJson` variables)
 4. Run `node JSON2Firestore.js`. Firestore should be updated. If a base64 string is too large to be uploaded, it will still upload the object with the online paths to the media.
+
+### Uploading Media Assets to Firebase Storage (uploadAssetsToStorage.js)
+1. Make sure the firebase library is installed (refer to **Installing Necessary Libraries**)
+2. **Warning**: You may have to add `"type": "module",` in package.json to run this, but try without first
+3. Modify the local folder paths of the media files to be uploaded (`LOCAL_ASSETS_DIR` variable)
+4. Run `node uploadAssetsToStorage.js`. The media files should now be uploaded to Firebase Storage.
