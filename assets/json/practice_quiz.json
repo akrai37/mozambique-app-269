@@ -2,177 +2,177 @@
     "colors": [
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2037.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 37.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Castanho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Brown.mp3"
+                    "audioPath": "audio/colors/Brown.mp3"
                 },
                 {
                     "answerText": "Vermelho",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Red.mp3"
+                    "audioPath": "audio/colors/Red.mp3"
                 },
                 {
                     "answerText": "Laranja",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Orange.mp3"
+                    "audioPath": "audio/colors/Orange.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2038.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 38.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Vermelho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Red.mp3"
+                    "audioPath": "audio/colors/Red.mp3"
                 },
                 {
                     "answerText": "Verde",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Green.mp3"
+                    "audioPath": "audio/colors/Green.mp3"
                 },
                 {
                     "answerText": "Azul",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Blue.mp3"
+                    "audioPath": "audio/colors/Blue.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2039.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 39.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Verde",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Green.mp3"
+                    "audioPath": "audio/colors/Green.mp3"
                 },
                 {
                     "answerText": "Azul",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Blue.mp3"
+                    "audioPath": "audio/colors/Blue.mp3"
                 },
                 {
                     "answerText": "Rosa",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Pink.mp3"
+                    "audioPath": "audio/colors/Pink.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2040.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 40.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Rosa",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Pink.mp3"
+                    "audioPath": "audio/colors/Pink.mp3"
                 },
                 {
                     "answerText": "Amarelo",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Yellow.mp3"
+                    "audioPath": "audio/colors/Yellow.mp3"
                 },
                 {
                     "answerText": "Branco",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/White.mp3"
+                    "audioPath": "audio/colors/White.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2041.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 41.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Laranja",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Orange.mp3"
+                    "audioPath": "audio/colors/Orange.mp3"
                 },
                 {
                     "answerText": "Verde",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Green.mp3"
+                    "audioPath": "audio/colors/Green.mp3"
                 },
                 {
                     "answerText": "Vermelho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Red.mp3"
+                    "audioPath": "audio/colors/Red.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2042.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 42.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Castanho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Brown.mp3"
+                    "audioPath": "audio/colors/Brown.mp3"
                 },
                 {
                     "answerText": "Preto",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Black.mp3"
+                    "audioPath": "audio/colors/Black.mp3"
                 },
                 {
                     "answerText": "Roxo",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Purple.mp3"
+                    "audioPath": "audio/colors/Purple.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2043.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 43.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Branco",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/White.mp3"
+                    "audioPath": "audio/colors/White.mp3"
                 },
                 {
                     "answerText": "Rosa",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Pink.mp3"
+                    "audioPath": "audio/colors/Pink.mp3"
                 },
                 {
                     "answerText": "Azul",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Blue.mp3"
+                    "audioPath": "audio/colors/Blue.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Colors/Group%2044.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question1.mp3",
+            "imagePath": "images/Practice/Colors/Group 44.png",
+            "audioPath": "audio/practice_quiz/question1.mp3",
             "answers": [
                 {
                     "answerText": "Amarelo",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Yellow.mp3"
+                    "audioPath": "audio/colors/Yellow.mp3"
                 },
                 {
                     "answerText": "Laranja",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Orange.mp3"
+                    "audioPath": "audio/colors/Orange.mp3"
                 },
                 {
                     "answerText": "Castanho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/colors/Brown.mp3"
+                    "audioPath": "audio/colors/Brown.mp3"
                 }
             ]
         }
@@ -180,89 +180,89 @@
     "face": [
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Face/Group%2045.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Face/Group 45.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Boca",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Mouth.mp3"
+                    "audioPath": "audio/face/Mouth.mp3"
                 },
                 {
                     "answerText": "Cabelo",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Hair.mp3"
+                    "audioPath": "audio/face/Hair.mp3"
                 },
                 {
                     "answerText": "Olho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Eye.mp3"
+                    "audioPath": "audio/face/Eye.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Face/Group%2046.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Face/Group 46.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Nariz",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Nose.mp3"
+                    "audioPath": "audio/face/Nose.mp3"
                 },
                 {
                     "answerText": "Boca",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Mouth.mp3"
+                    "audioPath": "audio/face/Mouth.mp3"
                 },
                 {
                     "answerText": "Cabelo",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Hair.mp3"
+                    "audioPath": "audio/face/Hair.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Face/Group%2047.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Face/Group 47.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Cabelo",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Hair.mp3"
+                    "audioPath": "audio/face/Hair.mp3"
                 },
                 {
                     "answerText": "Nariz",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Nose.mp3"
+                    "audioPath": "audio/face/Nose.mp3"
                 },
                 {
                     "answerText": "Olho",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Eye.mp3"
+                    "audioPath": "audio/face/Eye.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Face/Group%2048.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Face/Group 48.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Boca",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Mouth.mp3"
+                    "audioPath": "audio/face/Mouth.mp3"
                 },
                 {
                     "answerText": "Olho",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Eye.mp3"
+                    "audioPath": "audio/face/Eye.mp3"
                 },
                 {
                     "answerText": "Nariz",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/face/Nose.mp3"
+                    "audioPath": "audio/face/Nose.mp3"
                 }
             ]
         }
@@ -270,133 +270,133 @@
     "body": [
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2049.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Body/Group 49.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Mão",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Hand.mp3"
+                    "audioPath": "audio/body/Hand.mp3"
                 },
                 {
                     "answerText": "Abdômen",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Abdomen.mp3"
+                    "audioPath": "audio/body/Abdomen.mp3"
                 },
                 {
                     "answerText": "Peito",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Chest.mp3"
+                    "audioPath": "audio/body/Chest.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2049.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Body/Group 49.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Abdômen",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Abdomen.mp3"
+                    "audioPath": "audio/body/Abdomen.mp3"
                 },
                 {
                     "answerText": "Perna",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Leg.mp3"
+                    "audioPath": "audio/body/Leg.mp3"
                 },
                 {
                     "answerText": "Braço",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Arm.mp3"
+                    "audioPath": "audio/body/Arm.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2050.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Body/Group 50.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Perna",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Leg.mp3"
+                    "audioPath": "audio/body/Leg.mp3"
                 },
                 {
                     "answerText": "Pé",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Foot.mp3"
+                    "audioPath": "audio/body/Foot.mp3"
                 },
                 {
                     "answerText": "Abdômen",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Abdomen.mp3"
+                    "audioPath": "audio/body/Abdomen.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2051.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Body/Group 51.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Braço",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Arm.mp3"
+                    "audioPath": "audio/body/Arm.mp3"
                 },
                 {
                     "answerText": "Mão",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Hand.mp3"
+                    "audioPath": "audio/body/Hand.mp3"
                 },
                 {
                     "answerText": "Perna",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Leg.mp3"
+                    "audioPath": "audio/body/Leg.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2051.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Body/Group 51.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Peito",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Chest.mp3"
+                    "audioPath": "audio/body/Chest.mp3"
                 },
                 {
                     "answerText": "Pé",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Foot.mp3"
+                    "audioPath": "audio/body/Foot.mp3"
                 },
                 {
                     "answerText": "Braço",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Arm.mp3"
+                    "audioPath": "audio/body/Arm.mp3"
                 }
             ]
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "https://mozambique-app.web.app/images/Practice/Body/Group%2052.png",
-            "audioPath": "https://mozambique-app.web.app/audio/practice_quiz/question2.mp3",
+            "imagePath": "images/Practice/Body/Group 52.png",
+            "audioPath": "audio/practice_quiz/question2.mp3",
             "answers": [
                 {
                     "answerText": "Mão",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Hand.mp3"
+                    "audioPath": "audio/body/Hand.mp3"
                 },
                 {
                     "answerText": "Peito",
                     "isCorrect": false,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Chest.mp3"
+                    "audioPath": "audio/body/Chest.mp3"
                 },
                 {
                     "answerText": "Pé",
                     "isCorrect": true,
-                    "audioPath": "https://mozambique-app.web.app/audio/body/Foot.mp3"
+                    "audioPath": "audio/body/Foot.mp3"
                 }
             ]
         }

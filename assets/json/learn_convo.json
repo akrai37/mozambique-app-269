@@ -53,7 +53,7 @@
         },
         {
             "questionText": "Onde é o banheiro?",
-            "audioPath": "https://mozambique-app.web.app/audio/Requests/RequestsA4.mp3",
+            "audioPath": "audio/Requests/RequestsA4.mp3",
             "responses":
             [
                 {
@@ -70,7 +70,7 @@
         },
         {
             "questionText": "Você tem família aqui?",
-            "audioPath": "https://mozambique-app.web.app/audio/Requests/RequestsA5.mp3",
+            "audioPath": "audio/Requests/RequestsA5.mp3",
             "responses":
             [
                 {
@@ -140,7 +140,7 @@
         },
         {
             "questionText": "Boa noite.",
-            "audioPath": "https://mozambique-app.web.app/audio/greetings/GreetingA4.mp3",
+            "audioPath": "audio/greetings/GreetingA4.mp3",
             "responses":
             [
                 {
@@ -157,7 +157,7 @@
         },
         {
             "questionText": "E aí?",
-            "audioPath": "https://mozambique-app.web.app/audio/greetings/GreetingA5.mp3",
+            "audioPath": "audio/greetings/GreetingA5.mp3",
             "responses":
             [
                 {
@@ -174,7 +174,7 @@
         },
         {
             "questionText": "Como vai?",
-            "audioPath": "https://mozambique-app.web.app/audio/greetings/GreetingA6.mp3",
+            "audioPath": "audio/greetings/GreetingA6.mp3",
             "responses":
             [
                 {

@@ -6,10 +6,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
-import 'package:mozambique_app/model/conversation.dart';
 
+import 'package:mozambique_app/model/conversation.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
@@ -35,13 +36,24 @@ class DatabaseService {
   }
 
   // Fetch media (image/audio) from a URL
-  Future<Uint8List> fetchMedia(String url) async {
-    final response = await http.get(Uri.parse(url));
+  Future<Uint8List> fetchMedia(String path) async {
+    if (path.startsWith('http')) { // path is a direct URL
+      final response = await http.get(Uri.parse(path));
 
-    if (response.statusCode == 200) {
-      return response.bodyBytes;
+      if (response.statusCode == 200) {
+        return response.bodyBytes;
+      } else {
+        throw Exception('Failed to load media from $path');
+      }
+    }
+
+    // Firebase Storage path
+    final storageRef = FirebaseStorage.instance.ref(path);
+    final data = await storageRef.getData();
+    if (data != null) {
+      return data;
     } else {
-      throw Exception('Failed to load media from $url');
+      throw Exception('Failed to load media from Firebase Storage at $path');
     }
   }
 
@@ -144,7 +156,7 @@ class DatabaseService {
       // Store the data in Hive
       await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
     } catch (err) {
-      log('Error syncing data: $err');
+      log('Error syncing Home Words data: $err');
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -198,7 +210,7 @@ class DatabaseService {
         await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
       }
     } catch (err) {
-      log('Error syncing data: $err');
+      log('Error syncing Vocab Words data: $err');
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -251,7 +263,7 @@ class DatabaseService {
         await _questionBox.put(category, questions.cast<dynamic>());
       }
     } catch (err) {
-      log('Error syncing data: $err');
+      log('Error syncing Learn Conversations data: $err');
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -297,7 +309,7 @@ class DatabaseService {
         await _convoBox.put(category, [conversation]);
       }
     } catch (err) {
-      log('Error syncing data: $err');
+      log('Error syncing Practice Conversation data: $err');
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -358,7 +370,7 @@ class DatabaseService {
         await _quizQuestionBox.put(category, quizQuestions.cast<dynamic>());
       }
     } catch (err) {
-      log('Error syncing data: $err');
+      log('Error syncing Quiz Questions data: $err');
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
