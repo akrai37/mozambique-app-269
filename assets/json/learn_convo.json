@@ -2,52 +2,52 @@
     "requests": [
         {
             "questionText": "Pode me ajudar?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA1.mp3",
+            "audioPath":"audio/Requests/RequestsA1.mp3",
             "responses":
             [
                 {
                     "emotion": "neutral",
                     "responseText":"Vou tentar. Do que você precisa?",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests1-Neutral.mp3"
+                    "audioPath":"audio/Requests/Requests1-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Certo, fico feliz em ajudar!",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests1-Happy.mp3"
+                    "audioPath":"audio/Requests/Requests1-Happy.mp3"
                 }
             ]
         },
         {
             "questionText": "Você fala inglês?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA2.mp3",
+            "audioPath":"audio/Requests/RequestsA2.mp3",
             "responses":
             [
                 {
                     "emotion": "neutral",
                     "responseText":"Um pouco.",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests2-Neutral.mp3"
+                    "audioPath":"audio/Requests/Requests2-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Sim, eu falou!",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests2-Happy.mp3"
+                    "audioPath":"audio/Requests/Requests2-Happy.mp3"
                 }
             ]
         },
         {
             "questionText": "Quanto custa?",
-            "audioPath":"https://mozambique-app.web.app/audio/Requests/RequestsA3.mp3",
+            "audioPath":"audio/Requests/RequestsA3.mp3",
             "responses":
             [
                 {
                     "emotion": "neutral",
                     "responseText":"Não tenho a certeza.",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests3-Neutral.mp3"
+                    "audioPath":"audio/Requests/Requests3-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Custa dez meticais.",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests3-Happy.mp3"
+                    "audioPath":"audio/Requests/Requests3-Happy.mp3"
                 }
             ]
         },
@@ -59,12 +59,12 @@
                 {
                     "emotion": "neutral",
                     "responseText":"É ali.",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests4-Neutral.mp3"
+                    "audioPath":"audio/Requests/Requests4-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Vou te mostrar!",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests4-Happy.mp3"
+                    "audioPath":"audio/Requests/Requests4-Happy.mp3"
                 }
             ]
         },
@@ -76,12 +76,12 @@
                 {
                     "emotion": "neutral",
                     "responseText":"Não, não tenho.",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests5-Neutral.mp3"
+                    "audioPath":"audio/Requests/Requests5-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Sim, muito!",
-                    "audioPath":"https://mozambique-app.web.app/audio/Requests/Requests5-Happy.mp3"
+                    "audioPath":"audio/Requests/Requests5-Happy.mp3"
                 }
             ]
         }
@@ -89,52 +89,52 @@
     "greetings":[
         {
             "questionText": "Olá.",
-            "audioPath":"https://mozambique-app.web.app/audio/greetings/GreetingA1.mp3",
+            "audioPath":"audio/greetings/GreetingA1.mp3",
             "responses":
             [
                 {
                     "emotion": "neutral",
                     "responseText":"Olá.",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting1-Neutral.mp3"
+                    "audioPath":"audio/greetings/Greeting1-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Olá! Que bom ver você!",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting1-Happy.mp3"
+                    "audioPath":"audio/greetings/Greeting1-Happy.mp3"
                 }
             ]
         },
         {
             "questionText": "Bom dia.",
-            "audioPath":"https://mozambique-app.web.app/audio/greetings/GreetingA2.mp3",
+            "audioPath":"audio/greetings/GreetingA2.mp3",
             "responses":
             [
                 {
                     "emotion": "neutral",
                     "responseText":"Bom dia.",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting2-Neutral.mp3"
+                    "audioPath":"audio/greetings/Greeting2-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Bom dia! Como você vai?",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting2-Happy.mp3"
+                    "audioPath":"audio/greetings/Greeting2-Happy.mp3"
                 }
             ]
         },
         {
             "questionText": "Boa tarde.",
-            "audioPath":"https://mozambique-app.web.app/audio/greetings/GreetingA3.mp3",
+            "audioPath":"audio/greetings/GreetingA3.mp3",
             "responses":
             [
                 {
                     "emotion": "neutral",
                     "responseText":"Boa tarde.",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting3-Neutral.mp3"
+                    "audioPath":"audio/greetings/Greeting3-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Boa tarde! Como vai seu dia?",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting3-Happy.mp3"
+                    "audioPath":"audio/greetings/Greeting3-Happy.mp3"
                 }
             ]
         },
@@ -146,12 +146,12 @@
                 {
                     "emotion": "neutral",
                     "responseText":"Boa noite.",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting4-Neutral.mp3"
+                    "audioPath":"audio/greetings/Greeting4-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Boa noite! Como foi seu dia?",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting4-Happy.mp3"
+                    "audioPath":"audio/greetings/Greeting4-Happy.mp3"
                 }
             ]
         },
@@ -163,12 +163,12 @@
                 {
                     "emotion": "neutral",
                     "responseText":"Tudo beleza.",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting5-Neutral.mp3"
+                    "audioPath":"audio/greetings/Greeting5-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Só estou aqui passando tempo!",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting5-Happy.mp3"
+                    "audioPath":"audio/greetings/Greeting5-Happy.mp3"
                 }
             ]
         },
@@ -180,12 +180,12 @@
                 {
                     "emotion": "neutral",
                     "responseText":"Estou bem.",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting6-Neutral.mp3"
+                    "audioPath":"audio/greetings/Greeting6-Neutral.mp3"
                 },
                 {
                     "emotion": "positive",
                     "responseText":"Estou ótimo!",
-                    "audioPath":"https://mozambique-app.web.app/audio/greetings/Greeting6-Happy.mp3"
+                    "audioPath":"audio/greetings/Greeting6-Happy.mp3"
                 }
             ]
         }
