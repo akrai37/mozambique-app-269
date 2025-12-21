@@ -121,14 +121,21 @@ class DatabaseService {
   // Sync Home cards from Firestore to Hive
   Future<void> _syncHomeWords(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('home').get();
+      final CollectionReference categoriesRef = _firestore
+        .collection('app_content')
+        .doc('home')
+        .collection('categories');
 
-      if (!snapshot.exists) return; // If the document doesn't exist
+      final QuerySnapshot querySnapshot = await categoriesRef
+        .orderBy('order') // Order by 'order' field
+        .get(); // Get all documents in the subcollection
 
-      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (querySnapshot.docs.isEmpty) return; // If no documents found
 
       // Map each item to futures
-      List<Future<HomeWord>> homeWordFutures = (data['home_cards'] as List).map<Future<HomeWord>>((item) async {
+      List<Future<HomeWord>> homeWordFutures = querySnapshot.docs.map<Future<HomeWord>>((doc) async {
+        final item = doc.data() as Map<String, dynamic>;
+
         // Clean base64 strings if available
         String? base64Image = item['imageBase64']?.replaceAll(RegExp(r'^data.*,'), '');
 
@@ -155,8 +162,9 @@ class DatabaseService {
 
       // Store the data in Hive
       await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
-    } catch (err) {
+    } catch (err, stack) {
       log('Error syncing Home Words data: $err');
+      log(stack.toString());
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -165,15 +173,32 @@ class DatabaseService {
   // Sync Learn vocab cards from Firestore to Hive
   Future<void> _syncVocabWords(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('vocab_words').get();
+      final CollectionReference categoriesRef = _firestore
+        .collection('app_content')
+        .doc('vocab_words')
+        .collection('categories');
 
-      if (!snapshot.exists) return; // If the document doesn't exist
+      final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (querySnapshot.docs.isEmpty) return; // If no documents found
 
-      for (String category in data.keys) {
+      for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
+        final categoryData = categoryDoc.data() as Map<String, dynamic>;
+        final String categoryName = categoryData['name'] ?? categoryDoc.id;
+
+        final CollectionReference wordsRef = categoryDoc.reference
+          .collection('words');
+
+        final QuerySnapshot wordsSnapshot = await wordsRef
+          .orderBy('order') // Order by 'order' field
+          .get(); // Get all documents in the words subcollection
+
+        if (wordsSnapshot.docs.isEmpty) continue; // Skip if no words for the category
+
         // Map each item to futures
-        List<Future<VocabWord>> vocabWordFutures = (data[category] as List).map<Future<VocabWord>>((item) async {
+        final List<Future<VocabWord>> vocabWordFutures = wordsSnapshot.docs.map<Future<VocabWord>>((doc) async {
+          final item = doc.data() as Map<String, dynamic>;
+
           // Clean base64 strings if available
           String? base64Image = item['imageBase64']?.replaceAll(RegExp(r'^data.*,'), '');
           String? base64Audio = item['audioBase64']?.replaceAll(RegExp(r'^data.*,'), '');
@@ -204,13 +229,14 @@ class DatabaseService {
         }).toList();
 
         // Wait for all vocab words to be fetched
-        List<VocabWord> vocabWords = await Future.wait(vocabWordFutures);
+        final List<VocabWord> vocabWords = await Future.wait(vocabWordFutures);
 
         // Store the data in Hive
-        await _vocabWordBox.put(category, vocabWords.cast<dynamic>());
+        await _vocabWordBox.put(categoryName, vocabWords.cast<dynamic>());
       }
-    } catch (err) {
+    } catch (err, stack) {
       log('Error syncing Vocab Words data: $err');
+      log(stack.toString());
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -219,14 +245,31 @@ class DatabaseService {
   // Sync Learn conversations from Firestore to Hive
   Future<void> _syncQuestionResponse(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('learn_convo').get();
+      final CollectionReference categoriesRef = _firestore
+        .collection('app_content')
+        .doc('learn_convo')
+        .collection('categories');
 
-      if (!snapshot.exists) return; // If the document doesn't exist
+      final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (querySnapshot.docs.isEmpty) return; // If no documents found
     
-      for (String category in data.keys) {
-        List<Future<Question>> questionFutures = (data[category] as List).map<Future<Question>>((item) async {
+      for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
+        final categoryData = categoryDoc.data() as Map<String, dynamic>;
+        final String categoryName = categoryData['name'] ?? categoryDoc.id;
+
+        final CollectionReference convosRef = categoryDoc.reference
+          .collection('conversations');
+
+        final QuerySnapshot convosSnapshot = await convosRef
+          .orderBy('order') // Order by 'order' field
+          .get(); // Get all documents in the conversations subcollection
+
+        if (convosSnapshot.docs.isEmpty) continue; // Skip if no conversations for the category
+
+        final List<Future<Question>> questionFutures = convosSnapshot.docs.map<Future<Question>>((doc) async {
+          final item = doc.data() as Map<String, dynamic>;
+
           Future<Uint8List> questionAudioFuture = fetchMedia(item['audioPath']);
 
           // Prepare futures for all responses in parallel
@@ -249,7 +292,7 @@ class DatabaseService {
           final List<Response> responses = results.sublist(1).cast<Response>(); // Responses list
 
           return Question(
-            categoryName: category,
+            categoryName: categoryName,
             questionText: item['questionText'],
             audioPath: item['audioPath'],
             responses: responses,
@@ -260,10 +303,11 @@ class DatabaseService {
         final List<Question> questions = await Future.wait(questionFutures);
         
         //Store the data in Hive
-        await _questionBox.put(category, questions.cast<dynamic>());
+        await _questionBox.put(categoryName, questions.cast<dynamic>());
       }
-    } catch (err) {
+    } catch (err, stack) {
       log('Error syncing Learn Conversations data: $err');
+      log(stack.toString());
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -272,24 +316,42 @@ class DatabaseService {
   // Sync Practice conversations from Firestore to Hive
   Future<void> _syncPracConvo(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('practice_convo').get();
+      final CollectionReference categoriesRef = _firestore
+        .collection('app_content')
+        .doc('practice_convo')
+        .collection('categories');
 
-      if (!snapshot.exists) return; // If the document doesn't exist
+      final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-      for (String category in data.keys) {
-        final convoData = data[category] as List<dynamic>;
-        if (convoData.isEmpty) continue; // Skip if no data for the category
+      if (querySnapshot.docs.isEmpty) return; // If no documents found
 
-        String imagePath = convoData[0]["imagePath"];
+      for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
+        final convoData = categoryDoc.data() as Map<String, dynamic>;
+        final String categoryName = convoData['name'] ?? categoryDoc.id;
+
+        final QuerySnapshot convoSnapshot = await categoryDoc.reference
+          .collection('conversation')
+          .orderBy('order') // Order by 'order' field
+          .get(); // Get all documents in the conversations subcollection
+
+        if (convoSnapshot.docs.isEmpty) continue; // Skip if no conversations for the category
+
+        // First document contains imagePath
+        final firstLineData = convoSnapshot.docs.first.data() as Map<String, dynamic>;
+        String imagePath = firstLineData["imagePath"];
         Future<Uint8List> imageBytesFuture = fetchMedia(imagePath);
 
-        List<Future<ConvoLine>> lineFutures = convoData.skip(1).map<Future<ConvoLine>>((lineItem) async {
-          Uint8List audioBytes = await fetchMedia(lineItem["audioPath"]);
+        // Remaining documents contain conversation lines
+        final List<Future<ConvoLine>> lineFutures = convoSnapshot.docs
+          .skip(1)
+          .map<Future<ConvoLine>>((doc) async {
+          final item = doc.data() as Map<String, dynamic>;
+          
+          Uint8List audioBytes = await fetchMedia(item["audioPath"]);
 
           return ConvoLine(
-            convoText: lineItem["msgText"],
-            audioPath: lineItem["audioPath"],
+            convoText: item["msgText"],
+            audioPath: item["audioPath"],
             audioBytes: audioBytes,
           );
         }).toList();
@@ -299,17 +361,18 @@ class DatabaseService {
         final convoLines = results.sublist(1).cast<ConvoLine>(); // Lines list
 
         final Conversation conversation = Conversation(
-          categoryName: category,
+          categoryName: categoryName,
           imagePath: imagePath,
           imageBytes: imageBytes,
           conversationText: convoLines,
         );
 
         //Store the data in Hive
-        await _convoBox.put(category, [conversation]);
+        await _convoBox.put(categoryName, [conversation]);
       }
-    } catch (err) {
+    } catch (err, stack) {
       log('Error syncing Practice Conversation data: $err');
+      log(stack.toString());
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
@@ -318,14 +381,29 @@ class DatabaseService {
   // Sync Practice Quiz questions from Firestore to Hive
   Future<void> _syncQuizQuestions(void Function() onStepCompleted) async {
     try {
-      DocumentSnapshot snapshot = await _firestore.collection('app_content').doc('practice_quiz').get();
+      final CollectionReference categoriesRef = _firestore
+        .collection('app_content')
+        .doc('practice_quiz')
+        .collection('categories');
 
-      if (!snapshot.exists) return; // If the document doesn't exist
+      final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      if (querySnapshot.docs.isEmpty) return; // If no documents found
 
-      for (String category in data.keys) {
-        List<Future<QuizQuestion>> quizQuestionFutures = (data[category] as List).map<Future<QuizQuestion>>((item) async {
+      for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
+        final categoryData = categoryDoc.data() as Map<String, dynamic>;
+        final String categoryName = categoryData['name'] ?? categoryDoc.id;
+
+        final QuerySnapshot quizSnapshot = await categoryDoc.reference
+          .collection('quizzes')
+          .orderBy('order') // Order by 'order' field
+          .get(); // Get the quiz questions document
+
+        if (quizSnapshot.docs.isEmpty) continue; // Skip if no quiz questions for the category
+        
+        final List<Future<QuizQuestion>> quizQuestionFutures = quizSnapshot.docs.map<Future<QuizQuestion>>((doc) async {
+          final item = doc.data() as Map<String, dynamic>;
+
           List<Future<QuizAnswer>> answersFutures = []; // Answers list for each question
 
           Future<Uint8List> qImageFuture = fetchMedia(item['imagePath']);
@@ -351,7 +429,7 @@ class DatabaseService {
           Uint8List qAudioBytes = results[1];
 
           // Wait for all answers to be fetched
-          List<QuizAnswer> answers = await Future.wait(answersFutures);
+          final List<QuizAnswer> answers = await Future.wait(answersFutures);
 
           return QuizQuestion(
             questionText: item['questionText'],
@@ -364,13 +442,14 @@ class DatabaseService {
         }).toList();
 
         // Wait for all quiz questions to be fetched
-        List<QuizQuestion> quizQuestions = await Future.wait(quizQuestionFutures);
+        final List<QuizQuestion> quizQuestions = await Future.wait(quizQuestionFutures);
 
         // Store the data in Hive
-        await _quizQuestionBox.put(category, quizQuestions.cast<dynamic>());
+        await _quizQuestionBox.put(categoryName, quizQuestions.cast<dynamic>());
       }
-    } catch (err) {
+    } catch (err, stack) {
       log('Error syncing Quiz Questions data: $err');
+      log(stack.toString());
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
