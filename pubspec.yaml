@@ -90,6 +90,8 @@ flutter:
 
     - assets/images/logos/scu.png
     - assets/images/logos/diffeducation.png
+    - assets/images/logos/diffeducation_transparent.png
+    - assets/images/logos/diffeducation_transparent_dark.png
     - assets/images/logos/fih.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
