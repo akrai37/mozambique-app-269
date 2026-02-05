@@ -1,5 +1,6 @@
 Version 1.2.1:
 -Added launcher icon
+-Added transparent DIFF Education logo to header bar
 
 Version 1.2.0:
 -Refactored app to work with new database design model
