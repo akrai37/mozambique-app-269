@@ -1,0 +1,13 @@
+Version 1.2.1:
+-Added launcher icon
+
+Version 1.2.0:
+-Refactored app to work with new database design model
+
+Version 1.1.0:
+-Added Firebase Storage support
+
+Version 1.0.1:
+-Changed size of header bar
+-Header bar now scrolls away
+-Changed home button to DIFF Education logo
