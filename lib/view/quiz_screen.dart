@@ -73,63 +73,56 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
           
                 Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start, // Ensures content is aligned to the left
-                      children: [
-                        //LEFT SIDE MARGIN
-                        SizedBox(width: MediaQuery.of(context).size.width / 15 - 15), // Adds left spacing
-                        Expanded(
-                          child: Align(
-                            alignment: Alignment.topLeft, // Ensures "Rosto" stays at the top-left
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start, // Aligns everything to the left
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical, // Enables vertical scrolling
+                      child: Column(
+                        children: [
+                          //SECTION TITLE
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 4.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
                               children: [
-                                //SECTION TITLE
-                                Container(
-                                  margin: EdgeInsets.symmetric(vertical: 0),
-                                  child: Text(
-                                    widget.title,
-                                    style: TextStyle(
-                                      fontSize: 75,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(0xFFECF0F1),
-                                    ),
+                                Text(
+                                  widget.title,
+                                  style: TextStyle(
+                                    fontSize: 100,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
                                   ),
                                 ),
-                                //MIDDLE SCROLL SECTION THAT CALLS ON ALL WIDGETS
-                                //QUESTION TEXT AND IMAGE
-                                //3 OPTIONS AND THE CORRECT OPTION #
-                                Expanded(
-                                  child: SingleChildScrollView(
-                                    scrollDirection: Axis.vertical, // Enables vertical scrolling
-                                    child: Column(
-                                      children: _quizQuestions.map((question) {
-                                        return Column(
-                                          children: [
-                                            QuizQuestionWidget(
-                                              question: question,
-                                              isFirst: question == _quizQuestions.first,
-                                            ),
-                                            QuizOptions(
-                                              option1: question.answers[0],
-                                              option2: question.answers[1],
-                                              option3: question.answers[2],
-                                              isLast: question == _quizQuestions.last,
-                                            ),
-                                          ],
-                                        );
-                                      }).toList(),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: 50),
                               ],
                             ),
                           ),
-                        ),
-                      ],
+                          //MIDDLE SCROLL SECTION THAT CALLS ON ALL WIDGETS
+                          //QUESTION TEXT AND IMAGE
+                          //3 OPTIONS AND THE CORRECT OPTION #
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
+                            child: Column(
+                              children: _quizQuestions.map((question) {
+                                return Column(
+                                  children: [
+                                    QuizQuestionWidget(
+                                      question: question,
+                                      isFirst: question == _quizQuestions.first,
+                                    ),
+                                    QuizOptions(
+                                      option1: question.answers[0],
+                                      option2: question.answers[1],
+                                      option3: question.answers[2],
+                                      isLast: question == _quizQuestions.last,
+                                    ),
+                                  ],
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ), 
+                  SizedBox(height: 50),
               ],         
             ),
           );

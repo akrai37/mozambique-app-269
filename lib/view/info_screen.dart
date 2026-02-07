@@ -113,31 +113,30 @@ class _InfoScreenState extends State<InfoScreen> {
                 Navigator.pop(context, _didSync); // Pass the sync status back to the previous screen
               },
             ),
-
-            // Title
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
-                children: [
-                  const Text(
-                    'Information',
-                    style: TextStyle(
-                      fontSize: 100,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2D3E50),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             Expanded(
               child: SingleChildScrollView(
                 padding: EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [  
+                    // Title
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start, // aligns the children to the start (left) of the row
+                        children: [
+                          const Text(
+                            'Information',
+                            style: TextStyle(
+                              fontSize: 100,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF2D3E50),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
                     // Paragraphs
                     ..._infoList.map((paragraph) {
                       return Padding(
