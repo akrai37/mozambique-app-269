@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +15,12 @@ import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
 import 'package:mozambique_app/view/no_connection_screen.dart';
+
+// Production version is set to 'app_content' in the --dart-define flag in the run configurations, but a default value is set here just in case
+const String collectionName = String.fromEnvironment(
+  'FIRESTORE_COLLECTION_NAME',
+  defaultValue: kDebugMode ? 'dev_content' : 'app_content', // Use 'dev_content' for development and 'app_content' for production
+);
 
 class DatabaseService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -122,7 +127,7 @@ class DatabaseService {
   Future<void> _syncHomeWords(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
-        .collection('app_content')
+        .collection(collectionName)
         .doc('home')
         .collection('categories');
 
@@ -174,7 +179,7 @@ class DatabaseService {
   Future<void> _syncVocabWords(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
-        .collection('app_content')
+        .collection(collectionName)
         .doc('vocab_words')
         .collection('categories');
 
@@ -246,7 +251,7 @@ class DatabaseService {
   Future<void> _syncQuestionResponse(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
-        .collection('app_content')
+        .collection(collectionName)
         .doc('learn_convo')
         .collection('categories');
 
@@ -317,7 +322,7 @@ class DatabaseService {
   Future<void> _syncPracConvo(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
-        .collection('app_content')
+        .collection(collectionName)
         .doc('practice_convo')
         .collection('categories');
 
@@ -382,7 +387,7 @@ class DatabaseService {
   Future<void> _syncQuizQuestions(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
-        .collection('app_content')
+        .collection(collectionName)
         .doc('practice_quiz')
         .collection('categories');
 

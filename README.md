@@ -23,24 +23,22 @@ This offline-first Flutter application uses Hive to store its data locally, and 
 
 `lib/view_model`: The bridge between model & view: functions that use the repositories to update the views
 
-### Firebase Firestore:
-There are 2 important steps that are needed to allow the app to fetch from Firestore as you debug:
+### Firebase Firestore & Firebase Storage:
+There are 2 important steps that are needed to allow the app to fetch from Firestore and Storage as you debug:
 - Place the Firebase Admin SDK private key (`mozambique-app-firebase-adminsdk-fbsvc-434948f8b5.json`) in the root of the folder
 - Place the Google Services SDK (`google-services.json`) in `android/app`
 
-### Firebase Hosting
-- `npm install -g firebase-tools` - installs a Firebase CLI
-- `firebase deploy` - deploy site to Firebase Hosting
-- Hosted website link: `https://mozambique-app.web.app/`
-- The media files are hosted in `public/images/` and `public/audio/` folders
+## Mobile App Deployment
 
-### Steps For Adding New Media
-1. Add images/audio to their respective folder inside `public/`
-2. Run `firebase deploy` to host the new media files online
-3. On Firestore, add a new image/audio object
-4. Add the property `imagePath`/`audioPath` to it and give it a value of the hosted website's link appended by the media file's relative path from `public/` (i.e. `https://mozambique-app.web.app/images/body/Abdomen.png`)
-5. (Optional) Use a script (e.g. `convertBase64ToJSON.js`, `JSON2Firestore.js`) to add the media file to the object's `imageBase64`/`audioBase64` property
-6. Sync in the app, and everything should be updated!
+### Building APK (Production)
+1. In terminal, navigate to the root of the folder
+2. Run `flutter build apk --release --dart-define=FIRESTORE_COLLECTION_NAME=app_content`
+3. The APK file should be in `build/app/outputs/flutter-apk/app-release.apk`
+
+### Building APK (Development)
+1. In terminal, navigate to the root of the folder
+2. Run `flutter build apk --debug --dart-define=FIRESTORE_COLLECTION_NAME=dev_content`
+3. The APK file should be in `build/app/outputs/flutter-apk/app-debug.apk`
 
 ## Scripts
 ### Installing Necessary Libraries
