@@ -1,3 +1,7 @@
+Version 1.2.2:
+-Updated major versions of packages
+-Added a differentiation between development and production Firestore collections
+
 Version 1.2.1:
 -Added launcher icon
 -Added transparent DIFF Education logo to header bar
