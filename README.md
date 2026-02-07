@@ -1,6 +1,6 @@
 # DIFF EDUCATION Language Literacy App
 
-A new Flutter project.
+This offline-first mobile app teaches Portuguese to non-literate mothers in rural Mozambique through visual and auditory learning, accommodating users with no reading or technology experience.
 
 ### Lib File Hierarchy
 This offline-first Flutter application uses Hive to store its data locally, and Firestore to sync updates.

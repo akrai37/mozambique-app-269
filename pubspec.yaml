@@ -1,5 +1,5 @@
 name: mozambique_app
-description: "A new Flutter project."
+description: "This offline-first mobile app teaches Portuguese to non-literate mothers in rural Mozambique through visual and auditory learning, accommodating users with no reading or technology experience"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
