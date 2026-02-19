@@ -1,3 +1,6 @@
+Version 1.2.3:
+-Added Portuguese translation for Info Screen text
+
 Version 1.2.2:
 -Updated major versions of packages
 -Added a differentiation between development and production Firestore collections
