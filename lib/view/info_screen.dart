@@ -19,6 +19,9 @@ class _InfoScreenState extends State<InfoScreen> {
     'This app is meant to be used in group settings with a moderator. It does not require individual logins or personal devices. Exercises give immediate feedback to help learners stay engaged and understand quickly.',
     'The vocabulary focuses on words used in daily life, especially in the context of parenting and caregiving. The design and content reflect the local culture to make it more relatable and effective.',
     'By focusing on low literacy, limited tech experience, and unreliable internet, this app offers a practical way for mothers in rural Mozambique to begin learning Portuguese. It supports group learning, encourages participation, and helps build confidence in everyday communication.',
+  ];
+
+  final List<String> _infoListPortuguese = [ // List of information paragraphs
     'Este aplicativo foi criado para ajudar mães moçambicanas no programa DIFF EDUCATION a aprender português. Foi desenvolvido na Universidade de Santa Clara entre maio de 2024 e junho de 2025. O projeto foi uma parceria com a organização sem fins lucrativos DIFF EDUCATION em Moçambique e o Frugal Innovation Hub da SCU.',
     'O objetivo era criar uma ferramenta de aprendizado de idiomas simples e acessível para mães com pouca ou nenhuma experiência em leitura ou uso de tecnologia. O aplicativo usa recursos visuais e áudio em vez de texto para apoiar o aprendizado do idioma. Ele foi feito para funcionar offline, para que possa ser usado em áreas com acesso à internet precário ou inexistente.',
     'Este aplicativo destina-se ao uso em grupo com um moderador. Não requer logins individuais ou dispositivos pessoais. Os exercícios fornecem feedback imediato para ajudar os alunos a se manterem engajados e a compreenderem rapidamente.',
@@ -144,6 +147,25 @@ class _InfoScreenState extends State<InfoScreen> {
 
                     // Paragraphs
                     ..._infoList.map((paragraph) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: RichText(
+                          text: TextSpan(
+                            text: paragraph,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xFF2D3E50),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    }),
+
+                    SizedBox(height: 40), // Add some space between the English and Portuguese sections
+
+                    // Paragraphs
+                    ..._infoListPortuguese.map((paragraph) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 10),
                         child: RichText(
