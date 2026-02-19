@@ -14,7 +14,7 @@ class InfoScreen extends StatefulWidget {
 
 class _InfoScreenState extends State<InfoScreen> {
   final List<String> _infoList = [ // List of information paragraphs
-    'This app was created to help Mozambican mothers in the DIFF EDUCATION program learn Portuguese. It was developed by undergraduate students Joshua Kindarara ‘25, Alexandre Lopes ‘25, Gwendolyn Patwardhan ‘25, Riana Santos ‘25, and Sara Wheeler ‘25 at Santa Clara University between May 2024 and June 2025. The project was a partnership with the DIFF EDUCATION non-profit in Mozambique and the Frugal Innovation Hub at SCU.',
+    'This app was created to help Mozambican mothers in the DIFF EDUCATION program learn Portuguese. It was developed by undergraduate students at Santa Clara University between May 2024 and June 2025. The project was a partnership with the DIFF EDUCATION non-profit in Mozambique and the Frugal Innovation Hub at SCU.',
     'The goal was to design a simple, accessible language learning tool for mothers with little or no experience with reading or using technology. The app uses visuals and audio instead of text to support learning. It was made to work offline so it can be used in areas with poor or no internet access.',
     'This app is meant to be used in group settings with a moderator. It does not require individual logins or personal devices. Exercises give immediate feedback to help learners stay engaged and understand quickly.',
     'The vocabulary focuses on words used in daily life, especially in the context of parenting and caregiving. The design and content reflect the local culture to make it more relatable and effective.',
