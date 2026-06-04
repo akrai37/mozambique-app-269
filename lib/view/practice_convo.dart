@@ -64,7 +64,7 @@ class _PracticeConvoState extends State<PracticeConvo> {
     // This fetches from the local Hive database
     try {
       _convos = await fetchPracConvo(widget.tag);
-      _lines = _convos[0].conversationText;
+      _lines = _convos.isNotEmpty ? _convos[0].conversationText : [];
 
       //preload image
       for (Conversation a in _convos) {
@@ -256,7 +256,7 @@ class _PracticeConvoState extends State<PracticeConvo> {
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            for (int i = 0; i < _msgIndex; i++) _messages[i],
+                                            for (int i = 0; i < _msgIndex && _messages.isNotEmpty; i++) _messages[i],
                                             const SizedBox(height: 10),
                                           ],
                                         ),
