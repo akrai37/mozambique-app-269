@@ -1,121 +1,113 @@
 {
     "requests": [
         {
-            "imagePath": "images/Practice/Requests.png"
+            "imagePath": "images/practice_convo/requests.png"
         },
         {
             "msgText": "Olá, pode me ajudar?",
-            "audioPath":"audio/Requests/RequestsM1.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_1.mp3"
         },
         {
             "msgText": "Claro, com prazer!",
-            "audioPath":"audio/Requests/RequestsM2.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_2.mp3"
         },
         {
             "msgText": "Quanto custa essa coisa aqui?",
-            "audioPath":"audio/Requests/RequestsM3.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_3.mp3"
         },
         {
             "msgText": "Essa coisa custa dez meticais.",
-            "audioPath":"audio/Requests/RequestsM4.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_4.mp3"
         },
         {
             "msgText": "Desculpe não entendi, pode repetir, por favor?",
-            "audioPath":"audio/Requests/RequestsM5.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_5.mp3"
         },
         {
             "msgText": "Sim! Essa coisa custa dez meticais.",
-            "audioPath":"audio/Requests/RequestsM6.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_6.mp3"
         },
         {
             "msgText": "Obrigado.",
-            "audioPath":"audio/Requests/RequestsM7.mp3"
+            "audioPath":"audio/practice_convo/requests/requests_7.mp3"
         }
     ],
     "greetings":[
         {
-            "imagePath": "images/Practice/Greetings.png"
+            "imagePath": "images/practice_convo/greetings.png"
         },
         {
             "msgText": "Olá.",
-            "audioPath":"audio/greetings/greetingsM1.mp3"
+            "audioPath":"audio/practice_convo/greetings/greetings_1.mp3"
         },
         {
             "msgText": "Olá, como vai?",
-            "audioPath":"audio/greetings/greetingsM2.mp3"
+            "audioPath":"audio/practice_convo/greetings/greetings_2.mp3"
         },
         {
             "msgText": "Estou bem, obrigado. E você?",
-            "audioPath":"audio/greetings/greetingsM3.mp3"
+            "audioPath":"audio/practice_convo/greetings/greetings_3.mp3"
         },
         {
             "msgText": "Estou ótimo. Bem, até logo!",
-            "audioPath":"audio/greetings/greetingsM4.mp3"
+            "audioPath":"audio/practice_convo/greetings/greetings_4.mp3"
         },
         {
             "msgText": "Adeus.",
-            "audioPath":"audio/greetings/greetingsM5.mp3"
+            "audioPath":"audio/practice_convo/greetings/greetings_5.mp3"
         }
     ],
     "personal_interactions":[
         {
-            "imagePath": "images/Practice/Personal Interactions.png"
+            "imagePath": "images/practice_convo/personal_interactions.png"
         },
         {
             "msgText": "Olá, qual é o seu nome?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM1.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_1.mp3"
         },
         {
             "msgText": "Olá, meu nome é José",
-            "audioPath":"audio/personal_interactions/personalInteractionsM2.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_2.mp3"
         },
         {
             "msgText": "Prazer em conhecê-lo, José, sou Mária.",
-            "audioPath":"audio/personal_interactions/personalInteractionsM3.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_3.mp3"
         },
         {
             "msgText": "Prazer Mária, onde você mora?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM4.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_4.mp3"
         },
         {
             "msgText": "Eu moro em Maputo.",
-            "audioPath":"audio/personal_interactions/personalInteractionsM5.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_5.mp3"
         },
         {
             "msgText": "E aí, o que você faz?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM6.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_6.mp3"
         },
         {
             "msgText": "Eu trabalho como funcionária do hotel.",
-            "audioPath":"audio/personal_interactions/personalInteractionsM7.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_7.mp3"
         },
         {
             "msgText": "Por isso, você fala inglês?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM8.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_8.mp3"
         },
         {
             "msgText": "Sim, eu falo um pouco.",
-            "audioPath":"audio/personal_interactions/personalInteractionsM9.mp3"
-        },
-        {
-            "msgText": "Prazer Mária, onde você mora?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM4.mp3"
-        },
-        {
-            "msgText": "Eu moro em Maputo.",
-            "audioPath":"audio/personal_interactions/personalInteractionsM5.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_9.mp3"
         },
         {
             "msgText": "E por quê você está aqui em, Matola? Você tem família aqui?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM11.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_10.mp3"
         },
         {
             "msgText": "Sim, eu tenho tios que moram aqui e eu estou visitando. E você?",
-            "audioPath":"audio/personal_interactions/personalInteractionsM12.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_11.mp3"
         },
         {
             "msgText": "Não, eu estou sozinho.",
-            "audioPath":"audio/personal_interactions/personalInteractionsM13.mp3"
+            "audioPath":"audio/practice_convo/personal_interactions/personal_interactions_12.mp3"
         }
     ]
 }
