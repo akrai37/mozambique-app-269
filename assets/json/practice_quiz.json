@@ -2,177 +2,177 @@
     "colors": [
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 37.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_0.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_0.mp3",
             "answers": [
                 {
                     "answerText": "Castanho",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Brown.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Brown.mp3"
                 },
                 {
                     "answerText": "Vermelho",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Red.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Red.mp3"
                 },
                 {
                     "answerText": "Laranja",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Orange.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Orange.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 38.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_1.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_1.mp3",
             "answers": [
                 {
                     "answerText": "Vermelho",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Red.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Red.mp3"
                 },
                 {
                     "answerText": "Verde",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Green.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Green.mp3"
                 },
                 {
                     "answerText": "Azul",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Blue.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Blue.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 39.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_2.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_2.mp3",
             "answers": [
                 {
                     "answerText": "Verde",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Green.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Green.mp3"
                 },
                 {
                     "answerText": "Azul",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Blue.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Blue.mp3"
                 },
                 {
                     "answerText": "Rosa",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Pink.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Pink.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 40.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_3.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_3.mp3",
             "answers": [
                 {
                     "answerText": "Rosa",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Pink.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Pink.mp3"
                 },
                 {
                     "answerText": "Amarelo",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Yellow.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Yellow.mp3"
                 },
                 {
                     "answerText": "Branco",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/White.mp3"
+                    "audioPath": "audio/practice_quiz/colors/White.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 41.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_4.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_4.mp3",
             "answers": [
                 {
                     "answerText": "Laranja",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Orange.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Orange.mp3"
                 },
                 {
                     "answerText": "Verde",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Green.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Green.mp3"
                 },
                 {
                     "answerText": "Vermelho",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Red.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Red.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 42.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_5.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_5.mp3",
             "answers": [
                 {
                     "answerText": "Castanho",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Brown.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Brown.mp3"
                 },
                 {
                     "answerText": "Preto",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Black.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Black.mp3"
                 },
                 {
                     "answerText": "Roxo",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Purple.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Purple.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 43.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_6.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_6.mp3",
             "answers": [
                 {
                     "answerText": "Branco",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/White.mp3"
+                    "audioPath": "audio/practice_quiz/colors/White.mp3"
                 },
                 {
                     "answerText": "Rosa",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Pink.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Pink.mp3"
                 },
                 {
                     "answerText": "Azul",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Blue.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Blue.mp3"
                 }
             ]
         },
         {
             "questionText": "Que cor são essas?",
-            "imagePath": "images/Practice/Colors/Group 44.png",
-            "audioPath": "audio/practice_quiz/question1.mp3",
+            "imagePath": "images/practice_quiz/colors/que_cor_sao_essas_7.png",
+            "audioPath": "audio/practice_quiz/colors/que_cor_sao_essas_7.mp3",
             "answers": [
                 {
                     "answerText": "Amarelo",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Yellow.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Yellow.mp3"
                 },
                 {
                     "answerText": "Laranja",
                     "isCorrect": true,
-                    "audioPath": "audio/colors/Orange.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Orange.mp3"
                 },
                 {
                     "answerText": "Castanho",
                     "isCorrect": false,
-                    "audioPath": "audio/colors/Brown.mp3"
+                    "audioPath": "audio/practice_quiz/colors/Brown.mp3"
                 }
             ]
         }
@@ -180,8 +180,8 @@
     "face": [
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Face/Group 45.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/face/o_que_e_isso_0.png",
+            "audioPath": "audio/practice_quiz/face/o_que_e_isso_0.mp3",
             "answers": [
                 {
                     "answerText": "Boca",
@@ -202,8 +202,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Face/Group 46.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/face/o_que_e_isso_1.png",
+            "audioPath": "audio/practice_quiz/face/o_que_e_isso_1.mp3",
             "answers": [
                 {
                     "answerText": "Nariz",
@@ -224,8 +224,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Face/Group 47.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/face/o_que_e_isso_2.png",
+            "audioPath": "audio/practice_quiz/face/o_que_e_isso_2.mp3",
             "answers": [
                 {
                     "answerText": "Cabelo",
@@ -246,8 +246,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Face/Group 48.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/face/o_que_e_isso_3.png",
+            "audioPath": "audio/practice_quiz/face/o_que_e_isso_3.mp3",
             "answers": [
                 {
                     "answerText": "Boca",
@@ -270,8 +270,8 @@
     "body": [
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Body/Group 49.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/body/o_que_e_isso_0.png",
+            "audioPath": "audio/practice_quiz/body/o_que_e_isso_0.mp3",
             "answers": [
                 {
                     "answerText": "Mão",
@@ -292,8 +292,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Body/Group 49.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/body/o_que_e_isso_1.png",
+            "audioPath": "audio/practice_quiz/body/o_que_e_isso_1.mp3",
             "answers": [
                 {
                     "answerText": "Abdômen",
@@ -314,8 +314,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Body/Group 50.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/body/o_que_e_isso_2.png",
+            "audioPath": "audio/practice_quiz/body/o_que_e_isso_2.mp3",
             "answers": [
                 {
                     "answerText": "Perna",
@@ -336,8 +336,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Body/Group 51.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/body/o_que_e_isso_3.png",
+            "audioPath": "audio/practice_quiz/body/o_que_e_isso_3.mp3",
             "answers": [
                 {
                     "answerText": "Braço",
@@ -358,8 +358,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Body/Group 51.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/body/o_que_e_isso_4.png",
+            "audioPath": "audio/practice_quiz/body/o_que_e_isso_4.mp3",
             "answers": [
                 {
                     "answerText": "Peito",
@@ -380,8 +380,8 @@
         },
         {
             "questionText": "O que é isso?",
-            "imagePath": "images/Practice/Body/Group 52.png",
-            "audioPath": "audio/practice_quiz/question2.mp3",
+            "imagePath": "images/practice_quiz/body/o_que_e_isso_5.png",
+            "audioPath": "audio/practice_quiz/body/o_que_e_isso_5.mp3",
             "answers": [
                 {
                     "answerText": "Mão",
