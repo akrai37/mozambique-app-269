@@ -73,4 +73,5 @@ There are 2 important steps that are needed to allow the app to fetch from Fires
 1. Make sure the firebase library is installed (refer to **Installing Necessary Libraries**)
 2. **Warning**: You may have to add `"type": "module",` in package.json to run this, but try without first
 3. Modify the local folder paths of the media files to be uploaded (`LOCAL_ASSETS_DIR` variable)
-4. Run `node uploadAssetsToStorage.js`. The media files should now be uploaded to Firebase Storage.
+4. Modify the root folder in Firebase Storage you want to upload to (`STORAGE_ROOT` variable)
+5. Run `node uploadAssetsToStorage.js`. The media files should now be uploaded to Firebase Storage.
