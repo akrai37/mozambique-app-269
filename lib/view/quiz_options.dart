@@ -6,17 +6,22 @@ import 'package:mozambique_app/view/quiz_checkbox.dart';
 
 class QuizOptions extends StatefulWidget {
   //DICTATES WHAT THE WIDGET TAKES IN TO MAKE OPTIONS
-  final QuizAnswer option1;
-  final QuizAnswer option2;
-  final QuizAnswer option3;
+  // Takes the answers as a list rather than three fixed slots, so a question
+  // authored with two or four options renders instead of crashing.
+  final List<QuizAnswer> options;
   final bool isLast;
+
+  /// Fires once, on the learner's first answer, with whether it was correct.
+  ///
+  /// Only the first answer is reported: changing your mind afterwards still
+  /// updates the highlighting, but the score reflects what you actually knew.
+  final ValueChanged<bool>? onFirstAnswer;
 
   const QuizOptions({
     super.key,
-    required this.option1,
-    required this.option2,
-    required this.option3,
+    required this.options,
     this.isLast = false,
+    this.onFirstAnswer,
   });
 
   @override
@@ -25,22 +30,38 @@ class QuizOptions extends StatefulWidget {
 
 class _QuizOptionsState extends State<QuizOptions> {
   //SETS ALL OF CHECKBOXES TO DEFAULT: NOT SELECTED
-  List<bool> isSelected = [false, false, false];
+  // Index of the chosen answer, or null before anything is picked.
+  //
+  // Was previously a List<bool>, which let a learner tick every box at once —
+  // including all the wrong ones — and still see a green check. A quiz question
+  // has one answer, so the state is one selection.
+  int? _selectedIndex;
+
+  // Guards onFirstAnswer so the score records the first attempt only.
+  bool _hasReported = false;
 
   late List<QuizAnswer> _options = [];
   late List<AudioPlayer> _audioPlayers = []; // List to hold audio players
+
+  void _select(int index) {
+    setState(() => _selectedIndex = index);
+
+    if (!_hasReported) {
+      _hasReported = true;
+      widget.onFirstAnswer?.call(_options[index].isCorrect);
+    }
+  }
 
   @override
   void initState() {
     super.initState();
 
-    _options = [widget.option1, widget.option2, widget.option3];
+    _options = widget.options;
 
-    _audioPlayers = [
-      AudioPlayer(),
-      AudioPlayer(),
-      AudioPlayer(),
-    ];
+    _audioPlayers = List<AudioPlayer>.generate(
+      _options.length,
+      (_) => AudioPlayer(),
+    );
 
     _audioPlayers.asMap().forEach((i, player) {
       player.setSourceBytes(_options[i].audioBytes); // Set the audio source to the byte data
@@ -125,14 +146,10 @@ class _QuizOptionsState extends State<QuizOptions> {
                 Transform.scale(
                   scale: 2.25, // Increase or decrease this value as needed
                   child: CustomCheckbox(
-                    isChecked: isSelected[i],
+                    isChecked: _selectedIndex == i,
                     isCorrect: option.isCorrect, //CHECKS IF THIS OPTION IS THE DESIGNATED CORRECT ONE
                     //CHANGE TO COLORED ICON WHEN TAPPED / CLICKED
-                    onChanged: (newValue) {
-                      setState(() {
-                        isSelected[i] = newValue;
-                      });
-                    },
+                    onChanged: (_) => _select(i),
                   )
                 ),
                 SizedBox(width: 20),

@@ -6,6 +6,8 @@ import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/view/quiz_options.dart';
 import 'package:mozambique_app/view/quiz_question_widget.dart';
+import 'package:mozambique_app/view/quiz_score.dart';
+import 'package:mozambique_app/services/progress_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -26,6 +28,26 @@ class _QuizScreenState extends State<QuizScreen> {
   late List<QuizQuestion> _quizQuestions = [];
   late Future<void> _loadingFuture;
 
+  // Question index -> whether the learner's first answer was correct.
+  // Sparse: a question only appears once it has been answered.
+  final Map<int, bool> _answers = {};
+
+  final ProgressService _progress = ProgressService();
+
+  void _recordAnswer(int questionIndex, bool wasCorrect) {
+    setState(() => _answers[questionIndex] = wasCorrect);
+
+    // Save only once the whole quiz is answered, so a partial run never
+    // overwrites a better completed score.
+    if (_answers.length == _quizQuestions.length && _quizQuestions.isNotEmpty) {
+      _progress.recordQuizResult(
+        widget.tag,
+        score: _answers.values.where((correct) => correct).length,
+        total: _quizQuestions.length,
+      );
+    }
+  }
+
   @override initState() {
     super.initState();
 
@@ -34,7 +56,12 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Future<void> _loadContent() async {
     try {
-      _quizQuestions = await fetchQuizQuestions(widget.tag);
+      // Drop unanswerable questions here rather than in build(), so that the
+      // isFirst/isLast rounded-corner logic still compares against the list
+      // that is actually rendered.
+      _quizQuestions = (await fetchQuizQuestions(widget.tag))
+          .where((question) => question.answers.isNotEmpty)
+          .toList();
 
       // Preload images
       for (QuizQuestion question in _quizQuestions) {
@@ -100,23 +127,32 @@ class _QuizScreenState extends State<QuizScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Column(
-                              children: _quizQuestions.map((question) {
+                              children: _quizQuestions.asMap().entries.map((entry) {
+                                final int index = entry.key;
+                                final QuizQuestion question = entry.value;
+
                                 return Column(
                                   children: [
                                     QuizQuestionWidget(
                                       question: question,
-                                      isFirst: question == _quizQuestions.first,
+                                      isFirst: index == 0,
                                     ),
                                     QuizOptions(
-                                      option1: question.answers[0],
-                                      option2: question.answers[1],
-                                      option3: question.answers[2],
-                                      isLast: question == _quizQuestions.last,
+                                      options: question.answers,
+                                      isLast: index == _quizQuestions.length - 1,
+                                      onFirstAnswer: (correct) =>
+                                          _recordAnswer(index, correct),
                                     ),
                                   ],
                                 );
                               }).toList(),
                             ),
+                          ),
+
+                          // Running score, below the questions.
+                          QuizScore(
+                            answers: _answers,
+                            total: _quizQuestions.length,
                           ),
                         ],
                       ),
