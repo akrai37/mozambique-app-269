@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
+import 'package:mozambique_app/services/progress_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/view/learn_card.dart';
 import 'package:mozambique_app/view/navbar.dart';
@@ -36,6 +37,9 @@ class _LearnScreensState extends State<LearnScreens> {
   Future<void> _loadContent() async {
     // This fetches from the local Hive database
     try {
+      // Opening a category counts as visiting it.
+      await ProgressService().markVisited(widget.tag);
+
       _imageButtons = await fetchVocabCards(widget.tag);
 
       _filteredImageButtons = _imageButtons; // Initialize filtered words with all words
