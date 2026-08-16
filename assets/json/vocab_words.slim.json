@@ -1,0 +1,1160 @@
+{
+ "numbers": [
+  {
+   "categoryName": "numbers",
+   "word": "0",
+   "portuguese": "Zero",
+   "imagePath": "images/vocab_words/numbers/0.png",
+   "audioPath": "audio/vocab_words/numbers/0.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "1",
+   "portuguese": "Um",
+   "imagePath": "images/vocab_words/numbers/1.png",
+   "audioPath": "audio/vocab_words/numbers/1.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "2",
+   "portuguese": "Dois",
+   "imagePath": "images/vocab_words/numbers/2.png",
+   "audioPath": "audio/vocab_words/numbers/2.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "3",
+   "portuguese": "Tres",
+   "imagePath": "images/vocab_words/numbers/3.png",
+   "audioPath": "audio/vocab_words/numbers/3.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "4",
+   "portuguese": "Quatro",
+   "imagePath": "images/vocab_words/numbers/4.png",
+   "audioPath": "audio/vocab_words/numbers/4.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "5",
+   "portuguese": "Cinco",
+   "imagePath": "images/vocab_words/numbers/5.png",
+   "audioPath": "audio/vocab_words/numbers/5.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "6",
+   "portuguese": "Seis",
+   "imagePath": "images/vocab_words/numbers/6.png",
+   "audioPath": "audio/vocab_words/numbers/6.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "7",
+   "portuguese": "Sete",
+   "imagePath": "images/vocab_words/numbers/7.png",
+   "audioPath": "audio/vocab_words/numbers/7.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "8",
+   "portuguese": "Oito",
+   "imagePath": "images/vocab_words/numbers/8.png",
+   "audioPath": "audio/vocab_words/numbers/8.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "9",
+   "portuguese": "Nove",
+   "imagePath": "images/vocab_words/numbers/9.png",
+   "audioPath": "audio/vocab_words/numbers/9.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "10",
+   "portuguese": "Dez",
+   "imagePath": "images/vocab_words/numbers/10.png",
+   "audioPath": "audio/vocab_words/numbers/10.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "11",
+   "portuguese": "Onze",
+   "imagePath": "images/vocab_words/numbers/11.png",
+   "audioPath": "audio/vocab_words/numbers/11.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "12",
+   "portuguese": "Doze",
+   "imagePath": "images/vocab_words/numbers/12.png",
+   "audioPath": "audio/vocab_words/numbers/12.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "13",
+   "portuguese": "Treze",
+   "imagePath": "images/vocab_words/numbers/13.png",
+   "audioPath": "audio/vocab_words/numbers/13.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "14",
+   "portuguese": "Quatorze",
+   "imagePath": "images/vocab_words/numbers/14.png",
+   "audioPath": "audio/vocab_words/numbers/14.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "15",
+   "portuguese": "Quinze",
+   "imagePath": "images/vocab_words/numbers/15.png",
+   "audioPath": "audio/vocab_words/numbers/15.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "16",
+   "portuguese": "Dezesseis",
+   "imagePath": "images/vocab_words/numbers/16.png",
+   "audioPath": "audio/vocab_words/numbers/16.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "17",
+   "portuguese": "Dezessete",
+   "imagePath": "images/vocab_words/numbers/17.png",
+   "audioPath": "audio/vocab_words/numbers/17.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "18",
+   "portuguese": "Dezeoito",
+   "imagePath": "images/vocab_words/numbers/18.png",
+   "audioPath": "audio/vocab_words/numbers/18.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "19",
+   "portuguese": "Dezenove",
+   "imagePath": "images/vocab_words/numbers/19.png",
+   "audioPath": "audio/vocab_words/numbers/19.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "20",
+   "portuguese": "Vinte",
+   "imagePath": "images/vocab_words/numbers/20.png",
+   "audioPath": "audio/vocab_words/numbers/20.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "21",
+   "portuguese": "Vinte e um",
+   "imagePath": "images/vocab_words/numbers/21.png",
+   "audioPath": "audio/vocab_words/numbers/21.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "30",
+   "portuguese": "Trinta",
+   "imagePath": "images/vocab_words/numbers/30.png",
+   "audioPath": "audio/vocab_words/numbers/30.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "31",
+   "portuguese": "Trinta e um",
+   "imagePath": "images/vocab_words/numbers/31.png",
+   "audioPath": "audio/vocab_words/numbers/31.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "40",
+   "portuguese": "Quarenta",
+   "imagePath": "images/vocab_words/numbers/40.png",
+   "audioPath": "audio/vocab_words/numbers/40.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "50",
+   "portuguese": "Cinquenta",
+   "imagePath": "images/vocab_words/numbers/50.png",
+   "audioPath": "audio/vocab_words/numbers/50.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "60",
+   "portuguese": "Sessenta",
+   "imagePath": "images/vocab_words/numbers/60.png",
+   "audioPath": "audio/vocab_words/numbers/60.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "70",
+   "portuguese": "Setenta",
+   "imagePath": "images/vocab_words/numbers/70.png",
+   "audioPath": "audio/vocab_words/numbers/70.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "80",
+   "portuguese": "Oitenta",
+   "imagePath": "images/vocab_words/numbers/80.png",
+   "audioPath": "audio/vocab_words/numbers/80.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "90",
+   "portuguese": "Noventa",
+   "imagePath": "images/vocab_words/numbers/90.png",
+   "audioPath": "audio/vocab_words/numbers/90.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "100",
+   "portuguese": "Cem",
+   "imagePath": "images/vocab_words/numbers/100.png",
+   "audioPath": "audio/vocab_words/numbers/100.mp3"
+  },
+  {
+   "categoryName": "numbers",
+   "word": "101",
+   "portuguese": "Cento e um",
+   "imagePath": "images/vocab_words/numbers/101.png",
+   "audioPath": "audio/vocab_words/numbers/101.mp3"
+  }
+ ],
+ "colors": [
+  {
+   "categoryName": "colors",
+   "word": "Red",
+   "portuguese": "Vermelho",
+   "imagePath": "images/vocab_words/colors/Red.png",
+   "audioPath": "audio/vocab_words/colors/Red.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Blue",
+   "portuguese": "Azul",
+   "imagePath": "images/vocab_words/colors/Blue.png",
+   "audioPath": "audio/vocab_words/colors/Blue.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Green",
+   "portuguese": "Verde",
+   "imagePath": "images/vocab_words/colors/Green.png",
+   "audioPath": "audio/vocab_words/colors/Green.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Yellow",
+   "portuguese": "Amarelo",
+   "imagePath": "images/vocab_words/colors/Yellow.png",
+   "audioPath": "audio/vocab_words/colors/Yellow.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Black",
+   "portuguese": "Preto",
+   "imagePath": "images/vocab_words/colors/Black.png",
+   "audioPath": "audio/vocab_words/colors/Black.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "White",
+   "portuguese": "Branco",
+   "imagePath": "images/vocab_words/colors/White.png",
+   "audioPath": "audio/vocab_words/colors/White.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Orange",
+   "portuguese": "Laranja",
+   "imagePath": "images/vocab_words/colors/Orange.png",
+   "audioPath": "audio/vocab_words/colors/Orange.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Purple",
+   "portuguese": "Roxo",
+   "imagePath": "images/vocab_words/colors/Purple.png",
+   "audioPath": "audio/vocab_words/colors/Purple.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Pink",
+   "portuguese": "Rosa",
+   "imagePath": "images/vocab_words/colors/Pink.png",
+   "audioPath": "audio/vocab_words/colors/Pink.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Brown",
+   "portuguese": "Castanho",
+   "imagePath": "images/vocab_words/colors/Brown.png",
+   "audioPath": "audio/vocab_words/colors/Brown.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Gray",
+   "portuguese": "Cinza",
+   "imagePath": "images/vocab_words/colors/Gray.png",
+   "audioPath": "audio/vocab_words/colors/Gray.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Gold",
+   "portuguese": "Dourado",
+   "imagePath": "images/vocab_words/colors/Gold.png",
+   "audioPath": "audio/vocab_words/colors/Gold.mp3"
+  },
+  {
+   "categoryName": "colors",
+   "word": "Silver",
+   "portuguese": "Prateado",
+   "imagePath": "images/vocab_words/colors/Silver.png",
+   "audioPath": "audio/vocab_words/colors/Silver.mp3"
+  }
+ ],
+ "animals": [
+  {
+   "categoryName": "animals",
+   "word": "Cat",
+   "portuguese": "Gato",
+   "imagePath": "images/vocab_words/animals/Cat.png",
+   "audioPath": "audio/vocab_words/animals/Cat.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Dog",
+   "portuguese": "Cão",
+   "imagePath": "images/vocab_words/animals/Dog.png",
+   "audioPath": "audio/vocab_words/animals/Dog.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Turtle",
+   "portuguese": "Tartaruga",
+   "imagePath": "images/vocab_words/animals/Turtle.png",
+   "audioPath": "audio/vocab_words/animals/Turtle.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Monkey",
+   "portuguese": "Macaco",
+   "imagePath": "images/vocab_words/animals/Monkey.png",
+   "audioPath": "audio/vocab_words/animals/Monkey.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Bird",
+   "portuguese": "Pássaro",
+   "imagePath": "images/vocab_words/animals/Bird.png",
+   "audioPath": "audio/vocab_words/animals/Bird.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Chicken",
+   "portuguese": "Galinha",
+   "imagePath": "images/vocab_words/animals/Chicken.png",
+   "audioPath": "audio/vocab_words/animals/Chicken.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Goat",
+   "portuguese": "Cabra",
+   "imagePath": "images/vocab_words/animals/Goat.png",
+   "audioPath": "audio/vocab_words/animals/Goat.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Sheep",
+   "portuguese": "Ovelha",
+   "imagePath": "images/vocab_words/animals/Sheep.png",
+   "audioPath": "audio/vocab_words/animals/Sheep.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Cow",
+   "portuguese": "Vaca",
+   "imagePath": "images/vocab_words/animals/Cow.png",
+   "audioPath": "audio/vocab_words/animals/Cow.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Horse",
+   "portuguese": "Cavalo",
+   "imagePath": "images/vocab_words/animals/Horse.png",
+   "audioPath": "audio/vocab_words/animals/Horse.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Donkey",
+   "portuguese": "Burro",
+   "imagePath": "images/vocab_words/animals/Donkey.png",
+   "audioPath": "audio/vocab_words/animals/Donkey.mp3"
+  },
+  {
+   "categoryName": "animals",
+   "word": "Fish",
+   "portuguese": "Peixe",
+   "imagePath": "images/vocab_words/animals/Fish.png",
+   "audioPath": "audio/vocab_words/animals/Fish.mp3"
+  }
+ ],
+ "fruits": [
+  {
+   "categoryName": "fruits",
+   "word": "Banana",
+   "portuguese": "Banana",
+   "imagePath": "images/vocab_words/fruits/Banana.png",
+   "audioPath": "audio/vocab_words/fruits/Banana.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Lemon",
+   "portuguese": "Limão",
+   "imagePath": "images/vocab_words/fruits/Lemon.png",
+   "audioPath": "audio/vocab_words/fruits/Lemon.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Avocado",
+   "portuguese": "Abacate",
+   "imagePath": "images/vocab_words/fruits/Avocado.png",
+   "audioPath": "audio/vocab_words/fruits/Avocado.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Papaya",
+   "portuguese": "Mamão",
+   "imagePath": "images/vocab_words/fruits/Papaya.png",
+   "audioPath": "audio/vocab_words/fruits/Papaya.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Mango",
+   "portuguese": "Manga",
+   "imagePath": "images/vocab_words/fruits/Mango.png",
+   "audioPath": "audio/vocab_words/fruits/Mango.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Apple",
+   "portuguese": "Maçã",
+   "imagePath": "images/vocab_words/fruits/Apple.png",
+   "audioPath": "audio/vocab_words/fruits/Apple.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Orange",
+   "portuguese": "Laranja",
+   "imagePath": "images/vocab_words/fruits/Orange.png",
+   "audioPath": "audio/vocab_words/fruits/Orange.mp3"
+  },
+  {
+   "categoryName": "fruits",
+   "word": "Watermelon",
+   "portuguese": "Melancia",
+   "imagePath": "images/vocab_words/fruits/Watermelon.png",
+   "audioPath": "audio/vocab_words/fruits/Watermelon.mp3"
+  }
+ ],
+ "vegetables": [
+  {
+   "categoryName": "vegetables",
+   "word": "Tomato",
+   "portuguese": "Tomate",
+   "imagePath": "images/vocab_words/vegetables/Tomato.png",
+   "audioPath": "audio/vocab_words/vegetables/Tomato.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Lettuce",
+   "portuguese": "Alface",
+   "imagePath": "images/vocab_words/vegetables/Lettuce.png",
+   "audioPath": "audio/vocab_words/vegetables/Lettuce.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Cucumber",
+   "portuguese": "Pepino",
+   "imagePath": "images/vocab_words/vegetables/Cucumber.png",
+   "audioPath": "audio/vocab_words/vegetables/Cucumber.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Carrot",
+   "portuguese": "Cenoura",
+   "imagePath": "images/vocab_words/vegetables/Carrot.png",
+   "audioPath": "audio/vocab_words/vegetables/Carrot.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Yuca",
+   "portuguese": "Mandioca",
+   "imagePath": "images/vocab_words/vegetables/Yuca.png",
+   "audioPath": "audio/vocab_words/vegetables/Yuca.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Potato",
+   "portuguese": "Batata",
+   "imagePath": "images/vocab_words/vegetables/Potato.png",
+   "audioPath": "audio/vocab_words/vegetables/Potato.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Sweet Potato",
+   "portuguese": "Batata-doce",
+   "imagePath": "images/vocab_words/vegetables/Sweet Potato.png",
+   "audioPath": "audio/vocab_words/vegetables/Sweet Potato.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Pumpkin",
+   "portuguese": "Abóbora",
+   "imagePath": "images/vocab_words/vegetables/Pumpkin.png",
+   "audioPath": "audio/vocab_words/vegetables/Pumpkin.mp3"
+  },
+  {
+   "categoryName": "vegetables",
+   "word": "Corn",
+   "portuguese": "Milho",
+   "imagePath": "images/vocab_words/vegetables/Corn.png",
+   "audioPath": "audio/vocab_words/vegetables/Corn.mp3"
+  }
+ ],
+ "professions": [
+  {
+   "categoryName": "professions",
+   "word": "Accountant",
+   "portuguese": "Contabilista",
+   "imagePath": "images/vocab_words/professions/Accountant.png",
+   "audioPath": "audio/vocab_words/professions/Accountant.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Actor",
+   "portuguese": "Ator",
+   "imagePath": "images/vocab_words/professions/Actor.png",
+   "audioPath": "audio/vocab_words/professions/Actor.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Architect",
+   "portuguese": "Arquiteto",
+   "imagePath": "images/vocab_words/professions/Architect.png",
+   "audioPath": "audio/vocab_words/professions/Architect.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Artist",
+   "portuguese": "Artista",
+   "imagePath": "images/vocab_words/professions/Artist.png",
+   "audioPath": "audio/vocab_words/professions/Artist.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Baker",
+   "portuguese": "Padeiro",
+   "imagePath": "images/vocab_words/professions/Baker.png",
+   "audioPath": "audio/vocab_words/professions/Baker.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Barber",
+   "portuguese": "Barbeiro",
+   "imagePath": "images/vocab_words/professions/Barber.png",
+   "audioPath": "audio/vocab_words/professions/Barber.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Chef",
+   "portuguese": "Chefe de cozinha",
+   "imagePath": "images/vocab_words/professions/Chef.png",
+   "audioPath": "audio/vocab_words/professions/Chef.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Doctor",
+   "portuguese": "Médico",
+   "imagePath": "images/vocab_words/professions/Doctor.png",
+   "audioPath": "audio/vocab_words/professions/Doctor.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Farmer",
+   "portuguese": "Agricultor",
+   "imagePath": "images/vocab_words/professions/Farmer.png",
+   "audioPath": "audio/vocab_words/professions/Farmer.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Firefighter",
+   "portuguese": "Bombeiro",
+   "imagePath": "images/vocab_words/professions/Firefighter.png",
+   "audioPath": "audio/vocab_words/professions/Firefighter.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Lawyer",
+   "portuguese": "Advogado",
+   "imagePath": "images/vocab_words/professions/Lawyer.png",
+   "audioPath": "audio/vocab_words/professions/Lawyer.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Musician",
+   "portuguese": "Músico",
+   "imagePath": "images/vocab_words/professions/Musician.png",
+   "audioPath": "audio/vocab_words/professions/Musician.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Pharmacist",
+   "portuguese": "Farmacêutico",
+   "imagePath": "images/vocab_words/professions/Pharmacist.png",
+   "audioPath": "audio/vocab_words/professions/Pharmacist.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Pilot",
+   "portuguese": "Piloto",
+   "imagePath": "images/vocab_words/professions/Pilot.png",
+   "audioPath": "audio/vocab_words/professions/Pilot.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Police Officer",
+   "portuguese": "Policial",
+   "imagePath": "images/vocab_words/professions/Police Officer.png",
+   "audioPath": "audio/vocab_words/professions/Police Officer.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Teacher",
+   "portuguese": "Professor",
+   "imagePath": "images/vocab_words/professions/Teacher.png",
+   "audioPath": "audio/vocab_words/professions/Teacher.mp3"
+  },
+  {
+   "categoryName": "professions",
+   "word": "Writer",
+   "portuguese": "Escritor",
+   "imagePath": "images/vocab_words/professions/Writer.png",
+   "audioPath": "audio/vocab_words/professions/Writer.mp3"
+  }
+ ],
+ "kitchen_items": [
+  {
+   "categoryName": "kitchen_items",
+   "word": "Refrigerator",
+   "portuguese": "Geladeira",
+   "imagePath": "images/vocab_words/kitchen_items/Refrigerator.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Refrigerator.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Microwave",
+   "portuguese": "Microondas",
+   "imagePath": "images/vocab_words/kitchen_items/Microwave.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Microwave.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Stove",
+   "portuguese": "Fogão",
+   "imagePath": "images/vocab_words/kitchen_items/Stove.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Stove.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Oven",
+   "portuguese": "Forno",
+   "imagePath": "images/vocab_words/kitchen_items/Oven.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Oven.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Knife",
+   "portuguese": "Faca",
+   "imagePath": "images/vocab_words/kitchen_items/Knife.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Knife.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Fork",
+   "portuguese": "Garfo",
+   "imagePath": "images/vocab_words/kitchen_items/Fork.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Fork.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Spoon",
+   "portuguese": "Colher",
+   "imagePath": "images/vocab_words/kitchen_items/Spoon.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Spoon.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Plate",
+   "portuguese": "Prato",
+   "imagePath": "images/vocab_words/kitchen_items/Plate.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Plate.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Glass",
+   "portuguese": "Copo",
+   "imagePath": "images/vocab_words/kitchen_items/Glass.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Glass.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Cup",
+   "portuguese": "Xícara",
+   "imagePath": "images/vocab_words/kitchen_items/Cup.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Cup.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Pot",
+   "portuguese": "Panela",
+   "imagePath": "images/vocab_words/kitchen_items/Pot.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Pot.mp3"
+  },
+  {
+   "categoryName": "kitchen_items",
+   "word": "Pan",
+   "portuguese": "Frigideira",
+   "imagePath": "images/vocab_words/kitchen_items/Pan.png",
+   "audioPath": "audio/vocab_words/kitchen_items/Pan.mp3"
+  }
+ ],
+ "household_items": [
+  {
+   "categoryName": "household_items",
+   "word": "Chair",
+   "portuguese": "Cadeira",
+   "imagePath": "images/vocab_words/household_items/Chair.png",
+   "audioPath": "audio/vocab_words/household_items/Chair.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Table",
+   "portuguese": "Mesa",
+   "imagePath": "images/vocab_words/household_items/Table.png",
+   "audioPath": "audio/vocab_words/household_items/Table.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Sofa",
+   "portuguese": "Sofá",
+   "imagePath": "images/vocab_words/household_items/Sofa.png",
+   "audioPath": "audio/vocab_words/household_items/Sofa.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Bed",
+   "portuguese": "Cama",
+   "imagePath": "images/vocab_words/household_items/Bed.png",
+   "audioPath": "audio/vocab_words/household_items/Bed.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Pillow",
+   "portuguese": "Almofada",
+   "imagePath": "images/vocab_words/household_items/Pillow.png",
+   "audioPath": "audio/vocab_words/household_items/Pillow.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Blanket",
+   "portuguese": "Cobertor",
+   "imagePath": "images/vocab_words/household_items/Blanket.png",
+   "audioPath": "audio/vocab_words/household_items/Blanket.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Bookshelf",
+   "portuguese": "Estante",
+   "imagePath": "images/vocab_words/household_items/Bookshelf.png",
+   "audioPath": "audio/vocab_words/household_items/Bookshelf.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Desk",
+   "portuguese": "Escrivaninha",
+   "imagePath": "images/vocab_words/household_items/Desk.png",
+   "audioPath": "audio/vocab_words/household_items/Desk.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Lamp",
+   "portuguese": "Lâmpada",
+   "imagePath": "images/vocab_words/household_items/Lamp.png",
+   "audioPath": "audio/vocab_words/household_items/Lamp.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Curtains",
+   "portuguese": "Cortinas",
+   "imagePath": "images/vocab_words/household_items/Curtains.png",
+   "audioPath": "audio/vocab_words/household_items/Curtains.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Television",
+   "portuguese": "Televisão",
+   "imagePath": "images/vocab_words/household_items/Television.png",
+   "audioPath": "audio/vocab_words/household_items/Television.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Clock",
+   "portuguese": "Relógio",
+   "imagePath": "images/vocab_words/household_items/Clock.png",
+   "audioPath": "audio/vocab_words/household_items/Clock.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Car",
+   "portuguese": "Carro",
+   "imagePath": "images/vocab_words/household_items/Car.png",
+   "audioPath": "audio/vocab_words/household_items/Car.mp3"
+  },
+  {
+   "categoryName": "household_items",
+   "word": "Book",
+   "portuguese": "Livro",
+   "imagePath": "images/vocab_words/household_items/Book.png",
+   "audioPath": "audio/vocab_words/household_items/Book.mp3"
+  }
+ ],
+ "face": [
+  {
+   "categoryName": "face",
+   "word": "Head",
+   "portuguese": "Cabeça",
+   "imagePath": "images/vocab_words/face/Head.png",
+   "audioPath": "audio/vocab_words/face/Head.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Hair",
+   "portuguese": "Cabelo",
+   "imagePath": "images/vocab_words/face/Hair.png",
+   "audioPath": "audio/vocab_words/face/Hair.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Eye",
+   "portuguese": "Olho",
+   "imagePath": "images/vocab_words/face/Eye.png",
+   "audioPath": "audio/vocab_words/face/Eye.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Ear",
+   "portuguese": "Orelha",
+   "imagePath": "images/vocab_words/face/Ear.png",
+   "audioPath": "audio/vocab_words/face/Ear.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Nose",
+   "portuguese": "Nariz",
+   "imagePath": "images/vocab_words/face/Nose.png",
+   "audioPath": "audio/vocab_words/face/Nose.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Mouth",
+   "portuguese": "Boca",
+   "imagePath": "images/vocab_words/face/Mouth.png",
+   "audioPath": "audio/vocab_words/face/Mouth.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Tooth",
+   "portuguese": "Dente",
+   "imagePath": "images/vocab_words/face/Tooth.png",
+   "audioPath": "audio/vocab_words/face/Tooth.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Tongue",
+   "portuguese": "Língua",
+   "imagePath": "images/vocab_words/face/Tongue.png",
+   "audioPath": "audio/vocab_words/face/Tongue.mp3"
+  },
+  {
+   "categoryName": "face",
+   "word": "Neck",
+   "portuguese": "Pescoço",
+   "imagePath": "images/vocab_words/face/Neck.png",
+   "audioPath": "audio/vocab_words/face/Neck.mp3"
+  }
+ ],
+ "body": [
+  {
+   "categoryName": "body",
+   "word": "Arm",
+   "portuguese": "Braço",
+   "imagePath": "images/vocab_words/body/Arm.png",
+   "audioPath": "audio/vocab_words/body/Arm.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Elbow",
+   "portuguese": "Cotovelo",
+   "imagePath": "images/vocab_words/body/Elbow.png",
+   "audioPath": "audio/vocab_words/body/Elbow.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Hand",
+   "portuguese": "Mão",
+   "imagePath": "images/vocab_words/body/Hand.png",
+   "audioPath": "audio/vocab_words/body/Hand.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Finger",
+   "portuguese": "Dedo",
+   "imagePath": "images/vocab_words/body/Finger.png",
+   "audioPath": "audio/vocab_words/body/Finger.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Leg",
+   "portuguese": "Perna",
+   "imagePath": "images/vocab_words/body/Leg.png",
+   "audioPath": "audio/vocab_words/body/Leg.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Knee",
+   "portuguese": "Joelho",
+   "imagePath": "images/vocab_words/body/Knee.png",
+   "audioPath": "audio/vocab_words/body/Knee.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Foot",
+   "portuguese": "Pé",
+   "imagePath": "images/vocab_words/body/Foot.png",
+   "audioPath": "audio/vocab_words/body/Foot.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Toe",
+   "portuguese": "Dedo do pé",
+   "imagePath": "images/vocab_words/body/Toe.png",
+   "audioPath": "audio/vocab_words/body/Toe.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Abdomen",
+   "portuguese": "Abdômen",
+   "imagePath": "images/vocab_words/body/Abdomen.png",
+   "audioPath": "audio/vocab_words/body/Abdomen.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Chest",
+   "portuguese": "Peito",
+   "imagePath": "images/vocab_words/body/Chest.png",
+   "audioPath": "audio/vocab_words/body/Chest.mp3"
+  },
+  {
+   "categoryName": "body",
+   "word": "Back",
+   "portuguese": "Costas",
+   "imagePath": "images/vocab_words/body/Back.png",
+   "audioPath": "audio/vocab_words/body/Back.mp3"
+  }
+ ],
+ "everyday_activities": [
+  {
+   "categoryName": "everyday_activities",
+   "word": "To wake up",
+   "portuguese": "Acordar",
+   "imagePath": "images/vocab_words/everyday_activities/To wake up.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To wake up.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To get up",
+   "portuguese": "Levantar se",
+   "imagePath": "images/vocab_words/everyday_activities/To get up.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To get up.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To take a shower",
+   "portuguese": "Tomar banho",
+   "imagePath": "images/vocab_words/everyday_activities/To take a shower.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To take a shower.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To brush teeth",
+   "portuguese": "Escovar os dentes",
+   "imagePath": "images/vocab_words/everyday_activities/To brush teeth.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To brush teeth.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To get dressed",
+   "portuguese": "Vestir se",
+   "imagePath": "images/vocab_words/everyday_activities/To get dressed.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To get dressed.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To have breakfast",
+   "portuguese": "Tomar pequeno-almoço",
+   "imagePath": "images/vocab_words/everyday_activities/To have breakfast.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To have breakfast.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To go to work",
+   "portuguese": "Ir para o trabalho",
+   "imagePath": "images/vocab_words/everyday_activities/To go to work.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To go to work.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To go to school",
+   "portuguese": "Ir para a escola",
+   "imagePath": "images/vocab_words/everyday_activities/To go to school.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To go to school.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To study",
+   "portuguese": "Estudar",
+   "imagePath": "images/vocab_words/everyday_activities/To study.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To study.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To have lunch",
+   "portuguese": "Almoçar",
+   "imagePath": "images/vocab_words/everyday_activities/To have lunch.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To have lunch.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To exercise",
+   "portuguese": "Fazer exercício",
+   "imagePath": "images/vocab_words/everyday_activities/To exercise.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To exercise.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To cook",
+   "portuguese": "Cozinhar",
+   "imagePath": "images/vocab_words/everyday_activities/To cook.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To cook.mp3"
+  },
+  {
+   "categoryName": "everyday_activities",
+   "word": "To have dinner",
+   "portuguese": "Jantar",
+   "imagePath": "images/vocab_words/everyday_activities/To have dinner.png",
+   "audioPath": "audio/vocab_words/everyday_activities/To have dinner.mp3"
+  }
+ ],
+ "common_actions": [
+  {
+   "categoryName": "common_actions",
+   "word": "To eat",
+   "portuguese": "Comer",
+   "imagePath": "images/vocab_words/common_actions/To eat.png",
+   "audioPath": "audio/vocab_words/common_actions/To eat.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To drink",
+   "portuguese": "Beber",
+   "imagePath": "images/vocab_words/common_actions/To drink.png",
+   "audioPath": "audio/vocab_words/common_actions/To drink.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To sleep",
+   "portuguese": "Dormir",
+   "imagePath": "images/vocab_words/common_actions/To sleep.png",
+   "audioPath": "audio/vocab_words/common_actions/To sleep.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To read",
+   "portuguese": "Ler",
+   "imagePath": "images/vocab_words/common_actions/To read.png",
+   "audioPath": "audio/vocab_words/common_actions/To read.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To write",
+   "portuguese": "Escrever",
+   "imagePath": "images/vocab_words/common_actions/To write.png",
+   "audioPath": "audio/vocab_words/common_actions/To write.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To walk",
+   "portuguese": "Andar",
+   "imagePath": "images/vocab_words/common_actions/To walk.png",
+   "audioPath": "audio/vocab_words/common_actions/To walk.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To run",
+   "portuguese": "Correr",
+   "imagePath": "images/vocab_words/common_actions/To run.png",
+   "audioPath": "audio/vocab_words/common_actions/To run.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To speak",
+   "portuguese": "Falar",
+   "imagePath": "images/vocab_words/common_actions/To speak.png",
+   "audioPath": "audio/vocab_words/common_actions/To speak.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To listen",
+   "portuguese": "Ouvir",
+   "imagePath": "images/vocab_words/common_actions/To listen.png",
+   "audioPath": "audio/vocab_words/common_actions/To listen.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To go",
+   "portuguese": "Ir",
+   "imagePath": "images/vocab_words/common_actions/To go.png",
+   "audioPath": "audio/vocab_words/common_actions/To go.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To come",
+   "portuguese": "Vir",
+   "imagePath": "images/vocab_words/common_actions/To come.png",
+   "audioPath": "audio/vocab_words/common_actions/To come.mp3"
+  },
+  {
+   "categoryName": "common_actions",
+   "word": "To relax",
+   "portuguese": "Relaxar",
+   "imagePath": "images/vocab_words/common_actions/To relax.png",
+   "audioPath": "audio/vocab_words/common_actions/To relax.mp3"
+  }
+ ]
+}

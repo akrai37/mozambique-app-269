@@ -72,27 +72,66 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/Prac-Body/Abdomen.png
-    - assets/images/Prac-Body/Arm.png
-    - assets/images/Prac-Body/Chest.png
-    - assets/images/Prac-Body/Foot.png
-    - assets/images/Prac-Body/Hand.png
-    - assets/images/Prac-Body/Leg.png
+    # Content manifests, loaded by LocalContentService.
+    # Listed individually rather than as a directory so the 55 MB
+    # vocab_words.json (superseded by vocab_words.slim.json) and the demo
+    # fixtures alongside it stay out of the bundle.
+    - assets/json/home_cards.json
+    - assets/json/vocab_words.slim.json
+    - assets/json/learn_convo.json
+    - assets/json/practice_convo.json
+    - assets/json/practice_quiz.json
 
-    - assets/images/Prac-Face/Eyes.png
-    - assets/images/Prac-Face/Head.png
-    - assets/images/Prac-Face/Mouth.png
-    - assets/images/Prac-Face/Nose.png
-    - assets/images/GrayPerson.png
-    - assets/images/NavyPerson.png
-    - assets/images/smile.png
-    - assets/images/bigSmile.png
+    # UI chrome
+    - assets/images/
+    - assets/images/Prac-Body/
+    - assets/images/Prac-Face/
+    - assets/images/Practice/
+    - assets/images/logos/
 
-    - assets/images/logos/scu.png
-    - assets/images/logos/diffeducation.png
-    - assets/images/logos/diffeducation_transparent.png
-    - assets/images/logos/diffeducation_transparent_dark.png
-    - assets/images/logos/fih.png
+    # Content imagery
+    - assets/images/greetings_requests/
+    - assets/images/learn/
+    - assets/images/practice_convo/
+    - assets/images/practice_quiz/body/
+    - assets/images/practice_quiz/colors/
+    - assets/images/practice_quiz/face/
+    - assets/images/vocab_words/alphabet/
+    - assets/images/vocab_words/animals/
+    - assets/images/vocab_words/body/
+    - assets/images/vocab_words/colors/
+    - assets/images/vocab_words/common_actions/
+    - assets/images/vocab_words/everyday_activities/
+    - assets/images/vocab_words/face/
+    - assets/images/vocab_words/fruits/
+    - assets/images/vocab_words/household_items/
+    - assets/images/vocab_words/kitchen_items/
+    - assets/images/vocab_words/numbers/
+    - assets/images/vocab_words/professions/
+    - assets/images/vocab_words/vegetables/
+
+    # Content audio
+    - assets/audio/learn_convo/greetings/
+    - assets/audio/learn_convo/requests/
+    - assets/audio/practice_convo/greetings/
+    - assets/audio/practice_convo/personal_interactions/
+    - assets/audio/practice_convo/requests/
+    - assets/audio/practice_quiz/body/
+    - assets/audio/practice_quiz/colors/
+    - assets/audio/practice_quiz/face/
+    - assets/audio/vocab_words/alphabet/
+    - assets/audio/vocab_words/animals/
+    - assets/audio/vocab_words/body/
+    - assets/audio/vocab_words/colors/
+    - assets/audio/vocab_words/common_actions/
+    - assets/audio/vocab_words/everyday_activities/
+    - assets/audio/vocab_words/face/
+    - assets/audio/vocab_words/fruits/
+    - assets/audio/vocab_words/household_items/
+    - assets/audio/vocab_words/kitchen_items/
+    - assets/audio/vocab_words/numbers/
+    - assets/audio/vocab_words/professions/
+    - assets/audio/vocab_words/vegetables/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
