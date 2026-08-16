@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
+import 'package:mozambique_app/view_model/home_search.dart';
 import 'package:mozambique_app/view/home_card.dart';
 import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/view/navbar.dart';
@@ -60,34 +61,29 @@ class _HomeScreenState extends State<HomeScreen> {
     _vocabWordsMap = _databaseService.getAllPortugueseWords(); // Fetch all Portuguese vocab words
   }
 
-  // Handles search text changes
+  // Handles search text changes.
+  //
+  // The filtering itself lives in view_model/home_search.dart as a pure
+  // function so it can be unit tested; see test/home_search_test.dart.
   void _onSearchChanged(String searchText) {
     setState(() {
-      if (searchText.isEmpty) { // If search text is empty, reset the filtered words
-        if (widget.type == 'learn') {
-          _filteredHomeWords = _homeWords.where((homeWord) => _toRemove.every((practiceCat) => practiceCat.categoryName != homeWord.categoryName)).toList(); // Reset to all words if search is empty
-        } else {
-          _filteredHomeWords = _practiceCategories; // Reset to all practice categories if search is empty
-        }
-      } else { // If search text is not empty, filter the words based on the search text
-        if (widget.type == 'learn') {
-          _filteredHomeWords = _homeWords.where((homeWord) {
-            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) && // Check if the Home card contains the search text
-              _toRemove.any((practiceCat) => practiceCat.categoryName != homeWord.categoryName) || // Check if the category is not in _toRemove
-              _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true; // Check if the vocab words in the category contain the search text
-          }).toList();
-        } else {
-          _filteredHomeWords = _practiceCategories.where((homeWord) {
-            return homeWord.portuguese.toLowerCase().contains(searchText.trim().toLowerCase()) || // Check if the Home card contains the search text
-              _vocabWordsMap[homeWord.categoryName]?.any((portuguese) => portuguese.toLowerCase().contains(searchText.trim().toLowerCase())) == true; // Check if the vocab words in the category contain the search text
-          }).toList();
-        }
-      }
+      _filteredHomeWords = filterHomeWords(
+        allWords: _type == 'learn' ? _homeWords : _practiceCategories,
+        hiddenCategories: _toRemove,
+        vocabByCategory: _vocabWordsMap,
+        searchText: searchText,
+        isLearnScreen: _type == 'learn',
+      );
     });
   }
 
   // Fills _practiceCategories and _toRemove lists based on the categories in _homeWords
   Future<void> _checkPractice() async {
+    // Reset first: _loadContent() runs again after every sync, and without this
+    // both lists keep growing, which duplicates every card on the home grid.
+    _practiceCategories.clear();
+    _toRemove.clear();
+
     for (HomeWord homeWord in _homeWords) {
       // Check if the category has practice words and add to _practiceCategories
       if (_databaseService.hasCategoryPractice(homeWord.categoryName)) {
