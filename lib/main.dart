@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:mozambique_app/firebase_options.dart';
@@ -12,6 +11,7 @@ import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
 import 'package:mozambique_app/services/database_service.dart';
+import 'package:mozambique_app/services/progress_service.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,14 +19,19 @@ void main() async{
   // Lock the orientation of the app to landscape
   SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
 
-  // Initialize Firebase
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // Initialize Firebase, unless we are running purely on bundled local content
+  // (see useLocalContent in database_service.dart), in which case there is no
+  // Firebase to talk to and no credentials are required.
+  if (!useLocalContent) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }
 
   //INITIALIZE HIVE
-  final appDocumentDirectory = await getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDirectory.path);
+  // initFlutter picks the right backing store per platform (documents dir on
+  // mobile/desktop, IndexedDB on web) instead of assuming path_provider works.
+  await Hive.initFlutter();
 
   // Register Hive Adapters
   Hive.registerAdapter(VocabWordAdapter());
@@ -46,6 +51,9 @@ void main() async{
   await Hive.openBox<List>('quiz_questions');
   await Hive.openBox<List>('quiz_answers');
   await Hive.openBox<List>('conversations');
+
+  // Untyped box: progress is stored as plain Maps, so it needs no adapter.
+  await Hive.openBox(ProgressService.boxName);
 
   runApp(const MyApp());
 }

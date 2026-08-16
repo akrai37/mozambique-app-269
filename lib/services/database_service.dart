@@ -14,6 +14,7 @@ import 'package:mozambique_app/model/home_word.dart';
 import 'package:mozambique_app/model/question.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/model/vocab.dart';
+import 'package:mozambique_app/services/local_content_service.dart';
 import 'package:mozambique_app/view/no_connection_screen.dart';
 
 // Production version is set to 'app_content' in the --dart-define flag in the run configurations, but a default value is set here just in case
@@ -22,8 +23,55 @@ const String collectionName = String.fromEnvironment(
   defaultValue: kDebugMode ? 'dev_content' : 'app_content', // Use 'dev_content' for development and 'app_content' for production
 );
 
+// When true, content is loaded from the JSON and media bundled in assets/
+// instead of Firestore + Firebase Storage. This lets the app be built and run
+// with no Firebase credentials at all.
+//
+// Build against Firestore with:
+//   flutter build apk --release --dart-define=LOCAL_CONTENT=false \
+//     --dart-define=FIRESTORE_COLLECTION_NAME=app_content
+const bool useLocalContent = bool.fromEnvironment(
+  'LOCAL_CONTENT',
+  defaultValue: true,
+);
+
+// When true, media bytes are read from the bundled assets instead of being
+// downloaded from Firebase Storage. Text still comes from Firestore.
+//
+// Defaults to true on web because the Storage bucket has no CORS policy, so a
+// browser refuses the download even though the file is publicly readable. On
+// native builds Storage works normally, so the default there is false.
+//
+// Set explicitly to override, e.g. once a CORS policy is configured:
+//   --dart-define=LOCAL_MEDIA=false
+const bool useLocalMedia = bool.fromEnvironment(
+  'LOCAL_MEDIA',
+  defaultValue: kIsWeb,
+);
+
+// When true, startup re-syncs even if Hive already holds content.
+//
+// Without this, a cached Hive database silently masks whatever the content
+// source is doing — the app looks fine while never contacting Firestore at all.
+// Useful for verifying a Firestore change actually lands:
+//   --dart-define=FORCE_SYNC=true
+const bool forceSyncOnStart = bool.fromEnvironment('FORCE_SYNC');
+
+/// Logs a line that is actually visible on every platform.
+///
+/// `dart:developer`'s log() does not surface in `flutter run` output on web,
+/// which made sync problems in the browser effectively invisible. debugPrint
+/// shows up everywhere and is stripped from release builds.
+void trace(String message) {
+  debugPrint('[content] $message');
+  log(message);
+}
+
 class DatabaseService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  // 'late' matters here: touching FirebaseFirestore.instance throws if
+  // Firebase was never initialized, which is exactly the case in local mode.
+  // Deferring it means the handle is only created if we really do sync.
+  late final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final Box<List> _homeWordBox = Hive.box('home_words'); // Opened as List, not List<HomeWord>
   final Box<List> _vocabWordBox = Hive.box('vocab_words'); // Opened as List, not List<VocabWord>
   final Box<List> _questionBox = Hive.box('questions'); // Opened as List, not List<Question>
@@ -32,16 +80,39 @@ class DatabaseService {
 
   // Initialize the database and check if data exists in Hive
   Future<void> initializeDatabase(BuildContext context) async {
-    if (_homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty || _convoBox.isEmpty) {
-      log("Hive database is empty. Syncing with Firestore...");
-      await syncContent(context: context);
-    } else {
-      log("Hive database has data. No need to sync.");
+    final bool isEmpty = _homeWordBox.isEmpty || _vocabWordBox.isEmpty || _questionBox.isEmpty || _quizQuestionBox.isEmpty || _convoBox.isEmpty;
+
+    if (!isEmpty && !forceSyncOnStart) {
+      trace("Hive database has data. No need to sync.");
+      return;
     }
+
+    final String reason =
+        isEmpty ? "Hive database is empty" : "FORCE_SYNC is set";
+
+    if (useLocalContent) {
+      trace("$reason. Loading bundled local content...");
+      await LocalContentService().loadIntoHive();
+      return;
+    }
+
+    trace("$reason. Syncing with Firestore "
+        "(collection=$collectionName, localMedia=$useLocalMedia)...");
+    await syncContent(context: context);
   }
 
   // Fetch media (image/audio) from a URL
   Future<Uint8List> fetchMedia(String path) async {
+    // Hybrid mode: text comes from Firestore, media bytes come from the bundled
+    // assets. Falls through to Storage when a file is not bundled, so this only
+    // ever avoids a download — it never loses content.
+    if (useLocalMedia) {
+      final Uint8List? local = await LocalContentService.tryLoadAsset(path);
+      if (local != null) return local;
+
+      log('Not bundled, falling back to Storage: $path');
+    }
+
     if (path.startsWith('http')) { // path is a direct URL
       final response = await http.get(Uri.parse(path));
 
@@ -64,17 +135,29 @@ class DatabaseService {
 
   // Check internet connectivity
   Future<bool> checkInternetConnection() async {
-    final connectivityResult = await Connectivity().checkConnectivity();
-    
-    if (connectivityResult[0] == ConnectivityResult.none) {
+    final List<ConnectivityResult> connectivityResult =
+        await Connectivity().checkConnectivity();
+
+    // Guard the empty case: indexing [0] blindly threw a RangeError when the
+    // platform reported no interfaces at all.
+    if (connectivityResult.isEmpty ||
+        connectivityResult.every((result) => result == ConnectivityResult.none)) {
       return false;
-    } else {
-      try {
-        final result = await InternetAddress.lookup('google.com');
-        return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-      } on SocketException catch (_) {
-        return false;
-      }
+    }
+
+    // InternetAddress comes from dart:io, which does not exist on web —
+    // calling it there throws UnsupportedError, and since the catch below only
+    // handled SocketException it escaped and aborted the entire sync. In a
+    // browser, connectivity_plus reporting a connection is as good as it gets.
+    if (kIsWeb) return true;
+
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } catch (_) {
+      // Catch broadly: a blocked DNS lookup should mean "treat as offline",
+      // never "crash the sync".
+      return false;
     }
   }
 
@@ -83,11 +166,25 @@ class DatabaseService {
     BuildContext? context,
     void Function(double progress)? onProgress,
   }) async {
+    // In local mode there is nothing to sync from — reload the bundled assets
+    // so the moderator's "Atualizar aplicativo" button still does something
+    // sensible and reports honestly.
+    if (useLocalContent) {
+      try {
+        await LocalContentService().loadIntoHive(onProgress: onProgress);
+        return true;
+      } catch (err, stack) {
+        trace('Error loading local content: $err');
+        log(stack.toString());
+        return false;
+      }
+    }
+
     // Check internet connection
     bool isConnected = await checkInternetConnection();
 
     if (!isConnected) {
-      log("No internet connection. Cannot sync data.");
+      trace("No internet connection. Cannot sync data.");
       
       if (context != null) { 
         Navigator.push( // Navigate to NoConnectionScreen
@@ -111,7 +208,7 @@ class DatabaseService {
       onProgress?.call(completedSteps / totalSteps); // Update progress after each step
     }
 
-    await Future.wait([
+    final List<bool> results = await Future.wait([
       _syncHomeWords(onStepCompleted),
       _syncVocabWords(onStepCompleted),
       _syncQuestionResponse(onStepCompleted),
@@ -119,12 +216,24 @@ class DatabaseService {
       _syncPracConvo(onStepCompleted),
     ]);
 
-    log("Data synced from Firestore to Hive.");
-    return true; // Sync successful
+    // Each step reports its own outcome. Previously they all swallowed their
+    // exceptions and this method returned true unconditionally, so a sync that
+    // failed completely still told the moderator it had succeeded — the worst
+    // possible behaviour for the low-connectivity setting this app targets.
+    final bool allSucceeded = results.every((succeeded) => succeeded);
+
+    if (allSucceeded) {
+      trace("Data synced from Firestore to Hive.");
+    } else {
+      final int failed = results.where((succeeded) => !succeeded).length;
+      trace("Sync incomplete: $failed of ${results.length} steps failed.");
+    }
+
+    return allSucceeded;
   }
 
-  // Sync Home cards from Firestore to Hive
-  Future<void> _syncHomeWords(void Function() onStepCompleted) async {
+  // Sync Home cards from Firestore to Hive. Returns true only if it completed.
+  Future<bool> _syncHomeWords(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
         .collection(collectionName)
@@ -135,7 +244,7 @@ class DatabaseService {
         .orderBy('order') // Order by 'order' field
         .get(); // Get all documents in the subcollection
 
-      if (querySnapshot.docs.isEmpty) return; // If no documents found
+      if (querySnapshot.docs.isEmpty) return false; // If no documents found
 
       // Map each item to futures
       List<Future<HomeWord>> homeWordFutures = querySnapshot.docs.map<Future<HomeWord>>((doc) async {
@@ -167,16 +276,18 @@ class DatabaseService {
 
       // Store the data in Hive
       await _homeWordBox.put('home_cards', homeWords.cast<dynamic>());
+      return true;
     } catch (err, stack) {
-      log('Error syncing Home Words data: $err');
+      trace('Error syncing Home Words data: $err');
       log(stack.toString());
+      return false;
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
   }
 
-  // Sync Learn vocab cards from Firestore to Hive
-  Future<void> _syncVocabWords(void Function() onStepCompleted) async {
+  // Sync Learn vocab cards from Firestore to Hive. Returns true only if it completed.
+  Future<bool> _syncVocabWords(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
         .collection(collectionName)
@@ -185,7 +296,7 @@ class DatabaseService {
 
       final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      if (querySnapshot.docs.isEmpty) return; // If no documents found
+      if (querySnapshot.docs.isEmpty) return false; // If no documents found
 
       for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
         final categoryData = categoryDoc.data() as Map<String, dynamic>;
@@ -239,16 +350,18 @@ class DatabaseService {
         // Store the data in Hive
         await _vocabWordBox.put(categoryName, vocabWords.cast<dynamic>());
       }
+      return true;
     } catch (err, stack) {
-      log('Error syncing Vocab Words data: $err');
+      trace('Error syncing Vocab Words data: $err');
       log(stack.toString());
+      return false;
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
   }
 
-  // Sync Learn conversations from Firestore to Hive
-  Future<void> _syncQuestionResponse(void Function() onStepCompleted) async {
+  // Sync Learn conversations from Firestore to Hive. Returns true only if it completed.
+  Future<bool> _syncQuestionResponse(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
         .collection(collectionName)
@@ -257,8 +370,8 @@ class DatabaseService {
 
       final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      if (querySnapshot.docs.isEmpty) return; // If no documents found
-    
+      if (querySnapshot.docs.isEmpty) return false; // If no documents found
+
       for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
         final categoryData = categoryDoc.data() as Map<String, dynamic>;
         final String categoryName = categoryData['name'] ?? categoryDoc.id;
@@ -310,16 +423,18 @@ class DatabaseService {
         //Store the data in Hive
         await _questionBox.put(categoryName, questions.cast<dynamic>());
       }
+      return true;
     } catch (err, stack) {
-      log('Error syncing Learn Conversations data: $err');
+      trace('Error syncing Learn Conversations data: $err');
       log(stack.toString());
+      return false;
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
   }
 
-  // Sync Practice conversations from Firestore to Hive
-  Future<void> _syncPracConvo(void Function() onStepCompleted) async {
+  // Sync Practice conversations from Firestore to Hive. Returns true only if it completed.
+  Future<bool> _syncPracConvo(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
         .collection(collectionName)
@@ -328,7 +443,7 @@ class DatabaseService {
 
       final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      if (querySnapshot.docs.isEmpty) return; // If no documents found
+      if (querySnapshot.docs.isEmpty) return false; // If no documents found
 
       for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
         final convoData = categoryDoc.data() as Map<String, dynamic>;
@@ -375,16 +490,18 @@ class DatabaseService {
         //Store the data in Hive
         await _convoBox.put(categoryName, [conversation]);
       }
+      return true;
     } catch (err, stack) {
-      log('Error syncing Practice Conversation data: $err');
+      trace('Error syncing Practice Conversation data: $err');
       log(stack.toString());
+      return false;
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
   }
 
-  // Sync Practice Quiz questions from Firestore to Hive
-  Future<void> _syncQuizQuestions(void Function() onStepCompleted) async {
+  // Sync Practice Quiz questions from Firestore to Hive. Returns true only if it completed.
+  Future<bool> _syncQuizQuestions(void Function() onStepCompleted) async {
     try {
       final CollectionReference categoriesRef = _firestore
         .collection(collectionName)
@@ -393,7 +510,7 @@ class DatabaseService {
 
       final QuerySnapshot querySnapshot = await categoriesRef.get(); // Get all documents in the subcollection
 
-      if (querySnapshot.docs.isEmpty) return; // If no documents found
+      if (querySnapshot.docs.isEmpty) return false; // If no documents found
 
       for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
         final categoryData = categoryDoc.data() as Map<String, dynamic>;
@@ -452,9 +569,11 @@ class DatabaseService {
         // Store the data in Hive
         await _quizQuestionBox.put(categoryName, quizQuestions.cast<dynamic>());
       }
+      return true;
     } catch (err, stack) {
-      log('Error syncing Quiz Questions data: $err');
+      trace('Error syncing Quiz Questions data: $err');
       log(stack.toString());
+      return false;
     } finally {
       onStepCompleted(); // Call the completion function after syncing
     }
