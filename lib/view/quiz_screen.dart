@@ -34,6 +34,24 @@ class _QuizScreenState extends State<QuizScreen> {
 
   final ProgressService _progress = ProgressService();
 
+  // Bumped by "try again". Feeding it into each QuizOptions key forces Flutter
+  // to build fresh state for them, which clears their selections — simpler and
+  // less error-prone than reaching into children to reset them individually.
+  int _attempt = 0;
+
+  /// Clears the current answers so the quiz can be taken again.
+  ///
+  /// Repetition is how the vocabulary sticks, and one tablet passes between
+  /// groups, so the next group should not start on the last group's answers.
+  /// The saved record is untouched: recordQuizResult keeps the better score, so
+  /// retrying can only ever improve it.
+  void _tryAgain() {
+    setState(() {
+      _answers.clear();
+      _attempt++;
+    });
+  }
+
   void _recordAnswer(int questionIndex, bool wasCorrect) {
     setState(() => _answers[questionIndex] = wasCorrect);
 
@@ -138,6 +156,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                       isFirst: index == 0,
                                     ),
                                     QuizOptions(
+                                      key: ValueKey('$index-$_attempt'),
                                       options: question.answers,
                                       isLast: index == _quizQuestions.length - 1,
                                       onFirstAnswer: (correct) =>
@@ -153,6 +172,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           QuizScore(
                             answers: _answers,
                             total: _quizQuestions.length,
+                            onTryAgain: _tryAgain,
                           ),
                         ],
                       ),

@@ -14,10 +14,14 @@ class QuizScore extends StatelessWidget {
   /// Total number of questions in this quiz.
   final int total;
 
+  /// Clears the answers so the quiz can be taken again.
+  final VoidCallback? onTryAgain;
+
   const QuizScore({
     super.key,
     required this.answers,
     required this.total,
+    this.onTryAgain,
   });
 
   int get _correct => answers.values.where((correct) => correct).length;
@@ -71,6 +75,31 @@ class QuizScore extends StatelessWidget {
               ),
               height: 64,
               width: 64,
+            ),
+          ],
+
+          // Only offered once something has been answered — an empty quiz has
+          // nothing to clear, and an extra control would just be clutter.
+          if (answers.isNotEmpty && onTryAgain != null) ...[
+            const SizedBox(width: 32),
+            ElevatedButton(
+              onPressed: onTryAgain,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                foregroundColor: const Color(0xFF2D3E50),
+                elevation: 0,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                side: const BorderSide(color: Color(0xFF2D3E50), width: 2.5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              // Same label and glyph as the reset button on practice
+              // conversations, so the two read as the same action.
+              child: const Text(
+                'Reiniciar ⟲',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ],
