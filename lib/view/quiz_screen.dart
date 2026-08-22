@@ -7,6 +7,7 @@ import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/view/quiz_options.dart';
 import 'package:mozambique_app/view/quiz_question_widget.dart';
 import 'package:mozambique_app/view/quiz_score.dart';
+import 'package:mozambique_app/view/reflection_card.dart';
 import 'package:mozambique_app/services/progress_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 
@@ -33,6 +34,9 @@ class _QuizScreenState extends State<QuizScreen> {
   final Map<int, bool> _answers = {};
 
   final ProgressService _progress = ProgressService();
+
+  bool get _isComplete =>
+      _quizQuestions.isNotEmpty && _answers.length == _quizQuestions.length;
 
   // Bumped by "try again". Feeding it into each QuizOptions key forces Flutter
   // to build fresh state for them, which clears their selections — simpler and
@@ -174,6 +178,17 @@ class _QuizScreenState extends State<QuizScreen> {
                             total: _quizQuestions.length,
                             onTryAgain: _tryAgain,
                           ),
+
+                          // Only once every question is answered, so it reads
+                          // as a summary of a finished quiz rather than
+                          // feedback on the last tap.
+                          if (_isComplete)
+                            ReflectionCard(
+                              score: _answers.values
+                                  .where((correct) => correct)
+                                  .length,
+                              total: _quizQuestions.length,
+                            ),
                         ],
                       ),
                     ),
