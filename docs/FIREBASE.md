@@ -45,6 +45,61 @@ with `FirebaseStorage.instance.ref(path).getData()`.
 
 ---
 
+## Why both Hive and Firebase
+
+A fair question, since it looks like two databases doing one job. They are not
+alternatives — they do different things.
+
+**Firebase is the master copy, in the cloud. Hive is the copy on the tablet.**
+
+The app talks to Firebase once, copies everything into Hive, and from then on
+reads only from Hive.
+
+```
+First launch        needs internet -> downloads -> fills Hive
+Every launch after  reads Hive -> no internet needed
+"Atualizar"         moderator refreshes Hive from Firebase, when there is signal
+```
+
+Progress flows the same way in reverse:
+
+```
+Quiz finished  -> saved to Hive immediately (works offline)
+               -> pushed to Firebase whenever a connection exists
+```
+
+So a tablet offline for three weeks still records every session, and it all
+uploads the next time someone reaches a signal.
+
+**Why the app cannot simply be "all Firebase":** it would need a connection
+every time anyone opened it. In rural Mozambique that means it would not work
+most days. Working without signal is the entire premise of the app, and Hive is
+what delivers it. Take Hive away and you have software that only runs where
+these users do not have internet.
+
+---
+
+## What a deployment actually needs
+
+Measured against the current content set — 523 media files.
+
+| | |
+|---|---|
+| App, with all content bundled | ~52 MB |
+| Hive copy on the device after first sync | ~50 MB |
+| **Realistic total on the tablet** | **under 150 MB** |
+
+Which means:
+
+- **One tablet**, roughly 150 MB free
+- **Internet once**, for the first sync
+- **No server, no laptop, no ongoing connection**
+
+Nothing needs to be hosted or maintained by the non-profit day to day. Firebase
+is only touched when content changes or results are uploaded.
+
+---
+
 ## What we have confirmed
 
 **Firestore — works.** Readable with no login at all. Checked 2026-08-06 via the
