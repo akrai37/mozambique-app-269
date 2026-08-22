@@ -31,8 +31,9 @@ resolution table for what has since been addressed, and
 | §5 | Audio clips could overlap | ✅ Fixed (Phase 3 Step 6) |
 | §5 | Quiz could not be retaken | ✅ Fixed (Phase 3 Step 6) |
 | §5 | 9 of 12 categories had no quiz | ✅ Fixed (Phase 3 Step 4) — 54 questions added |
-| §5 | Text-only navigation for non-readers | ⬜ Open — planned for Phase 3 |
-| §6 | Repo hygiene / missing Firestore rules | ⬜ Open |
+| §5 | Some interface text unusable by non-readers | ⚠️ Claim corrected on review — the grid was already picture-first; a category strip was added to inner screens |
+| §6 | Repo hygiene / missing Firestore rules | ⬜ Open — owner's side |
+| §6 | Admin SDK key committed in git history | ⚠️ Removed from this fork; **key still needs rotating by the owner** |
 
 ---
 
@@ -176,15 +177,21 @@ design weakness — and it is why defect 2.2 matters so much.
 `view_model/` is a thin passthrough and `repositories/` is vestigial. The MVVM
 structure is nominal rather than real.
 
-**The app contradicts its own design principle.** The Info screen states the app
-"uses visuals and audio    instead of text." The content honours that. The
-navigation does not: the search box hint `Procurar...`, the section headings
-`Aprender` / `Prática`, the `Information` header, and the sync button are all
-text-only. A user who cannot read cannot use any of them.
+**Some interface text is unusable by the intended users.** The Info screen states
+the app "uses visuals and audio instead of text." The content honours that. Some
+of the chrome does not: the search box hint `Procurar...`, the section headings
+`Aprender` / `Prática`, and the `Information` header are text-only.
 
-The search bar is the sharpest case — it sits atop every screen as the primary
-affordance and requires the user to read a hint, spell a Portuguese word she is
-currently learning, and read the filtered results.
+> **Correction.** An earlier version of this document called that a
+> contradiction, and claimed navigation was text-only. That was overstated, and
+> it was corrected during review. **The home grid is already picture-first
+> navigation** — tapping pictures is the primary way through the app and always
+> was. The search box is a *redundant additional* control, not a barrier.
+>
+> The distinction matters, because it changes what is worth building. A
+> contradiction would demand a redesign; a redundant control needs at most
+> relocating. The original claim would have justified work the app does not
+> need. See [DECISIONS.md](DECISIONS.md).
 
 ---
 
@@ -202,6 +209,26 @@ currently learning, and read the filtered results.
   `firebase.json`. The app reads Firestore unauthenticated, so whatever access
   rules protect that project exist only in the console — unversioned and
   unreviewable.
-- Credentials are handled correctly: the Admin SDK key and `google-services.json`
+- **A Firebase Admin SDK private key is committed in the git history.** Commit
+  `987f4f2` (2025-04-21) added
+  `mozambique-app-firebase-adminsdk-fbsvc-434948f8b5.json`; a later commit
+  deleted the file, but deleting a file does not remove it from history and the
+  key remains fully retrievable.
+
+  This is not a client identifier like the API keys in `firebase_options.dart`.
+  **A service account bypasses every security rule** — full read, write and
+  delete across the whole project. Combined with Firestore accepting
+  unauthenticated writes, the project has two independent paths to total data
+  loss.
+
+  Mitigating factor: the repository is private, so it is not exposed publicly.
+  The real fix is rotating the key in the Google Cloud console, which only the
+  project owner can do.
+
+  Found when GitHub's push protection blocked a push and named the commit. It
+  was removed from *this* project's history before pushing; the original
+  repository still contains it.
+
+- Otherwise credentials are handled correctly today: the Admin SDK key and `google-services.json`
   are properly gitignored. `firebase_options.dart` is committed, which is fine —
   those identifiers are public by design.

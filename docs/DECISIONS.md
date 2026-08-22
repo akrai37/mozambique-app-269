@@ -130,6 +130,23 @@ to one. Caught by re-reading before shipping.
 
 **Raised the Android SDK unprompted**, costing time on something out of scope.
 
+**Overstated a finding for most of the project.** I repeatedly argued the app
+"contradicts itself — it teaches non-readers but navigates by text", and built a
+navigation panel partly on that basis. Challenged with a simple question — *"it
+feels like the same thing that's on the main page, why do we need it?"* — and the
+challenge was right twice over. The panel duplicated the home grid, and the grid
+**is already picture-first navigation**. The search box is a redundant extra
+control, not a barrier.
+
+The claim was corrected in [AUDIT.md](AUDIT.md), the panel was cut from the home
+screen, and what remains is described as what it is: a shortcut between
+categories. A wrong framing is worse than a missing one, because it justifies
+work the product does not need.
+
+**Committed a navigation panel with a second "go home" logo** when the top bar
+already had one, placing a discard-this-screen control exactly where a thumb
+reaches for Back. The same duplication mistake, twice in one feature.
+
 ### How things were verified
 
 - Ran the app rather than trusting logs — the hybrid-mode claim died this way.
