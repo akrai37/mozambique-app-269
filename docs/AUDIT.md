@@ -28,6 +28,9 @@ resolution table for what has since been addressed, and
 | §3 | Schema drift (`hasPractice` etc.) | ⬜ Open |
 | §3 | No test coverage | ✅ Addressed — 16 tests added, broken template removed |
 | §4 | Asset path drift (20 files) | ✅ Worked around by the loader's fallback resolver |
+| §5 | Audio clips could overlap | ✅ Fixed (Phase 3 Step 6) |
+| §5 | Quiz could not be retaken | ✅ Fixed (Phase 3 Step 6) |
+| §5 | 9 of 12 categories had no quiz | ✅ Fixed (Phase 3 Step 4) — 54 questions added |
 | §5 | Text-only navigation for non-readers | ⬜ Open — planned for Phase 3 |
 | §6 | Repo hygiene / missing Firestore rules | ⬜ Open |
 

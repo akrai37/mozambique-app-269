@@ -345,6 +345,232 @@ original navigation did not.
 
 ---
 
+## Phase 3, Step 2 — Remembering what a group has done
+
+**Goal:** the app forgot everything the moment it closed. A moderator running
+weekly sessions had no record of which categories a group had covered, or how
+they did.
+
+### Progress storage
+`lib/services/progress_service.dart` (new)
+
+Hive first, Firestore second. A failed upload is logged and swallowed, because
+the data is already safe on the device — the same offline-first argument the app
+already makes for content, applied to a new data type. A tablet offline for
+three weeks still records every session and uploads it when it next sees signal.
+
+Stored as plain Maps in an untyped box rather than a new `@HiveType`, so no
+generated adapter and no `build_runner`.
+
+A quiz is only recorded once every question is answered, and a re-run keeps the
+better score — practising can never make a group's record look worse.
+
+Writes go to `progress_ankush`, a collection owned by this project. See
+[FIREBASE.md](FIREBASE.md) for the separation rules.
+
+### Badges on the home cards
+`lib/view/category_badge_mark.dart` (new)
+
+Nothing showed what a group had covered. Three states, by shape and colour
+rather than words: nothing for untouched, a hollow grey ring for opened, a green
+tick with stars for a finished quiz.
+
+Which state applies comes from `badgeFor()` in `view_model/progress_summary.dart`,
+which is unit tested. The widget only draws.
+
+**Written test-first.** `test/progress_summary_test.dart` ran and failed with
+`Method not found: badgeFor` before the implementation existed.
+
+Writing the star thresholds as test sentences changed the design. Naming a case
+*"a low score still earns one star for finishing"* forced the question of who
+this is for, and produced a deliberately generous curve — any correct answer
+earns a star, 60% earns two, 90% earns three. Implementation-first it would
+likely have been an even 33/66/100 split, which grades people rather than
+encouraging them.
+
+---
+
+## Phase 3, Step 3 — Groups, not devices
+
+**The bug this fixed before it happened:** every tablet wrote to the same
+Firestore document. With one device that is invisible. With two, the second
+silently overwrites the first — worse than collecting nothing.
+
+### Group identity
+
+Each tablet generates a group id on first use, and progress is keyed by it in
+both Hive and Firestore:
+
+```
+progress_ankush/{groupId}/categories/{category}
+```
+
+mirroring how the app's own content is laid out.
+
+**No login.** The learners share the tablet and cannot read a sign-in screen, so
+accounts would be unusable by the people meant to use them. The group is the
+unit that matters, which is also what the deployment looks like: one device, one
+group, a moderator running the session.
+
+Progress recorded before groups existed is re-keyed under the first group, so a
+tablet with history does not appear to lose it.
+
+### A picker, not a one-way button
+
+The first version was a "new group" button. Two problems surfaced immediately in
+use, both raised in conversation rather than found in code:
+
+1. A group meeting Monday may return Wednesday, and there was no way back — every
+   session would start a new id and fragment their history.
+2. A moderator in a hurry has to *remember* to press it. Forgetting silently
+   merges two groups' records.
+
+Replaced with a picker: choose who is here today from a list, most recently
+active first, with relative timestamps. **Choosing is much harder to forget than
+remembering.**
+
+`GroupInfo` and `upsertGroup` were **written test-first**. One rule came out of
+writing the tests rather than the code: a group with no timestamp must sort
+**last**, or an incomplete record jumps to the top of the moderator's list.
+
+### The badge refresh bug
+
+Switching groups left the previous group's ticks on screen until you navigated
+into a category and back.
+
+The badge listened to one Hive key, `{groupId}::{category}`, computed once at
+build time. Changing group changes *which key matters*, so the widget carried on
+watching a key that would never change again.
+
+**Every test passed. Hive was right. Firestore was right. Only the screen was
+wrong** — and only if you switched group and looked without navigating first.
+Found by using the app. Fixed by watching the group id as well.
+
+---
+
+## Phase 3, Step 4 — Filling the content gap
+
+**The finding:** only 3 of 12 vocabulary categories had a quiz. Nine did not,
+including `numbers` — the largest category in the app at 32 words. A learner
+could study every one and never be tested. The app was roughly a quarter
+complete against its own practice model, and no amount of interface work
+changes that.
+
+This reordered the plan. Polishing navigation for content that is 75% missing is
+the wrong priority.
+
+### Generating the quizzes
+`tools/generate_quizzes.py`, `tools/push_quizzes.py` (new)
+
+Nothing new had to be drawn or recorded. A question here is an image, a spoken
+prompt and three spoken options — and every vocabulary word already has an
+image, a Portuguese word and its own audio. Only the prompt was missing,
+synthesised locally with macOS `say` using **Joana (pt_PT)**. European
+Portuguese matters: Mozambique uses it, not Brazilian.
+
+**54 questions, six per category.** Three details that matter:
+
+- **Distractors come from the same category.** Picking `Cabra` out of {Cabra,
+  Vermelho, Sete} tests nothing — the answer is guessable from the category
+  alone.
+- **Questions sample evenly** across a category rather than taking the first
+  six, so `numbers` tests across its range instead of only 0–5.
+- **The correct answer rotates through the option positions** — it lands
+  18/18/18 across the three slots, so there is no positional habit to learn
+  instead of the words.
+
+### Separation
+
+Written to `content_ankush`. The push script **refuses outright** if a target
+path contains `app_content` or `dev_content` — a guard in code, not an
+intention. Verified afterwards that both partner collections still hold exactly
+three quiz categories.
+
+The quiz sync reads the partner's collection first and ours second, filling only
+categories they do not have. It can add, never override.
+
+Result: **Prática went from 3 categories to 12, and 18 questions to 72.**
+
+---
+
+## Phase 3, Step 5 — Closing the loop
+
+### Reflection card
+`lib/view/reflection_card.dart` (new)
+
+Finishing a quiz produced no moment of completion — the last dot filled in and
+that was it.
+
+Two levels: stars for the quiz just finished, and underneath a mark per category
+the group has completed, so a session builds toward something visible. The
+cumulative half only appears once more than one category is done.
+
+No new logic — `SessionSummary` and `starsFor` were written test-first earlier
+and already covered.
+
+### Feedback popup
+`lib/view_model/quiz_feedback.dart` (new)
+
+A five-second summary when a quiz finishes: how it went, and what is worth
+practising next. Colour-coded by tone.
+
+Everything in it is real data — this attempt, the group's previous best in that
+category, and their scores elsewhere. **Nothing is invented**, because a
+moderator will notice encouragement that does not match what happened.
+
+Aimed at the moderator, not the learners: it is text, and they cannot read. The
+learners get the stars and the face.
+
+**Written test-first**, failing with `Method not found: feedbackFor`. Two rules
+came out of the tests:
+
+- A first attempt is never framed as *"better than before"* — there is nothing
+  to beat, and the claim would be false.
+- Categories opened but never quizzed are ignored when picking what to practise;
+  there is no result to judge.
+
+The previous best has to be read *before* `recordQuizResult` runs, since that is
+about to overwrite it.
+
+### Duplication removed
+
+The reflection card repeated the score and face already on the bar above it. The
+bar is now only a progress indicator — dots and reset — and the card owns the
+result. Caught on review, not by a test.
+
+---
+
+## Phase 3, Step 6 — Other fixes from using the app
+
+**Audio could overlap.** Every card owned its own player and nothing ever called
+`stop()`. Tapping three words played three Portuguese words at once. That
+matters more here than elsewhere: the learners cannot read, so audio is not a
+supplement to the content, it *is* the content — and the tablet is shared, so
+several people reaching for it at once is normal rather than an edge case.
+`AudioCoordinator` now stops the previous clip and seeks to zero, so re-tapping
+restarts a word instead of resuming mid-way.
+
+**A quiz could not be retaken.** The only route was to leave the screen and come
+back, which resets in-memory state — so the capability existed but was
+undiscoverable, and for a user who cannot read that means it did not exist.
+Labelled `Reiniciar ⟲` to match the reset practice conversations already have.
+Retrying cannot lower a group's record, since the better score is kept.
+
+---
+
+## Current state
+
+| | Start | Now |
+|---|---|---|
+| Runs at all | No toolchain, no credentials | Three content modes |
+| Tests | 0 passing, 1 failing | **65 passing** |
+| Bugs fixed | — | **11** |
+| Quiz categories | 3 | **12** |
+| Quiz questions | 18 | **72** |
+| Progress tracking | None | Per group, Hive + Firestore |
+
+---
+
 ## Phase 3 — Picture-first navigation
 
 *Not started.* Replaces the text search bar, addressing the design contradiction
