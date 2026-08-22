@@ -26,7 +26,8 @@ class CategoryBadgeMark extends StatelessWidget {
     // Reading at build time would leave stale badges until something else
     // happened to rebuild the grid.
     return ValueListenableBuilder(
-      valueListenable: Hive.box(ProgressService.boxName).listenable(keys: [categoryName]),
+      valueListenable: Hive.box(ProgressService.boxName)
+          .listenable(keys: [ProgressService().hiveKeyFor(categoryName)]),
       builder: (context, _, __) => _buildMark(),
     );
   }

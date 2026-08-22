@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/services/database_service.dart';
 import 'package:mozambique_app/view/navbar.dart';
+import 'package:mozambique_app/view/group_controls.dart';
 import 'package:mozambique_app/view/logos.dart';
 import 'package:mozambique_app/view/sync_progress_dialog.dart';
 
@@ -215,7 +216,10 @@ class _InfoScreenState extends State<InfoScreen> {
                           ),
                         ),
                       ],
-                    )
+                    ),
+
+                    // Which group is using this tablet.
+                    const GroupControls(),
                   ],
                 ),
               ),

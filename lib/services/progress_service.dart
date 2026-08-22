@@ -1,4 +1,7 @@
 import 'dart:developer';
+// show Random: dart:math also exports log(), which collides with
+// dart:developer's log() used throughout this file.
+import 'dart:math' show Random;
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -85,6 +88,12 @@ class CategoryProgress {
 class ProgressService {
   static const String boxName = 'progress';
 
+  // Reserved keys for group metadata, prefixed so they cannot collide with a
+  // category name.
+  static const String _groupIdKey = '__groupId';
+  static const String _groupNameKey = '__groupName';
+  static const String _migratedKey = '__migratedToGroups';
+
   Box get _box => Hive.box(boxName);
 
   /// Firestore is only reachable if Firebase was initialized at startup, which
@@ -92,20 +101,104 @@ class ProgressService {
   /// throwing rather than relying on a build flag.
   bool get _firebaseAvailable => Firebase.apps.isNotEmpty;
 
+  // ---------------- group identity ----------------
+
+  /// Identifies the group using this tablet.
+  ///
+  /// Generated on first use and stored on the device. There is no login: the
+  /// learners cannot read one, and the tablet is shared rather than personal.
+  /// The group is the unit that makes sense here, not the individual.
+  ///
+  /// Without this, every tablet wrote to the same Firestore document, so a
+  /// second tablet would silently overwrite the first one's progress.
+  String get groupId {
+    final Object? existing = _box.get(_groupIdKey);
+    if (existing is String && existing.isNotEmpty) return existing;
+
+    final String created = _generateGroupId();
+    _box.put(_groupIdKey, created);
+    _adoptUngroupedProgress(created);
+    return created;
+  }
+
+  /// Human-readable label a moderator can set, e.g. "Namaacha Tuesday".
+  ///
+  /// Optional, and typed by the moderator rather than a learner — moderators
+  /// can read, which is why a text field is acceptable here and nowhere else.
+  String? get groupName {
+    final Object? name = _box.get(_groupNameKey);
+    return (name is String && name.trim().isNotEmpty) ? name.trim() : null;
+  }
+
+  Future<void> setGroupName(String name) async {
+    await _box.put(_groupNameKey, name.trim());
+    await _pushGroupDoc();
+  }
+
+  /// Starts a fresh group on this tablet.
+  ///
+  /// Badges clear because progress is stored per group, but nothing is
+  /// deleted — the previous group's record stays on the device and in
+  /// Firestore under its own id.
+  Future<void> startNewGroup({String? name}) async {
+    await _box.put(_groupIdKey, _generateGroupId());
+    await _box.put(_groupNameKey, name?.trim() ?? '');
+    await _pushGroupDoc();
+  }
+
+  String _generateGroupId() {
+    final int stamp = DateTime.now().microsecondsSinceEpoch;
+    final int salt = Random().nextInt(1 << 20);
+    return 'g${stamp.toRadixString(36)}${salt.toRadixString(36)}';
+  }
+
+  /// Progress written before groups existed was keyed by bare category name.
+  /// Re-key it under the first group so a tablet that already has history does
+  /// not appear to lose it.
+  void _adoptUngroupedProgress(String newGroupId) {
+    if (_box.get(_migratedKey) == true) return;
+
+    for (final Object? key in _box.keys.toList()) {
+      if (key is! String || key.startsWith('__') || key.contains('::')) continue;
+
+      final Object? raw = _box.get(key);
+      if (raw is Map) {
+        _box.put('$newGroupId::$key', raw);
+        _box.delete(key);
+      }
+    }
+
+    _box.put(_migratedKey, true);
+  }
+
+  /// Hive key for a category under the current group.
+  ///
+  /// Public so widgets can listen to exactly the key they care about rather
+  /// than rebuilding on every unrelated write.
+  String hiveKeyFor(String categoryName) => '$groupId::$categoryName';
+
+  // ---------------- reading ----------------
+
   CategoryProgress forCategory(String categoryName) {
-    final Object? raw = _box.get(categoryName);
+    final Object? raw = _box.get(hiveKeyFor(categoryName));
     if (raw is Map) return CategoryProgress.fromMap(raw);
     return CategoryProgress(categoryName: categoryName);
   }
 
-  /// Every category with recorded progress.
+  /// Every category with recorded progress, for the current group only.
   Map<String, CategoryProgress> all() {
+    final String prefix = '$groupId::';
     final Map<String, CategoryProgress> result = {};
+
     for (final Object? key in _box.keys) {
-      if (key is! String) continue;
+      if (key is! String || !key.startsWith(prefix)) continue;
+
       final Object? raw = _box.get(key);
-      if (raw is Map) result[key] = CategoryProgress.fromMap(raw);
+      if (raw is Map) {
+        result[key.substring(prefix.length)] = CategoryProgress.fromMap(raw);
+      }
     }
+
     return result;
   }
 
@@ -135,10 +228,11 @@ class ProgressService {
 
   Future<void> _save(CategoryProgress progress) async {
     // Local first: this must not depend on the network.
-    await _box.put(progress.categoryName, progress.toMap());
+    await _box.put(hiveKeyFor(progress.categoryName), progress.toMap());
     log('Progress saved locally: ${progress.categoryName} '
         '${progress.quizScore}/${progress.quizTotal}');
 
+    await _pushGroupDoc();
     await _pushToFirestore(progress);
   }
 
@@ -148,14 +242,39 @@ class ProgressService {
     if (!_firebaseAvailable) return;
 
     try {
+      // Nested under the group, mirroring how the app's own content is laid
+      // out (collection -> doc -> subcollection). Without the group in the
+      // path, every tablet would write to the same document.
       await FirebaseFirestore.instance
           .collection(progressCollection)
+          .doc(groupId)
+          .collection('categories')
           .doc(progress.categoryName)
           .set(progress.toMap(), SetOptions(merge: true));
 
-      log('Progress synced to $progressCollection/${progress.categoryName}');
+      log('Progress synced to $progressCollection/$groupId/'
+          'categories/${progress.categoryName}');
     } catch (err) {
       log('Progress upload failed (kept locally): $err');
+    }
+  }
+
+  /// Writes the group's own document, so the collection lists readable groups
+  /// rather than bare ids with nothing but subcollections under them.
+  Future<void> _pushGroupDoc() async {
+    if (!_firebaseAvailable) return;
+
+    try {
+      await FirebaseFirestore.instance
+          .collection(progressCollection)
+          .doc(groupId)
+          .set({
+        'groupId': groupId,
+        'groupName': groupName,
+        'lastActive': DateTime.now().toIso8601String(),
+      }, SetOptions(merge: true));
+    } catch (err) {
+      log('Group document upload failed (kept locally): $err');
     }
   }
 }
