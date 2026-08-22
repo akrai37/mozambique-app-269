@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
+import 'package:mozambique_app/services/audio_coordinator.dart';
 
 class QuizQuestionWidget extends StatefulWidget {
   //DICTATES WHAT THE WIDGET TAKES OR WHAT IS REQUIRED TO MAKE THE QUIZ QUESTION
@@ -89,7 +90,7 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
               ),
               child: InkWell(
                 onTap: () {
-                  _audioPlayer.resume(); // Play the audio when the question bar is tapped
+                  AudioCoordinator.play(_audioPlayer); // Play the audio when the question bar is tapped
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -153,6 +154,7 @@ class _QuizQuestionWidgetState extends State<QuizQuestionWidget> {
 
   @override
   void dispose() {
+    AudioCoordinator.forget(_audioPlayer);
     _audioPlayer.dispose(); // Dispose of the audio player when the widget is removed from the tree
     
     super.dispose();

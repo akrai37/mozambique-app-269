@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:mozambique_app/services/audio_coordinator.dart';
 
 class LearnConvoCard extends StatefulWidget {
   final String greeting; // The greeting text to be displayed on the card
@@ -71,7 +72,7 @@ class _LearnConvoCardState extends State<LearnConvoCard> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    _qaudioPlayer.resume(); // Play the audio when the card is tapped
+                    AudioCoordinator.play(_qaudioPlayer); // Play the audio when the card is tapped
                   },
                   child: FittedBox(
                     child: Row(
@@ -129,7 +130,7 @@ class _LearnConvoCardState extends State<LearnConvoCard> {
                 ),
                 child: InkWell(
                   onTap: () {
-                    _raudioPlayer.resume(); // Play the audio when the card is tapped
+                    AudioCoordinator.play(_raudioPlayer); // Play the audio when the card is tapped
                   },
                   child: FittedBox(
                     child: Row(
@@ -174,6 +175,8 @@ class _LearnConvoCardState extends State<LearnConvoCard> {
 
   @override
   void dispose() {
+    AudioCoordinator.forget(_qaudioPlayer);
+    AudioCoordinator.forget(_raudioPlayer);
     _qaudioPlayer.dispose();
     _raudioPlayer.dispose();
 

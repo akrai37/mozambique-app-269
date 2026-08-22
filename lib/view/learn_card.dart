@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:mozambique_app/model/vocab.dart';
+import 'package:mozambique_app/services/audio_coordinator.dart';
 
 class LearnCard extends StatefulWidget {
   final VocabWord imageButton;
@@ -40,7 +41,7 @@ class _LearnCardState extends State<LearnCard> {
         borderRadius: BorderRadius.circular(5),
         child: InkWell(
           onTap: () {
-            _audioPlayer.resume(); // Play the audio when the card is tapped
+            AudioCoordinator.play(_audioPlayer); // Play the audio when the card is tapped
           },
           child: Stack(
             children: [
@@ -110,6 +111,7 @@ class _LearnCardState extends State<LearnCard> {
 
   @override
   void dispose() {
+    AudioCoordinator.forget(_audioPlayer);
     _audioPlayer.dispose();
 
     super.dispose();

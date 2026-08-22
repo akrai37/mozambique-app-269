@@ -3,6 +3,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/conversation.dart';
+import 'package:mozambique_app/services/audio_coordinator.dart';
 
 class Msg1 extends StatefulWidget {
   final ConvoLine line;
@@ -72,7 +73,7 @@ class _Msg1State extends State<Msg1> {
             ),
             child: InkWell(
               onTap: () {
-                _audioPlayer.resume();
+                AudioCoordinator.play(_audioPlayer);
               },
               child: FittedBox(
                 child: Row(
@@ -106,6 +107,7 @@ class _Msg1State extends State<Msg1> {
   }
   @override
   void dispose() {
+    AudioCoordinator.forget(_audioPlayer);
     _audioPlayer.dispose();
     super.dispose();
   }

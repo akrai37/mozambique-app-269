@@ -3,6 +3,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/quiz.dart';
 import 'package:mozambique_app/view/quiz_checkbox.dart';
+import 'package:mozambique_app/services/audio_coordinator.dart';
 
 class QuizOptions extends StatefulWidget {
   //DICTATES WHAT THE WIDGET TAKES IN TO MAKE OPTIONS
@@ -97,7 +98,7 @@ class _QuizOptionsState extends State<QuizOptions> {
               children: [
                 InkWell(
                   onTap: () {
-                    _audioPlayers[i].resume(); // Play the audio when the card is tapped
+                    AudioCoordinator.play(_audioPlayers[i]); // Play the audio when the card is tapped
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width / 5 - 15,
@@ -165,6 +166,7 @@ class _QuizOptionsState extends State<QuizOptions> {
   void dispose() {
     // Dispose of the audio players when the widget is removed from the widget tree
     for (AudioPlayer player in _audioPlayers) {
+      AudioCoordinator.forget(player);
       player.dispose();
     }
 
