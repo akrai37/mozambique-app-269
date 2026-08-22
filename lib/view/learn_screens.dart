@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:mozambique_app/services/progress_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
 import 'package:mozambique_app/view/learn_card.dart';
+import 'package:mozambique_app/view/inner_nav_panel.dart';
 import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/model/vocab.dart';
 
@@ -81,7 +82,13 @@ class _LearnScreensState extends State<LearnScreens> {
           }
 
           // Once the images are loaded, build the UI
-          return Column(
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // Jump straight to another category without going back first.
+              InnerNavPanel(currentCategory: widget.tag, type: 'learn'),
+              Expanded(
+                child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Navbar(isPractice: false, onSearchChanged: _onSearchChanged),
@@ -122,6 +129,9 @@ class _LearnScreensState extends State<LearnScreens> {
                       ),
                     ],
                   ),
+                ),
+              ),
+            ],
                 ),
               ),
             ],

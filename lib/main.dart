@@ -55,6 +55,10 @@ void main() async{
   // Untyped box: progress is stored as plain Maps, so it needs no adapter.
   await Hive.openBox(ProgressService.boxName);
 
+  // Create this tablet's group id now, so nothing has to create one later from
+  // inside a build.
+  await ProgressService().ensureGroup();
+
   runApp(const MyApp());
 }
 

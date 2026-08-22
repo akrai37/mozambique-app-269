@@ -175,14 +175,34 @@ class ProgressService {
   ///
   /// Without this, every tablet wrote to the same Firestore document, so a
   /// second tablet would silently overwrite the first one's progress.
+  /// Used only if [ensureGroup] somehow has not run. Stable rather than
+  /// generated, so a missed initialisation cannot scatter progress across a
+  /// series of one-off ids.
+  static const String _fallbackGroupId = 'g_default';
+
   String get groupId {
     final Object? existing = _box.get(_groupIdKey);
     if (existing is String && existing.isNotEmpty) return existing;
 
+    // Deliberately does not create one here. This getter is reached from
+    // build() — the badge on every card calls it — and writing to Hive during a
+    // build fires the box listeners, rebuilding mid-build. Creation happens
+    // once at startup instead, in ensureGroup().
+    return _fallbackGroupId;
+  }
+
+  /// Creates the group id if this tablet does not have one yet.
+  ///
+  /// Called from main() before any widget is built, so [groupId] only ever has
+  /// to read.
+  Future<void> ensureGroup() async {
+    final Object? existing = _box.get(_groupIdKey);
+    if (existing is String && existing.isNotEmpty) return;
+
     final String created = _generateGroupId();
-    _box.put(_groupIdKey, created);
+    await _box.put(_groupIdKey, created);
     _adoptUngroupedProgress(created);
-    return created;
+    await _rememberCurrentGroup();
   }
 
   /// Human-readable label a moderator can set, e.g. "Namaacha Tuesday".

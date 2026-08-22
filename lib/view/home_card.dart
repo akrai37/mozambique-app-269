@@ -7,6 +7,41 @@ import 'package:mozambique_app/view/learn_screens.dart';
 import 'package:mozambique_app/view/practice_convo.dart';
 import 'package:mozambique_app/view/quiz_screen.dart';
 
+/// Opens the right screen for a category.
+///
+/// Shared by the home cards and the navigation panel so there is one definition
+/// of "what does tapping this category do", rather than the same branching
+/// copied into two places that can drift apart.
+void openCategory(
+  BuildContext context,
+  HomeWord homeWord,
+  String type, {
+  /// True when moving sideways between categories, so the back stack does not
+  /// grow one entry per category the group happened to look at.
+  bool replace = false,
+}) {
+  Widget destination;
+
+  if (type == 'learn') {
+    destination = homeWord.type == 'conversation'
+        ? LearnConvo(title: homeWord.portuguese, tag: homeWord.categoryName)
+        : LearnScreens(title: homeWord.portuguese, tag: homeWord.categoryName);
+  } else {
+    destination = homeWord.type == 'conversation'
+        ? PracticeConvo(title: homeWord.portuguese, tag: homeWord.categoryName)
+        : QuizScreen(title: homeWord.portuguese, tag: homeWord.categoryName);
+  }
+
+  final MaterialPageRoute route =
+      MaterialPageRoute(builder: (_) => destination);
+
+  if (replace) {
+    Navigator.pushReplacement(context, route);
+  } else {
+    Navigator.push(context, route);
+  }
+}
+
 class HomeCard extends StatelessWidget {
   final HomeWord homeWord;
   final String type;
@@ -27,53 +62,7 @@ class HomeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         child: InkWell(
           borderRadius: BorderRadius.circular(5),
-          onTap: () {
-            if (type == 'learn') { // If the type is "learn", navigate to LearnScreens
-              if (homeWord.type == 'cards') { // If the type is "cards", navigate to LearnScreens
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LearnScreens(
-                      title: homeWord.portuguese, 
-                      tag: homeWord.categoryName,
-                    ),
-                  ),
-                );
-              } else if (homeWord.type == 'conversation') { // If the type is "conversation", navigate to LearnConvo
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LearnConvo(
-                      title: homeWord.portuguese,
-                      tag: homeWord.categoryName,
-                    ),
-                  ),
-                );
-              }
-            } else if (type == 'practice') { // If the type is "practice", navigate to PracticeConvo
-              if (homeWord.type == 'conversation') { // If the type is "conversation", navigate to PracticeConvo
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PracticeConvo(
-                      title: homeWord.portuguese,
-                      tag: homeWord.categoryName,
-                    ),
-                  ),
-                );
-              } else { // If the type is not "conversation", navigate to LearnScreens
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => QuizScreen(
-                      title: homeWord.portuguese, 
-                      tag: homeWord.categoryName,
-                    ),
-                  ),
-                );
-              }
-            }
-          },
+          onTap: () => openCategory(context, homeWord, type),
           child: Stack(
             children: [
               Column(

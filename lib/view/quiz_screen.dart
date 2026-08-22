@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:mozambique_app/model/quiz.dart';
+import 'package:mozambique_app/view/inner_nav_panel.dart';
 import 'package:mozambique_app/view/navbar.dart';
 import 'package:mozambique_app/view/quiz_options.dart';
 import 'package:mozambique_app/view/quiz_question_widget.dart';
@@ -159,7 +160,13 @@ class _QuizScreenState extends State<QuizScreen> {
             width: double.infinity,
             height: double.infinity,
             color: Color.fromRGBO(53, 64, 79, 1),
-            child: Column(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // Jump straight to another category without going back first.
+                InnerNavPanel(currentCategory: widget.tag, type: 'practice'),
+                Expanded(
+                  child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Navbar(
@@ -241,6 +248,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   ), 
                   SizedBox(height: 50),
               ],         
+                  ),
+                ),
+              ],
             ),
           );
         }

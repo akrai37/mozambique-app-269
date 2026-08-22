@@ -111,7 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
             return Center(child: Text('Error: ${snapshot.error}'));
           }
 
-          // Once the images are loaded, build the UI
+          // Deliberately no navigation panel here. The grid already shows every
+          // category as a picture with the same progress badge, so a panel on
+          // this screen is a second copy of what is already on it. It earns its
+          // place on the inner screens, where there is otherwise no way to
+          // reach another category without going back first.
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
