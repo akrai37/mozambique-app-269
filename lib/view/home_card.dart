@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mozambique_app/model/home_word.dart';
+import 'package:mozambique_app/view/category_badge_mark.dart';
 import 'package:mozambique_app/view/learn_convo.dart';
 import 'package:mozambique_app/view/learn_screens.dart';
 import 'package:mozambique_app/view/practice_convo.dart';
@@ -73,29 +74,42 @@ class HomeCard extends StatelessWidget {
               }
             }
           },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Stack(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: homeWord.imageBytes.isNotEmpty
-                  ? Image.memory(
-                      homeWord.imageBytes,
-                      height: 200,
-                      width: 200,
-                    )
-                  : const Icon(
-                      Icons.error,
-                      size: 200,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: homeWord.imageBytes.isNotEmpty
+                      ? Image.memory(
+                          homeWord.imageBytes,
+                          height: 200,
+                          width: 200,
+                        )
+                      : const Icon(
+                          Icons.error,
+                          size: 200,
+                        ),
+                  ),
+                  Text(
+                    homeWord.portuguese,
+                    style: TextStyle(
+                      color: const Color(0xFF2D3E50),
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
                     ),
+                  ),
+                ],
               ),
-              Text(
-                homeWord.portuguese,
-                style: TextStyle(
-                  color: const Color(0xFF2D3E50),
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
+
+              // Progress marker, top-right. Overlaid rather than taking a row
+              // of its own so cards keep a uniform height whether or not a
+              // category has been touched.
+              Positioned(
+                top: 8,
+                right: 8,
+                child: CategoryBadgeMark(categoryName: homeWord.categoryName),
               ),
             ],
           ),
