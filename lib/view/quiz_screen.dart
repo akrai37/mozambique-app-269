@@ -10,6 +10,7 @@ import 'package:mozambique_app/view/quiz_score.dart';
 import 'package:mozambique_app/view/reflection_card.dart';
 import 'package:mozambique_app/services/progress_service.dart';
 import 'package:mozambique_app/view_model/fetch_cards.dart';
+import 'package:mozambique_app/view_model/quiz_feedback.dart';
 
 class QuizScreen extends StatefulWidget {
   final String title;
@@ -61,13 +62,58 @@ class _QuizScreenState extends State<QuizScreen> {
 
     // Save only once the whole quiz is answered, so a partial run never
     // overwrites a better completed score.
-    if (_answers.length == _quizQuestions.length && _quizQuestions.isNotEmpty) {
-      _progress.recordQuizResult(
-        widget.tag,
-        score: _answers.values.where((correct) => correct).length,
-        total: _quizQuestions.length,
-      );
+    if (_answers.length != _quizQuestions.length || _quizQuestions.isEmpty) {
+      return;
     }
+
+    final int score = _answers.values.where((correct) => correct).length;
+
+    // Read the old best before saving — recordQuizResult is about to replace
+    // it, and "better than before" needs to know what before was.
+    final CategoryProgress before = _progress.forCategory(widget.tag);
+    final int? previousBest = before.completed ? before.quizScore : null;
+
+    _progress.recordQuizResult(
+      widget.tag,
+      score: score,
+      total: _quizQuestions.length,
+    );
+
+    _showFeedback(feedbackFor(
+      category: widget.tag,
+      score: score,
+      total: _quizQuestions.length,
+      allProgress: _progress.all(),
+      previousBest: previousBest,
+    ));
+  }
+
+  /// Brief summary for the moderator when a quiz finishes.
+  ///
+  /// Aimed at the moderator, not the learners — it is text, and they cannot
+  /// read. The learners get the stars and the face on the reflection card. This
+  /// is the line that tells whoever is running the session what to do next.
+  void _showFeedback(QuizFeedback feedback) {
+    if (!mounted) return;
+
+    final String suggestion = feedback.suggestedCategory == null
+        ? ''
+        : '  Praticar a seguir: ${feedback.suggestedCategory}.';
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '${feedback.message}$suggestion',
+          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: switch (feedback.tone) {
+          FeedbackTone.excellent => const Color(0xFF1E8449),
+          FeedbackTone.good => const Color(0xFF2D3E50),
+          FeedbackTone.keepPractising => const Color(0xFFB9770E),
+        },
+        duration: const Duration(seconds: 5),
+      ),
+    );
   }
 
   @override initState() {

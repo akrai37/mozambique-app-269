@@ -24,8 +24,6 @@ class QuizScore extends StatelessWidget {
     this.onTryAgain,
   });
 
-  int get _correct => answers.values.where((correct) => correct).length;
-  bool get _isComplete => total > 0 && answers.length == total;
 
   @override
   Widget build(BuildContext context) {
@@ -51,32 +49,10 @@ class QuizScore extends StatelessWidget {
             }),
           ),
 
-          const SizedBox(width: 32),
-
-          // Numeric score — for the moderator.
-          Text(
-            '$_correct / $total',
-            style: const TextStyle(
-              fontSize: 44,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF2D3E50),
-            ),
-          ),
-
-          // A face only once every question has been answered, so it reads as
-          // "finished" rather than as feedback on the last answer.
-          if (_isComplete) ...[
-            const SizedBox(width: 24),
-            Image(
-              image: AssetImage(
-                _correct == total
-                    ? 'assets/images/bigSmile.png'
-                    : 'assets/images/smile.png',
-              ),
-              height: 64,
-              width: 64,
-            ),
-          ],
+          // The score and the face used to live here as well, and once the
+          // reflection card was added they appeared twice, stacked. This bar is
+          // now only a progress indicator — how far through you are — and the
+          // card owns the result.
 
           // Only offered once something has been answered — an empty quiz has
           // nothing to clear, and an extra control would just be clutter.
