@@ -1,0 +1,1316 @@
+{
+ "animals": [
+  {
+   "slug": "que_animal_e_este_0",
+   "order": 0,
+   "questionText": "Que animal é este?",
+   "imagePath": "images/vocab_words/animals/Cat.png",
+   "audioPath": "audio/quiz_prompts/que_animal_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Gato",
+     "audioPath": "audio/vocab_words/animals/Cat.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Cão",
+     "audioPath": "audio/vocab_words/animals/Dog.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Tartaruga",
+     "audioPath": "audio/vocab_words/animals/Turtle.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_animal_e_este_1",
+   "order": 1,
+   "questionText": "Que animal é este?",
+   "imagePath": "images/vocab_words/animals/Turtle.png",
+   "audioPath": "audio/quiz_prompts/que_animal_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Macaco",
+     "audioPath": "audio/vocab_words/animals/Monkey.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Pássaro",
+     "audioPath": "audio/vocab_words/animals/Bird.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Tartaruga",
+     "audioPath": "audio/vocab_words/animals/Turtle.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_animal_e_este_2",
+   "order": 2,
+   "questionText": "Que animal é este?",
+   "imagePath": "images/vocab_words/animals/Bird.png",
+   "audioPath": "audio/quiz_prompts/que_animal_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Cabra",
+     "audioPath": "audio/vocab_words/animals/Goat.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Pássaro",
+     "audioPath": "audio/vocab_words/animals/Bird.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Galinha",
+     "audioPath": "audio/vocab_words/animals/Chicken.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_animal_e_este_3",
+   "order": 3,
+   "questionText": "Que animal é este?",
+   "imagePath": "images/vocab_words/animals/Goat.png",
+   "audioPath": "audio/quiz_prompts/que_animal_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Cabra",
+     "audioPath": "audio/vocab_words/animals/Goat.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Ovelha",
+     "audioPath": "audio/vocab_words/animals/Sheep.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vaca",
+     "audioPath": "audio/vocab_words/animals/Cow.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_animal_e_este_4",
+   "order": 4,
+   "questionText": "Que animal é este?",
+   "imagePath": "images/vocab_words/animals/Cow.png",
+   "audioPath": "audio/quiz_prompts/que_animal_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Cavalo",
+     "audioPath": "audio/vocab_words/animals/Horse.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Burro",
+     "audioPath": "audio/vocab_words/animals/Donkey.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vaca",
+     "audioPath": "audio/vocab_words/animals/Cow.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_animal_e_este_5",
+   "order": 5,
+   "questionText": "Que animal é este?",
+   "imagePath": "images/vocab_words/animals/Donkey.png",
+   "audioPath": "audio/quiz_prompts/que_animal_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Gato",
+     "audioPath": "audio/vocab_words/animals/Cat.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Burro",
+     "audioPath": "audio/vocab_words/animals/Donkey.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Peixe",
+     "audioPath": "audio/vocab_words/animals/Fish.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "common_actions": [
+  {
+   "slug": "o_que_esta_a_fazer_0",
+   "order": 0,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/common_actions/To eat.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Comer",
+     "audioPath": "audio/vocab_words/common_actions/To eat.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Beber",
+     "audioPath": "audio/vocab_words/common_actions/To drink.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Dormir",
+     "audioPath": "audio/vocab_words/common_actions/To sleep.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_1",
+   "order": 1,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/common_actions/To sleep.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Ler",
+     "audioPath": "audio/vocab_words/common_actions/To read.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Escrever",
+     "audioPath": "audio/vocab_words/common_actions/To write.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Dormir",
+     "audioPath": "audio/vocab_words/common_actions/To sleep.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_2",
+   "order": 2,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/common_actions/To write.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Correr",
+     "audioPath": "audio/vocab_words/common_actions/To run.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Escrever",
+     "audioPath": "audio/vocab_words/common_actions/To write.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Andar",
+     "audioPath": "audio/vocab_words/common_actions/To walk.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_3",
+   "order": 3,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/common_actions/To run.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Correr",
+     "audioPath": "audio/vocab_words/common_actions/To run.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Falar",
+     "audioPath": "audio/vocab_words/common_actions/To speak.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Ouvir",
+     "audioPath": "audio/vocab_words/common_actions/To listen.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_4",
+   "order": 4,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/common_actions/To listen.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Ir",
+     "audioPath": "audio/vocab_words/common_actions/To go.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vir",
+     "audioPath": "audio/vocab_words/common_actions/To come.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Ouvir",
+     "audioPath": "audio/vocab_words/common_actions/To listen.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_5",
+   "order": 5,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/common_actions/To come.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Comer",
+     "audioPath": "audio/vocab_words/common_actions/To eat.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vir",
+     "audioPath": "audio/vocab_words/common_actions/To come.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Relaxar",
+     "audioPath": "audio/vocab_words/common_actions/To relax.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "everyday_activities": [
+  {
+   "slug": "o_que_esta_a_fazer_0",
+   "order": 0,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/everyday_activities/To wake up.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Acordar",
+     "audioPath": "audio/vocab_words/everyday_activities/To wake up.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Levantar se",
+     "audioPath": "audio/vocab_words/everyday_activities/To get up.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Tomar banho",
+     "audioPath": "audio/vocab_words/everyday_activities/To take a shower.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_1",
+   "order": 1,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/everyday_activities/To take a shower.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Escovar os dentes",
+     "audioPath": "audio/vocab_words/everyday_activities/To brush teeth.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vestir se",
+     "audioPath": "audio/vocab_words/everyday_activities/To get dressed.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Tomar banho",
+     "audioPath": "audio/vocab_words/everyday_activities/To take a shower.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_2",
+   "order": 2,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/everyday_activities/To get dressed.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Ir para o trabalho",
+     "audioPath": "audio/vocab_words/everyday_activities/To go to work.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vestir se",
+     "audioPath": "audio/vocab_words/everyday_activities/To get dressed.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Tomar pequeno-almoço",
+     "audioPath": "audio/vocab_words/everyday_activities/To have breakfast.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_3",
+   "order": 3,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/everyday_activities/To go to work.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Ir para o trabalho",
+     "audioPath": "audio/vocab_words/everyday_activities/To go to work.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Ir para a escola",
+     "audioPath": "audio/vocab_words/everyday_activities/To go to school.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Estudar",
+     "audioPath": "audio/vocab_words/everyday_activities/To study.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_4",
+   "order": 4,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/everyday_activities/To study.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Almoçar",
+     "audioPath": "audio/vocab_words/everyday_activities/To have lunch.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Fazer exercício",
+     "audioPath": "audio/vocab_words/everyday_activities/To exercise.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Estudar",
+     "audioPath": "audio/vocab_words/everyday_activities/To study.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_esta_a_fazer_5",
+   "order": 5,
+   "questionText": "O que está a fazer?",
+   "imagePath": "images/vocab_words/everyday_activities/To exercise.png",
+   "audioPath": "audio/quiz_prompts/o_que_esta_a_fazer.mp3",
+   "answers": [
+    {
+     "answerText": "Jantar",
+     "audioPath": "audio/vocab_words/everyday_activities/To have dinner.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Fazer exercício",
+     "audioPath": "audio/vocab_words/everyday_activities/To exercise.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Cozinhar",
+     "audioPath": "audio/vocab_words/everyday_activities/To cook.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "fruits": [
+  {
+   "slug": "que_fruta_e_esta_0",
+   "order": 0,
+   "questionText": "Que fruta é esta?",
+   "imagePath": "images/vocab_words/fruits/Banana.png",
+   "audioPath": "audio/quiz_prompts/que_fruta_e_esta.mp3",
+   "answers": [
+    {
+     "answerText": "Banana",
+     "audioPath": "audio/vocab_words/fruits/Banana.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Limão",
+     "audioPath": "audio/vocab_words/fruits/Lemon.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Abacate",
+     "audioPath": "audio/vocab_words/fruits/Avocado.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_fruta_e_esta_1",
+   "order": 1,
+   "questionText": "Que fruta é esta?",
+   "imagePath": "images/vocab_words/fruits/Lemon.png",
+   "audioPath": "audio/quiz_prompts/que_fruta_e_esta.mp3",
+   "answers": [
+    {
+     "answerText": "Abacate",
+     "audioPath": "audio/vocab_words/fruits/Avocado.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Mamão",
+     "audioPath": "audio/vocab_words/fruits/Papaya.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Limão",
+     "audioPath": "audio/vocab_words/fruits/Lemon.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_fruta_e_esta_2",
+   "order": 2,
+   "questionText": "Que fruta é esta?",
+   "imagePath": "images/vocab_words/fruits/Avocado.png",
+   "audioPath": "audio/quiz_prompts/que_fruta_e_esta.mp3",
+   "answers": [
+    {
+     "answerText": "Manga",
+     "audioPath": "audio/vocab_words/fruits/Mango.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Abacate",
+     "audioPath": "audio/vocab_words/fruits/Avocado.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Mamão",
+     "audioPath": "audio/vocab_words/fruits/Papaya.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_fruta_e_esta_3",
+   "order": 3,
+   "questionText": "Que fruta é esta?",
+   "imagePath": "images/vocab_words/fruits/Papaya.png",
+   "audioPath": "audio/quiz_prompts/que_fruta_e_esta.mp3",
+   "answers": [
+    {
+     "answerText": "Mamão",
+     "audioPath": "audio/vocab_words/fruits/Papaya.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Manga",
+     "audioPath": "audio/vocab_words/fruits/Mango.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Maçã",
+     "audioPath": "audio/vocab_words/fruits/Apple.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_fruta_e_esta_4",
+   "order": 4,
+   "questionText": "Que fruta é esta?",
+   "imagePath": "images/vocab_words/fruits/Mango.png",
+   "audioPath": "audio/quiz_prompts/que_fruta_e_esta.mp3",
+   "answers": [
+    {
+     "answerText": "Maçã",
+     "audioPath": "audio/vocab_words/fruits/Apple.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Laranja",
+     "audioPath": "audio/vocab_words/fruits/Orange.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Manga",
+     "audioPath": "audio/vocab_words/fruits/Mango.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_fruta_e_esta_5",
+   "order": 5,
+   "questionText": "Que fruta é esta?",
+   "imagePath": "images/vocab_words/fruits/Apple.png",
+   "audioPath": "audio/quiz_prompts/que_fruta_e_esta.mp3",
+   "answers": [
+    {
+     "answerText": "Melancia",
+     "audioPath": "audio/vocab_words/fruits/Watermelon.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Maçã",
+     "audioPath": "audio/vocab_words/fruits/Apple.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Laranja",
+     "audioPath": "audio/vocab_words/fruits/Orange.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "household_items": [
+  {
+   "slug": "o_que_e_isso_0",
+   "order": 0,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/household_items/Chair.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Cadeira",
+     "audioPath": "audio/vocab_words/household_items/Chair.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Mesa",
+     "audioPath": "audio/vocab_words/household_items/Table.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Sofá",
+     "audioPath": "audio/vocab_words/household_items/Sofa.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_1",
+   "order": 1,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/household_items/Sofa.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Cama",
+     "audioPath": "audio/vocab_words/household_items/Bed.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Almofada",
+     "audioPath": "audio/vocab_words/household_items/Pillow.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Sofá",
+     "audioPath": "audio/vocab_words/household_items/Sofa.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_2",
+   "order": 2,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/household_items/Pillow.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Estante",
+     "audioPath": "audio/vocab_words/household_items/Bookshelf.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Almofada",
+     "audioPath": "audio/vocab_words/household_items/Pillow.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Cobertor",
+     "audioPath": "audio/vocab_words/household_items/Blanket.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_3",
+   "order": 3,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/household_items/Bookshelf.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Estante",
+     "audioPath": "audio/vocab_words/household_items/Bookshelf.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Escrivaninha",
+     "audioPath": "audio/vocab_words/household_items/Desk.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Lâmpada",
+     "audioPath": "audio/vocab_words/household_items/Lamp.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_4",
+   "order": 4,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/household_items/Lamp.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Cortinas",
+     "audioPath": "audio/vocab_words/household_items/Curtains.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Televisão",
+     "audioPath": "audio/vocab_words/household_items/Television.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Lâmpada",
+     "audioPath": "audio/vocab_words/household_items/Lamp.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_5",
+   "order": 5,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/household_items/Television.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Carro",
+     "audioPath": "audio/vocab_words/household_items/Car.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Televisão",
+     "audioPath": "audio/vocab_words/household_items/Television.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Relógio",
+     "audioPath": "audio/vocab_words/household_items/Clock.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "kitchen_items": [
+  {
+   "slug": "o_que_e_isso_0",
+   "order": 0,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/kitchen_items/Refrigerator.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Geladeira",
+     "audioPath": "audio/vocab_words/kitchen_items/Refrigerator.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Microondas",
+     "audioPath": "audio/vocab_words/kitchen_items/Microwave.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Fogão",
+     "audioPath": "audio/vocab_words/kitchen_items/Stove.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_1",
+   "order": 1,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/kitchen_items/Stove.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Forno",
+     "audioPath": "audio/vocab_words/kitchen_items/Oven.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Faca",
+     "audioPath": "audio/vocab_words/kitchen_items/Knife.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Fogão",
+     "audioPath": "audio/vocab_words/kitchen_items/Stove.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_2",
+   "order": 2,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/kitchen_items/Knife.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Colher",
+     "audioPath": "audio/vocab_words/kitchen_items/Spoon.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Faca",
+     "audioPath": "audio/vocab_words/kitchen_items/Knife.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Garfo",
+     "audioPath": "audio/vocab_words/kitchen_items/Fork.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_3",
+   "order": 3,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/kitchen_items/Spoon.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Colher",
+     "audioPath": "audio/vocab_words/kitchen_items/Spoon.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Prato",
+     "audioPath": "audio/vocab_words/kitchen_items/Plate.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Copo",
+     "audioPath": "audio/vocab_words/kitchen_items/Glass.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_4",
+   "order": 4,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/kitchen_items/Glass.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Xícara",
+     "audioPath": "audio/vocab_words/kitchen_items/Cup.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Panela",
+     "audioPath": "audio/vocab_words/kitchen_items/Pot.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Copo",
+     "audioPath": "audio/vocab_words/kitchen_items/Glass.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "o_que_e_isso_5",
+   "order": 5,
+   "questionText": "O que é isso?",
+   "imagePath": "images/vocab_words/kitchen_items/Pot.png",
+   "audioPath": "audio/quiz_prompts/o_que_e_isso.mp3",
+   "answers": [
+    {
+     "answerText": "Geladeira",
+     "audioPath": "audio/vocab_words/kitchen_items/Refrigerator.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Panela",
+     "audioPath": "audio/vocab_words/kitchen_items/Pot.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Frigideira",
+     "audioPath": "audio/vocab_words/kitchen_items/Pan.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "numbers": [
+  {
+   "slug": "que_numero_e_este_0",
+   "order": 0,
+   "questionText": "Que número é este?",
+   "imagePath": "images/vocab_words/numbers/0.png",
+   "audioPath": "audio/quiz_prompts/que_numero_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Zero",
+     "audioPath": "audio/vocab_words/numbers/0.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Um",
+     "audioPath": "audio/vocab_words/numbers/1.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Dois",
+     "audioPath": "audio/vocab_words/numbers/2.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_numero_e_este_1",
+   "order": 1,
+   "questionText": "Que número é este?",
+   "imagePath": "images/vocab_words/numbers/5.png",
+   "audioPath": "audio/quiz_prompts/que_numero_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Seis",
+     "audioPath": "audio/vocab_words/numbers/6.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Sete",
+     "audioPath": "audio/vocab_words/numbers/7.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Cinco",
+     "audioPath": "audio/vocab_words/numbers/5.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_numero_e_este_2",
+   "order": 2,
+   "questionText": "Que número é este?",
+   "imagePath": "images/vocab_words/numbers/10.png",
+   "audioPath": "audio/quiz_prompts/que_numero_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Doze",
+     "audioPath": "audio/vocab_words/numbers/12.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Dez",
+     "audioPath": "audio/vocab_words/numbers/10.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Onze",
+     "audioPath": "audio/vocab_words/numbers/11.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_numero_e_este_3",
+   "order": 3,
+   "questionText": "Que número é este?",
+   "imagePath": "images/vocab_words/numbers/15.png",
+   "audioPath": "audio/quiz_prompts/que_numero_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Quinze",
+     "audioPath": "audio/vocab_words/numbers/15.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Dezesseis",
+     "audioPath": "audio/vocab_words/numbers/16.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Dezessete",
+     "audioPath": "audio/vocab_words/numbers/17.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_numero_e_este_4",
+   "order": 4,
+   "questionText": "Que número é este?",
+   "imagePath": "images/vocab_words/numbers/20.png",
+   "audioPath": "audio/quiz_prompts/que_numero_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Vinte e um",
+     "audioPath": "audio/vocab_words/numbers/21.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Trinta",
+     "audioPath": "audio/vocab_words/numbers/30.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Vinte",
+     "audioPath": "audio/vocab_words/numbers/20.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_numero_e_este_5",
+   "order": 5,
+   "questionText": "Que número é este?",
+   "imagePath": "images/vocab_words/numbers/50.png",
+   "audioPath": "audio/quiz_prompts/que_numero_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Setenta",
+     "audioPath": "audio/vocab_words/numbers/70.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Cinquenta",
+     "audioPath": "audio/vocab_words/numbers/50.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Sessenta",
+     "audioPath": "audio/vocab_words/numbers/60.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "professions": [
+  {
+   "slug": "qual_e_a_profissao_0",
+   "order": 0,
+   "questionText": "Qual é a profissão?",
+   "imagePath": "images/vocab_words/professions/Accountant.png",
+   "audioPath": "audio/quiz_prompts/qual_e_a_profissao.mp3",
+   "answers": [
+    {
+     "answerText": "Contabilista",
+     "audioPath": "audio/vocab_words/professions/Accountant.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Ator",
+     "audioPath": "audio/vocab_words/professions/Actor.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Arquiteto",
+     "audioPath": "audio/vocab_words/professions/Architect.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "qual_e_a_profissao_1",
+   "order": 1,
+   "questionText": "Qual é a profissão?",
+   "imagePath": "images/vocab_words/professions/Architect.png",
+   "audioPath": "audio/quiz_prompts/qual_e_a_profissao.mp3",
+   "answers": [
+    {
+     "answerText": "Artista",
+     "audioPath": "audio/vocab_words/professions/Artist.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Padeiro",
+     "audioPath": "audio/vocab_words/professions/Baker.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Arquiteto",
+     "audioPath": "audio/vocab_words/professions/Architect.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "qual_e_a_profissao_2",
+   "order": 2,
+   "questionText": "Qual é a profissão?",
+   "imagePath": "images/vocab_words/professions/Baker.png",
+   "audioPath": "audio/quiz_prompts/qual_e_a_profissao.mp3",
+   "answers": [
+    {
+     "answerText": "Chefe de cozinha",
+     "audioPath": "audio/vocab_words/professions/Chef.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Padeiro",
+     "audioPath": "audio/vocab_words/professions/Baker.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Barbeiro",
+     "audioPath": "audio/vocab_words/professions/Barber.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "qual_e_a_profissao_3",
+   "order": 3,
+   "questionText": "Qual é a profissão?",
+   "imagePath": "images/vocab_words/professions/Chef.png",
+   "audioPath": "audio/quiz_prompts/qual_e_a_profissao.mp3",
+   "answers": [
+    {
+     "answerText": "Chefe de cozinha",
+     "audioPath": "audio/vocab_words/professions/Chef.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Médico",
+     "audioPath": "audio/vocab_words/professions/Doctor.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Agricultor",
+     "audioPath": "audio/vocab_words/professions/Farmer.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "qual_e_a_profissao_4",
+   "order": 4,
+   "questionText": "Qual é a profissão?",
+   "imagePath": "images/vocab_words/professions/Farmer.png",
+   "audioPath": "audio/quiz_prompts/qual_e_a_profissao.mp3",
+   "answers": [
+    {
+     "answerText": "Bombeiro",
+     "audioPath": "audio/vocab_words/professions/Firefighter.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Advogado",
+     "audioPath": "audio/vocab_words/professions/Lawyer.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Agricultor",
+     "audioPath": "audio/vocab_words/professions/Farmer.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "qual_e_a_profissao_5",
+   "order": 5,
+   "questionText": "Qual é a profissão?",
+   "imagePath": "images/vocab_words/professions/Lawyer.png",
+   "audioPath": "audio/quiz_prompts/qual_e_a_profissao.mp3",
+   "answers": [
+    {
+     "answerText": "Farmacêutico",
+     "audioPath": "audio/vocab_words/professions/Pharmacist.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Advogado",
+     "audioPath": "audio/vocab_words/professions/Lawyer.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Músico",
+     "audioPath": "audio/vocab_words/professions/Musician.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ],
+ "vegetables": [
+  {
+   "slug": "que_legume_e_este_0",
+   "order": 0,
+   "questionText": "Que legume é este?",
+   "imagePath": "images/vocab_words/vegetables/Tomato.png",
+   "audioPath": "audio/quiz_prompts/que_legume_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Tomate",
+     "audioPath": "audio/vocab_words/vegetables/Tomato.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Alface",
+     "audioPath": "audio/vocab_words/vegetables/Lettuce.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Pepino",
+     "audioPath": "audio/vocab_words/vegetables/Cucumber.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_legume_e_este_1",
+   "order": 1,
+   "questionText": "Que legume é este?",
+   "imagePath": "images/vocab_words/vegetables/Lettuce.png",
+   "audioPath": "audio/quiz_prompts/que_legume_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Pepino",
+     "audioPath": "audio/vocab_words/vegetables/Cucumber.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Cenoura",
+     "audioPath": "audio/vocab_words/vegetables/Carrot.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Alface",
+     "audioPath": "audio/vocab_words/vegetables/Lettuce.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_legume_e_este_2",
+   "order": 2,
+   "questionText": "Que legume é este?",
+   "imagePath": "images/vocab_words/vegetables/Cucumber.png",
+   "audioPath": "audio/quiz_prompts/que_legume_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Mandioca",
+     "audioPath": "audio/vocab_words/vegetables/Yuca.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Pepino",
+     "audioPath": "audio/vocab_words/vegetables/Cucumber.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Cenoura",
+     "audioPath": "audio/vocab_words/vegetables/Carrot.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_legume_e_este_3",
+   "order": 3,
+   "questionText": "Que legume é este?",
+   "imagePath": "images/vocab_words/vegetables/Carrot.png",
+   "audioPath": "audio/quiz_prompts/que_legume_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Cenoura",
+     "audioPath": "audio/vocab_words/vegetables/Carrot.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Mandioca",
+     "audioPath": "audio/vocab_words/vegetables/Yuca.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Batata",
+     "audioPath": "audio/vocab_words/vegetables/Potato.mp3",
+     "isCorrect": false
+    }
+   ]
+  },
+  {
+   "slug": "que_legume_e_este_4",
+   "order": 4,
+   "questionText": "Que legume é este?",
+   "imagePath": "images/vocab_words/vegetables/Yuca.png",
+   "audioPath": "audio/quiz_prompts/que_legume_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Batata",
+     "audioPath": "audio/vocab_words/vegetables/Potato.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Batata-doce",
+     "audioPath": "audio/vocab_words/vegetables/Sweet Potato.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Mandioca",
+     "audioPath": "audio/vocab_words/vegetables/Yuca.mp3",
+     "isCorrect": true
+    }
+   ]
+  },
+  {
+   "slug": "que_legume_e_este_5",
+   "order": 5,
+   "questionText": "Que legume é este?",
+   "imagePath": "images/vocab_words/vegetables/Potato.png",
+   "audioPath": "audio/quiz_prompts/que_legume_e_este.mp3",
+   "answers": [
+    {
+     "answerText": "Abóbora",
+     "audioPath": "audio/vocab_words/vegetables/Pumpkin.mp3",
+     "isCorrect": false
+    },
+    {
+     "answerText": "Batata",
+     "audioPath": "audio/vocab_words/vegetables/Potato.mp3",
+     "isCorrect": true
+    },
+    {
+     "answerText": "Batata-doce",
+     "audioPath": "audio/vocab_words/vegetables/Sweet Potato.mp3",
+     "isCorrect": false
+    }
+   ]
+  }
+ ]
+}

@@ -57,6 +57,19 @@ const bool useLocalMedia = bool.fromEnvironment(
 //   --dart-define=FORCE_SYNC=true
 const bool forceSyncOnStart = bool.fromEnvironment('FORCE_SYNC');
 
+// A second, supplementary content collection owned by this project rather than
+// by the original developers.
+//
+// Nine of the twelve vocabulary categories shipped with no quiz. Those quizzes
+// were generated and live here, kept completely separate: nothing writes to the
+// partner's app_content or dev_content, and nothing they run reads this. The
+// documents are self-contained and reference media bundled in the app, so they
+// keep working even if this collection disappears.
+const String extraContentCollection = String.fromEnvironment(
+  'EXTRA_CONTENT_COLLECTION',
+  defaultValue: 'content_ankush',
+);
+
 /// Logs a line that is actually visible on every platform.
 ///
 /// `dart:developer`'s log() does not surface in `flutter run` output on web,
@@ -220,6 +233,14 @@ class DatabaseService {
     // exceptions and this method returned true unconditionally, so a sync that
     // failed completely still told the moderator it had succeeded — the worst
     // possible behaviour for the low-connectivity setting this app targets.
+    // Our own quizzes go in after the partner's, and only where they have no
+    // category of their own, so this supplements and never overrides.
+    await _syncQuizQuestions(
+      () {},
+      fromCollection: extraContentCollection,
+      skipExisting: true,
+    );
+
     final bool allSucceeded = results.every((succeeded) => succeeded);
 
     if (allSucceeded) {
@@ -501,10 +522,19 @@ class DatabaseService {
   }
 
   // Sync Practice Quiz questions from Firestore to Hive. Returns true only if it completed.
-  Future<bool> _syncQuizQuestions(void Function() onStepCompleted) async {
+  //
+  // Reads the partner's collection first, then our own supplementary one. Nine
+  // of the twelve vocabulary categories shipped with no quiz at all; those are
+  // filled from extraContentCollection. skipExisting means the partner's
+  // content always wins where both have a category, so this can only ever add.
+  Future<bool> _syncQuizQuestions(
+    void Function() onStepCompleted, {
+    String? fromCollection,
+    bool skipExisting = false,
+  }) async {
     try {
       final CollectionReference categoriesRef = _firestore
-        .collection(collectionName)
+        .collection(fromCollection ?? collectionName)
         .doc('practice_quiz')
         .collection('categories');
 
@@ -515,6 +545,8 @@ class DatabaseService {
       for (QueryDocumentSnapshot categoryDoc in querySnapshot.docs) {
         final categoryData = categoryDoc.data() as Map<String, dynamic>;
         final String categoryName = categoryData['name'] ?? categoryDoc.id;
+
+        if (skipExisting && _quizQuestionBox.containsKey(categoryName)) continue;
 
         final QuerySnapshot quizSnapshot = await categoryDoc.reference
           .collection('quizzes')

@@ -111,6 +111,7 @@ flutter:
     - assets/images/vocab_words/vegetables/
 
     # Content audio
+    - assets/audio/quiz_prompts/
     - assets/audio/learn_convo/greetings/
     - assets/audio/learn_convo/requests/
     - assets/audio/practice_convo/greetings/
