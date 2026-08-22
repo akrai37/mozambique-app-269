@@ -25,9 +25,17 @@ class CategoryBadgeMark extends StatelessWidget {
     // and navigates back, and the card behind them has to already be updated.
     // Reading at build time would leave stale badges until something else
     // happened to rebuild the grid.
+    //
+    // Two keys, not one. The progress key is group-scoped, so switching groups
+    // changes which key this card cares about — and the old key will never
+    // change again. Watching groupIdKey as well means a group switch repaints
+    // the badge immediately, instead of leaving the previous group's ticks on
+    // screen until something else forced a rebuild.
     return ValueListenableBuilder(
-      valueListenable: Hive.box(ProgressService.boxName)
-          .listenable(keys: [ProgressService().hiveKeyFor(categoryName)]),
+      valueListenable: Hive.box(ProgressService.boxName).listenable(keys: [
+        ProgressService().hiveKeyFor(categoryName),
+        ProgressService.groupIdKey,
+      ]),
       builder: (context, _, __) => _buildMark(),
     );
   }

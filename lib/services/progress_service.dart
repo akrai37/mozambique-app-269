@@ -149,7 +149,11 @@ class ProgressService {
 
   // Reserved keys for group metadata, prefixed so they cannot collide with a
   // category name.
-  static const String _groupIdKey = '__groupId';
+  /// Public so widgets can listen for a change of group, not just a change of
+  /// progress. Switching groups changes which key holds a category's record,
+  /// so anything watching a group-scoped key has to watch this one too.
+  static const String groupIdKey = '__groupId';
+  static const String _groupIdKey = groupIdKey;
   static const String _groupNameKey = '__groupName';
   static const String _migratedKey = '__migratedToGroups';
   static const String _groupListKey = '__groups';
