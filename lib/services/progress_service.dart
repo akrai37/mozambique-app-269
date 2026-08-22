@@ -18,6 +18,65 @@ const String progressCollection = String.fromEnvironment(
   defaultValue: 'progress_ankush',
 );
 
+/// One group that has used this tablet.
+class GroupInfo {
+  final String id;
+  final String? name;
+  final DateTime? lastActive;
+
+  const GroupInfo({required this.id, this.name, this.lastActive});
+
+  /// What the moderator sees in the picker.
+  ///
+  /// Naming is optional — a moderator starting a session should not have to
+  /// type before the group can exist — so unnamed groups fall back to a short
+  /// slice of the id, which is enough to tell two entries apart without
+  /// showing the whole thing.
+  String get displayName {
+    final String? trimmed = name?.trim();
+    if (trimmed != null && trimmed.isNotEmpty) return trimmed;
+
+    final String suffix =
+        id.length <= 5 ? id : id.substring(id.length - 4);
+    return 'Grupo $suffix';
+  }
+
+  Map<String, dynamic> toMap() => {
+        'id': id,
+        'name': name,
+        'lastActive': lastActive?.toIso8601String(),
+      };
+
+  factory GroupInfo.fromMap(Map<dynamic, dynamic> map) {
+    final Object? active = map['lastActive'];
+    return GroupInfo(
+      id: map['id'] as String? ?? '',
+      name: map['name'] as String?,
+      lastActive: active is String ? DateTime.tryParse(active) : null,
+    );
+  }
+}
+
+/// Adds or updates [group] in [existing], most recently active first.
+///
+/// Returns a new list; the input is left alone.
+List<GroupInfo> upsertGroup(List<GroupInfo> existing, GroupInfo group) {
+  final List<GroupInfo> next =
+      existing.where((candidate) => candidate.id != group.id).toList()
+        ..add(group);
+
+  next.sort((a, b) {
+    // A missing timestamp sorts last rather than first, so an incomplete
+    // record cannot jump to the top of the moderator's list.
+    if (a.lastActive == null && b.lastActive == null) return 0;
+    if (a.lastActive == null) return 1;
+    if (b.lastActive == null) return -1;
+    return b.lastActive!.compareTo(a.lastActive!);
+  });
+
+  return next;
+}
+
 /// What a group has done in one category.
 ///
 /// Plain data rather than a Hive-annotated class: progress is a handful of
@@ -93,6 +152,7 @@ class ProgressService {
   static const String _groupIdKey = '__groupId';
   static const String _groupNameKey = '__groupName';
   static const String _migratedKey = '__migratedToGroups';
+  static const String _groupListKey = '__groups';
 
   Box get _box => Hive.box(boxName);
 
@@ -132,18 +192,66 @@ class ProgressService {
 
   Future<void> setGroupName(String name) async {
     await _box.put(_groupNameKey, name.trim());
+    await _rememberCurrentGroup();
     await _pushGroupDoc();
+  }
+
+  /// Every group that has used this tablet, most recently active first.
+  List<GroupInfo> get groups {
+    final Object? raw = _box.get(_groupListKey);
+    if (raw is! List) return const [];
+
+    return raw
+        .whereType<Map>()
+        .map(GroupInfo.fromMap)
+        .where((group) => group.id.isNotEmpty)
+        .toList();
   }
 
   /// Starts a fresh group on this tablet.
   ///
   /// Badges clear because progress is stored per group, but nothing is
   /// deleted — the previous group's record stays on the device and in
-  /// Firestore under its own id.
+  /// Firestore under its own id, and the group remains in [groups] so it can
+  /// be switched back to.
   Future<void> startNewGroup({String? name}) async {
-    await _box.put(_groupIdKey, _generateGroupId());
+    await _rememberCurrentGroup();
+
+    final String created = _generateGroupId();
+    await _box.put(_groupIdKey, created);
     await _box.put(_groupNameKey, name?.trim() ?? '');
+
+    await _rememberCurrentGroup();
     await _pushGroupDoc();
+  }
+
+  /// Switches back to a group that has used this tablet before.
+  ///
+  /// Sessions are not one-way: a group that met on Monday may return on
+  /// Wednesday, and without this their history would fragment across a new id
+  /// every time.
+  Future<void> switchToGroup(String id) async {
+    final Iterable<GroupInfo> matches = groups.where((group) => group.id == id);
+    if (matches.isEmpty) return;
+    final GroupInfo target = matches.first;
+
+    await _rememberCurrentGroup();
+    await _box.put(_groupIdKey, target.id);
+    await _box.put(_groupNameKey, target.name ?? '');
+    await _rememberCurrentGroup();
+  }
+
+  /// Records the current group in the list, stamping it as active now.
+  Future<void> _rememberCurrentGroup() async {
+    final List<GroupInfo> updated = upsertGroup(
+      groups,
+      GroupInfo(id: groupId, name: groupName, lastActive: DateTime.now()),
+    );
+
+    await _box.put(
+      _groupListKey,
+      updated.map((group) => group.toMap()).toList(),
+    );
   }
 
   String _generateGroupId() {
