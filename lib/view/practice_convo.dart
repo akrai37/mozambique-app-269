@@ -33,7 +33,6 @@ class _PracticeConvoState extends State<PracticeConvo> {
   late List<ConvoLine> _lines = [];
   late Uint8List imageBytes = Uint8List(0);
   final List<Widget> _messages = [];
-  final List<Widget> _visibleMessages = [];
 
   @override
   void initState() {
@@ -82,7 +81,6 @@ class _PracticeConvoState extends State<PracticeConvo> {
   void _revealNextMessage() {
     if (_msgIndex < _messages.length) {
       setState(() {
-        _visibleMessages.add(_messages[_msgIndex]);
         _msgIndex++; // Show the next message
       });
 
@@ -100,10 +98,7 @@ class _PracticeConvoState extends State<PracticeConvo> {
 
   void resetConversation() {
     setState(() {
-      while (_msgIndex != 1) {
-        _msgIndex--;
-        _visibleMessages.removeLast();
-      }
+      _msgIndex = 1;
     });
   }
 
@@ -111,7 +106,6 @@ class _PracticeConvoState extends State<PracticeConvo> {
     if (_msgIndex > 1) {
       setState(() {
         _msgIndex--;
-        _visibleMessages.removeLast();
       });
     }
   }
