@@ -76,3 +76,6 @@ mozambique-app-firebase-adminsdk-fbsvc-0cf2fbafbe.json
 
 # macOS
 .DS_Store
+
+# Presentation script - local only
+demo.md
