@@ -13,8 +13,8 @@ Project: **`mozambique-app`** · Console access granted to `arai4@scu.edu`
 | Piece | What it holds | Used today? |
 |---|---|---|
 | **Firestore** | The words — categories, vocab, questions, quizzes, conversations. Plus a *path* to each media file. | ✅ Yes |
-| **Storage** | The actual `.png` and `.mp3` files. | ✅ Yes (untested) |
-| **Auth** | Logins. | ❌ No — no login screen exists |
+| **Storage** | The actual `.png` and `.mp3` files. | ⚠️ Readable, but blocked in browsers — see below |
+| **Auth** | Logins. | ❌ Not used, deliberately — see below |
 
 ---
 
@@ -115,13 +115,14 @@ Note this is **more than the local bundled content** — 16 online vs 15 local, 
 13 vocab categories vs 12. There is an `alphabet` category on the server that is
 not in the repo.
 
-**Storage — not yet tested.** Config is correct (bucket
-`mozambique-app.firebasestorage.app`, matching in all three places), but we have
-not confirmed it actually serves files. If it does not, the app gets words but no
-pictures or sound.
+**Storage — readable, but not from a browser.** Files come back fine over plain
+HTTP, so the bucket and paths are correct. The response carries **no
+`Access-Control-Allow-Origin` header**, so a browser refuses to hand the bytes to
+the page even though the file is public.
 
-Likely snag on web: Storage downloads from a browser need **CORS** configured on
-the bucket. Native builds are unaffected.
+Fixing that means a CORS policy on a bucket this project does not own. Hybrid
+mode works around it: text from Firestore, media from the app's bundled assets.
+Native builds are unaffected and would use Storage normally.
 
 ---
 
@@ -162,26 +163,23 @@ are live in the code — neither was deleted.
 
 ---
 
-## Login / authorization — still to decide
+## Login — decided against
 
-The app has **no authentication today**. Nothing in the code touches Auth; it
-reads the database anonymously.
+The app has **no authentication**, and that is a decision rather than an
+omission.
 
-The decision that matters is **who logs in**. The learners cannot read, so a
-login screen is useless to them. It would be for **moderators** — to gate things
-like the sync button.
+Both options were considered. Firebase Auth would give real accounts but needs a
+connection for the first sign-in and adds a shared user pool to a project we do
+not own. A local PIN would work offline but still puts a text field between a
+learner and the content.
 
-Two options:
+Neither survives the basic question of **who would type it**. The learners cannot
+read a sign-in screen, and the tablet is shared rather than personal, so accounts
+would be unusable by the people meant to use them.
 
-**Firebase Auth** — real accounts (email/password). Needs internet for the first
-login, then remembers the session. The project already exists, so this is easy to
-add. Better if you want real identity or to lock down who can change content.
-
-**Local PIN** — a code stored on the device. No Firebase, no network, works fully
-offline. Better fit for the actual deployment: a shared tablet in a rural area
-with a moderator who mostly works offline.
-
-**Not yet decided.** See [CHANGES.md](CHANGES.md) for status.
+**Group identity was built instead.** The tablet knows which group is using it,
+the moderator picks from a list at the start of a session, and nobody types a
+password. See [CHANGES.md](CHANGES.md), Phase 3 Step 3.
 
 ---
 
@@ -191,6 +189,13 @@ There are **no `firestore.rules` or `storage.rules` in this repo**, and none
 referenced in `firebase.json`. Whatever rules protect the project exist only in
 the console — unversioned and unreviewable.
 
-The fact that Firestore reads work with no login at all means the rules currently
-allow public reads. That is fine for content meant to be public, but worth
-knowing before adding anything user-specific.
+Reads and writes both work with no login at all, so the rules are currently
+permissive. That is confirmed by behaviour, not by reading the config — the
+console reports **"You do not have permission to view rules for this project"**
+for the access this project has, which covers data but not security settings.
+
+Testing what the database actually does is the stronger evidence anyway: the
+rules text states intent, a successful unauthenticated write states fact.
+
+It also means tightening the rules is not something that could be done from
+here even if it were in scope. It belongs to whoever administers the project.

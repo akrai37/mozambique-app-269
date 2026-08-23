@@ -206,9 +206,13 @@ of the chrome does not: the search box hint `Procurar...`, the section headings
 - `.DS_Store` is tracked, along with `Database Structure.pdf` and script scratch
   files.
 - **No `firestore.rules` or `storage.rules` in the repo**, and none referenced in
-  `firebase.json`. The app reads Firestore unauthenticated, so whatever access
-  rules protect that project exist only in the console — unversioned and
-  unreviewable.
+  `firebase.json`. Whatever access rules protect the project exist only in the
+  console — unversioned and unreviewable.
+
+  They could not be inspected either: the console returns *"You do not have
+  permission to view rules for this project"* for the access available here,
+  which covers data but not security settings. What is known about them comes
+  from behaviour — unauthenticated reads and writes both succeed.
 - **A Firebase Admin SDK private key is committed in the git history.** Commit
   `987f4f2` (2025-04-21) added
   `mozambique-app-firebase-adminsdk-fbsvc-434948f8b5.json`; a later commit
