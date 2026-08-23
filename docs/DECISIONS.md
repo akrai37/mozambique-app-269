@@ -10,6 +10,42 @@ This one records *why*, and who pushed for it.
 
 ## 1. Feedback that changed the product
 
+### The professor: "you will need Firebase"
+
+The first proposal was to drop Firebase and run the app entirely on Hive. That
+came from a practical place — there were no credentials, the app could not be
+built, and every piece of content turned out to already be committed to the
+repository.
+
+The feedback was that Firebase is not optional here: the media lives in Firebase
+Storage, and there would be authentication to think about.
+
+**What was done with it — not simply obeyed.** The Firebase direction was taken,
+but the local work was kept rather than thrown away. The app now has three
+content modes behind one flag:
+
+| Mode | Text | Media |
+|---|---|---|
+| Local | bundled | bundled |
+| Hybrid | Firestore | bundled |
+| Full Firebase | Firestore | Storage |
+
+Keeping local mode turned out to matter for reasons that had nothing to do with
+the original argument. It is what made the app runnable before any credentials
+existed, it is what makes development fast, and it is the fallback that made
+hybrid mode possible when Storage turned out to be unreachable from a browser.
+
+**What was deliberately not followed: the login.** See section 3 — the learners
+share one tablet and cannot read a sign-in screen. Group identity was built
+instead: the tablet knows which group is using it, a moderator picks from a
+list, and nobody types a password.
+
+**Following the feedback is what surfaced two real problems.** Pointing the app
+at live Firebase exposed the Storage CORS gap and, when pushing the work,
+GitHub's scanner found a Firebase Admin SDK key sitting in the repository's
+history. Neither would have been found by reading the code — they only appear
+when you actually connect to the thing.
+
 ### The quiz needed a reset, and I had it filed as minor
 
 I listed "no way to retry a quiz" under **smaller things** in an analysis. The
@@ -190,10 +226,17 @@ what you throw away:
 
 ## 6. Still open
 
-- **No conversation with a user or the partner yet.** The one question worth
-  asking: does one person hold the tablet for the whole group, or do learners
-  take turns — and does the moderator need to see results afterwards? The answer
-  decides whether group-level progress is right.
+- **No conversation with an end user or the partner organisation.** There has
+  been stakeholder feedback from the professor (section 1), which is real and
+  changed the product, but nobody has spoken to a moderator or a learner.
+
+  The one question worth asking: does one person hold the tablet for the whole
+  group, or do learners take turns — and does the moderator need to see results
+  afterwards? Progress is recorded **per group** on the assumption that a shared
+  tablet means group-level is the right unit. That assumption is reasoned, not
+  verified. If learners take turns and each wants their own record, the design
+  is wrong.
+
 - **9 of 12 categories have no quiz at all**, including `numbers`, which is the
   largest category in the app at 32 words. This is the biggest remaining gap in
   the product, and it is content rather than code.
